@@ -12,7 +12,7 @@ function mainContent() {
 	$PTMPL['goal'] = 'This is my goal';
 
 	// Set the active landing page_title 
-	$theme = new themer('welcome/content');
+	$theme = new themer('homepage/content');
 	return $theme->make();
 }
 ?>

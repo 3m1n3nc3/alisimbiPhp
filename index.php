@@ -1,12 +1,12 @@
 <?php
 require_once(__DIR__ . '/includes/autoload.php'); 
  
-if(isset($_GET['a']) && isset($action[$_GET['a']])) {
-	$page_name = $action[$_GET['a']];
+if(isset($_GET['page']) && isset($action[$_GET['page']])) {
+	$page_name = $action[$_GET['page']];
 } else {
-	$page_name = 'welcome';
+	$page_name = 'homepage';
 } 
- 
+
 require_once("controller/{$page_name}.php");  
 
 $PTMPL['site_title'] = $configuration['site_name']; 
