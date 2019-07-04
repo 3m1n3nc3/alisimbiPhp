@@ -8,20 +8,28 @@
 *3. Update the fields highlighted below*
 
 
-`define('DB_PREFIX', '');	 
-$SETT['dbhost'] = 'localhost'; 
-$SETT['dbuser'] = 'root'; 
-$SETT['dbpass'] = 'friendship1A@'; 
-$SETT['dbname'] = 'alisimbi';`
+`define('DB_PREFIX', '');	` 
+
+`$SETT['dbhost'] = 'localhost'; `
+
+`$SETT['dbuser'] = 'root'; `
+
+`$SETT['dbpass'] = 'friendship1A@'; `
+
+`$SETT['dbname'] = 'alisimbi';`
 
 You should be all set to run Passengine
 Feel free to modify other values on the config.php but be carefull
 
 ### Creating a new page
 *1. Create a new `.php` file with your prefered name in the `/controller/` dir. All your php codes willgo into this page (Recomended: Duplicate the default page and simply rename the file as desired)*
+
 *2. Create a new directory in `/templates/html/` the name should match the `.php` file you created earlier*
+
 *3. Create a new `.html` file in the new directory you just created name it `content.html`*
+
 *4. When you want to declare a variable go to the `.php` file you created in step 1 and declare the variable like `$PTMPL['good_music'] = 'David Gueretta'`*
+
 *5. Go to the .html file you created in step 3 and call the variable like {$good_music}. Your page specific html, css and javascripts should go into this file, you can add static content by just adding them here also without needing to create a variable*
 
 ### Global variables and templates
