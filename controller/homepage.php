@@ -2,6 +2,7 @@
 
 function mainContent() {
 	global $PTMPL, $LANG, $SETT; 
+	// Dont touch anything above this line
 
 	$PTMPL['page_title'] = $LANG['welcome'];	 
 	
@@ -11,7 +12,7 @@ function mainContent() {
 	$PTMPL['intro'] = $LANG['intro']; 
 	$PTMPL['goal'] = 'This is my goal';
 
-	// Set the active landing page_title 
+	// Dont touch anything below this line
 	$theme = new themer('homepage/content');
 	return $theme->make();
 }
