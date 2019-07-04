@@ -4,7 +4,9 @@
 
 
 *1. Create a database*
+
 *2. Open /includes/config.php*
+
 *3. Update the fields highlighted below*
 
 
@@ -33,6 +35,6 @@ Feel free to modify other values on the config.php but be carefull
 *5. Go to the .html file you created in step 3 and call the variable like {$good_music}. Your page specific html, css and javascripts should go into this file, you can add static content by just adding them here also without needing to create a variable*
 
 ### Global variables and templates
-*Any variable declared on the `index.php` file found on the root directory can be called from any other page*
+*-Any variable declared on the `index.php` file found on the root directory can be called from any other page*
 
-*Likewise any html, css, javascripts and static content declared in the `container.html` file found in the `templates/html` dir would be visible from any other page*
+*-Likewise any html, css, javascripts and static content declared in the `container.html` file found in the `templates/html` dir would be visible from any other page*
