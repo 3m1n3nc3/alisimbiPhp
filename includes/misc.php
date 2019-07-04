@@ -5,11 +5,11 @@ date_default_timezone_set("Africa/Lagos");
 
 // Set the site configuration here
 // Default configuration
-$configuration = array('language' => 'default', 'site_name' => 'Passengine', 'site_phone' => '09031983482'
-	, 'twillio_phone' => '+1092292922');
+//$configuration = array('language' => 'default', 'site_name' => 'Passengine', 'site_phone' => '09031983482'
+//	, 'twillio_phone' => '+1092292922');
 // You can pass this configuration information from a database, your database should contain the default 
 // configuration variables
-// $configuration = configuration();
+$configuration = configuration();
 
 // Store the theme path and theme name into the CONF and TMPL
 $PTMPL['template_path'] = $SETT['template_path'];

@@ -72,3 +72,69 @@ function seo_plugin($image, $twitter, $facebook, $desc, $title) {
     <meta name="twitter:creator" content="@'.$twitter.'" />';
     return $plugin;
 }
+
+function getImage($image, $type = null) {
+    global $SETT;
+    if ($type == null) {
+       $dir = $SETT['url'].'/'.$SETT['template_url'].'/img/';
+    } else {
+        $dir = $SETT['url'].'/uploads/img/';
+    }
+    return $dir.$image;
+}
+
+function getVideo($video) {
+    global $SETT, $framework;
+    $link = $framework->determineLink($video);
+
+    if ($link) {
+        $video = $link;
+    } else {
+        $video = $SETT['url'].'/uploads/videos/';
+    }
+    return $video;
+}
+
+function getHome($content) {
+    global $framework;
+    $sql = sprintf("SELECT * FROM " . TABLE_HOME . " WHERE title = '%s' OR id = '%s'", $content, $content);
+    return $framework->dbProcessor($sql, 1);
+}
+
+function getNews($link = null) {
+    global $framework;
+    if ($link) {
+        $sql = sprintf("SELECT * FROM " . TABLE_NEWS . " WHERE link = '%s' OR id = '%s'", $link, $link);
+    } else {
+        $sql = sprintf("SELECT * FROM " . TABLE_NEWS . " WHERE state = '1'");
+    }
+    return $framework->dbProcessor($sql, 1);
+}
+
+function getVlog($link = null) {
+    global $framework;
+    if ($link) {
+        $sql = sprintf("SELECT * FROM " . TABLE_TRAINING . " WHERE link = '%s' OR id = '%s'", $link, $link);
+    } else {
+        $sql = sprintf("SELECT * FROM " . TABLE_TRAINING . " WHERE state = '1'");
+    }
+    return $framework->dbProcessor($sql, 1);
+}
+    
+/**
+/* This function will convert your urls into cleaner urls
+**/
+function cleanUrls($url) {
+    global $configuration; //$configuration['cleanurl'] = 1;
+    if ($configuration['cleanurl']) {
+        $pager['homepage']  =   'index.php?page=homepage';
+        $pager['news']      =   'index.php?page=news';
+
+        if(strpos($url, $pager['homepage'])) {
+            $url = str_replace(array($pager['homepage'], '&user=', '&read='), array('homepage', '/', '/'), $url);
+        } elseif(strpos($url, $pager['news'])) {
+            $url = str_replace(array($pager['news'], '&read='), array('news', '/'), $url);
+        }
+    }
+    return $url;
+}

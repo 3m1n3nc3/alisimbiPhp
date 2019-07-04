@@ -355,22 +355,23 @@ class framework {
 		return $extractMessage;
 	} 
 
-	/* 
-	* Get the link from decodeText()
-	*/
-	function decodeLink($text, $x=0) { 
-	    // If www. is found at the beginning add http in front of it to make it a valid html link
-	    $y = $x==1 ? 'primary-color' : 'secondary-color';
+	/**
+	/* Determine if the text is a link or a file
+	**/
 
-	    if(substr($text[1], 0, 4) == 'www.') {
-	        $link = 'http://'.$text[1];
-	    } else {
-	        $link = $text[1];
-	    }
-	    return '<a class="'.$y.'" href="'.$link.'" target="_blank" rel="nofollow">'.$link.'</a>'; 
+	function determineLink($string) {
+		if(substr($string, 0, 4) == 'www.' || substr($string, 0, 5) == 'https' || 
+			substr($string, 0, 4) == 'http') {
+			if (substr($string, 0, 4) == 'www.') {
+				return 'http://'.$string;
+			} else {
+				return $string;
+			}
+		} else {
+			return false;
+		}	
 	}
-
-	/* 
+	/**
 	* Check if this request is being made from ajax
 	*/
 	function trueAjax() { 
@@ -444,4 +445,20 @@ class framework {
 			}		
 		} 
 	}
+}
+
+
+/* 
+* Callback for decodeText()
+*/
+function decodeLink($text, $x=0) { 
+    // If www. is found at the beginning add http in front of it to make it a valid html link
+    $y = $x==1 ? 'primary-color' : 'secondary-color';
+
+    if(substr($text[1], 0, 4) == 'www.') {
+        $link = 'http://'.$text[1];
+    } else {
+        $link = $text[1];
+    }
+    return '<a class="'.$y.'" href="'.$link.'" target="_blank" rel="nofollow">'.$link.'</a>'; 
 }

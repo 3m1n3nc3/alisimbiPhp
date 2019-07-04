@@ -34,6 +34,13 @@ body,
   box-shadow: 4px 5px 12px black;
 }
 
+.border-blue {
+  border: 1px solid #00aeff;
+  border-radius: 7px;
+  background: #f0faff;
+  box-shadow: 2px 3px 5px #b1e7ff;
+}
+
 .centered {
   text-align: center;
 }
@@ -205,4 +212,23 @@ body,
 
 .dark-notice .notice-link {
   color: #040505;
+}
+
+.inline-blk {
+  display: -webkit-inline-block;
+  display: -moz-inline-block;
+  display: inline-block;
+}
+
+.image_class {
+  width: 200px;
+  height: auto;;
+  padding: 3px;
+  margin: 3px;
+  border-radius: 12px;
+}
+
+.news-slider {
+  display: inline-table;
+  width: 250px;
 }
