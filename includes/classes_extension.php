@@ -75,9 +75,16 @@ function seo_plugin($image, $twitter, $facebook, $desc, $title) {
 
 function getImage($image, $type = null) {
     global $SETT;
+    if (!$image) {
+        $dir = $SETT['url'].'/uploads/img/';
+        $image = 'default.png';
+        return $dir.$image;
+    }
     if ($type == null) {
+        // Site specific images
        $dir = $SETT['url'].'/'.$SETT['template_url'].'/img/';
     } else {
+        // Deletable images
         $dir = $SETT['url'].'/uploads/img/';
     }
     return $dir.$image;
@@ -101,10 +108,22 @@ function getHome($content) {
     return $framework->dbProcessor($sql, 1);
 }
 
+function getTestimonials() {
+    global $framework;
+    $sql = sprintf("SELECT * FROM " . TABLE_TESTIMONIAL);
+    return $framework->dbProcessor($sql, 1);
+}
+
+function getSponsors() {
+    global $framework;
+    $sql = sprintf("SELECT * FROM " . TABLE_SPONSORS);
+    return $framework->dbProcessor($sql, 1);
+}
+
 function getNews($link = null) {
     global $framework;
     if ($link) {
-        $sql = sprintf("SELECT * FROM " . TABLE_NEWS . " WHERE link = '%s' OR id = '%s'", $link, $link);
+        $sql = sprintf("SELECT * FROM " . TABLE_NEWS . " WHERE link = '%s' OR id = '%s' AND state = '1'", $link, $link);
     } else {
         $sql = sprintf("SELECT * FROM " . TABLE_NEWS . " WHERE state = '1'");
     }
@@ -120,6 +139,17 @@ function getVlog($link = null) {
     }
     return $framework->dbProcessor($sql, 1);
 }
+
+function getContactInfo($id = null) {
+    global $framework;
+    if ($id) {
+        $id = $id;
+    } else {
+        $id = '1';
+    }
+    $sql = sprintf("SELECT * FROM " . TABLE_CONTACT . " WHERE id = '%s'", $id);
+    return $framework->dbProcessor($sql, 1);
+}
     
 /**
 /* This function will convert your urls into cleaner urls
@@ -127,13 +157,16 @@ function getVlog($link = null) {
 function cleanUrls($url) {
     global $configuration; //$configuration['cleanurl'] = 1;
     if ($configuration['cleanurl']) {
-        $pager['homepage']  =   'index.php?page=homepage';
-        $pager['news']      =   'index.php?page=news';
+        $pager['homepage']      =   'index.php?page=homepage';
+        $pager['news']          =   'index.php?page=news';
+        $pager['trainings']     =   'index.php?page=trainings';
 
         if(strpos($url, $pager['homepage'])) {
             $url = str_replace(array($pager['homepage'], '&user=', '&read='), array('homepage', '/', '/'), $url);
         } elseif(strpos($url, $pager['news'])) {
-            $url = str_replace(array($pager['news'], '&read='), array('news', '/'), $url);
+            $url = str_replace(array($pager['news'], '&read=', '&id'), array('news', '/', '/'), $url);
+        } elseif(strpos($url, $pager['trainings'])) {
+            $url = str_replace(array($pager['trainings'], '&view=', '&id'), array('trainings', '/', '/'), $url);
         }
     }
     return $url;

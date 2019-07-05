@@ -11,6 +11,10 @@ body,
   -moz-box-sizing: border-box;
 }
 
+.padding-top-25 {
+  padding-top: 25px;
+}
+
 .padding-2 {
   padding: 2px;
 }
@@ -53,6 +57,23 @@ body,
   font-weight: bolder;
 }
 
+.italicit {
+  font-style: italic;
+  text-decoration: underline;
+}
+
+#donate_btn {
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+}
+#donate_btn:hover {
+  color: gray;
+}
+
 .pass-btn { 
   -webkit-writing-mode: horizontal-tb !important;
   margin: 2px;
@@ -76,6 +97,7 @@ body,
   border-style: none;
   border-radius: 7px;
   box-shadow: 2px 3px 6px #00000052;
+  text-decoration: none;
 }
 
 .pass-btn:hover {
@@ -221,14 +243,38 @@ body,
 }
 
 .image_class {
-  width: 200px;
-  height: auto;;
+  width: auto;
+  height: 120px;
   padding: 3px;
   margin: 3px;
   border-radius: 12px;
 }
 
+.avatar {
+  width: 120px;
+  height: 120px; 
+  margin: 3px;
+  border-radius: 50px;
+}
+
 .news-slider {
   display: inline-table;
   width: 250px;
+}
+
+.signer a {
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px;
+  color: teal;
+  text-decoration: none;
+  border-bottom: solid teal 3px;
+}
+
+.signer a:hover {
+  color: orange;
+}
+
+.signer #teach_signup:hover, #learn_signup:hover {
+  border-bottom: solid orange 3px;
 }
