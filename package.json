@@ -1,0 +1,26 @@
+{
+  "name": "alisimbi",
+  "version": "1.0.0",
+  "description": "### First steps to take to initialize Passengine without errors",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3m1n3nc3/alisimbiPhp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/3m1n3nc3/alisimbiPhp/issues"
+  },
+  "homepage": "https://github.com/3m1n3nc3/alisimbiPhp#readme"
+}
