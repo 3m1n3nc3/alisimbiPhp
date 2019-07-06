@@ -1,14 +1,14 @@
 <?php
 
 function mainContent() {
-	global $PTMPL, $LANG, $SETT, $configuration, $framework; 
+	global $PTMPL, $LANG, $SETT, $configuration, $framework;
 	// Dont touch anything above this line
 
-	$PTMPL['page_title'] = getHome('1')[0]['title'];	 
-	
+	$PTMPL['page_title'] = getHome('1')[0]['title'];
+
 	$PTMPL['site_url'] = $SETT['url'];
 
-	$PTMPL['future_agribiz'] = getHome('1')[0]['intro']; 
+	$PTMPL['future_agribiz'] = getHome('1')[0]['intro'];
 	$PTMPL['description'] = getHome('1')[0]['description'];
 
 	$PTMPL['news'] = 'Recent Agric News & Opportunities';
@@ -23,15 +23,15 @@ function mainContent() {
 		$link = cleanUrls($SETT['url'].'/index.php?page=news&read='.$content['link']);
 		$news_list .= '
 			<div class="border-blue padding-5 inline-blk margin-5 news-slider">'
-				 . '<span class="bolden">'.$content['title'].'</span>' 
+				 . '<span class="bolden">'.$content['title'].'</span>'
 				 . '<p><img src="'.$image.'" class="image_class"></p>'
 				 . '<div class="details">'.$news_content.' <a href="'.$link.'">Read More</a></div>' .
-			'</div>'; 
+			'</div>';
 	}
-	$PTMPL['newser'] = $news_list;
+	$PTMPL['new_lisiting'] = $news_list;
 
 	// Fetch and Show the vlog content
-	$vloger = getVlog(); 
+	$vloger = getVlog();
 	$vlog_list = '';
 	foreach ($vloger as $content) {
 		$video = getVideo($content['video']);
@@ -39,13 +39,13 @@ function mainContent() {
 		$vlog_content = $framework->myTruncate($content['content'], 150);
 		$link = cleanUrls($SETT['url'].'/index.php?page=news&read='.$content['link']);
 		$vlog_list .= '
-			<div class="border-blue padding-5 inline-blk margin-5 news-slider">'
-				 . '<span class="bolden">'.$content['title'].'</span>' 
+			<div class=" news-slider">'
+				 . '<span class="bolden">'.$content['title'].'</span>'
 				 . '<p><img src="'.$image.'" class="image_class"></p>'
 				 . '<div class="details">'.$vlog_content.' <a href="'.$link.'">Read More</a></div>' .
-			'</div>'; 
+			'</div>';
 	}
-	$PTMPL['vloger'] = $vlog_list; 
+	$PTMPL['vloger'] = $vlog_list;
 
 	// Dont touch anything below this line
 	$theme = new themer('homepage/content');

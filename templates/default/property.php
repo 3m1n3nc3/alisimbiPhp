@@ -1,12 +1,12 @@
 <?php
 // Theme Name
-$name = 'Pass Template';
+$name = 'Alisimbi Template';
 
 // Theme Author
-$author = 'PassContest';
+$author = 'Daniel';
 
 // Theme URL
-$url = 'https://passcontest.com';
+$url = '';
 
 // Theme Version
 $version = '1.0.0';
