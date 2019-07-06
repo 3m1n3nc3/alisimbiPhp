@@ -20,6 +20,8 @@ $PTMPL['captcha_url'] = $SETT['url'].$captcha_url;
   
 $PTMPL['language'] = $_COOKIE['lang']; 
 
+// Show the footer
+$PTMPL['footer'] = contactInformation();
 // Render the page
 $PTMPL['content'] = mainContent();   
 

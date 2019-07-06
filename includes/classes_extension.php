@@ -97,7 +97,7 @@ function getVideo($video) {
     if ($link) {
         $video = $link;
     } else {
-        $video = $SETT['url'].'/uploads/videos/';
+        $video = $SETT['url'].'/uploads/videos/'.$video;
     }
     return $video;
 }
@@ -171,3 +171,57 @@ function cleanUrls($url) {
     }
     return $url;
 }
+
+// Side navigation contest management dropdown menu
+function contactInformation() {
+    global $LANG, $PTMPL, $SETT, $settings;
+
+    $theme = new themer('container/footer'); $footer = '';
+    $OLD_THEME = $PTMPL; $PTMPL = array(); 
+
+    $contact = getContactInfo()[0];
+    $PTMPL['copyright'] = '&copy; '. date('Y').' '.$contact['c_line'];
+    $PTMPL['address'] = $contact['address'];
+
+    //Email Address
+    $PTMPL['email_var'] = $contact['email'];
+    $PTMPL['email'] = '<a href="mailto:'.$contact['email'].'" id="contact_email">'.$contact['email'].'</a>';
+
+    //Phone number
+    $PTMPL['phone_var'] = $contact['phone'];
+    $PTMPL['phone'] = '
+        <a href="tel:'.$contact['phone'].'" id="contact_phone">'.$contact['phone'].'</a>';
+
+    //Facebook
+    $PTMPL['facebook_var'] = $contact['facebook'];
+    $PTMPL['facebook'] = '
+        <a href="http://facebook.com/'.$contact['facebook'].'" id="contact_facebook">http://facebook.com/'.$contact['facebook'].'</a>';
+
+    //Twitter
+    $PTMPL['twitter_var'] = $contact['twitter'];
+    $PTMPL['twitter'] = '
+        <a href="http://twitter.com/'.$contact['twitter'].'" id="contact_twitter">http://twitter.com/'.$contact['twitter'].'</a>';
+
+    //Instagram
+    $PTMPL['instagram_var'] = $contact['instagram'];
+    $PTMPL['instagram'] = '
+        <a href="http://instagram.com/'.$contact['instagram'].'" id="contact_instagram">http://instagram.com/'.$contact['instagram'].'</a>';
+    
+    //Youtube
+    $PTMPL['youtube_var'] = $contact['youtube'];
+    $PTMPL['youtube'] = '
+        <a href="http://youtube.com/'.$contact['youtube'].'" id="contact_youtube">http://youtube.com/'.$contact['youtube'].'</a>';
+    
+    //Signup links
+    if (!isset($user)) {
+        $PTMPL['learn_signup'] = '<a href="#" id="learn_signup">Signup to Learn</a>';
+        $PTMPL['teach_signup'] = '<a href="#" id="teach_signup">Signup to Teach</a>';
+    }
+
+    $PTMPL['support_alisimbi'] = $LANG['support_alisimbi'].' '.$LANG['or'].' '.$LANG['make_donation'];
+    $PTMPL['donate_btn'] = '<a href="#" class="pass-btn" id="donate_btn">'.$LANG['donate'].'</a>';
+
+    $footer = $theme->make(); 
+    $PTMPL = $OLD_THEME; unset($OLD_THEME);
+    return $footer;
+} 

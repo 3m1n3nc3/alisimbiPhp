@@ -14,7 +14,6 @@ function mainContent() {
 		$PTMPL['news_date'] = $marxTime->timeAgo(strtotime($read['date']), 1);
 	}
 
-
 	// Change themer('hompage/content') to themer('yourhtmldirectory/yourfile')
 	$theme = new themer('news/content');
 	return $theme->make();

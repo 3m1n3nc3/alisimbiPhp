@@ -278,3 +278,8 @@ body,
 .signer #teach_signup:hover, #learn_signup:hover {
   border-bottom: solid orange 3px;
 }
+
+.video {
+  margin: auto;
+  padding: 15px;
+}
