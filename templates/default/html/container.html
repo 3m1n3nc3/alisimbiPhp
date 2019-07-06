@@ -1,27 +1,146 @@
 <!--Head section-->
 <!DOCTYPE html>
 <html lang="en">
-  <head> 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge"> 
-    <title>{$site_title} | {$page_title}</title>
+<head>
+  <meta name="description" content="{$description}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no"
+  />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
 
-    <!-- Shortcut Icon -->
-    <link rel="shortcut icon" href="{$site_url}/{$template_path}/{$template_name}/img/{$favicon}">  
+  <title>{$site_title} | {$page_title}</title>
 
-    <!-- Your custom styles (optional) --> 
-    <link href="{$site_url}/{$template_path}/{$template_name}/css/style.css" rel="stylesheet" type="text/css">  
+  <!-- Shortcut Icon -->
+  <link rel="shortcut icon" href="{$site_url}/{$template_path}/{$template_name}/favicon.png">
 
-    <!-- General site javascript fuctions functions -->
-    <script type="text/javascript" src="{$site_url}/{$template_path}/{$template_name}/js/functions.js"></script>  
+  <!-- Your custom styles (optional) -->
+  <link href="{$site_url}/{$template_path}/{$template_name}/css/style.css" rel="stylesheet" type="text/css">
+
+
+  <link rel="stylesheet" href="{$site_url}/{$template_path}/{$template_name}/css/lightbox.css">
+  <link rel="stylesheet" href="{$site_url}/{$template_path}/{$template_name}/css/vegas.min.css">
+  <link rel="stylesheet" href="{$site_url}/{$template_path}/{$template_name}/css/style0.css">
+  <!--JQuery  -->
+  <!-- <script type="text/javascript" src="{$site_url}/{$template_path}/{$template_name}/js/jquery.min.js"></script> -->
+
+
 
   <!--/.Head section-->
-<body>   
-  <!--Main layout-->
-  {$content}
-  <!--Main layout-->   
+</head>
+<body>
+  <div class="loader_bg">
+    <div class="loader"></div>
+  </div>
 
-</body>
+  <!-- Wrapper -->
+  <div class="wrapper">
 
-</html>
+    <div class="vegas"></div>
+    <div class="overlay_gradient"></div>
+    <div class="background_dots"></div>
+
+    <!-- Header -->
+    <div class="left color_white hideee">
+      <div class="brand">
+        <img src="{$site_url}/{$template_path}/{$template_name}/images/logo-full.png" class="img-responsive" alt=""/>
+      </div>
+      <div class="content">
+        <h1 class="big-title font_sans_serif ssa js-spanize">{$future_agribiz}</h1>
+        <h4 class="font_sans_serif">
+          Learn <span class="text_bordered">relevant</span> <span class="sa js-spanize">agribusiness </span>
+          skills
+          Business
+        </h4>
+        <div class="space_5 hidden-xs"></div>
+        <div class="btns">
+          <div class="btn background_yellow shw" data-target="payment_section">
+            <i class="fa fa-credit-card-alt"></i> Get Course
+          </div>
+          <div class="btn bordered shw" data-target="explore">
+            <i class="fa fa-angle-double-right"></i> Explore
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Header -->
+
+    <!--Main layout-->
+    <div>
+      {$content}
+    </div>
+    <!--Main layout-->
+
+    <!-- Social icons -->
+    <div class="social oop hung">
+      <div class="toggle_icon" data-target="login">
+        <a href="#" data-title="Login" data-toggle="tooltip" title="Login" >
+        <span class="fa fa-user-circle"></span>
+      </a>
+      <span class="text">Login </span>
+      </div>
+      <ul class="list-inline">
+        <li><a href="#"><i class="fa fa-facebook-official"></i></a></li>
+        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+      </ul>
+    </div>
+    <!-- Footer -->
+    <div class="hang text-right oop">
+      <div class="countdown">
+        <!-- Countdown -->
+        <span class="countdownValue">No countdown</span>
+        <a href="#" class="font_4 d-block" data-toggle="collapse" data-target="#find_more">
+          <span class="fa fa-angle-down text-white"></span>
+        </a>
+        <div class="collapse" id="find_more" data-target="right">
+          <span class="btn bordered shw" data-target="subscribe_section">
+            <i class="fa fa-paper-plane-o"></i> Get notified
+          </span>
+          <span class="btn background_green2 shw" data-target="right">
+            <i class="fa fa-exclamation-circle"></i> Find out more
+          </span>
+        </div>
+        </div>
+        <!-- Countdown -->
+    </div>
+    <!-- End wrapper -->
+
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="{$site_url}/{$template_path}/{$template_name}/js/jquery.min.js"></script>
+
+    <!-- Popper -->
+    <!-- <script type="text/javascript" src="{$site_url}/{$template_path}/{$template_name}/js/popper.min.js"></script> -->
+
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="{$site_url}/{$template_path}/{$template_name}/js/bootstrap.min.js"></script>
+
+
+    <script type="text/javascript" src="{$site_url}/{$template_path}/{$template_name}/js/contact.js"></script>
+    <script type="text/javascript" src="{$site_url}/{$template_path}/{$template_name}/js/validator.js"></script>
+    <script type="text/javascript" src="{$site_url}/{$template_path}/{$template_name}/js/vegas.min.js"></script>
+    <script type="text/javascript" src="{$site_url}/{$template_path}/{$template_name}/js/lightbox.js"></script>
+    <script type="text/javascript" src="{$site_url}/{$template_path}/{$template_name}/js/script.js"></script>
+    <script type="text/javascript" src="{$site_url}/{$template_path}/{$template_name}/js/jquery.plugin.min.js"></script>
+    <script type="text/javascript" src="{$site_url}/{$template_path}/{$template_name}/js/jquery.countdown.min.js"></script>
+
+    <!--custom javascript-->
+    <script type="text/javascript" src="{$site_url}/{$template_path}/{$template_name}/js/custom.js"></script>
+    <!--Vegas -->
+    <script>
+    $(".vegas").vegas({
+      slides: [
+        {src: "img/slideshow1.jpg"},
+        {src: "img/slideshow2.jpg"},
+        {src: "img/slideshow3.jpg"}
+      ]
+    });
+    </script>
+
+  </body>
+  </html>

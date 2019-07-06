@@ -1,0 +1,2 @@
+[Fri Jul 05 00:01:32.381499 2019] [php7:notice] [pid 17162] [client 127.0.0.1:45624] PHP Notice:  Undefined index: lang in /var/www/dev/alisimbi/index.php on line 21
+[Sat Jul 06 03:36:26.306989 2019] [php7:notice] [pid 1245] [client 127.0.0.1:34246] PHP Notice:  Undefined index: lang in /var/www/dev/alisimbi/index.php on line 21

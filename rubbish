@@ -1,0 +1,38 @@
+<div id="team">
+  <h2 class="title font_bold text_bordered">Instructor</h2>
+  <div class="space_5"></div>
+  <div class="items">
+    <div class="item  p-0">
+      <div class="row">
+        <div class="col-md-5 col-sm-12">
+          <div class="profile_img">
+            <img src="{$site_url}/{$template_path}/{$template_name}/images/t1.jpg" class="img-responsive" alt="">
+          </div>
+          <div class="info">
+            <p class="font_semibold">Jane Smith</p>
+            <span>CEO</span>
+
+            <div class="social-pane">
+              <ul class="social-k">
+                <li class=""><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li class=""><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li class=""><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                <li class=""><a href="#"><i class="fa fa-dribbble"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- End col-->
+        <div class="col-md-7 col-sm-12">
+          <p class="lead">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum sed aperiam deserunt, quos dolor natus, quas unde expedita numquam nisi eius quaerat commodi id nihil vitae quis esse iste cupiditate.
+          </p>
+        </div>
+        <!-- End col -->
+      </div>
+      <!-- End row -->
+    </div>
+    <!-- End item -->
+  </div>
+
+</div>
