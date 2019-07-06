@@ -22,6 +22,7 @@ $PTMPL['language'] = $_COOKIE['lang'];
 
 // Show the footer
 $PTMPL['footer'] = contactInformation();
+
 // Render the page
 $PTMPL['content'] = mainContent();   
 

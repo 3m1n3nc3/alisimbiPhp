@@ -279,7 +279,8 @@ body,
   border-bottom: solid orange 3px;
 }
 
-.video {
-  margin: auto;
+.video { 
   padding: 15px;
+  display: block;
+  margin: 0 auto;
 }

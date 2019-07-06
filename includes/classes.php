@@ -20,6 +20,68 @@ function configuration() {
  */
 class framework {
 	
+	public $username; 
+	public $password;
+	public $email;
+	public $remember;
+
+	public $firstname;
+	public $lastname;
+
+	public $city;
+	public $state;
+	public $country;
+	public $phone;
+
+
+	function userData($user = NULL, $type = NULL) {
+		// If type = 0, get all users e.g userData() and Use costom querries
+		// If type = 1, get a particular user by id e.g userData(NULL, 0)
+		// 2 instance = get a particular user by id e.g userData($id, 1)
+		// 3 instance = get a particular user by username e.g userData(king)
+
+	    global $configuration;
+
+	    // Limit clause to enable pagination
+		if (isset($this->limit)) { 
+			$limit = sprintf('ORDER BY date DESC LIMIT %s, %s', $this->start, $this->limit);
+		} else {
+			$limit = '';
+		} 
+
+		$filter = (isset($this->filter)) ? $this->filter : '' ;  
+
+	    if (isset($this->search)) {			
+	    	//Search instance
+	    	$search = $this->search; 	
+	    	$sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE username LIKE '%s' OR concat_ws(' ', `f_name`, `l_name`) LIKE '%s' OR country LIKE '%s' OR role LIKE '%s' LIMIT %s", '%'.$search.'%', '%'.$search.'%', '%'.$search.'%', '%'.$search.'%', $configuration['data_limit']);  
+	    } elseif ($type == 0) {
+	    	$sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE %s %s", $filter, $limit); 
+	    } elseif ($type == 1) {
+	    	$sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE id = '%s'", $user); 
+	    } else {
+	    	// if the username is an email address
+	    	if (filter_var($user, FILTER_VALIDATE_EMAIL)) {
+	    		$sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE email = '%s'", $username); 	//3 instance
+	    	} else {
+	    		$sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE username = '%s'", $username); 	//3 instance
+	    	}
+	    }
+	    try {
+	        $stmt = $DB->prepare($sql); 
+	        $stmt->execute();
+	        $results = $stmt->fetchAll();
+	    } catch (Exception $ex) {
+	        return errorMessage($ex->getMessage());
+	    } 
+	    if (count($results)>0) {
+	    	if ($username == NULL) {
+	    		return $results;
+	    	} else {
+	    		return $results[0];
+	    	}
+	    }
+	}
 
 	/**
 	* List all available languages
@@ -49,17 +111,18 @@ class framework {
 						$state = '<a class="pass-btn" href="'.$SETT['url'].'/index.php?a=settings&b=languages&language='.$language.'">'.$make.'</a>';
 					}
 					
-					$sort .= '<div class="padding-5">
-								'.$state.'
+					$sort .= 
+						'<div class="padding-5">
+							'.$state.'
+							<div>
 								<div>
-									<div>
-										<strong><a href="'.$url.'" target="_blank">'.$name.'</a></strong>
-									</div>
-									<div>
-										'.$by.': <a href="'.$url.'" target="_blank">'.$author.'</a>
-									</div>
+									<strong><a href="'.$url.'" target="_blank">'.$name.'</a></strong>
 								</div>
-							</div>';
+								<div>
+									'.$by.': <a href="'.$url.'" target="_blank">'.$author.'</a>
+								</div>
+							</div>
+						</div>';
 				}
 			}
 			
@@ -193,6 +256,44 @@ class framework {
 	    } else {
 	        return hash('md5', $str.time());
 	    }
+	}
+
+	function seo_plugin($title, $desc, $image = null, $twitter = null, $facebook = null) {
+	    global $SETT, $PTMPL, $configuration, $site_image;
+
+	    $twitter = ($twitter) ? $twitter : $configuration['site_name'];
+	    $facebook = ($facebook) ? $facebook : $configuration['site_name'];
+	    $title = ($title) ? $title.' ' : '';
+	    $titles = $title.'On '.$configuration['site_name'];
+	    $image = ($image) ? $image : $site_image;
+	    $alt = ($title) ? $title : $titles;
+	    $desc = rip_tags(strip_tags(stripslashes($desc)));
+	    $desc = strip_tags(myTruncate($desc, 350));
+	    $url = (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+
+	    $plugin = '
+	    <meta name="description" content="'.$desc.'"/>
+	    <link rel="canonical" href="'.$url.'" />
+	    <meta property="og:locale" content="en_US" />
+	    <meta property="og:type" content="website" />
+	    <meta property="og:title" content="'.$titles.'" />
+	    <meta property="og:url" content="'.$url.'"/>
+	    <meta property="og:description" content="'.$desc.'" />
+	    <meta property="og:site_name" content="'.$configuration['site_name'].'" />
+	    <meta property="article:publisher" content="https://www.facebook.com/'.$configuration['site_name'].'" />
+	    <meta property="article:author" content="https://www.facebook.com/'.$facebook.'" />
+	    <meta property="og:image" content="'.$image.'" />
+	    <meta property="og:image:secure_url" content="'.$image.'" />
+	    <meta property="og:image:width" content="1200" />
+	    <meta property="og:image:height" content="628" />
+	    <meta property="og:image:alt" content="'.$alt.'" />
+	    <meta name="twitter:card" content="summary_large_image" />
+	    <meta name="twitter:description" content="'.$desc.'" />
+	    <meta name="twitter:title" content="'.$titles.'" />
+	    <meta name="twitter:site" content="@'.$configuration['site_name'].'" />
+	    <meta name="twitter:image" content="'.$image.'" />
+	    <meta name="twitter:creator" content="@'.$twitter.'" />';
+	    return $plugin;
 	}
 
 	/** 

@@ -35,44 +35,6 @@ function infoMessage($str) {
     return $string;
 }
 
-function seo_plugin($image, $twitter, $facebook, $desc, $title) {
-    global $SETT, $PTMPL, $configuration, $site_image;
-
-    $twitter = ($twitter) ? $twitter : $configuration['site_name'];
-    $facebook = ($facebook) ? $facebook : $configuration['site_name'];
-    $title = ($title) ? $title.' ' : '';
-    $titles = $title.'On '.$configuration['site_name'];
-    $image = ($image) ? $image : $site_image;
-    $alt = ($title) ? $title : $titles;
-    $desc = rip_tags(strip_tags(stripslashes($desc)));
-    $desc = strip_tags(myTruncate($desc, 350));
-    $url = (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-
-    $plugin = '
-    <meta name="description" content="'.$desc.'"/>
-    <link rel="canonical" href="'.$url.'" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="'.$titles.'" />
-    <meta property="og:url" content="'.$url.'"/>
-    <meta property="og:description" content="'.$desc.'" />
-    <meta property="og:site_name" content="'.$configuration['site_name'].'" />
-    <meta property="article:publisher" content="https://www.facebook.com/'.$configuration['site_name'].'" />
-    <meta property="article:author" content="https://www.facebook.com/'.$facebook.'" />
-    <meta property="og:image" content="'.$image.'" />
-    <meta property="og:image:secure_url" content="'.$image.'" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="628" />
-    <meta property="og:image:alt" content="'.$alt.'" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:description" content="'.$desc.'" />
-    <meta name="twitter:title" content="'.$titles.'" />
-    <meta name="twitter:site" content="@'.$configuration['site_name'].'" />
-    <meta name="twitter:image" content="'.$image.'" />
-    <meta name="twitter:creator" content="@'.$twitter.'" />';
-    return $plugin;
-}
-
 function getImage($image, $type = null) {
     global $SETT;
     if (!$image) {
@@ -104,6 +66,7 @@ function getVideo($video) {
 
 function getHome($content) {
     global $framework;
+    $content = $framework->db_prepare_input($content);
     $sql = sprintf("SELECT * FROM " . TABLE_HOME . " WHERE title = '%s' OR id = '%s'", $content, $content);
     return $framework->dbProcessor($sql, 1);
 }
@@ -122,6 +85,7 @@ function getSponsors() {
 
 function getNews($link = null) {
     global $framework;
+    $link = $framework->db_prepare_input($link);
     if ($link) {
         $sql = sprintf("SELECT * FROM " . TABLE_NEWS . " WHERE link = '%s' OR id = '%s' AND state = '1'", $link, $link);
     } else {
@@ -132,6 +96,7 @@ function getNews($link = null) {
 
 function getVlog($link = null) {
     global $framework;
+    $link = $framework->db_prepare_input($link);
     if ($link) {
         $sql = sprintf("SELECT * FROM " . TABLE_TRAINING . " WHERE link = '%s' OR id = '%s'", $link, $link);
     } else {
@@ -142,6 +107,7 @@ function getVlog($link = null) {
 
 function getContactInfo($id = null) {
     global $framework;
+    $id = $framework->db_prepare_input($id);
     if ($id) {
         $id = $id;
     } else {
