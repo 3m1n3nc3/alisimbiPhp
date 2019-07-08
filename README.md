@@ -38,3 +38,7 @@ Feel free to modify other values on the config.php but be carefull
 *- Any variable declared on the `index.php` file found on the root directory can be called from any other page*
 
 *- Likewise any html, css, javascripts and static content declared in the `container.html` file found in the `templates/html` dir would be visible from any other page*
+
+###Getting the country list
+The country list is important to the smooth functioning of the program now
+To install *Simply run the `locale.sql` file that is in the root dir*

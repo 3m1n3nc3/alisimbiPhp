@@ -1,16 +1,16 @@
 <?php 
 function errorMessage($str) {
     $string = "
-            <div style='text-align: center; padding: 0.35rem 1.01rem;' class='notice danger-notice'>
+            <span style='text-align: center; padding: 0.35rem 1.01rem;' class='alert alert-danger'>
                 <strong>".$str."</strong>  
-            </div>
+            </span>
         ";
     return $string;
 }
 
 function successMessage($str) {
     $string = "
-            <div style='text-align: center; padding: 0.35rem 1.01rem;' class='notice success-notice'>
+            <span style='text-align: center; padding: 0.35rem 1.01rem;' class='alert alert-success'>
                 <strong>".$str."</strong> 
             </div>
         ";
@@ -19,7 +19,7 @@ function successMessage($str) {
 
 function warningMessage($str) {
     $string = "
-            <div style='text-align: center; padding: 0.35rem 1.01rem;' class='notice warning-notice'>
+            <span style='text-align: center; padding: 0.35rem 1.01rem;' class='alert alert-warning'>
                 <strong>".$str."</strong>
             </div>
         ";
@@ -28,7 +28,7 @@ function warningMessage($str) {
 
 function infoMessage($str) {
     $string = "
-            <div style='text-align: center; padding: 0.35rem 1.01rem;' class='notice info-notice'>
+            <span style='text-align: center; padding: 0.35rem 1.01rem;' class='alert alert-info'>
                 <strong>".$str."</strong>
             </div>
         ";
@@ -71,6 +71,32 @@ function seo_plugin($image, $twitter, $facebook, $desc, $title) {
     <meta name="twitter:image" content="'.$image.'" />
     <meta name="twitter:creator" content="@'.$twitter.'" />';
     return $plugin;
+}
+
+function getLocale($type = null, $id = null) {
+    global $framework;
+    if ($type == 1) {
+        $sql = sprintf("SELECT * FROM " . TABLE_CITIES . " WHERE state_id = '%s'", $id);
+    } elseif ($type == 2) {
+        $sql = sprintf("SELECT * FROM " . TABLE_STATES . " WHERE country_id = '%s'", $id);
+    } else {
+        $sql = sprintf("SELECT * FROM " . TABLE_COUNTRIES);
+    }
+    if ($type == 3) {
+        $list = getLocale();
+        $listed = '';
+        foreach($list as $name) {
+            if($id == $name['name']) {
+                $selected = ' selected="selected"';
+            } else {
+                $selected = '';
+            }
+            $listed .= '<option id="'.$name['id'].'" value="'.$name['name'].'"'.$selected.'>'.$name['name'].'</option>';
+        }
+        return $listed;
+    } else {
+        return $framework->dbProcessor($sql, 1);
+    }
 }
 
 function getImage($image, $type = null) {
@@ -151,7 +177,7 @@ function getContactInfo($id = null) {
     return $framework->dbProcessor($sql, 1);
 }
     
-/**
+/** 
 /* This function will convert your urls into cleaner urls
 **/
 function cleanUrls($url) {
@@ -173,13 +199,18 @@ function cleanUrls($url) {
 }
 
 // Side navigation contest management dropdown menu
-function contactInformation() {
+function contactInformation($type = null) {
     global $LANG, $PTMPL, $SETT, $settings;
 
+    $contact = getContactInfo()[0];
+    if ($type) {
+        $PTMPL['address'] = $contact['address'];
+    } else {
+        
+    }
     $theme = new themer('container/footer'); $footer = '';
     $OLD_THEME = $PTMPL; $PTMPL = array(); 
 
-    $contact = getContactInfo()[0];
     $PTMPL['copyright'] = '&copy; '. date('Y').' '.$contact['c_line'];
     $PTMPL['address'] = $contact['address'];
 
@@ -224,4 +255,23 @@ function contactInformation() {
     $footer = $theme->make(); 
     $PTMPL = $OLD_THEME; unset($OLD_THEME);
     return $footer;
-} 
+}
+
+// Side navigation contest management dropdown menu
+function accountAccess($type = null) {
+    global $LANG, $PTMPL, $SETT, $settings;
+    if ($type == 0) {
+        $theme = new themer('homepage/signup'); $footer = '';
+    } else {
+        $theme = new themer('homepage/login'); $footer = '';
+    }
+    
+    $OLD_THEME = $PTMPL; $PTMPL = array(); 
+    
+    $PTMPL['register_link'] = cleanUrls($SETT['url'].'/?page=account&register=true');
+
+
+    $footer = $theme->make(); 
+    $PTMPL = $OLD_THEME; unset($OLD_THEME);
+    return $footer;
+}
