@@ -42,6 +42,7 @@ $SETT['template_path'] = 'templates';
 
 $action = array('welcome'					=> 'welcome',
 				'news'						=> 'news',
+				'account'					=> 'account',
 				'training'					=> 'training'
 				); 
 

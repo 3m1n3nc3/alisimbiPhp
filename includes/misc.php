@@ -15,3 +15,10 @@ $configuration = configuration();
 $PTMPL['template_path'] = $SETT['template_path'];
 $PTMPL['template_name'] = $SETT['template_name'] = 'default';//$configuration['template'];
 $PTMPL['template_url'] = $SETT['template_url'] = $SETT['template_path'].'/'.$SETT['template_name'];
+
+// Check who is logged in right now
+if (isset($_SESSION['username'])) {
+	$user = $framework->userData($_SESSION['username'], 2);
+} elseif (isset($_COOKIE['username'])) {
+	$user = $framework->userData($_COOKIE['username'], 2);
+}

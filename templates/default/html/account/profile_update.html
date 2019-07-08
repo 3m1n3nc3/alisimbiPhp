@@ -1,0 +1,57 @@
+<div class="container m-3">
+	<div class="row">
+		<div class="col-12">
+			<div class="card p-5">
+				<div class="card-block"> 
+					<h4 class="card-title">Your Profile</h4>
+					<img src="{$photo}" class="w-25 rounded-circle img-thumbnail mx-auto d-block">
+
+					<form method="post" action="">	
+						<div class="border rounded p-2 m-1">
+							First Name | Lastname
+							<hr>
+							<p class="card-text form-inline">
+								<input type="text" name="fname" class="form-control mx-2" id="fname" value="{$firstname}" placeholder="Firstname"> 
+								<input type="text" name="lname" class="form-control mx-2" id="lname" value="{$lastname}" placeholder="Lastname"> 
+							</p>
+						</div> 
+						<div class="border rounded p-2 m-1">
+							Phone Number
+							<hr>
+							<p class="card-text form-inline">
+								<input type="phone" name="phone" class="form-control mx-2" id="phone" value="{$phone_}" placeholder="Phone"> 
+							</p>
+						</div>
+						<div class="border rounded p-2 m-1">
+							Country, State, City
+							<hr>
+							<p class="card-text form-inline">
+								<select name="country" class="form-control mx-2" id="country" onchange="fetch_state()">
+									<option disabled selected>Select your country</option>
+									{$list_country}
+								</select> 
+								<select name="state" class="form-control mx-2" id="state">
+									<option disabled>Select your state</option>
+									{$countries}
+								</select> 
+								<select name="city" class="form-control mx-2"  id="city">
+									<option disabled>Select your city</option>
+									{$countries}
+								</select> 
+							</p>
+						</div>
+						<div class="border rounded p-2 m-1">
+							About
+							<hr>
+							<p class="card-text">
+								<textarea name="about" class="form-control">{$about_}</textarea>
+							</p>
+						</div>
+						<p class="card-text">You can always update your profile, your certificate will contain the details found when it is being prepared.</p>
+						<button class="pure-button pure-button-primary m-2" name="save_profile">Save Profile</button> 
+					</form>
+				</div> 
+			</div>
+		</div>
+	</div>
+</div>
