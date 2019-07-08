@@ -649,7 +649,6 @@ class framework {
 	}
 }
 
-
 /* 
 * Callback for decodeText()
 */

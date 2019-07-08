@@ -6,9 +6,9 @@ function mainContent() {
 	$PTMPL['page_title'] = ucfirst($_GET['page']);	 
 	$PTMPL['site_url'] = $SETT['url'];
 
-    // If user is logged in
-    if (isset($_GET['profile'])) {
-        if ($user) {
+    if ($user) {
+        if (isset($_GET['profile'])) {
+ 
             if ($_GET['profile'] == 'home') {
                 $theme = new themer('account/profile_home'); $account = '';
                 $OLD_THEME = $PTMPL; $PTMPL = array();
@@ -39,24 +39,28 @@ function mainContent() {
             $PTMPL['country_'] = $user['country'];
             $PTMPL['about_'] = $user['about'];
             $PTMPL['update_'] = cleanUrls($SETT['url'].'/index.php?page=account&profile=update');
+        // When user is not logged in
+        } else {
+            $framework->redirect('account&profile=home');
+        }
+    } else {
+        if (isset($_GET['register']) && $_GET['register'] == 'true') {
+            if ($user) {
+                $framework->redirect();
+            } 
+            $theme = new themer('account/register'); $account = '';
+            $OLD_THEME = $PTMPL; $PTMPL = array();
+
+            // get countries
+            $countries = getLocale();
+            $all_countries = '';
+            foreach ($countries as $list) {
+                $all_countries .= '<option value="'.$list['name'].'" id="'.$list['id'].'">'.$list['name'].'</option>';
+            }
+            $PTMPL['countries'] = $all_countries;
         } else {
             $framework->redirect();
-        }
-
-    // When user is not logged in
-    } elseif (isset($_GET['register']) && $_GET['register'] == 'true' && !$user) {
-        $theme = new themer('account/register'); $account = '';
-        $OLD_THEME = $PTMPL; $PTMPL = array();
-
-        // get countries
-        $countries = getLocale();
-        $all_countries = '';
-        foreach ($countries as $list) {
-            $all_countries .= '<option value="'.$list['name'].'" id="'.$list['id'].'">'.$list['name'].'</option>';
-        }
-        $PTMPL['countries'] = $all_countries;
-    } else {
-        $framework->redirect('account&profile=home'); 
+        }        
     }
 
     	// Change themer('hompage/content') to themer('yourhtmldirectory/yourfile')

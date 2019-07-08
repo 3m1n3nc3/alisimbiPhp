@@ -146,6 +146,16 @@ function getSponsors() {
     return $framework->dbProcessor($sql, 1);
 }
 
+function getCourses($type = null) {
+    global $framework;
+    if ($type) {
+        # code...
+    } else {
+        $sql = sprintf("SELECT * FROM " . TABLE_COURSES);
+    }
+    return $framework->dbProcessor($sql, 1);
+}
+
 function getNews($link = null) {
     global $framework;
     if ($link) {
@@ -256,8 +266,7 @@ function contactInformation($type = null) {
     $PTMPL = $OLD_THEME; unset($OLD_THEME);
     return $footer;
 }
-
-// Side navigation contest management dropdown menu
+ 
 function accountAccess($type = null) {
     global $LANG, $PTMPL, $SETT, $settings;
     if ($type == 0) {
@@ -268,10 +277,33 @@ function accountAccess($type = null) {
     
     $OLD_THEME = $PTMPL; $PTMPL = array(); 
     
-    $PTMPL['register_link'] = cleanUrls($SETT['url'].'/?page=account&register=true');
+    $PTMPL['register_link'] = cleanUrls($SETT['url'].'/index.php?page=account&register=true');
 
 
     $footer = $theme->make(); 
     $PTMPL = $OLD_THEME; unset($OLD_THEME);
     return $footer;
+}
+
+// course and modules boxes HTML
+function courseModuleCard($image, $title, $intro, $duration, $view, $edit) {
+    $card = '
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <img src="'.$image.'" class="card-img-top">
+            <div class="card-body">
+                <h4 class="card-title">'.$title.'</h4>
+                <p class="card-text"> '.$intro.' </p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <a href="'.$view.'" class="btn btn-sm btn-outline-secondary">View</a>
+                        <a href="'.$edit.'" class="btn btn-sm btn-outline-secondary">Edit</a> 
+                    </div>
+                    <small class="text-muted">'.$duration.'</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    ';
+    return $card;
 }
