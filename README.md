@@ -42,3 +42,6 @@ Feel free to modify other values on the config.php but be carefull
 ###Getting the country list
 The country list is important to the smooth functioning of the program now
 To install *Simply run the `locale.sql` file that is in the root dir*
+
+###Getting the newly created databases
+To install the newly created Databases run the `alisimbi.sql` file that is at the root dir
