@@ -45,3 +45,9 @@ To install *Simply run the `locale.sql` file that is in the root dir*
 
 ###Getting the newly created databases
 To install the newly created Databases run the `alisimbi.sql` file that is at the root dir
+
+###Not seeing some HTML?
+Check the corresponding controller file for the page you are currently working on
+
+###Special HTML Cases
+*1. The course and modules boxes HTML can be found in the `includes/classes_extenstion.php` file, simply do a search for `course and modules boxes HTML`*
