@@ -39,9 +39,9 @@ body, html{
 }
 .big-title {
   font-family: 'Raleway','Roboto','Open Sans', sans-serif;
-	font-size: 70px ;
-	font-weight: 900;
-	margin-bottom: 15px;
+  font-size: 70px ;
+  font-weight: 900;
+  margin-bottom: 15px;
 }
 
 .hang {
@@ -57,42 +57,42 @@ body, html{
 
 /* Countdown */
 .is-countdown {
-	margin: 70px 0 72px;
-	margin-left: auto;
-	margin-right: auto;
-	border: none;
-	background-color: transparent;
-	overflow: hidden;
+  margin: 70px 0 72px;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  background-color: transparent;
+  overflow: hidden;
 }
 
 .countdown-row {
-	clear: both;
-	width: 100%;
-	padding: 0px 2px;
-	text-align: center;
+  clear: both;
+  width: 100%;
+  padding: 0px 2px;
+  text-align: center;
 }
 .countdown-show4 .countdown-section {
-	width: 24.5%;
-	float: left;
-	margin-bottom: 0;
-	border-right: 1px solid rgba(255, 255, 255, 0.35);
-	display: block;
-	font-size: 16pt;
-	text-align: center;
+  width: 24.5%;
+  float: left;
+  margin-bottom: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.35);
+  display: block;
+  font-size: 16pt;
+  text-align: center;
 }
 .countdown-section:last-of-type{
   border: none;
 }
 .countdown-amount {
   white-space: nowrap;
-	font-size: 150%;
-	font-weight: 100;
-	line-height: 1.05em;
+  font-size: 150%;
+  font-weight: 100;
+  line-height: 1.05em;
   font-family: 'Roboto', sans-serif;
 }
 .countdown-period {
-	font-size: 50%;
-	color: #c1c1c1;
+  font-size: 50%;
+  color: #c1c1c1;
   display: block;
 }
 
@@ -137,7 +137,7 @@ body, html{
     padding-left: 2%;
     }
     .countdown-row {
-    	padding: 0;
+      padding: 0;
     }
   }
   /* --------__Countdown----------- */
@@ -435,3 +435,8 @@ visibility: hidden;
           width: 100vw;
           right: -105vw; }
         }
+
+.image_class {
+  width: 470px;
+  height: auto;
+}

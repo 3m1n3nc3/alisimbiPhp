@@ -1,0 +1,18 @@
+<div class="login sm-section-r loginer">
+	<div class="border rounded p-3 m-5">
+		<div id="login_msg" class="text-center"></div>
+		<form class="pure-form">
+			<label for="username">Username</label>
+			<input type="text" name="username" class="form-control" id="username" aria-describedby="usernameBlock" placeholder="Username">
+			<label for="username">Password</label>
+			<input type="password" name="password" class="form-control" id="password" aria-describedby="passwordBlock" placeholder="Password">
+			<input type="button" class="pure-button pure-button-primary m-2" name="login" value="Login" onclick="connector(0)">
+			<div id="preloader" style="display: none;" class="spinner-border text-warning" role="status"></div>
+			<label for="remember">
+				<input id="remember" type="checkbox" id="remember" name="remember"> Remember me
+			</label>
+		</form>
+		<hr>
+		<p>Not yet registered? <a href="{$register_link}" class="text-info">Register Now</a></p>
+	</div>
+</div> 
