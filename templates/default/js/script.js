@@ -31,7 +31,8 @@ $(document).ready(function () {
         spanizeLetters.init();
     })(jQuery);
 
-    $('.btn, .toggle_icon').on('click', function () {
+    $('.ss-btn, .toggle_icon').on('click', function () {
+        closePanels();
         var b = $(this).attr('data-target');
         $('.'+ b).addClass('active');
         $('.left').addClass('hidee');
@@ -39,15 +40,23 @@ $(document).ready(function () {
         $('.close-mob').addClass('active');
         $('.bg_img').css('opacity', '.25');
     });
-
+    $(document).keyup(function(e){
+        if (e.keyCode == 27) {
+            // escape key maps to keycode `27`
+           closePanels();
+        }
+    });
     $('.close-ss, .close-mob').on('click', function () {
+        closePanels();
+    });
+
+    function closePanels(){
         $('.subscribe_section, .payment_section, .right, .login, .explore', ).removeClass('active');
         $('.left').removeClass('hidee');
         $('.bg_img').css('opacity', '1');
         $('.close-ss').removeClass('active');
         $('.close-mob').removeClass('active');
-    });
-
+    }
 
     // -----------------------------------------------------------------------------------------------------
     // Lightbox
