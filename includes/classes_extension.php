@@ -146,10 +146,10 @@ function getSponsors() {
     return $framework->dbProcessor($sql, 1);
 }
 
-function getCourses($type = null) {
+function getCourses($type = null, $course = null) {
     global $framework;
     if ($type) {
-        # code...
+        $sql = sprintf("SELECT * FROM " . TABLE_COURSES . " WHERE id = '%s' AND status = '1'", $course);
     } else {
         $sql = sprintf("SELECT * FROM " . TABLE_COURSES);
     }
@@ -287,6 +287,8 @@ function accountAccess($type = null) {
 
 // course and modules boxes HTML
 function courseModuleCard($image, $title, $intro, $duration, $view, $edit) {
+    global $user_role;
+    $edit = $user_role >= 3 ? '<a href="'.$edit.'" class="btn btn-sm btn-outline-secondary">Edit</a>' : '';
     $card = '
     <div class="col-md-4">
         <div class="card mb-4 shadow-sm">
@@ -297,7 +299,7 @@ function courseModuleCard($image, $title, $intro, $duration, $view, $edit) {
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                         <a href="'.$view.'" class="btn btn-sm btn-outline-secondary">View</a>
-                        <a href="'.$edit.'" class="btn btn-sm btn-outline-secondary">Edit</a> 
+                         '.$edit.'
                     </div>
                     <small class="text-muted">'.$duration.'</small>
                 </div>
