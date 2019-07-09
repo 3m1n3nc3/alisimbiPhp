@@ -912,7 +912,7 @@ a, a:hover, a:focus {
   background: #1ecc8b !important; }
 
 .background_green2 {
-  background: linear-gradient(to top right, #2bebff, #00ff72) !important; }
+  background: linear-gradient(to bottom, hsl(147, 100%, 50%), hsl(147, 50%, 50%)) !important; }
 
 .background_black2 {
   background: linear-gradient(to top right, rgba(0, 0, 0, 0.75), transparent) !important; }

@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
   "use strict";
+
   /* =============================================
   jQuery Countdown
   ================================================ */
@@ -17,49 +18,72 @@ $(document).ready(function() {
 
 });
 
+
 function errorHtml(message, response) {
-  htmlX = 
+  htmlX =
   '<div class="card m-2 text-center">'+
-    '<div class="card-header p-2">Server Response: </div>'+
-    '<div class="card-body p-2 text-info">'+
-      '<div class="card-text font-weight-bold text-danger">'+message+'</div>'
-      +response+
-    '</div>'+
+  '<div class="card-header p-2">Server Response: </div>'+
+  '<div class="card-body p-2 text-info">'+
+  '<div class="card-text font-weight-bold text-danger">'+message+'</div>'
+  +response+
+  '</div>'+
   '</div>';
   return htmlX;
 }
 
-function connector(type) {  
-  $('#preloader').show();
+function connector(type, target) {
+  // let preloader = $(target).find('.form-preloader');
+  // $(preloader).show();
+  $('.loader_bg').fadeToggle();
+  let message = $('#login_section_alert');
+  console.log(message);
 
-  $('#login_b').removeAttr('onclick');  
-  
+
   if (type == 0) {
-    var username = $('input[name="username"]').val();  
-    var password = $('input[name="password"]').val();
-    var remember = $('input[name="remember"]').val();
+
+    /*For login*/
+    // var username = $('input[name="username"]').val();
+    // var password = $('input[name="password"]').val();
+    // var remember = $('input[name="remember"]').val();
+
+    let username = target.username;
+    let password = target.password;
+    let remember = target.remember;
+    let submit_b = target.submit;
+
+
+    $(submit_b).attr('disabled', 'disabled');
+    let url = siteUrl + "/connection/connector.php";
+    let url_data = "username="+username+"&password="+password+"&remember="+remember+"&login=1";
+
 
     $.ajax({
       type: "POST",
-      url: siteUrl+"/connection/connector.php",
-      data: "username="+username+"&password="+password+"&remember="+remember+"&login=1", 
+      url: url,
+      data: url_data,
       dataType:"json",
       cache: false,
       success: function(html) {
-        var message = html.message; 
-        $('#preloader').hide();
-        $('#login_msg').html(message);
-        if (html.status == 1) { 
-          window.top.location=html.header; 
-        } 
+        $('.loader_bg').fadeToggle();
+        var response = html.message;
+        var status= html.status;
+        $(message).html(response);
+        $(submit_b).removeAttr('disabled');
+
+        if (status == 1) {
+          window.top.location=html.header;
+        }
       },
       error: function(xhr, status, error) {
-        var errorMessage = 'An Error Occurred - ' + xhr.status + ': ' + xhr.statusText + '<br> ' + error; 
-        $('#login_msg').html(errorHtml(errorMessage, xhr.responseText));
+        var errorMessage = 'An Error Occurred - ' + xhr.status + ': ' + xhr.statusText + '<br> ' + error;
+        $(message).html(errorHtml(errorMessage, xhr.responseText));
       }
     });
-  } else if (type == 1) {
-    var username = $('input[name="username"]').val();  
+    console.log(message);
+  }
+  else if (type == 1) {
+    /*For registration*/
+    var username = $('input[name="username"]').val();
     var password = $('input[name="password"]').val();
     var email = $('input[name="email"]').val();
     var firstname = $('input[name="fname"]').val();
@@ -71,48 +95,48 @@ function connector(type) {
     $.ajax({
       type: "POST",
       url: siteUrl+"/connection/connector.php",
-      data: "username="+username+"&password="+password+"&email="+email+"&firstname="+firstname+"&lastname="+lastname+"&country="+country+"&state="+state+"&city="+city+"&register=1", 
+      data: "username="+username+"&password="+password+"&email="+email+"&firstname="+firstname+"&lastname="+lastname+"&country="+country+"&state="+state+"&city="+city+"&register=1",
       dataType:"json",
       cache: false,
       success: function(html) {
-        var message = html.message; 
+        var message = html.message;
         $('#preloader').hide();
         $('#reg_msg').html(message);
-        if (html.status == 1) { 
-          window.top.location=html.header; 
-        } 
+        if (html.status == 1) {
+          window.top.location=html.header;
+        }
       },
       error: function(xhr, status, error) {
-        var errorMessage = 'An Error Occurred - ' + xhr.status + ': ' + xhr.statusText + '<br> ' + error; 
+        var errorMessage = 'An Error Occurred - ' + xhr.status + ': ' + xhr.statusText + '<br> ' + error;
         $('#reg_msg').html(errorHtml(errorMessage, xhr.responseText));
       }
     });
   }
 }
 
-function fetch_state() { 
+function fetch_state() {
   var country = document.getElementById("country");
-  var country_id = country.options[country.selectedIndex].id; 
+  var country_id = country.options[country.selectedIndex].id;
   $.ajax({
     type: 'POST',
     url: siteUrl+'/connection/location.php',
-    data: {country_id:country_id, type:2},  
+    data: {country_id:country_id, type:2},
     success: function(html) {
       $('#state').html(html);
-      $('#state').attr('onchange', 'fetch_city()'); 
-    }   
+      $('#state').attr('onchange', 'fetch_city()');
+    }
   })
 }
 
-function fetch_city() { 
+function fetch_city() {
   var state = document.getElementById("state");
-  var state_id = state.options[state.selectedIndex].id; 
+  var state_id = state.options[state.selectedIndex].id;
   $.ajax({
     type: 'POST',
     url: siteUrl+'/connection/location.php',
-    data: {state_id:state_id, type:1},  
-    success: function(html) { 
+    data: {state_id:state_id, type:1},
+    success: function(html) {
       $('#city').html(html);
-    } 
+    }
   })
 }
