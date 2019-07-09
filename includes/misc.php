@@ -22,3 +22,5 @@ if (isset($_SESSION['username'])) {
 } elseif (isset($_COOKIE['username'])) {
 	$user = $framework->userData($_COOKIE['username'], 2);
 }
+
+$user_role = $framework->userRoles();

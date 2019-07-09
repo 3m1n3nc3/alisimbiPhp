@@ -51,3 +51,7 @@ Check the corresponding controller file for the page you are currently working o
 
 ###Special HTML Cases
 *1. The course and modules boxes HTML can be found in the `includes/classes_extenstion.php` file, simply do a search for `course and modules boxes HTML`*
+
+###Locked features
+Some features have been restricted to users with higher roles:
+If you create a new user use phpmyadmin to navigate the users table and grant that user a mod or sudo role
