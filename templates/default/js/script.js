@@ -41,7 +41,7 @@ $(document).ready(function () {
     });
 
     $('.close-ss, .close-mob').on('click', function () {
-        $('.subscribe_section, .payment_section, .right, .login').removeClass('active');
+        $('.subscribe_section, .payment_section, .right, .login, .explore', ).removeClass('active');
         $('.left').removeClass('hidee');
         $('.bg_img').css('opacity', '1');
         $('.close-ss').removeClass('active');
