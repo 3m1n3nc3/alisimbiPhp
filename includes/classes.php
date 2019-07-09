@@ -222,6 +222,27 @@ class framework {
 		} 
 	}
 
+	// Set user roles to determine what user can do
+	function userRoles() {
+		global $user;
+		if ($user) {
+			if ($user['role'] == 'learner') {
+				$role = 0;
+			} elseif ($user['role'] == 'teacher') {
+				$role = 1;
+			} elseif ($user['role'] == 'mod') {
+				$role = 2;
+			} elseif ($user['role'] == 'admin') {
+				$role = 3;
+			} elseif ($user['role'] == 'sudo') {
+				$role = 4;
+			}
+		} else {
+			$role = 0;
+		}
+		return $role;
+	}
+
 	/**
 	* List all available languages
 	*/

@@ -3,17 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 08, 2019 at 09:52 PM
+-- Generation Time: Jul 09, 2019 at 11:17 AM
 -- Server version: 5.7.26-0ubuntu0.18.04.1
 -- PHP Version: 7.2.19-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `alisimbi`
@@ -69,6 +63,31 @@ INSERT INTO `contact` (`id`, `c_line`, `address`, `email`, `phone`, `facebook`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `courses`
+--
+
+CREATE TABLE `courses` (
+  `id` int(11) NOT NULL,
+  `title` varchar(128) DEFAULT NULL,
+  `intro` text,
+  `cover` varchar(128) DEFAULT NULL,
+  `badge` varchar(128) DEFAULT NULL,
+  `status` enum('0','1') DEFAULT '1',
+  `start` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`id`, `title`, `intro`, `cover`, `badge`, `status`, `start`) VALUES
+(1, 'Farming in rural settlements', 'Occaecat quis ut sed officia laboris non incididunt officia eu in et nulla magna dolore duis occaecat aliqua velit labore ut nulla laborum tempor voluptate ex eu aliquip in proident tempor consectetur mollit ullamco velit dolor laborum non enim ex mollit eu amet aliqua quis est quis dolor deserunt nulla in voluptate amet incididunt id do in do qui ea laborum nostrud irure est pariatur minim nisi do cillum dolor non ad incididunt cillum mollit reprehenderit pariatur dolore qui pariatur dolor proident sint aliquip ut sunt in duis in nisi culpa ex proident est est dolor sed pariatur dolor velit officia elit id magna id enim quis ut voluptate ut minim irure aliquip aute mollit velit nulla ad mollit ea eu laborum reprehenderit deserunt in amet deserunt anim in deserunt officia voluptate proident culpa pariatur dolore sit nisi est exercitation dolore tempor sint anim laborum ullamco sint magna voluptate sed enim consectetur duis excepteur do culpa exercitation ullamco tempor culpa ullamco nostrud incididunt fugiat laborum in esse ut labore nostrud in fugiat reprehenderit labore ut tempor non deserunt tempor fugiat in quis proident esse occaecat esse amet elit ullamco pariatur aute id non qui officia ut officia qui.', 'obj.jpg', '', '1', '2019-07-17 08:28:11'),
+(2, 'Building Fish Mazes', 'Lorem ipsum ut non ut quis amet laborum do amet id fugiat duis esse occaecat dolore dolore eu anim nulla nostrud mollit in in amet irure in veniam excepteur occaecat non dolor id sit incididunt aliqua fugiat tempor ullamco mollit excepteur magna veniam commodo tempor in mollit pariatur cupidatat anim minim consectetur consectetur fugiat qui aute ex laboris anim et quis in deserunt dolore ut est in magna magna duis voluptate do laboris do labore excepteur culpa amet magna irure aute consequat aute voluptate adipisicing excepteur laborum duis in esse non in minim dolore nulla adipisicing proident duis do laborum dolor dolore do fugiat dolore dolore id excepteur irure aute irure ut pariatur ut fugiat amet esse eiusmod quis quis et sed dolor tempor aliquip et dolore culpa excepteur consectetur anim veniam officia pariatur cillum aliquip consectetur adipisicing in in voluptate deserunt cupidatat ullamco amet excepteur cillum excepteur aliquip eu nisi aute dolor nostrud amet excepteur cillum ea commodo irure ad laborum nisi veniam laborum in in ad fugiat labore eu magna veniam quis sunt nisi esse irure consequat laborum eu minim esse ut nulla ut mollit cupidatat laboris dolor excepteur sunt laborum nisi laboris cupidatat ex non exercitation labore elit fugiat consequat esse mollit mollit occaecat duis tempor ut in cupidatat ut in eiusmod in mollit ad officia deserunt ad pariatur amet ad laborum qui ut irure laborum tempor nostrud veniam.', 'here.jpg', '', '1', '2019-07-25 04:32:11'),
+(3, 'Building Egg crate', 'Fugiat tempor ullamco mollit excepteur magna veniam commodo tempor in mollit pariatur cupidatat anim minim consectetur consectetur fugiat qui aute ex laboris anim et quis in deserunt dolore ut est in magna magna duis voluptate do laboris do labore excepteur culpa amet magna irure aute consequat aute voluptate adipisicing excepteur laborum duis in esse non in minim dolore nulla adipisicing proident duis do laborum dolor dolore do fugiat dolore dolore id excepteur irure aute irure ut pariatur ut fugiat amet esse eiusmod quis quis et sed dolor tempor aliquip et dolore culpa excepteur consectetur anim veniam officia pariatur cillum aliquip consectetur adipisicing in in voluptate deserunt cupidatat ullamco amet excepteur cillum excepteur aliquip eu nisi aute dolor nostrud amet excepteur cillum ea commodo irure ad laborum nisi veniam laborum in in ad fugiat labore eu magna veniam quis sunt nisi esse irure consequat laborum eu minim esse ut nulla ut mollit cupidatat laboris dolor excepteur sunt laborum nisi laboris cupidatat ex non exercitation labore elit fugiat consequat esse mollit mollit occaecat duis tempor ut in cupidatat ut in eiusmod in mollit ad officia deserunt ad pariatur amet ad laborum qui ut irure laborum tempor nostrud veniam.', 'singer.jpg', '', '1', '2019-07-25 04:32:11');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `homer`
 --
 
@@ -85,6 +104,22 @@ CREATE TABLE `homer` (
 
 INSERT INTO `homer` (`id`, `title`, `intro`, `description`) VALUES
 (1, 'Welcome to Alisimbi', 'The future of Agribusiness.', 'Learn relevant agribusiness skills and get matched to markets and funding opportunities to grow your business.  START HERE…');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `modules`
+--
+
+CREATE TABLE `modules` (
+  `id` int(11) NOT NULL,
+  `title` varchar(128) NOT NULL,
+  `cover` int(128) NOT NULL,
+  `video` int(128) NOT NULL,
+  `transcript` text NOT NULL,
+  `badge` varchar(128) NOT NULL,
+  `duration` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -212,7 +247,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `phone`, `f_name`, `l_name`, `photo`, `city`, `state`, `country`, `about`, `role`, `token`, `date`) VALUES
 (4, 'david', '28f20a02bf8a021fab4fcec48afb584e', 'mygames.ng@gmail.com', '3333', 'David', 'Geer', NULL, 'Balakan', 'Saki', 'Azerbaijan', 'sssss', 'learner', '478bf19e77d5c61d2f73dc02a6775e6f', '2019-07-08 06:25:16'),
-(8, 'marxemi', '28f20a02bf8a021fab4fcec48afb584e', 'marxemi@yahoo.com', '3333', 'Marxemi', 'John', NULL, 'Kaduna', 'Kaduna', 'Nigeria', 'Shake', 'learner', '9b8746b1df8e7f3f3b16e14151f6efbd', '2019-07-08 11:27:45');
+(8, 'marxemi', '28f20a02bf8a021fab4fcec48afb584e', 'marxemi@yahoo.com', '3333', 'Marxemi', 'John', NULL, 'Kaduna', 'Kaduna', 'Nigeria', 'Shake', 'admin', '9b8746b1df8e7f3f3b16e14151f6efbd', '2019-07-08 11:27:45');
 
 --
 -- Indexes for dumped tables
@@ -225,9 +260,21 @@ ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `courses`
+--
+ALTER TABLE `courses`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `homer`
 --
 ALTER TABLE `homer`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `modules`
+--
+ALTER TABLE `modules`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -270,9 +317,19 @@ ALTER TABLE `users`
 ALTER TABLE `contact`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `courses`
+--
+ALTER TABLE `courses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `homer`
 --
 ALTER TABLE `homer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `modules`
+--
+ALTER TABLE `modules`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `news`
@@ -299,6 +356,3 @@ ALTER TABLE `trainings`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
