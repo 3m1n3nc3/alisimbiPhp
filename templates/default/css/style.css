@@ -39,9 +39,9 @@ body, html{
 }
 .big-title {
   font-family: 'Raleway','Roboto','Open Sans', sans-serif;
-  font-size: 70px ;
-  font-weight: 900;
-  margin-bottom: 15px;
+	font-size: 70px ;
+	font-weight: 900;
+	margin-bottom: 15px;
 }
 
 .hang {
@@ -53,94 +53,6 @@ body, html{
   opacity: .5;
   z-index: 1;
 }
-
-
-/* Countdown */
-.is-countdown {
-  margin: 70px 0 72px;
-  margin-left: auto;
-  margin-right: auto;
-  border: none;
-  background-color: transparent;
-  overflow: hidden;
-}
-
-.countdown-row {
-  clear: both;
-  width: 100%;
-  padding: 0px 2px;
-  text-align: center;
-}
-.countdown-show4 .countdown-section {
-  width: 24.5%;
-  float: left;
-  margin-bottom: 0;
-  border-right: 1px solid rgba(255, 255, 255, 0.35);
-  display: block;
-  font-size: 16pt;
-  text-align: center;
-}
-.countdown-section:last-of-type{
-  border: none;
-}
-.countdown-amount {
-  white-space: nowrap;
-  font-size: 150%;
-  font-weight: 100;
-  line-height: 1.05em;
-  font-family: 'Roboto', sans-serif;
-}
-.countdown-period {
-  font-size: 50%;
-  color: #c1c1c1;
-  display: block;
-}
-
-.countdown{
-  position: fixed;
-  display: block;
-  height: auto;
-  width: 50%;
-  background: rgba(0,0,0,.3);
-  bottom: 0;
-  left: 25%;
-  right:25%;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  z-index: 1;
-  text-align: center;
-  padding: 15px;
-  font-weight: bolder;
-  color: white;
-  margin: 0;
-}
-
-
-@media (max-width: 769px){
-  .countdown{
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: inline-block;
-    border-radius: 20px
-  }
-  .countdown-show4 .countdown-section {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-}
-@media (min-width: 769px){
-
-  .is-countdown {
-    margin:  0;
-    padding-left: 2%;
-    }
-    .countdown-row {
-      padding: 0;
-    }
-  }
-  /* --------__Countdown----------- */
 
 
 .vegas:before{
@@ -360,27 +272,40 @@ svg.icon:not(.icon--full-color) path{
   padding-left:30px;
   padding-bottom: 50px
 }
+.sm-section-r {
+  color: #333;
+  background: #fff;
+  height: 100vh;
+  width: 40vw;
+  position: fixed;
+  top: 0;
+  right: -40vw;
+  z-index: 9;
+  transition: right .5s ease;
+  overflow-y: auto; }
+  .sm-section-r .pad{
+    padding: 5vh 5vw;
+  }
 
+  .full-section-r {
+    color: #333;
+    background: #fff;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    right: -105vw;
+    z-index: 9;
+    transition: right .5s ease;
+    overflow-y: auto;
+  }
 
-        .sm-section-r {
-          color: #333;
-          background: #fff;
-          height: 100vh;
-          width: 40vw;
-          position: fixed;
-          top: 0;
-          right: -40vw;
-          z-index: 9;
-          transition: right .5s ease;
-          overflow-y: auto; }
-          .sm-section-r .pad{
-            padding: 5vh 5vw;
-          }
-          .sm-section-r.active {
-            right: 0; }
+  .sm-section-r.active, .full-section-r.active {
+    right: 0;
+  }
 
 .social.hung .toggle_icon{
-  background: #ebe70b;
+  background: var(--yellow);
   color:#0a243e !important;
   overflow: hidden;
   border-radius: 30px;
@@ -398,8 +323,7 @@ svg.icon:not(.icon--full-color) path{
   align-items: center;
   position: relative;
 }
-.social.hung:hover .toggle_icon{
-  transition: all .5s ease-in-out;
+.social.hung .toggle_icon:hover{
   width: auto;
   padding-left: 10px;
   padding-right: 10px;
@@ -408,18 +332,25 @@ svg.icon:not(.icon--full-color) path{
 .social.hung .toggle_icon .text{
 margin-left: 5px;
 font-size: 12px;
+opacity: 0;
 position: absolute;
-visibility: hidden;
+right: -15px
 }
 .social.hung .toggle_icon:hover .text{
   position: relative;
-  visibility: visible;
+  opacity: 1;
+  right: 0;
+  transition: all .5s ease-in;
+
 }
 
 @media all and (min-width: 992px) and (max-width: 1200px) {
   .payment_section, .sm-section-r {
     width: 80vw;
     right: -85vw; }
+  .full-section-r {
+    width: 100vw;
+    right: -105vw; }
   }
   @media all and (max-width: 991px) {
     .payment_section, .sm-section-r{
@@ -435,8 +366,114 @@ visibility: hidden;
           width: 100vw;
           right: -105vw; }
         }
-
-.image_class {
-  width: 470px;
+.popular-course-deck{
+  position: fixed;
+  display: block;
   height: auto;
+  width: 50%;
+  background: rgba(33,33,33,1);
+  bottom: -40%;
+  left: 25%;
+  right:25%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  z-index: 1;
+  text-align: center;
+  padding-top: 20px;
+  font-weight: bolder;
+  color: white;
+  transition: all .74s ease-in-out;
+  margin: 0;
+  opacity: .75;
 }
+.popular-course-deck:hover{
+  bottom: 0;
+  opacity: 1;
+  box-shadow: 0 0 45px 10px rgba(0, 0, 0, 0.56);
+  border-top: 2px var(--green) solid;
+  border-left: 2px var(--green) solid;
+  border-right: 2px var(--green) solid;
+}
+
+/* Countdown */
+.is-countdown {
+	margin: 70px 0 72px;
+	margin-left: auto;
+	margin-right: auto;
+	border: none;
+	background-color: transparent;
+	overflow: hidden;
+}
+
+.countdown-row {
+	clear: both;
+	width: 100%;
+	padding: 0px 2px;
+	text-align: center;
+}
+.countdown-show4 .countdown-section {
+	width: 24.5%;
+	float: left;
+	margin-bottom: 0;
+	border-right: 1px solid rgba(255, 255, 255, 0.35);
+	display: block;
+	font-size: 16pt;
+	text-align: center;
+}
+.countdown-section:last-of-type{
+  border: none;
+}
+.countdown-amount {
+  white-space: nowrap;
+	font-size: 150%;
+	font-weight: 100;
+	line-height: 1.05em;
+  font-family: 'Roboto', sans-serif;
+}
+.countdown-period {
+	font-size: 50%;
+	color: #c1c1c1;
+  display: block;
+}
+
+
+
+@media (max-width: 769px){
+  .countdown{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: inline-block;
+    border-radius: 20px
+  }
+  .countdown-show4 .countdown-section {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media (min-width: 769px){
+
+  .is-countdown {
+    margin:  0;
+    padding-left: 2%;
+    }
+    .countdown-row {
+    	padding: 0;
+    }
+  }
+  /* --------__Countdown----------- */
+
+  .header-text{
+    font-size: 44px;
+    line-height: 52px;
+    text-overflow: ellipsis;
+    font-stretch: 100%;
+    font-weight: 300;
+    margin-bottom: 20px;
+    letter-spacing: -.5px
+  }
+
+.bold{
+font-weight: 700
+  }
