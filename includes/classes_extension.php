@@ -156,6 +156,16 @@ function getCourses($type = null, $course = null) {
     return $framework->dbProcessor($sql, 1);
 }
 
+function getModules($type = null, $course = null) {
+    global $framework;
+    if ($type) {
+        $sql = sprintf("SELECT * FROM " . TABLE_MODULES . " WHERE id = '%s' AND status = '1'", $course);
+    } else {
+        $sql = sprintf("SELECT * FROM " . TABLE_MODULES);
+    }
+    return $framework->dbProcessor($sql, 1);
+}
+
 function getNews($link = null) {
     global $framework;
     if ($link) {
@@ -286,11 +296,15 @@ function accountAccess($type = null) {
 }
 
 // course and modules boxes HTML
-function courseModuleCard($image, $title, $intro, $duration, $view, $edit) {
+function courseModuleCard($image, $title, $intro, $duration, $view, $edit, $type = null) {
     global $user_role;
     $edit = $user_role >= 3 ? '<a href="'.$edit.'" class="btn btn-sm btn-outline-secondary">Edit</a>' : '';
+    $col = '4';
+    if ($type) {
+        $col = '3';
+    }
     $card = '
-    <div class="col-md-4">
+    <div class="col-md-'.$col.'">
         <div class="card mb-4 shadow-sm">
             <img src="'.$image.'" class="card-img-top">
             <div class="card-body">
