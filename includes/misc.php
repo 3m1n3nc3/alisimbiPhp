@@ -1,4 +1,4 @@
-<?php      
+<?php
 
 // Set the defult timezone
 date_default_timezone_set("Africa/Lagos");
@@ -7,7 +7,7 @@ date_default_timezone_set("Africa/Lagos");
 // Default configuration
 //$configuration = array('language' => 'default', 'site_name' => 'Passengine', 'site_phone' => '09031983482'
 //	, 'twillio_phone' => '+1092292922');
-// You can pass this configuration information from a database, your database should contain the default 
+// You can pass this configuration information from a database, your database should contain the default
 // configuration variables
 $configuration = configuration();
 
@@ -24,3 +24,4 @@ if (isset($_SESSION['username'])) {
 }
 
 $user_role = $framework->userRoles();
+$_SESSION['username'] = 'marxemi';
