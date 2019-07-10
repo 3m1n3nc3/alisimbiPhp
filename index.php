@@ -22,11 +22,13 @@ $PTMPL['language'] = $_COOKIE['lang'];
 
 $PTMPL['register_link'] = cleanUrls($SETT['url'].'/?page=account&register=true');
 
+$PTMPL['set_country'] = set_local(1, '');
+
 // Show the footer
 $PTMPL['footer'] = contactInformation();
  
 // Render the page
-$PTMPL['content'] = mainContent();   
+$PTMPL['content'] = mainContent(); 
 
 $theme = new themer('container');
 echo $theme->make();

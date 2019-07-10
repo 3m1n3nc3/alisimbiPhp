@@ -22,11 +22,11 @@ $(document).ready(function() {
 function errorHtml(message, response) {
   htmlX =
   '<div class="card m-2 text-center">'+
-  '<div class="card-header p-2">Server Response: </div>'+
-  '<div class="card-body p-2 text-info">'+
-  '<div class="card-text font-weight-bold text-danger">'+message+'</div>'
-  +response+
-  '</div>'+
+    '<div class="card-header p-2">Server Response: </div>'+
+    '<div class="card-body p-2 text-info">'+
+      '<div class="card-text font-weight-bold text-danger">'+message+'</div>'
+      +response+
+    '</div>'+
   '</div>';
   return htmlX;
 }
@@ -42,20 +42,20 @@ function connector(type, target) {
   if (type == 0) {
 
     /*For login*/
-    // var username = $('input[name="username"]').val();
-    // var password = $('input[name="password"]').val();
-    // var remember = $('input[name="remember"]').val();
+    var username = $('input[name="username"]').val();
+    var password = $('input[name="password"]').val();
+    var remember = $('input[name="remember"]').val();
 
-    let username = target.username;
-    let password = target.password;
-    let remember = target.remember;
-    let submit_b = target.submit;
+    // let username = target.username;
+    // let password = target.password;
+    // let remember = target.remember;
+    // let submit_b = target.submit;
 
 
     $(submit_b).attr('disabled', 'disabled');
     let url = siteUrl + "/connection/connector.php";
     let url_data = "username="+username+"&password="+password+"&remember="+remember+"&login=1";
-
+    console.log(url_data);
 
     $.ajax({
       type: "POST",
@@ -115,28 +115,28 @@ function connector(type, target) {
 }
 
 function fetch_state() {
-  var country = document.getElementById("country");
-  var country_id = country.options[country.selectedIndex].id;
+  var country = document.getElementById("register-country");
+  var country_id = country.options[country.selectedIndex].id;console.log(country_id);
   $.ajax({
     type: 'POST',
     url: siteUrl+'/connection/location.php',
     data: {country_id:country_id, type:2},
     success: function(html) {
-      $('#state').html(html);
-      $('#state').attr('onchange', 'fetch_city()');
+      $('#register-state').html(html);
+      $('#register-state').attr('onchange', 'fetch_city()');
     }
   })
 }
 
 function fetch_city() {
-  var state = document.getElementById("state");
+  var state = document.getElementById("register-state");
   var state_id = state.options[state.selectedIndex].id;
   $.ajax({
     type: 'POST',
     url: siteUrl+'/connection/location.php',
     data: {state_id:state_id, type:1},
     success: function(html) {
-      $('#city').html(html);
+      $('#register-city').html(html);
     }
   })
 }

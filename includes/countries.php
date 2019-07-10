@@ -35,8 +35,7 @@ return $country_array;
 } 
 
 function set_local($type, $value) {
-	$sc = new siteClass;
-	$locale = $sc->fetch_locale(0); 
+	$locale = getLocale(); 
 	
 	if($type == 1) {
 		$rows = '<option disabled>Please Select Country</option>';
