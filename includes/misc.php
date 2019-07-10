@@ -24,4 +24,3 @@ if (isset($_SESSION['username'])) {
 }
 
 $user_role = $framework->userRoles();
-$_SESSION['username'] = 'marxemi';
