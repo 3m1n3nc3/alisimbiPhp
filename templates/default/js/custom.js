@@ -42,15 +42,14 @@ function connector(type, target) {
   if (type == 0) {
 
     /*For login*/
-    var username = $('input[name="username"]').val();
-    var password = $('input[name="password"]').val();
-    var remember = $('input[name="remember"]').val();
+    // var username = $('input[name="username"]').val();
+    // var password = $('input[name="password"]').val();
+    // var remember = $('input[name="remember"]').val();
 
-    // let username = target.username;
-    // let password = target.password;
-    // let remember = target.remember;
-    // let submit_b = target.submit;
-
+    let username = target.username.value;
+    let password = target.password.value;
+    let remember = target.remember.value;
+    let submit_b = target.submit.value;
 
     $(submit_b).attr('disabled', 'disabled');
     let url = siteUrl + "/connection/connector.php";
@@ -83,14 +82,14 @@ function connector(type, target) {
   }
   else if (type == 1) {
     /*For registration*/
-    var username = $('input[name="username"]').val();
-    var password = $('input[name="password"]').val();
-    var email = $('input[name="email"]').val();
-    var firstname = $('input[name="fname"]').val();
-    var lastname = $('input[name="lname"]').val();
-    var country = $('select[name="country"] option:selected').val();
-    var state = $('select[name="state"] option:selected').val();
-    var city = $('select[name="city"] option:selected').val();
+    var username = $('input[name="register-username"]').val();
+    var password = $('input[name="register-password"]').val();
+    var email = $('input[name="register-email"]').val();
+    var firstname = $('input[name="register-fname"]').val();
+    var lastname = $('input[name="register-lname"]').val();
+    var country = $('select[name="register-country"] option:selected').val();
+    var state = $('select[name="register-state"] option:selected').val();
+    var city = $('select[name="register-city"] option:selected').val();
 
     $.ajax({
       type: "POST",
@@ -99,16 +98,16 @@ function connector(type, target) {
       dataType:"json",
       cache: false,
       success: function(html) {
-        var message = html.message;
-        $('#preloader').hide();
-        $('#reg_msg').html(message);
+        var response = html.message;
+        // $('#preloader').hide();
+        $(message).html(message);
         if (html.status == 1) {
           window.top.location=html.header;
         }
       },
       error: function(xhr, status, error) {
         var errorMessage = 'An Error Occurred - ' + xhr.status + ': ' + xhr.statusText + '<br> ' + error;
-        $('#reg_msg').html(errorHtml(errorMessage, xhr.responseText));
+        $('message').html(errorHtml(errorMessage, xhr.responseText));
       }
     });
   }
@@ -116,7 +115,11 @@ function connector(type, target) {
 
 function fetch_state() {
   var country = document.getElementById("register-country");
+<<<<<<< HEAD
   var country_id = country.options[country.selectedIndex].id;console.log(country_id);
+=======
+  var country_id = country.options[country.selectedIndex].id;
+>>>>>>> 86220e3d384cd35edd50370320a58ea5aa33897e
   $.ajax({
     type: 'POST',
     url: siteUrl+'/connection/location.php',
@@ -140,3 +143,32 @@ function fetch_city() {
     }
   })
 }
+
+$('.cc-input').keyup(function (){
+  if(this.value.length === this.maxLength){
+    var $next = $(this).next('.cc-input');
+    console.log($next.length);
+    if($next.length){
+      $next.focus();
+    }else{
+      $(this).blur();
+    }
+  }
+});
+$('.cc-num').on("blur", function(){
+  $(this).attr('type', 'password');
+});
+$('.cc-group').on("focusin", function (){
+  $(this).css({
+    border: "1px solid green"
+  })
+});
+$('.cc-group').on("focusout", function (){
+  $(this).css({
+    border: "1px solid #d6d6d6"
+  })
+});
+$('.cc-num').on("focusin", function(){
+  $(".cc-num").attr('type', 'password');
+  $(this).attr('type', 'text');
+});
