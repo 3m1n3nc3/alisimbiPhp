@@ -444,7 +444,7 @@ svg.icon:not(.icon--full-color) path {
   width: 50%;
   background: rgba(33, 33, 33, 1);
   /* bottom: -45vh; */
-  bottom: 0;
+  /*bottom: 0;*/
   left: 25%;
   right: 25%;
   border-top-left-radius: 20px;
@@ -458,8 +458,25 @@ svg.icon:not(.icon--full-color) path {
   margin: 0;
   opacity: .75;
 }
+.popular-course-deck:hover {
+  bottom: 0;
+  opacity: 1;
+  box-shadow: 0 0 45px 10px rgba(0, 0, 0, 0.56);
+  border-top: 2px var(--green) solid;
+  border-left: 2px var(--green) solid;
+  border-right: 2px var(--green) solid;
+}
 
-@media screen and (max-width: 500px ) {
+@media screen and (min-width: 600px) {
+  .popular-course-deck {
+    margin: 0 15px;
+    left: 20%;
+    right: 20%;
+    width: 60%;
+    bottom: -60vh;
+  }
+}
+@media screen and (max-width: 600px ) {
   .popular-course-deck {
     width: auto;
     left: 0;
@@ -471,26 +488,10 @@ svg.icon:not(.icon--full-color) path {
     border-top: 2px var(--green) solid;
     border-left: 2px var(--green) solid;
     border-right: 2px var(--green) solid;
-    opacity: 1
+    opacity: 1;
   }
 }
-@media  (min-width: 500px) and (max-width: 1069px) {
-  .popular-course-deck {
-    width: auto;
-    left: 0;
-    right: 0;
-    margin: 0 15px;
-    bottom: -50vh;
-  }
-}
-.popular-course-deck:hover {
-  bottom: 0;
-  opacity: 1;
-  box-shadow: 0 0 45px 10px rgba(0, 0, 0, 0.56);
-  border-top: 2px var(--green) solid;
-  border-left: 2px var(--green) solid;
-  border-right: 2px var(--green) solid;
-}
+
 
 /* Countdown */
 .is-countdown {
@@ -669,7 +670,8 @@ svg.icon:not(.icon--full-color) path {
 
 /* sign-form */
 .sign-form {
-  margin: 10% 2%
+  margin: 10% 2%;
+  color: #d6d6d6;
 }
 
 .sign-form .sign-form-header{
@@ -688,12 +690,17 @@ svg.icon:not(.icon--full-color) path {
   overflow: hidden;
   color: hsl(0, 0%, 76%);
 }
-.sign-form .sign-form-content {
+.sign-form.out .sign-form-content {
   padding: 5% 10%;
 }
+
+.sign-form .sign-form-content {
+  color: rgb(194,194,194);
+  padding: 5% 2%;
+}
 @media (max-width: 569px){
-  .sign-form .sign-form-content {
-    padding: 2.5% 5%
+  .sign-form.out .sign-form-content {
+    padding: 2.5% 5%;
   }
 }
 .sign-form .sign-form-content .form-control {
@@ -703,10 +710,55 @@ svg.icon:not(.icon--full-color) path {
   -o-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
   background: #f6f6f6;
-  color: currentColor !important;
+  color: rgb(194,194,194);
   border: 1px solid #d6d6d6;
 }
 
+.custom-select-box{
+  width: 100%;
+  font-size: 14px;
+  color: #888;
+  overflow: hidden;
+  border-radius: 20px;
+  padding: 10px 15px;
+  -webkit-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  background: #f6f6f6;
+  border: 1px solid #d6d6d6;
+  color: rgb(194,194,194);
+  position: relative;
+}
+
+.custom-select-box select{
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  background-image: none;
+  -webkit-appearance: none;
+  color: currentColor;
+}
+.custom-select-box:after{
+  position: absolute;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  color: #888;
+  top: 0;
+  margin-top: 10px;
+  content: '\f107';
+  font-family: fontAwesome
+}
+
+.custom-select-box select:focus{
+  outline: none;
+}
+
+.sign-form .sign-form-content select.form-control{
+  padding: 10px 20px;
+  height: 45px;
+}
 .sign-form .sign-form-content .form-control:focus {
   padding-left: 30px;
   background-color: #fff;
@@ -714,15 +766,11 @@ svg.icon:not(.icon--full-color) path {
   border-color: var(--green);
 }
 
-.sign-form .sign-form-content select.form-control{
-  padding-right: 30px;
-}
 
-.sign-form .sign-form-content input::-moz-placeholder,
-.sign-form .sign-form-content input::placeholder,
-.sign-form .sign-form-content input::-webkit-input-placeholder,
-.sign-form .sign-form-content input::-ms-input-placeholder{
-  color: #fff;
+.sign-form .sign-form-content .form-control::placeholder {
+    color: rgb(194,194,194);
+    opacity: 1;
+
 }
 
 .toggle_btn{
