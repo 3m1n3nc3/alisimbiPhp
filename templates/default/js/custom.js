@@ -1,5 +1,11 @@
 $(document).ready(function() {
-
+  $(window).resize(function () {
+    if($(window).width > 600){
+      $('#popular_course_panel').removeClass('collapse');
+    }else{
+      $('#popular_course_panel').addClass('collapse');
+    }
+  });
   "use strict";
 
   /* =============================================
@@ -19,14 +25,15 @@ $(document).ready(function() {
 });
 
 
+
 function errorHtml(message, response) {
   htmlX =
   '<div class="card m-2 text-center">'+
-    '<div class="card-header p-2">Server Response: </div>'+
-    '<div class="card-body p-2 text-info">'+
-      '<div class="card-text font-weight-bold text-danger">'+message+'</div>'
-      +response+
-    '</div>'+
+  '<div class="card-header p-2">Server Response: </div>'+
+  '<div class="card-body p-2 text-info">'+
+  '<div class="card-text font-weight-bold text-danger">'+message+'</div>'
+  +response+
+  '</div>'+
   '</div>';
   return htmlX;
 }
@@ -115,11 +122,9 @@ function connector(type, target) {
 
 function fetch_state() {
   var country = document.getElementById("register-country");
-<<<<<<< HEAD
-  var country_id = country.options[country.selectedIndex].id;console.log(country_id);
-=======
   var country_id = country.options[country.selectedIndex].id;
->>>>>>> 86220e3d384cd35edd50370320a58ea5aa33897e
+  console.log(country_id);
+
   $.ajax({
     type: 'POST',
     url: siteUrl+'/connection/location.php',
