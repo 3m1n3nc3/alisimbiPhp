@@ -3,6 +3,7 @@
 @import "./font-awesome.css";
 /* @import "./variable.css"; */
 @import "./bootstrap.min.css";
+@import "./dashboard.css";
 
 body, html {
   font-family: 'Roboto', sans-serif;
@@ -16,6 +17,8 @@ body, html {
   color: #333;
   display: inline-block;
   letter-spacing: normal;
+  width: 100%;
+  margin: 0 auto
 }
 
 a{
@@ -94,7 +97,7 @@ p {
   line-height: 1.5;
   vertical-align: baseline;
   color: currentColor;
-  letter-spacing: 1.5;
+  letter-spacing: normal;
 }
 
 svg.icon:not(.icon--full-color) path {
@@ -595,7 +598,7 @@ svg.icon:not(.icon--full-color) path {
 }
 
 #popular-course-tab {
-  /* background: red; */
+  background: white;
   border-bottom: 1px solid #f1f2f3;
 }
 
@@ -878,4 +881,8 @@ svg.icon:not(.icon--full-color) path {
 
 .cc:first-of-type{
   margin-top: 32px;
+}
+footer{
+  background: white;
+  padding: 20px;
 }
