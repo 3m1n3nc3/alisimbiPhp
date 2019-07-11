@@ -609,11 +609,8 @@ svg.icon:not(.icon--full-color) path {
   padding: 5% 10%;
 }
 
-<<<<<<< Updated upstream
 #popular_course_tab {
-=======
 #popular-course-tab {
->>>>>>> Stashed changes
   background: #fff;
   border-bottom: 1px solid #f1f2f3;
 }
@@ -928,7 +925,6 @@ footer{
   background-color: #f4f4f4;
   margin-bottom: 10px;
   border: 1px solid #fff;
->>>>>>> Stashed changes
 }
 .module-widget:hover{
   border: 1px solid #f4f4f4;
@@ -941,10 +937,7 @@ footer{
   box-shadow: 0 2px 0 rgba(0,0,0,.05);
   overflow: hidden;
   background: white;
-<<<<<<< Updated upstream
   border-bottom: 1px solid #e6e6e6;
-=======
->>>>>>> Stashed changes
 }
 .module-tile .module-header{
   background: white;
@@ -967,10 +960,7 @@ footer{
   content: 'icons ';
   border: 1px solid #f6f6f6;
   flex-grow: 0;
-<<<<<<< Updated upstream
   flex-shrink: 0;
-=======
->>>>>>> Stashed changes
   flex-basis: 1;
   object-fit: cover;
   object-position: center;
@@ -1135,4 +1125,3 @@ padding-right: 10px;
 font-size:18px;
 font-weight: 200;
 } */
->>>>>>> Stashed changes
