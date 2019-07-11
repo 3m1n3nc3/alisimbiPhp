@@ -74,6 +74,7 @@ function seo_plugin($image, $twitter, $facebook, $desc, $title) {
 }
 
 function getLocale($type = null, $id = null) {
+    // $framework->
     global $framework;
     if ($type == 1) {
         $sql = sprintf("SELECT * FROM " . TABLE_CITIES . " WHERE state_id = '%s'", $id);
@@ -164,6 +165,13 @@ function getModules($type = null, $course = null) {
     } else {
         $sql = sprintf("SELECT * FROM " . TABLE_MODULES);
     }
+    return $framework->dbProcessor($sql, 1);
+}
+
+function getInstructors($course) {
+    global $framework; 
+    $sql = sprintf("SELECT * FROM " . TABLE_USERS . " AS users LEFT JOIN " . TABLE_INSTRUCTORS . " AS instructors ON `users`.`id` = `instructors`.`user_id`" 
+            . " WHERE course_id = '%s'", $course); 
     return $framework->dbProcessor($sql, 1);
 }
 
@@ -328,8 +336,8 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
         <div class="card mb-4 shadow-sm">
             <img src="'.$photo.'" class="card-img-top">
             <div class="card-body">
-                <h4 class="card-title">'.$contentArr['title'].'</h4>
-                '.$intro.'
+                <h5 class="card-title">'.$contentArr['title'].'</h5>
+                <span style="font-size:15px;">'.$intro.'</span>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                         '.$vb.'
@@ -341,5 +349,64 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
         </div>
     </div>
     ';
+    return $card;
+}
+
+function userRating($rating) {
+    $cs = '<i class="fa fa-star"></i>';
+    $os = '<i class="fa fa-star-o"></i>';
+
+    if ($rating == 5) {
+        $rate = $cs.$cs.$cs.$cs.$cs;
+    } elseif ($rating == 4) {
+        $rate = $cs.$cs.$cs.$cs.$os;
+    } elseif ($rating == 3) {
+        $rate = $cs.$cs.$cs.$os.$os;
+    } elseif ($rating == 2) {
+        $rate = $cs.$cs.$os.$os.$os;
+    } elseif ($rating == 1) {
+        $rate = $cs.$os.$os.$os.$os;
+    } elseif ($rating == 0) {
+        $rate = $os.$os.$os.$os.$os;
+    }
+    return $rate;
+}
+
+function instructorCard($ins) {
+    $inst_fullname = $ins['f_name'].' '.$ins['l_name'];
+    $inst_about = $ins['about'];
+    $inst_photo = getImage($ins['photo'], 1);
+    $inst_rating = userRating($ins['rating']);
+
+    $social = '';
+    $social .= $ins['facebook'] ? '<li class=""><a href="'.$ins['facebook'].'"><i class="fa fa-mobile"></i></a></li>' : '';
+    $social .= $ins['twitter'] ? '<li class=""><a href="'.$ins['twitter'].'"><i class="fa fa-mobile"></i></a></li>' : '';
+    $social .= $ins['instagram'] ? '<li class=""><a href="'.$ins['instagram'].'"><i class="fa fa-mobile"></i></a></li>' : '';   
+
+    $card = '
+    <div class="instructor">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="i-profile-img">
+            <img src="'.$inst_photo.'"
+            class="img-responsive" alt="">
+          </div>
+          <div class="pt-3">
+            <p class="i-name">'.$inst_fullname.'</p>
+            <div class="i-rating">'.$inst_rating.'</div>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="i-bio">
+            <p >
+              '.$inst_about.'
+            </p>
+          </div>
+        </div>
+        <ul class="i-social">
+          '.$social.'
+        </ul>
+      </div>
+    </div>';
     return $card;
 }
