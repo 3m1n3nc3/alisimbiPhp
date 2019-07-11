@@ -1,23 +1,18 @@
 <?php
 function mainContent() {
-<<<<<<< HEAD
-	global $PTMPL, $LANG, $SETT, $configuration, $framework, $marxTime, $user, $user_role; 
-=======
-	global $PTMPL, $LANG, $SETT, $configuration, $framework, $marxTime, $user;
->>>>>>> c09f41d6fc0503e08ef9880c5a7f8d3aef7cb695
+	global $PTMPL, $LANG, $SETT, $configuration, $framework, $marxTime, $user, $user_role;
 	// Dont touch anything above this line
 
 	$PTMPL['page_title'] = ucfirst($_GET['page']);
 	$PTMPL['site_url'] = $SETT['url'];
-$account = '';
+	$account = '';
     if ($user) {
         if (isset($_GET['profile'])) {
-
             if ($_GET['profile'] == 'home') {
                 $theme = new themer('account/profile_home');
                 $OLD_THEME = $PTMPL; $PTMPL = array();
             } elseif ($_GET['profile'] == 'update') {
-                $theme = new themer('account/profile_update'); 
+                $theme = new themer('account/profile_update');
                 $OLD_THEME = $PTMPL; $PTMPL = array();
                 $PTMPL['list_country'] = getLocale(3, $user['country']);
                 if (isset($_POST['save_profile'])) {
@@ -26,7 +21,7 @@ $account = '';
                     $framework->phone = $_POST['phone'];
                     $framework->country = $_POST['country'];
                     $framework->state = isset($_POST['state']) ? $_POST['state'] : $user['state'];
-                    $framework->city = isset($_POST['city']) ? $_POST['city'] : $user['city']; 
+                    $framework->city = isset($_POST['city']) ? $_POST['city'] : $user['city'];
                     $framework->about = $_POST['about'];
                     if ($user_role >= 3) {
                         $framework->facebook = $_POST['facebook'];
@@ -63,12 +58,12 @@ $account = '';
                     Facebook | Twitter | Instagram
                     <hr>
                     <p class="card-text form-inline">
-                        <input type="text" name="facebook" class="form-control mx-2 m-1" id="facebook" value="'.$user['facebook'].'" placeholder="Facebook"> 
-                        <input type="text" name="twitter" class="form-control mx-2 m-1" id="twitter" value="'.$user['twitter'].'" placeholder="Twitter"> 
-                        <input type="text" name="instagram" class="form-control mx-2 m-1" id="instagram" value="'.$user['instagram'].'" placeholder="Instagram"> 
+                        <input type="text" name="facebook" class="form-control mx-2 m-1" id="facebook" value="'.$user['facebook'].'" placeholder="Facebook">
+                        <input type="text" name="twitter" class="form-control mx-2 m-1" id="twitter" value="'.$user['twitter'].'" placeholder="Twitter">
+                        <input type="text" name="instagram" class="form-control mx-2 m-1" id="instagram" value="'.$user['instagram'].'" placeholder="Instagram">
                     </p>
                 </div>';
-            } 
+            }
             $PTMPL['update_social'] = $update_social;
 
 
