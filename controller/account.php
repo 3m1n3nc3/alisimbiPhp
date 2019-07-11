@@ -1,19 +1,23 @@
 <?php
 function mainContent() {
+<<<<<<< HEAD
 	global $PTMPL, $LANG, $SETT, $configuration, $framework, $marxTime, $user, $user_role; 
+=======
+	global $PTMPL, $LANG, $SETT, $configuration, $framework, $marxTime, $user;
+>>>>>>> c09f41d6fc0503e08ef9880c5a7f8d3aef7cb695
 	// Dont touch anything above this line
 
-	$PTMPL['page_title'] = ucfirst($_GET['page']);	 
+	$PTMPL['page_title'] = ucfirst($_GET['page']);
 	$PTMPL['site_url'] = $SETT['url'];
-
+$account = '';
     if ($user) {
         if (isset($_GET['profile'])) {
- 
+
             if ($_GET['profile'] == 'home') {
-                $theme = new themer('account/profile_home'); $account = '';
+                $theme = new themer('account/profile_home');
                 $OLD_THEME = $PTMPL; $PTMPL = array();
             } elseif ($_GET['profile'] == 'update') {
-                $theme = new themer('account/profile_update'); $account = '';
+                $theme = new themer('account/profile_update'); 
                 $OLD_THEME = $PTMPL; $PTMPL = array();
                 $PTMPL['list_country'] = getLocale(3, $user['country']);
                 if (isset($_POST['save_profile'])) {
@@ -76,7 +80,7 @@ function mainContent() {
         if (isset($_GET['register']) && $_GET['register'] == 'true') {
             if ($user) {
                 $framework->redirect();
-            } 
+            }
             $theme = new themer('account/register'); $account = '';
             $OLD_THEME = $PTMPL; $PTMPL = array();
 
@@ -89,12 +93,12 @@ function mainContent() {
             $PTMPL['countries'] = $all_countries;
         } else {
             $framework->redirect();
-        }        
+        }
     }
 
     	// Change themer('hompage/content') to themer('yourhtmldirectory/yourfile')
         $account = $theme->make();
-        $PTMPL = $OLD_THEME; unset($OLD_THEME);  
+        $PTMPL = $OLD_THEME; unset($OLD_THEME);
     	return $account ;
     }
 ?>

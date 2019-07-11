@@ -53,33 +53,33 @@ function mainContent() {
 	// Fetch and Show the vlog content
 	$testimonial = getTestimonials();
 	$testimonial_list = '';
-	foreach ($testimonial as $content) { 
+	foreach ($testimonial as $content) {
 		$image = getImage($content['image'], 1);
-		$testimonial_content = $framework->myTruncate($content['content'], 150); 
+		$testimonial_content = $framework->myTruncate($content['content'], 150);
 		$testimonial_list .= '
 			<div class="border-blue padding-5 inline-blk margin-5 news-slider">'
 				 . '<p><img src="'.$image.'" class="avatar"></p>'
-				 . '<span class="bolden">'.$content['name'].'</span><br>' 
-				 . '<span class="italicit">'.$content['organisation'].'</span>' 
+				 . '<span class="bolden">'.$content['name'].'</span><br>'
+				 . '<span class="italicit">'.$content['organisation'].'</span>'
 				 . '<div class="details">'.$testimonial_content.'</div>' .
-			'</div>'; 
+			'</div>';
 	}
-	$PTMPL['testimonial'] = $testimonial_list;  
+	$PTMPL['testimonial'] = $testimonial_list;
 
 	// Fetch and Show the vlog content
 	$sponsors =  getSponsors();
 	$sponsors_list = '';
 	if ($sponsors) {
-		foreach ($sponsors as $content) { 
+		foreach ($sponsors as $content) {
 			$image = getImage($content['image'], 1);
-			$sponsors_desc = $framework->myTruncate($content['description'], 150); 
+			$sponsors_desc = $framework->myTruncate($content['description'], 150);
 			$sponsors_list .= '
 				<div class="border-blue padding-5 inline-blk margin-5 news-slider">'
 					 . '<p><img src="'.$image.'" class="avatar"></p>'
-					 . '<span class="bolden">'.$content['name'].'</span><br>' 
-					 . '<span class="italicit">'.$content['company'].'</span>' 
+					 . '<span class="bolden">'.$content['name'].'</span><br>'
+					 . '<span class="italicit">'.$content['company'].'</span>'
 					 . '<div class="details">'.$sponsors_desc.'</div>' .
-				'</div>'; 
+				'</div>';
 		}
 		$PTMPL['sponsors_list'] = $sponsors_list;
 	}
@@ -90,12 +90,12 @@ function mainContent() {
 	$facebook = $twitter = $instagram = $youtube = '';
 
 	if (isset($contact['facebook'])) {
-    	$facebook = '          
-        	<li><a href="http://facebook.com/'.$contact['facebook'].'"><i class="fa fa-facebook"></i></a></li>'; 
+    	$facebook = '
+        	<li><a href="http://facebook.com/'.$contact['facebook'].'"><i class="fa fa-facebook"></i></a></li>';
 	}
 	if (isset($contact['twitter'])) {
     	$twitter = '
-        	<li><a href="http://twitter.com/'.$contact['twitter'].'"><i class="fa fa-twitter"></i></a></li>'; 
+        	<li><a href="http://twitter.com/'.$contact['twitter'].'"><i class="fa fa-twitter"></i></a></li>';
 	}
 	if (isset($contact['instagram'])) {
     	$instagram = '
@@ -103,9 +103,9 @@ function mainContent() {
 	}
 	if (isset($contact['youtube'])) {
     	$youtube = '
-        	<li><a href="http://youtube.com/'.$contact['youtube'].'"><i class="fa fa-youtube"></i></a></li>'; 
+        	<li><a href="http://youtube.com/'.$contact['youtube'].'"><i class="fa fa-youtube"></i></a></li>';
 
-	}  
+	}
 
     $PTMPL['social'] = $facebook.$twitter.$instagram.$youtube;
     $PTMPL['copyright'] = $LANG['copyright'].' &copy; '. date('Y').' '.$contact['c_line'];
@@ -114,6 +114,15 @@ function mainContent() {
     $PTMPL['phone'] = $contact['phone'];
     $PTMPL['login_slider'] = accountAccess();
 
+
+		// get countries
+		$countries = getLocale();
+		$all_countries = '';
+		foreach ($countries as $list) {
+				$all_countries .= '<option value="'.$list['name'].'" id="'.$list['id'].'">'.$list['name'].'</option>';
+		}
+		$PTMPL['countries'] = $all_countries;
+		
 	// Dont touch anything below this line
 	$theme = new themer('homepage/content');
 	return $theme->make();
