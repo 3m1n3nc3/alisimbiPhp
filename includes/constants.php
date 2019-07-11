@@ -8,6 +8,7 @@ define('TABLE_TESTIMONIAL', DB_PREFIX.'testimonials');
 define('TABLE_TRAINING', DB_PREFIX.'trainings');
 define('TABLE_COURSES', DB_PREFIX.'courses');
 define('TABLE_MODULES', DB_PREFIX.'modules');
+define('TABLE_COURSE_MODULES', DB_PREFIX.'course_modules');
 define('TABLE_SPONSORS', DB_PREFIX.'sponsors');
 define('TABLE_CONTACT', DB_PREFIX.'contact');
 define('TABLE_USERS', DB_PREFIX.'users');

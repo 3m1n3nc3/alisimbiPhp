@@ -24,6 +24,28 @@ $PTMPL['register_link'] = cleanUrls($SETT['url'].'/?page=account&register=true')
 
 $PTMPL['set_country'] = set_local(1, '');
 
+// Show the list of available courses on the homepage
+$coursesArr = getCourses();
+$courses = '';
+foreach ($coursesArr as $rslt) { 
+	$courses .= courseModuleCard($rslt);
+}
+$PTMPL['available_courses'] = $courses;
+
+// Get the latest course available
+$new_course = getCourses();
+$course_new = array_reverse($new_course)[0];
+$courses_modules = '';
+$PTMPL['course_get_new'] = cleanUrls($SETT['url'].'/index.php?page=training&course=get&courseid='.$course_new['id']);
+$PTMPL['course_title_new'] = $course_new['title'];
+$PTMPL['course_cover_new'] = getImage($course_new['cover'], 1);
+$PTMPL['course_intro_new'] = $course_new['intro'];
+$module_newArr = getModules(1, $course_new['id']);
+foreach ($module_newArr  as $rslt) { 
+	$courses_modules .= courseModuleCard($rslt, 1, 0);
+}
+$PTMPL['course_modules_new'] = $courses_modules;
+
 // Show the footer
 $PTMPL['footer'] = contactInformation();
  

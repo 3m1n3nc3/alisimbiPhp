@@ -42,10 +42,8 @@ function connector(type, target) {
   // let preloader = $(target).find('.form-preloader');
   // $(preloader).show();
   $('.loader_bg').fadeToggle();
-  let message = $('#login_section_alert');
-  console.log(message);
-
-
+  let messager = $('#login_section_alert'); 
+ 
   if (type == 0) {
 
     /*For login*/
@@ -61,7 +59,6 @@ function connector(type, target) {
     $(submit_b).attr('disabled', 'disabled');
     let url = siteUrl + "/connection/connector.php";
     let url_data = "username="+username+"&password="+password+"&remember="+remember+"&login=1";
-    console.log(url_data);
 
     $.ajax({
       type: "POST",
@@ -73,7 +70,7 @@ function connector(type, target) {
         $('.loader_bg').fadeToggle();
         var response = html.message;
         var status= html.status;
-        $(message).html(response);
+        $(messager).html(response);
         $(submit_b).removeAttr('disabled');
 
         if (status == 1) {
@@ -81,40 +78,41 @@ function connector(type, target) {
         }
       },
       error: function(xhr, status, error) {
+        $('.loader_bg').fadeToggle();
         var errorMessage = 'An Error Occurred - ' + xhr.status + ': ' + xhr.statusText + '<br> ' + error;
-        $(message).html(errorHtml(errorMessage, xhr.responseText));
+        $(messager).html(errorHtml(errorMessage, xhr.responseText));
       }
     });
-    console.log(message);
   }
   else if (type == 1) {
     /*For registration*/
     var username = $('input[name="register-username"]').val();
     var password = $('input[name="register-password"]').val();
+    var cc_password = $('input[name="register-confirm-password"]').val();
     var email = $('input[name="register-email"]').val();
     var firstname = $('input[name="register-fname"]').val();
     var lastname = $('input[name="register-lname"]').val();
     var country = $('select[name="register-country"] option:selected').val();
-    var state = $('select[name="register-state"] option:selected').val();
-    var city = $('select[name="register-city"] option:selected').val();
-
+    var state = $('select[name="register-state"] option:selected').val(); console.log(state);
+    var city = $('select[name="register-city"] option:selected').val(); 
     $.ajax({
       type: "POST",
       url: siteUrl+"/connection/connector.php",
-      data: "username="+username+"&password="+password+"&email="+email+"&firstname="+firstname+"&lastname="+lastname+"&country="+country+"&state="+state+"&city="+city+"&register=1",
+      data: "username="+username+"&password="+password+"&cc_password="+cc_password+"&email="+email+"&firstname="+firstname+"&lastname="+lastname+"&country="+country+"&state="+state+"&city="+city+"&register=1",
       dataType:"json",
       cache: false,
       success: function(html) {
-        var response = html.message;
-        // $('#preloader').hide();
-        $(message).html(message);
+        $('.loader_bg').fadeToggle();
+        var response = html.message; 
+        $(messager).html(response);
         if (html.status == 1) {
-          window.top.location=html.header;
-        }
+          window.top.location=html.header;        
+        } 
       },
       error: function(xhr, status, error) {
+        $('.loader_bg').fadeToggle();
         var errorMessage = 'An Error Occurred - ' + xhr.status + ': ' + xhr.statusText + '<br> ' + error;
-        $('message').html(errorHtml(errorMessage, xhr.responseText));
+        $(messager).html(errorHtml(errorMessage, xhr.responseText));
       }
     });
   }
@@ -122,8 +120,7 @@ function connector(type, target) {
 
 function fetch_state() {
   var country = document.getElementById("register-country");
-  var country_id = country.options[country.selectedIndex].id;
-  console.log(country_id);
+  var country_id = country.options[country.selectedIndex].id; 
 
   $.ajax({
     type: 'POST',
@@ -151,8 +148,7 @@ function fetch_city() {
 
 $('.cc-input').keyup(function (){
   if(this.value.length === this.maxLength){
-    var $next = $(this).next('.cc-input');
-    console.log($next.length);
+    var $next = $(this).next('.cc-input'); 
     if($next.length){
       $next.focus();
     }else{

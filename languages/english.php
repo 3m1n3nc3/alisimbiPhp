@@ -36,14 +36,16 @@ $LANG['no_firstname'] = 'Firstname can not be empty';
 $LANG['login_success'] = 'Login successful, Please wait...';
 $LANG['_user_required'] = 'Username and Password are required';
 $LANG['_firstname_required'] = 'Firstname is required';
-$LANG['_lastname_required'] = 'Laststname is required';
+$LANG['_lastname_required'] = 'Lastname is required';
 $LANG['_email_required'] = 'Email is required';
 $LANG['email_invalid'] = 'Email entered is invalid';
-$LANG['_reg_success'] = 'Registeration successful, Please wait...';
+$LANG['_reg_success'] = 'Registration successful, Please wait...';
 $LANG['_city_required'] = 'City is required';
 $LANG['_state_required'] = 'State is required';
 $LANG['_all_required'] = 'All fields are required';
 $LANG['data_unmatch'] = 'The information you provided does not match our records';
+$LANG['password_mismatch'] = 'Password and Confirm Password do not match';
+$LANG['password_short'] = 'The provided password is too short, it should be at least 7 characters';
 
 
 // Alisimbi texts
