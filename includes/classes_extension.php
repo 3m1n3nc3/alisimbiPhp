@@ -104,12 +104,14 @@ function getImage($image, $type = null) {
     global $SETT;
     if (!$image) {
         $dir = $SETT['url'].'/uploads/img/';
-        $image = 'default.png';
-        return $dir.$image;
+        $image = 'default.png'; 
     }
     if ($type == null) {
         // Site specific images
        $dir = $SETT['url'].'/'.$SETT['template_url'].'/img/';
+    } elseif ($type == 2) {
+        // More Site specific images
+       $dir = $SETT['url'].'/'.$SETT['template_url'].'/images/';
     } else {
         // Deletable images
         $dir = $SETT['url'].'/uploads/img/';
@@ -351,6 +353,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
     ';
 
     $card = '
+<<<<<<< Updated upstream
     <div class="accordion" id="module_accordion">
 
           <div class="module-tile module-tile-wide">
@@ -380,6 +383,25 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
       </div>
     ';
 
+=======
+    <div class="module-widget">
+        <div class="module-tile module-tile-wide">
+          <div class="module-header">
+            <div class="data-icon">
+            <img class="" src="'.$photo.'" title="'.$contentArr['title'].' thumbnail" alt="'.$contentArr['title'].' thumbnail">
+            </div>
+            <div class="data-info">
+              <div class="title">'.$contentArr['title'].'</div>
+            </div>
+          <span class="data-toggle">
+            <a href="#" data-toggle="module">
+              <i class="fa fa-angle-down"></i>
+            </a>
+          </span>
+          </div>
+        </div>
+    </div>';
+>>>>>>> Stashed changes
     return $card;
 }
 
@@ -410,9 +432,15 @@ function instructorCard($ins) {
     $inst_rating = userRating($ins['rating']);
 
     $social = '';
+<<<<<<< Updated upstream
     $social .= $ins['facebook'] ? '<span class="media"><a href="'.$ins['facebook'].'"><i class="fa fa-mobile"></i></a></span>' : '';
     $social .= $ins['twitter'] ? '<span class="media"><a href="'.$ins['twitter'].'"><i class="fa fa-mobile"></i></a></span>' : '';
     $social .= $ins['instagram'] ? '<span class="media"><a href="'.$ins['instagram'].'"><i class="fa fa-mobile"></i></a></span>' : '';
+=======
+    $social .= $ins['facebook'] ? '<li class=""><a href="'.$ins['facebook'].'"><i class="fa fa-mobile"></i></a></li>' : '';
+    $social .= $ins['twitter'] ? '<li class=""><a href="'.$ins['twitter'].'"><i class="fa fa-mobile"></i></a></li>' : '';
+    $social .= $ins['instagram'] ? '<li class=""><a href="'.$ins['instagram'].'"><i class="fa fa-mobile"></i></a></li>' : '';
+>>>>>>> Stashed changes
 
     $card = '
     <div class="instructor">
