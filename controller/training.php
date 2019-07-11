@@ -1,9 +1,9 @@
 <?php
 function mainContent() {
-	global $PTMPL, $LANG, $SETT, $configuration, $framework, $marxTime, $user; 
+	global $PTMPL, $LANG, $SETT, $configuration, $framework, $marxTime, $user;
 	// Dont touch anything above this line
 
-	$PTMPL['page_title'] = ucfirst($_GET['page']);	 
+	$PTMPL['page_title'] = ucfirst($_GET['page']);
 	$PTMPL['site_url'] = $SETT['url'];
 
 	if ($user) {
@@ -40,11 +40,11 @@ function mainContent() {
 			 	 // Rave API Private key
 				$private_key = $configuration['rave_private_key'];
 				// Check if sandbox is enabled
-				$ravemode = ($configuration['rave_mode'] ? 'api.ravepay.co' : 'ravesandboxapi.flutterwave.com'); 
+				$ravemode = ($configuration['rave_mode'] ? 'api.ravepay.co' : 'ravesandboxapi.flutterwave.com');
 				 // Currency Code
-				$currency_code 	= $settings['currency'];
+				$currency_code 	= $configuration['currency'];
 				// Url to redirect to to verify rave
-				$successful_url	= $CONF['url'].'/connection/raveAPI.php';
+				$successful_url	= $SETT['url'].'/connection/raveAPI.php';
 				isset($_SESSION['txref']) ? $reference = $_SESSION['txref'] : $reference = '';	
 			}
 		} else {
@@ -52,7 +52,7 @@ function mainContent() {
 	        $OLD_THEME = $PTMPL; $PTMPL = array();
 	        $courseArr = getCourses();
 	        $course = '';
-	        foreach ($courseArr as $rslt) { 
+	        foreach ($courseArr as $rslt) {
 	        	$course .= courseModuleCard($rslt);
 	        }
 	        $PTMPL['course'] = $course;
@@ -65,14 +65,14 @@ function mainContent() {
 		$PTMPL['vlog_title'] = $vloger['title'];
 		$PTMPL['vlog_photo'] = '<p><img src="'.getImage($vloger['image'], 1).'" class="image_class"></p>';
 		$PTMPL['vlog_content'] = $vloger['content'];
-		$video_source = $framework->determineLink($vloger['video']); 
+		$video_source = $framework->determineLink($vloger['video']);
 		$PTMPL['vlog_video'] = getVideo($vloger['video']);
 		$PTMPL['vlog_date'] = $marxTime->timeAgo(strtotime($vloger['date']), 1);
 	}
 
 	// Dont touch anything below this line
 	$render = $theme->make();
-    // $PTMPL = $OLD_THEME; unset($OLD_THEME);  
+    // $PTMPL = $OLD_THEME; unset($OLD_THEME);
 	return $render;
 }
-?>	
+?>
