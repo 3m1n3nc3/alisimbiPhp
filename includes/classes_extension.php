@@ -1,8 +1,8 @@
-<?php 
+<?php
 function errorMessage($str) {
     $string = "
             <span style='text-align: center; padding: 0.35rem 1.01rem;' class='alert alert-danger'>
-                <strong>".$str."</strong>  
+                <strong>".$str."</strong>
             </span>
         ";
     return $string;
@@ -11,7 +11,7 @@ function errorMessage($str) {
 function successMessage($str) {
     $string = "
             <span style='text-align: center; padding: 0.35rem 1.01rem;' class='alert alert-success'>
-                <strong>".$str."</strong> 
+                <strong>".$str."</strong>
             </div>
         ";
     return $string;
@@ -159,8 +159,8 @@ function getCourses($type = null, $course = null) {
 
 function getModules($type = null, $course = null) {
     global $framework;
-    if ($type) { 
-        $sql = sprintf("SELECT * FROM " . TABLE_MODULES . " AS modules LEFT JOIN " . TABLE_COURSE_MODULES . " AS course_modules ON `modules`.`id` = `course_modules`.`module_id`" 
+    if ($type) {
+        $sql = sprintf("SELECT * FROM " . TABLE_MODULES . " AS modules LEFT JOIN " . TABLE_COURSE_MODULES . " AS course_modules ON `modules`.`id` = `course_modules`.`module_id`"
                 . " WHERE course_id = '%s'", $course);
     } else {
         $sql = sprintf("SELECT * FROM " . TABLE_MODULES);
@@ -205,8 +205,8 @@ function getContactInfo($id = null) {
     $sql = sprintf("SELECT * FROM " . TABLE_CONTACT . " WHERE id = '%s'", $id);
     return $framework->dbProcessor($sql, 1);
 }
-    
-/** 
+
+/**
 /* This function will convert your urls into cleaner urls
 **/
 function cleanUrls($url) {
@@ -235,10 +235,10 @@ function contactInformation($type = null) {
     if ($type) {
         $PTMPL['address'] = $contact['address'];
     } else {
-        
+
     }
     $theme = new themer('container/footer'); $footer = '';
-    $OLD_THEME = $PTMPL; $PTMPL = array(); 
+    $OLD_THEME = $PTMPL; $PTMPL = array();
 
     $PTMPL['copyright'] = '&copy; '. date('Y').' '.$contact['c_line'];
     $PTMPL['address'] = $contact['address'];
@@ -266,12 +266,12 @@ function contactInformation($type = null) {
     $PTMPL['instagram_var'] = $contact['instagram'];
     $PTMPL['instagram'] = '
         <a href="http://instagram.com/'.$contact['instagram'].'" id="contact_instagram">http://instagram.com/'.$contact['instagram'].'</a>';
-    
+
     //Youtube
     $PTMPL['youtube_var'] = $contact['youtube'];
     $PTMPL['youtube'] = '
         <a href="http://youtube.com/'.$contact['youtube'].'" id="contact_youtube">http://youtube.com/'.$contact['youtube'].'</a>';
-    
+
     //Signup links
     if (!isset($user)) {
         $PTMPL['learn_signup'] = '<a href="#" id="learn_signup">Signup to Learn</a>';
@@ -281,11 +281,11 @@ function contactInformation($type = null) {
     $PTMPL['support_alisimbi'] = $LANG['support_alisimbi'].' '.$LANG['or'].' '.$LANG['make_donation'];
     $PTMPL['donate_btn'] = '<a href="#" class="pass-btn" id="donate_btn">'.$LANG['donate'].'</a>';
 
-    $footer = $theme->make(); 
+    $footer = $theme->make();
     $PTMPL = $OLD_THEME; unset($OLD_THEME);
     return $footer;
 }
- 
+
 function accountAccess($type = null) {
     global $LANG, $PTMPL, $SETT, $settings;
     if ($type == 0) {
@@ -293,13 +293,13 @@ function accountAccess($type = null) {
     } else {
         $theme = new themer('homepage/login'); $footer = '';
     }
-    
-    $OLD_THEME = $PTMPL; $PTMPL = array(); 
-    
+
+    $OLD_THEME = $PTMPL; $PTMPL = array();
+
     $PTMPL['register_link'] = cleanUrls($SETT['url'].'/index.php?page=account&register=true');
 
 
-    $footer = $theme->make(); 
+    $footer = $theme->make();
     $PTMPL = $OLD_THEME; unset($OLD_THEME);
     return $footer;
 }
@@ -314,7 +314,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
         $col = '3';
         $intro = $framework->myTruncate($contentArr['intro'], 150);
         $photo = getImage($contentArr['cover'], 1);
-        $edlink = cleanUrls($SETT['url'].'/index.php?page=training&module=edit&moduleid='.$contentArr['id']); 
+        $edlink = cleanUrls($SETT['url'].'/index.php?page=training&module=edit&moduleid='.$contentArr['id']);
         $view = cleanUrls($SETT['url'].'/index.php?page=training&course=view&courseid='.$contentArr['course_id'].'&moduleid='.$contentArr['id']);
         $edit = $user_role >= 3 ? '<a href="'.$edlink.'" class="btn btn-sm btn-outline-secondary">Edit</a>' : '';
         $vb = $text == 1 ? '<a href="'.$view.'" class="btn btn-sm btn-outline-secondary">Start</a>' : '';
@@ -325,7 +325,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
         $edlink = cleanUrls($SETT['url'].'/index.php?page=training&course=edit&courseid='.$contentArr['id']);
         $view = cleanUrls($SETT['url'].'/index.php?page=training&course=view&courseid='.$contentArr['id']);
         $edit = $user_role >= 3 ? '<a href="'.$edlink.'" class="btn btn-sm btn-outline-secondary">Edit</a>' : '';
-        $vb = $text == 1 ? '<a href="'.$view.'" class="btn btn-sm btn-outline-secondary">View Details</a>' : ''; 
+        $vb = $text == 1 ? '<a href="'.$view.'" class="btn btn-sm btn-outline-secondary">View Details</a>' : '';
     }
 
     // if $text = 0 don't show the $intro
@@ -341,7 +341,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                         '.$vb.'
-                        '.$edit.' 
+                        '.$edit.'
                     </div>
                     <small class="text-muted">'.$duration.'</small>
                 </div>
@@ -349,8 +349,28 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
         </div>
     </div>
     ';
+
+    $card = '
+    <div class="module-widget">
+        <div class="module-tile module-tile-wide">
+          <div class="module-header">
+            <div class="data-icon">
+            <img class="" src="'.$photo.'" title="'.$contentArr['title'].' thumbnail" alt="'.$contentArr['title'].' thumbnail">
+            </div>
+            <div class="data-info">
+              <div class="title">'.$contentArr['title'].'</div>
+            </div>
+          <span class="data-toggle">
+            <a href="#" data-toggle="module">
+              <i class="fa fa-angle-down"></i>
+            </a>
+          </span>
+          </div>
+        </div>
+    </div>';
     return $card;
 }
+<<<<<<< Updated upstream
 
 function userRating($rating) {
     $cs = '<i class="fa fa-star"></i>';
@@ -410,3 +430,5 @@ function instructorCard($ins) {
     </div>';
     return $card;
 }
+=======
+>>>>>>> Stashed changes
