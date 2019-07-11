@@ -22,7 +22,7 @@ body, html {
 }
 
 a{
-  color: var(--green)
+  color: var(--green) !important;
 }
 
 .font_serif {
@@ -725,6 +725,9 @@ svg.icon:not(.icon--full-color) path {
   .sign-form.out .sign-form-content {
     padding: 2.5% 5%;
   }
+  .pad-section {
+    padding: 10% 5%;
+  }
 }
 .sign-form .sign-form-content .form-control {
   border-radius: 20px;
@@ -947,6 +950,7 @@ footer{
   content: 'icons ';
   border: 1px solid #f6f6f6;
   flex-grow: 0;
+  flex-shrink: 0;
   flex-basis: 1;
   object-fit: cover;
   object-position: center;
@@ -994,7 +998,7 @@ footer{
 }
 .module-tile .data-content{
   border-top: 1px solid #f6f6f6;
-  padding-left: 130px;
+  padding-left: 30px;
   padding-right: 30px;
   padding-top: 30px;
   padding-bottom: 30px;
