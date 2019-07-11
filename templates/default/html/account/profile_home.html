@@ -4,10 +4,19 @@
 	<header id="top-nav">
 		<!-- Image and text -->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<<<<<<< Updated upstream
 			<div class="container">
 				<a class="navbar-brand" href="{$dashboard_url}">
 					<img src="{$logo_url}" width="30" height="30" alt="Alisimbi logo">
 				</a>
+=======
+			<a class="navbar-brand" href="{$dashboard_url}">
+				<img src="{$site_logo}" width="30" height="30" alt="Alisimbi logo">
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+>>>>>>> Stashed changes
 
 				<div class="top_avatar">
 					<div class="user_avatar">
@@ -64,6 +73,7 @@
 								</div>
 							</div>
 
+<<<<<<< Updated upstream
 						</div>
 
 						<div class="col-md-8 ">
@@ -89,6 +99,57 @@
 											</tr>
 										</tbody>
 									</table>
+=======
+							<div class="col-md-8 ">
+								<div class="user-info-list card card-default">
+									<div class="card-header card-header-divider">About Me</div>
+									<div class="card-body">
+										<table class="no-border no-strip skills">
+											<tbody class="no-border-x no-border-y">
+												<tr>
+													<td class="icon"><span class="icon fa fa-key"></span></td>
+													<td class="item">Current Status</td>
+													<td>{$user_role}</td>
+												</tr>
+													<tr>
+														<td class="icon"><span class="icon fa fa-envelope"></span></td>
+														<td class="item">Email address</td>
+														<td>{$email_add}</td>
+													</tr>
+												<tr>
+													<td class="icon"><span class="icon fa fa-mobile"></span></td>
+													<td class="item">Phone</td>
+													<td> {$phone_}</td>
+												</tr>
+												<tr>
+													<td class="icon"><span class="icon fa fa-map-marker"></span></td>
+													<td class="item">Location</td>
+													<td> {$city_}, {$state_}, {$country_}</td>
+												</tr>
+												<tr>
+													<td class="icon"><span class="icon fa fa-facebook"></span></td>
+													<td class="item">Facebook</td>
+													<td>{$facebook_link}</td>
+												</tr>
+												<tr>
+													<td class="icon"><span class="icon fa fa-twitter"></span></td>
+													<td class="item">Twitter</td>
+													<td>{$twitter_link}</td>
+												</tr>
+												<tr>
+													<td class="icon"><span class="icon fa fa-instagram"></span></td>
+													<td class="item">Instagram</td>
+													<td>{$instagram_link}</td>
+												</tr>
+												<tr>
+													<td class="icon"><span class="icon fa fa-question"></span></td>
+													<td class="item">About Me</td>
+													<td> {$about_}</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+>>>>>>> Stashed changes
 								</div>
 							</div>
 
@@ -121,11 +182,20 @@
 		</div>
 	</div>
 
+<<<<<<< Updated upstream
 	<footer>
 		<div class="text-center">
 			Alisimbi
 			<div class="copyright">
 				&copy; Copyright. All rights reserved
+=======
+		<footer>
+			<div class="text-center">
+				{$site_title_}
+				<div class="copyright">
+					{$copyrights_}
+				</div>
+>>>>>>> Stashed changes
 			</div>
 		</div>
 	</footer>
