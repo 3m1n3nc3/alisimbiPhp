@@ -118,30 +118,43 @@ function connector(type, target) {
   }
 }
 
-function fetch_state() {
-  var country = document.getElementById("register-country");
-  var country_id = country.options[country.selectedIndex].id; 
+$('.select-country-list').on('change',function (){
+  try{
+    let target =  $('#' +$(this).attr('data-target'));
+    fetch_state(this, target);
+  }
+  catch(e){
+    console.log(e.message);
+  }
+});
 
+
+function fetch_state(sender,receiver) { 
+  var sender_id = sender.options[sender.selectedIndex].id; 
+  
   $.ajax({
     type: 'POST',
     url: siteUrl+'/connection/location.php',
-    data: {country_id:country_id, type:2},
+    data: {country_id:sender_id, type:2},
     success: function(html) {
-      $('#register-state').html(html);
-      $('#register-state').attr('onchange', 'fetch_city()');
+      $(receiver).html(html);
+      $(receiver).on('change',function (){
+        let target = $('#' +$(this).attr('data-target'));
+        fetch_city(receiver, target);
+      });
     }
-  })
+  });
 }
 
-function fetch_city() {
-  var state = document.getElementById("register-state");
-  var state_id = state.options[state.selectedIndex].id;
-  $.ajax({
+function fetch_city(sender, receiver) {
+  var sender_id = sender[0].options[sender[0].selectedIndex].id; 
+
+   $.ajax({
     type: 'POST',
     url: siteUrl+'/connection/location.php',
-    data: {state_id:state_id, type:1},
+    data: {state_id:sender_id, type:1},
     success: function(html) {
-      $('#register-city').html(html);
+      $(receiver).html(html);
     }
   })
 }

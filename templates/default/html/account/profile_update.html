@@ -22,20 +22,21 @@
 								<input type="phone" name="phone" class="form-control mx-2" id="phone" value="{$phone_}" placeholder="Phone"> 
 							</p>
 						</div>
+						{$update_social}
 						<div class="border rounded p-2 m-1">
 							Country, State, City
 							<hr>
 							<p class="card-text form-inline">
-								<select name="country" class="form-control mx-2" id="country" onchange="fetch_state()">
+								<select name="country" class="form-control mx-2 m-1 select-country-list" data-target="register-state" id="country">
 									<option disabled selected>Select your country</option>
 									{$list_country}
 								</select> 
-								<select name="state" class="form-control mx-2" id="state">
-									<option disabled>Select your state</option>
+								<select name="state" class="form-control m-1 mx-2" id="register-state" data-target="register-city">
+									{$state_select}
 									{$countries}
-								</select> 
-								<select name="city" class="form-control mx-2"  id="city">
-									<option disabled>Select your city</option>
+								</select>
+								<select name="city" class="form-control m-1 mx-2"  id="register-city">
+									{$city_select}
 									{$countries}
 								</select> 
 							</p>

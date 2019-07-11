@@ -154,6 +154,13 @@ class framework {
 		$firstname = $this->db_prepare_input($this->firstname);
 		$lastname = $this->db_prepare_input($this->lastname);
 		$phone = $this->db_prepare_input($this->phone);
+		$xql = '';
+		if (isset($this->social)) {
+            $facebook = $this->facebook;
+            $twitter = $this->twitter;
+            $instagram = $this->instagram;
+            $xql = sprintf(", `facebook` = '%s', `twitter` = '%s', `instagram` = '%s'", $facebook, $twitter, $instagram);
+		}
 		$country = $this->db_prepare_input($this->country);
 		$state = $this->db_prepare_input($this->state) == 'undefined' ? '' : $this->db_prepare_input($this->state);
 		$city = $this->db_prepare_input($this->city) == 'undefined' ? '' : $this->db_prepare_input($this->city);
@@ -164,8 +171,8 @@ class framework {
 	     	$response = errorMessage($LANG['_all_required']);  
 	    } else {  
 	    	$sql = sprintf("UPDATE " . TABLE_USERS . " SET `f_name` = '%s', `l_name` = '%s', ".
-	    	"`phone` = '%s', `country` = '%s', `state` = '%s', `city` = '%s', `about` = '%s' WHERE ".
-	    	"`id` = '%s'", $firstname, $lastname, $phone, $country, $state, $city, $about, $user['id']);
+	    	"`phone` = '%s', `country` = '%s', `state` = '%s', `city` = '%s', `about` = '%s'%s WHERE ".
+	    	"`id` = '%s'", $firstname, $lastname, $phone, $country, $state, $city, $about, $xql, $user['id']);
 	    	return $this->dbProcessor($sql, 0);
 			$header = cleanUrls($SETT['url'].'/index.php?page=account&profile=home');
 		}
