@@ -44,9 +44,9 @@ function mainContent() {
             $PTMPL['twitter'] = $user['twitter'];
             $PTMPL['instagram'] = $user['instagram'];
 
-						$PTMPL['instagram_link'] = $user['instagram'] ? '<a href="http://instagram.com/'.$user['instagram'].'">http://instagram.com/'.$user['instagram'].'</a>' : '';
-						$PTMPL['twitter_link'] = $user['twitter'] ? '<a href="http://twitter.com/'.$user['twitter'].'">http://instagram.com/'.$user['twitter'].'</a>' : '';
-						$PTMPL['facebook_link'] =  $user['facebook'] ? '<a href="http://facebook.com/'.$user['facebook'].'">http://facebook.com/'.$user['facebook'].'</a>' : '';
+			$PTMPL['instagram_link'] = $user['instagram'] ? '<a href="http://instagram.com/'.$user['instagram'].'">http://instagram.com/'.$user['instagram'].'</a>' : '';
+			$PTMPL['twitter_link'] = $user['twitter'] ? '<a href="http://twitter.com/'.$user['twitter'].'">http://instagram.com/'.$user['twitter'].'</a>' : '';
+			$PTMPL['facebook_link'] =  $user['facebook'] ? '<a href="http://facebook.com/'.$user['facebook'].'">http://facebook.com/'.$user['facebook'].'</a>' : '';
 
             $PTMPL['city_'] = $user['city'];
             $PTMPL['state_'] = $user['state'];
@@ -83,7 +83,7 @@ function mainContent() {
 				$courseArr = getCourses();
 				$course = '';
 				foreach ($courseArr as $rslt) {
-					$course .= courseModuleCard($rslt);
+					$course .= userCourseModuleCard($rslt);
 				}
 				$PTMPL['course'] = $course;
 

@@ -317,6 +317,65 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
         $intro = $framework->myTruncate($contentArr['intro'], 150);
         $photo = getImage($contentArr['cover'], 1);
         $edlink = cleanUrls($SETT['url'].'/index.php?page=training&module=edit&moduleid='.$contentArr['id']);
+        $view = cleanUrls($SETT['url'].'/index.php?page=training&course=study&courseid='.$contentArr['course_id'].'&moduleid='.$contentArr['id']);
+        $edit = $user_role >= 3 ? '<a href="'.$edlink.'" class="btn btn-sm btn-outline-secondary">Edit</a>' : '';
+        $vb = $text == 1 ? '<a href="'.$view.'" class="btn btn-sm btn-outline-secondary">Start</a>' : '';
+    } else {
+        // This controls the courses
+        $intro = $framework->myTruncate($contentArr['intro'], 200);
+        $photo = getImage($contentArr['cover'], 1);
+        $edlink = cleanUrls($SETT['url'].'/index.php?page=training&course=edit&courseid='.$contentArr['id']);
+        $view = cleanUrls($SETT['url'].'/index.php?page=training&course=view&courseid='.$contentArr['id']);
+        $edit = $user_role >= 3 ? '<a href="'.$edlink.'" class="btn btn-sm btn-outline-secondary">Edit</a>' : '';
+        $vb = $text == 1 ? '<a href="'.$view.'" class="btn btn-sm btn-outline-secondary">View Details</a>' : '';
+    }
+
+    // if $text = 0 don't show the $intro
+   $intro = $text ? $intro : ''; 
+
+    $card = '
+    <div class="accordion" id="module_accordion">
+        <div class="module-tile module-tile-wide">
+            <div class="module-header">
+                <div class="data-icon">
+                    <img class="" src="'.$photo.'" title="'.$contentArr['title'].' thumbnail" alt="'.$contentArr['title'].' thumbnail">
+                </div>
+                <div class="data-info">
+                    <div class="title">
+                        <a href="#module_'.$contentArr['id'].'" class="collapsed" data-toggle="collapse" data-target="#module_'.$contentArr['id'].'" aria-expanded="false" aria-controls="module_'.$contentArr['id'].'">
+                            '.$contentArr['title'].'
+                        </a>
+                    </div>
+                </div>
+                <span class="data-toggle">
+                    <a href="#module_'.$contentArr['id'].'" class="collapsed" data-toggle="collapse" data-target="#module_'.$contentArr['id'].'" aria-expanded="false" aria-controls="module_'.$contentArr['id'].'">
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                </span>
+            </div>
+            <div id="module_'.$contentArr['id'].'" class="collapse data-content" aria-labelledby="module_heading_'.$contentArr['id'].'" data-parent="#module_accordion">
+                <div class="">
+                    '.$intro.'<p>'.$vb.$edit.'</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    ';
+
+    return $card;
+}
+
+// course and modules boxes HTML
+function userCourseModuleCard($contentArr, $type = null, $text = 1) {
+    global $user_role, $framework, $SETT;
+    $col = '4';
+    $duration = ' ';
+    if ($type) {
+        // This controls the modules
+        $col = '3';
+        $intro = $framework->myTruncate($contentArr['intro'], 150);
+        $photo = getImage($contentArr['cover'], 1);
+        $edlink = cleanUrls($SETT['url'].'/index.php?page=training&module=edit&moduleid='.$contentArr['id']);
         $view = cleanUrls($SETT['url'].'/index.php?page=training&course=view&courseid='.$contentArr['course_id'].'&moduleid='.$contentArr['id']);
         $edit = $user_role >= 3 ? '<a href="'.$edlink.'" class="btn btn-sm btn-outline-secondary">Edit</a>' : '';
         $vb = $text == 1 ? '<a href="'.$view.'" class="btn btn-sm btn-outline-secondary">Start</a>' : '';
@@ -350,37 +409,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
             </div>
         </div>
     </div>
-    ';
-
-    $card = '
-    <div class="accordion" id="module_accordion">
-
-          <div class="module-tile module-tile-wide">
-            <div class="module-header">
-              <div class="data-icon">
-              <img class="" src="'.$photo.'" title="'.$contentArr['title'].' thumbnail" alt="'.$contentArr['title'].' thumbnail">
-              </div>
-              <div class="data-info">
-                <div class="title">
-                  <a href="#module_'.$contentArr['id'].'" class="collapsed" data-toggle="collapse" data-target="#module_'.$contentArr['id'].'" aria-expanded="false" aria-controls="module_'.$contentArr['id'].'">
-                    '.$contentArr['title'].'
-                  </a>
-                </div>
-              </div>
-              <span class="data-toggle">
-                <a href="#module_'.$contentArr['id'].'" class="collapsed" data-toggle="collapse" data-target="#module_'.$contentArr['id'].'" aria-expanded="false" aria-controls="module_'.$contentArr['id'].'">
-                  <i class="fa fa-angle-down"></i>
-                </a>
-              </span>
-            </div>
-            <div id="module_'.$contentArr['id'].'" class="collapse data-content" aria-labelledby="module_heading_'.$contentArr['id'].'" data-parent="#module_accordion">
-              <div class="">
-              '.$intro.' Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </div>
-            </div>
-          </div>
-      </div>
-    ';
+    '; 
 
     return $card;
 }
@@ -407,7 +436,7 @@ function userRating($rating) {
 
 function instructorCard($ins) {
     $inst_fullname = $ins['f_name'].' '.$ins['l_name'];
-    $inst_about = $ins['about'];
+    $inst_about = $ins['about'] ? $ins['about'] : 'Instructor has not written about themselves';
     $inst_photo = getImage($ins['photo'], 1);
     $inst_rating = userRating($ins['rating']);
 
