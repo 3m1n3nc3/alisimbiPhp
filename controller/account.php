@@ -71,6 +71,14 @@ function mainContent() {
         } else {
             $framework->redirect('account&profile=home');
         }
+
+				$courseArr = getCourses();
+				$course = '';
+				foreach ($courseArr as $rslt) {
+					$course .= courseModuleCard($rslt);
+				}
+				$PTMPL['course'] = $course;
+				
     } else {
         if (isset($_GET['register']) && $_GET['register'] == 'true') {
             if ($user) {
