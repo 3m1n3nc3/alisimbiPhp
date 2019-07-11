@@ -104,7 +104,7 @@ function getImage($image, $type = null) {
     global $SETT;
     if (!$image) {
         $dir = $SETT['url'].'/uploads/img/';
-        $image = 'default.png'; 
+        $image = 'default.png';
     }
     if ($type == null) {
         // Site specific images
@@ -353,9 +353,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
     ';
 
     $card = '
-<<<<<<< Updated upstream
     <div class="accordion" id="module_accordion">
-
           <div class="module-tile module-tile-wide">
             <div class="module-header">
               <div class="data-icon">
@@ -376,32 +374,13 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
             </div>
             <div id="module_'.$contentArr['id'].'" class="collapse data-content" aria-labelledby="module_heading_'.$contentArr['id'].'" data-parent="#module_accordion">
               <div class="">
-              '.$intro.' Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              '.$intro.'
               </div>
             </div>
           </div>
       </div>
     ';
 
-=======
-    <div class="module-widget">
-        <div class="module-tile module-tile-wide">
-          <div class="module-header">
-            <div class="data-icon">
-            <img class="" src="'.$photo.'" title="'.$contentArr['title'].' thumbnail" alt="'.$contentArr['title'].' thumbnail">
-            </div>
-            <div class="data-info">
-              <div class="title">'.$contentArr['title'].'</div>
-            </div>
-          <span class="data-toggle">
-            <a href="#" data-toggle="module">
-              <i class="fa fa-angle-down"></i>
-            </a>
-          </span>
-          </div>
-        </div>
-    </div>';
->>>>>>> Stashed changes
     return $card;
 }
 
@@ -432,15 +411,9 @@ function instructorCard($ins) {
     $inst_rating = userRating($ins['rating']);
 
     $social = '';
-<<<<<<< Updated upstream
     $social .= $ins['facebook'] ? '<span class="media"><a href="'.$ins['facebook'].'"><i class="fa fa-mobile"></i></a></span>' : '';
     $social .= $ins['twitter'] ? '<span class="media"><a href="'.$ins['twitter'].'"><i class="fa fa-mobile"></i></a></span>' : '';
     $social .= $ins['instagram'] ? '<span class="media"><a href="'.$ins['instagram'].'"><i class="fa fa-mobile"></i></a></span>' : '';
-=======
-    $social .= $ins['facebook'] ? '<li class=""><a href="'.$ins['facebook'].'"><i class="fa fa-mobile"></i></a></li>' : '';
-    $social .= $ins['twitter'] ? '<li class=""><a href="'.$ins['twitter'].'"><i class="fa fa-mobile"></i></a></li>' : '';
-    $social .= $ins['instagram'] ? '<li class=""><a href="'.$ins['instagram'].'"><i class="fa fa-mobile"></i></a></li>' : '';
->>>>>>> Stashed changes
 
     $card = '
     <div class="instructor">

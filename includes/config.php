@@ -40,7 +40,8 @@ $SETT['email'] = 'support@passengine.com';
 */
 $SETT['template_path'] = 'templates';
 
-$action = array('welcome'					=> 'welcome',
+$action = array(
+				'welcome'					=> 'welcome',
 				'news'						=> 'news',
 				'account'					=> 'account',
 				'training'					=> 'training'
