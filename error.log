@@ -14796,3 +14796,4 @@
 [Wed Jul 10 15:49:50.505042 2019] [php7:warn] [pid 25954] [client 127.0.0.1:44494] PHP Warning:  Illegal string offset 'role' in /var/www/dev/alisimbi/includes/classes.php on line 237, referer: http://dev.alisimbi/
 [Wed Jul 10 15:49:50.505070 2019] [php7:notice] [pid 25954] [client 127.0.0.1:44494] PHP Notice:  Undefined variable: role in /var/www/dev/alisimbi/includes/classes.php on line 243, referer: http://dev.alisimbi/
 [Wed Jul 10 15:49:50.505498 2019] [php7:warn] [pid 25954] [client 127.0.0.1:44494] PHP Warning:  Illegal string offset 'username' in /var/www/dev/alisimbi/connection/connector.php on line 16, referer: http://dev.alisimbi/
+[Thu Jul 11 14:25:15.850589 2019] [php7:warn] [pid 11170] [client 127.0.0.1:36754] PHP Warning:  Invalid argument supplied for foreach() in /var/www/dev/alisimbi/index.php on line 57

@@ -169,9 +169,9 @@ function getModules($type = null, $course = null) {
 }
 
 function getInstructors($course) {
-    global $framework; 
-    $sql = sprintf("SELECT * FROM " . TABLE_USERS . " AS users LEFT JOIN " . TABLE_INSTRUCTORS . " AS instructors ON `users`.`id` = `instructors`.`user_id`" 
-            . " WHERE course_id = '%s'", $course); 
+    global $framework;
+    $sql = sprintf("SELECT * FROM " . TABLE_USERS . " AS users LEFT JOIN " . TABLE_INSTRUCTORS . " AS instructors ON `users`.`id` = `instructors`.`user_id`"
+            . " WHERE course_id = '%s'", $course);
     return $framework->dbProcessor($sql, 1);
 }
 
@@ -370,7 +370,6 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
     </div>';
     return $card;
 }
-<<<<<<< Updated upstream
 
 function userRating($rating) {
     $cs = '<i class="fa fa-star"></i>';
@@ -401,7 +400,7 @@ function instructorCard($ins) {
     $social = '';
     $social .= $ins['facebook'] ? '<li class=""><a href="'.$ins['facebook'].'"><i class="fa fa-mobile"></i></a></li>' : '';
     $social .= $ins['twitter'] ? '<li class=""><a href="'.$ins['twitter'].'"><i class="fa fa-mobile"></i></a></li>' : '';
-    $social .= $ins['instagram'] ? '<li class=""><a href="'.$ins['instagram'].'"><i class="fa fa-mobile"></i></a></li>' : '';   
+    $social .= $ins['instagram'] ? '<li class=""><a href="'.$ins['instagram'].'"><i class="fa fa-mobile"></i></a></li>' : '';
 
     $card = '
     <div class="instructor">
@@ -430,5 +429,3 @@ function instructorCard($ins) {
     </div>';
     return $card;
 }
-=======
->>>>>>> Stashed changes
