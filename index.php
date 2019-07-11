@@ -49,7 +49,7 @@ $PTMPL['course_intro_new'] = $course_new['intro'];
 $module_newArr = getModules(1, $course_new['id']);
 if ($module_newArr) {
 	foreach ($module_newArr  as $rslt) {
-		$courses_modules .= courseModuleCard($rslt, 1, 0);
+		$courses_modules .= courseModuleCard($rslt, 1, 1);
 	}
 	$PTMPL['course_modules_new'] = $courses_modules;
 }
