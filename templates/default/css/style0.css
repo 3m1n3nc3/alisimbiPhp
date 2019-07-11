@@ -1717,7 +1717,7 @@ a, a:hover, a:focus {
 
 .background_lightgrey {
   color: hsl(0, 0%, 76%);
-  background: hsl(0, 0%, 96%);
+  background: #fafafa;
 }
 .background_pink {
   color: #0a243e;

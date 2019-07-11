@@ -329,7 +329,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
     }
 
     // if $text = 0 don't show the $intro
-   $intro = $text == 1 ? '<p class="card-text"> '.$intro.' </p>' : '';
+   $intro = $text ? '<p class="card-text"> '.$intro.' </p>' : '';
     // This is the course and module HTML card
     $card = '
     <div class="col-md-'.$col.'">
@@ -351,23 +351,35 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
     ';
 
     $card = '
-    <div class="module-widget">
-        <div class="module-tile module-tile-wide">
-          <div class="module-header">
-            <div class="data-icon">
-            <img class="" src="'.$photo.'" title="'.$contentArr['title'].' thumbnail" alt="'.$contentArr['title'].' thumbnail">
+    <div class="accordion" id="module_accordion">
+
+          <div class="module-tile module-tile-wide">
+            <div class="module-header">
+              <div class="data-icon">
+              <img class="" src="'.$photo.'" title="'.$contentArr['title'].' thumbnail" alt="'.$contentArr['title'].' thumbnail">
+              </div>
+              <div class="data-info">
+                <div class="title">
+                  <a href="#module_'.$contentArr['id'].'" class="collapsed" data-toggle="collapse" data-target="#module_'.$contentArr['id'].'" aria-expanded="false" aria-controls="module_'.$contentArr['id'].'">
+                    '.$contentArr['title'].'
+                  </a>
+                </div>
+              </div>
+              <span class="data-toggle">
+                <a href="#module_'.$contentArr['id'].'" class="collapsed" data-toggle="collapse" data-target="#module_'.$contentArr['id'].'" aria-expanded="false" aria-controls="module_'.$contentArr['id'].'">
+                  <i class="fa fa-angle-down"></i>
+                </a>
+              </span>
             </div>
-            <div class="data-info">
-              <div class="title">'.$contentArr['title'].'</div>
+            <div id="module_'.$contentArr['id'].'" class="collapse data-content" aria-labelledby="module_heading_'.$contentArr['id'].'" data-parent="#module_accordion">
+              <div class="">
+              '.$intro.' Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </div>
             </div>
-          <span class="data-toggle">
-            <a href="#" data-toggle="module">
-              <i class="fa fa-angle-down"></i>
-            </a>
-          </span>
           </div>
-        </div>
-    </div>';
+      </div>
+    ';
+
     return $card;
 }
 
@@ -398,9 +410,9 @@ function instructorCard($ins) {
     $inst_rating = userRating($ins['rating']);
 
     $social = '';
-    $social .= $ins['facebook'] ? '<li class=""><a href="'.$ins['facebook'].'"><i class="fa fa-mobile"></i></a></li>' : '';
-    $social .= $ins['twitter'] ? '<li class=""><a href="'.$ins['twitter'].'"><i class="fa fa-mobile"></i></a></li>' : '';
-    $social .= $ins['instagram'] ? '<li class=""><a href="'.$ins['instagram'].'"><i class="fa fa-mobile"></i></a></li>' : '';
+    $social .= $ins['facebook'] ? '<span class="media"><a href="'.$ins['facebook'].'"><i class="fa fa-mobile"></i></a></span>' : '';
+    $social .= $ins['twitter'] ? '<span class="media"><a href="'.$ins['twitter'].'"><i class="fa fa-mobile"></i></a></span>' : '';
+    $social .= $ins['instagram'] ? '<span class="media"><a href="'.$ins['instagram'].'"><i class="fa fa-mobile"></i></a></span>' : '';
 
     $card = '
     <div class="instructor">
@@ -413,6 +425,9 @@ function instructorCard($ins) {
           <div class="pt-3">
             <p class="i-name">'.$inst_fullname.'</p>
             <div class="i-rating">'.$inst_rating.'</div>
+            <div class="i-social">
+              '.$social.'
+            </div>
           </div>
         </div>
         <div class="col-md-7">
@@ -422,9 +437,7 @@ function instructorCard($ins) {
             </p>
           </div>
         </div>
-        <ul class="i-social">
-          '.$social.'
-        </ul>
+
       </div>
     </div>';
     return $card;
