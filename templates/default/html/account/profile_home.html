@@ -20,115 +20,115 @@
 				</div>
 			</div>
 		</nav>
+	</header>
+	<div class="" id="dashboard_tab">
+		<ul class="nav nav-tabs" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link active" id="dashboard_tab" data-toggle="tab" href="#dashboard" role="tab"
+				aria-controls="dashboard" aria-selected="true">Dashboard</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="notification_tab" data-toggle="tab" href="#notification" role="tab"
+				aria-controls="notifiaction" aria-selected="false">Notifications</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="profile_tab" data-toggle="tab" href="#profile" role="tab"
+				aria-controls="profile" aria-selected="false">Profile</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="course_tab" data-toggle="tab" href="#course" role="tab"
+				aria-controls="course" aria-selected="false">Courses</a>
+			</li>
+		</ul>
 
-		<div class="" id="dashboard_tab">
-			<ul class="nav nav-tabs" role="tablist">
-				<li class="nav-item">
-					<a class="nav-link active" id="dashboard_tab" data-toggle="tab" href="#dashboard" role="tab"
-					aria-controls="dashboard" aria-selected="true">Dashboard</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" id="notification_tab" data-toggle="tab" href="#notification" role="tab"
-					aria-controls="notifiaction" aria-selected="false">Notifications</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" id="profile_tab" data-toggle="tab" href="#profile" role="tab"
-					aria-controls="profile" aria-selected="false">Profile</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" id="course_tab" data-toggle="tab" href="#course" role="tab"
-					aria-controls="course" aria-selected="false">Courses</a>
-				</li>
-			</ul>
-
-			<div class="tab-content">
-				<div class="tab-pane fade show " id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-					<div class="pad-section">
-						<header>
-							<h3 class="header-text">
-								Welcome back
-							</h3>
-						</header>
-					</div>
+		<div class="tab-content">
+			<div class="tab-pane fade show " id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+				<div class="pad-section">
+					<header>
+						<h3 class="header-text">
+							Welcome back
+						</h3>
+					</header>
 				</div>
-				<div class="tab-pane fade  show" id="notification" role="tabpanel" aria-labelledby="notification-tab">
-					<div class="pad-section">
-						<header>
-							<h3 class="header-text">
-								Notifications
-							</h3>
-						</header>
-					</div>
+			</div>
+			<div class="tab-pane fade  show" id="notification" role="tabpanel" aria-labelledby="notification-tab">
+				<div class="pad-section">
+					<header>
+						<h3 class="header-text">
+							Notifications
+						</h3>
+					</header>
 				</div>
-				<div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-					<div class="pad-section">
-						<header>
-							<h3 class="header-text">
-								Your profile
-							</h3>
-						</header>
-						<div class="row">
-							<div class="col-md-3">
-								<div class="user-info-list card card-default p-3 text-center">
-									<div class="profile_img">
-										<img src="{$photo}" class=" img-thumbnail m-auto ">
-									</div>
-									<div class="user-display-name">{$fullname}</div>
+			</div>
+			<div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+				<div class="pad-section">
+					<header>
+						<h3 class="header-text">
+							Your profile
+						</h3>
+					</header>
+					<div class="row">
+						<div class="col-md-3">
+							<div class="user-info-list card card-default p-3 text-center">
+								<div class="profile_img">
+									<img src="{$photo}" class=" img-thumbnail m-auto ">
 								</div>
-
+								<div class="user-display-name">{$fullname}</div>
 							</div>
 
-							<div class="col-md-8 ">
-								<div class="user-info-list card card-default">
-									<div class="card-header card-header-divider">About Me</div>
-									<div class="card-body">
-										<table class="no-border no-strip skills">
-											<tbody class="no-border-x no-border-y">
-												<tr>
-													<td class="icon"><span class="icon fa fa-envelope"></span></td>
-													<td class="item">Email address</td>
-													<td><a href="#">{$email_add}</a></td>
-												</tr>
-												<tr>
-													<td class="icon"><span class="icon fa fa-mobile"></span></td>
-													<td class="item">Phone</td>
-													<td> <a href="#">{$phone_}</a></td>
-												</tr>
-												<tr>
-													<td class="icon"><span class="icon fa fa-map-marker"></span></td>
-													<td class="item">Location</td>
-													<td> <a href="#">{$city_}, {$country_}</a></td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
+						</div>
+
+						<div class="col-md-8 ">
+							<div class="user-info-list card card-default">
+								<div class="card-header card-header-divider">About Me</div>
+								<div class="card-body">
+									<table class="no-border no-strip skills">
+										<tbody class="no-border-x no-border-y">
+											<tr>
+												<td class="icon"><span class="icon fa fa-envelope"></span></td>
+												<td class="item">Email address</td>
+												<td><a href="#">{$email_add}</a></td>
+											</tr>
+											<tr>
+												<td class="icon"><span class="icon fa fa-mobile"></span></td>
+												<td class="item">Phone</td>
+												<td> <a href="#">{$phone_}</a></td>
+											</tr>
+											<tr>
+												<td class="icon"><span class="icon fa fa-map-marker"></span></td>
+												<td class="item">Location</td>
+												<td> <a href="#">{$city_}, {$country_}</a></td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
-
-								<p class="hint">You can always update your profile, your certificate will contain the details found when it is being prepared.</p>
-								<a href="{$update_}" class="btn background_green text-white">Update Profile</a>
-
 							</div>
+
+							<p class="hint">You can always update your profile, your certificate will contain the details found when it is being prepared.</p>
+							<a href="{$update_}" class="btn background_green text-white">Update Profile</a>
+
 						</div>
 					</div>
 				</div>
-				<div class="tab-pane fade  show" id="course" role="tabpanel" aria-labelledby="course-tab">
-					<div class="pad-section">
-						<header>
-							<h3 class="header-text">
-								Courses
-							</h3>
-						</header>
-					</div>
+			</div>
+			<div class="tab-pane fade  show" id="course" role="tabpanel" aria-labelledby="course-tab">
+				<div class="pad-section">
+					<header>
+						<h3 class="header-text">
+							Courses
+						</h3>
+					</header>
 				</div>
 			</div>
 		</div>
-
-		<footer>
-			<div class="text-center">
-				Alisimbi
-				<div class="copyright">
-					&copy; Copyright. All rights reserved
-				</div>
-			</div>
-		</footer>
 	</div>
+
+	<footer>
+		<div class="text-center">
+			Alisimbi
+			<div class="copyright">
+				&copy; Copyright. All rights reserved
+			</div>
+		</div>
+	</footer>
+</div>
