@@ -24,3 +24,4 @@ if (isset($_SESSION['username'])) {
 }
 
 $user_role = $framework->userRoles();
+$contact_ = getContactInfo()[0];

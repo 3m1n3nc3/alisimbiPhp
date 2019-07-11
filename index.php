@@ -1,23 +1,27 @@
 <?php
-require_once(__DIR__ . '/includes/autoload.php'); 
- 
+require_once(__DIR__ . '/includes/autoload.php');
+
 if(isset($_GET['page']) && isset($action[$_GET['page']])) {
 	$page_name = $action[$_GET['page']];
 } else {
 	$page_name = 'homepage';
-} 
- 
-require_once("controller/{$page_name}.php");  
+}
+if ($user && $page_name == 'homepage') {
+	//$framework->redirect('account&profile=home');
+}
 
-$PTMPL['site_title'] = $configuration['site_name']; 
+require_once("controller/{$page_name}.php");
+
+$PTMPL['site_title'] = $configuration['site_name'];
+$PTMPL['site_logo'] = getImage('logo-full.png', 2);
 $PTMPL['site_url'] = $SETT['url'];
 $PTMPL['favicon'] = 'favicon.ico';
 
 $captcha_url = '/includes/vendor/goCaptcha/goCaptcha.php?gocache='.strtotime('now');
 $PTMPL['captcha_url'] = $SETT['url'].$captcha_url;
 
-//$PTMPL['token'] = $_SESSION['token_id'];  
-  																																																																		
+//$PTMPL['token'] = $_SESSION['token_id'];
+
 $PTMPL['language'] = $_COOKIE['lang'];
 
 $PTMPL['register_link'] = cleanUrls($SETT['url'].'/?page=account&register=true');
@@ -28,7 +32,7 @@ $PTMPL['set_country'] = set_local(1, '');
 $coursesArr = getCourses();
 $courses = '';
 if ($coursesArr) {
-	foreach ($coursesArr as $rslt) { 
+	foreach ($coursesArr as $rslt) {
 		$courses .= courseModuleCard($rslt);
 	}
 	$PTMPL['available_courses'] = $courses;
@@ -44,7 +48,7 @@ $PTMPL['course_cover_new'] = getImage($course_new['cover'], 1);
 $PTMPL['course_intro_new'] = $course_new['intro'];
 $module_newArr = getModules(1, $course_new['id']);
 if ($module_newArr) {
-	foreach ($module_newArr  as $rslt) { 
+	foreach ($module_newArr  as $rslt) {
 		$courses_modules .= courseModuleCard($rslt, 1, 0);
 	}
 	$PTMPL['course_modules_new'] = $courses_modules;
@@ -63,11 +67,12 @@ if ($instructorsArr) {
 
 // Show the footer
 $PTMPL['footer'] = contactInformation();
- 
+
 // Render the page
-$PTMPL['content'] = mainContent(); 
+$PTMPL['content'] = mainContent();
+$PTMPL['footer'] = 'contactInformation()';
 
 $theme = new themer('container');
 echo $theme->make();
-  
+
 ?>

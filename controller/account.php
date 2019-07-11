@@ -1,6 +1,10 @@
 <?php
 function mainContent() {
+<<<<<<< Updated upstream
 	global $PTMPL, $LANG, $SETT, $configuration, $framework, $marxTime, $user, $user_role;
+=======
+	global $PTMPL, $LANG, $SETT, $configuration, $framework, $marxTime, $user, $user_role, $contact_;
+>>>>>>> Stashed changes
 	// Dont touch anything above this line
 
 	$PTMPL['page_title'] = ucfirst($_GET['page']);
@@ -10,7 +14,7 @@ function mainContent() {
         if (isset($_GET['profile'])) {
             if ($_GET['profile'] == 'home') {
                 $theme = new themer('account/profile_home');
-                $OLD_THEME = $PTMPL; $PTMPL = array();
+                // $OLD_THEME = $PTMPL; $PTMPL = array();
             } elseif ($_GET['profile'] == 'update') {
                 $theme = new themer('account/profile_update');
                 $OLD_THEME = $PTMPL; $PTMPL = array();
@@ -29,7 +33,7 @@ function mainContent() {
                         $framework->instagram = $_POST['twitter'];
                         $framework->social = 1;
                     }
-                    echo $framework->updateProfile();
+                    $framework->updateProfile();
                     $framework->redirect('account&profile=home');
                 }
             }
@@ -39,9 +43,15 @@ function mainContent() {
             $PTMPL['lastname'] = $user['l_name'];
             $PTMPL['email_add'] = $user['email'];
             $PTMPL['phone_'] = $user['phone'];
+
             $PTMPL['facebook'] = $user['facebook'];
             $PTMPL['twitter'] = $user['twitter'];
             $PTMPL['instagram'] = $user['instagram'];
+
+						$PTMPL['instagram_link'] = $user['instagram'] ? '<a href="http://instagram.com/'.$user['instagram'].'">http://instagram.com/'.$user['instagram'].'</a>' : '';
+						$PTMPL['twitter_link'] = $user['twitter'] ? '<a href="http://twitter.com/'.$user['twitter'].'">http://instagram.com/'.$user['twitter'].'</a>' : '';
+						$PTMPL['facebook_link'] =  $user['facebook'] ? '<a href="http://facebook.com/'.$user['facebook'].'">http://facebook.com/'.$user['facebook'].'</a>' : '';
+
             $PTMPL['city_'] = $user['city'];
             $PTMPL['state_'] = $user['state'];
             $PTMPL['country_'] = $user['country'];
@@ -49,6 +59,8 @@ function mainContent() {
             $PTMPL['city_select'] = $user['city'] ? '<option selected="selected" value="'.$user['city'].'">'.$user['city'].'</option>' : '<option disabled>Select your city</option>';
             $PTMPL['about_'] = $user['about'];
             $PTMPL['update_'] = cleanUrls($SETT['url'].'/index.php?page=account&profile=update');
+
+			$PTMPL['user_role'] = ucfirst($user['role']);
 
             // If the user is administrative show the social inputs
             $update_social = '';
@@ -98,10 +110,12 @@ function mainContent() {
             $framework->redirect();
         }
     }
+		$PTMPL['copyrights_'] = '&copy; '. date('Y').' '.$contact_['c_line'];
+		$PTMPL['site_title_'] = $configuration['site_name'];
 
     	// Change themer('hompage/content') to themer('yourhtmldirectory/yourfile')
         $account = $theme->make();
-        $PTMPL = $OLD_THEME; unset($OLD_THEME);
+        // $PTMPL = $OLD_THEME; unset($OLD_THEME);
     	return $account ;
     }
 ?>
