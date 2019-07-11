@@ -28,13 +28,17 @@
   <!-- <script type="text/javascript" src="{$site_url}/{$template_path}/{$template_name}/js/jquery.min.js"></script> -->
 
   <script type="text/javascript">
-    const siteUrl = "{$site_url}";
+  const siteUrl = "{$site_url}";
   </script>
 
   <!--/.Head section-->
 </head>
 <body>
-  {$content}
+  <div class="loader_bg">
+    <div class="loader"></div>
+  </div>
+    <!-- Header -->
+    {$content}
 
   <!-- Scripts -->
   <script type="text/javascript" src="{$site_url}/{$template_path}/{$template_name}/js/jquery.min.js"></script>
