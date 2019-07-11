@@ -1,10 +1,6 @@
 <?php
 function mainContent() {
-<<<<<<< Updated upstream
-	global $PTMPL, $LANG, $SETT, $configuration, $framework, $marxTime, $user, $user_role;
-=======
 	global $PTMPL, $LANG, $SETT, $configuration, $framework, $marxTime, $user, $user_role, $contact_;
->>>>>>> Stashed changes
 	// Dont touch anything above this line
 
 	$PTMPL['page_title'] = ucfirst($_GET['page']);
@@ -90,7 +86,7 @@ function mainContent() {
 					$course .= courseModuleCard($rslt);
 				}
 				$PTMPL['course'] = $course;
-				
+
     } else {
         if (isset($_GET['register']) && $_GET['register'] == 'true') {
             if ($user) {

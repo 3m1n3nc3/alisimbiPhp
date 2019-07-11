@@ -20,7 +20,7 @@ define('DB_PREFIX', '');
 $SETT['dbdriver'] = 'mysql';
 $SETT['dbhost'] = 'localhost';
 $SETT['dbuser'] = 'root';
-$SETT['dbpass'] = 'Littleguy@007';
+$SETT['dbpass'] = 'friendship1A@';
 $SETT['dbname'] = 'alisimbi';
 
 /*
@@ -40,7 +40,8 @@ $SETT['email'] = 'support@passengine.com';
 */
 $SETT['template_path'] = 'templates';
 
-$action = array('welcome'					=> 'welcome',
+$action = array(
+				'welcome'					=> 'welcome',
 				'news'						=> 'news',
 				'account'					=> 'account',
 				'training'					=> 'training'
