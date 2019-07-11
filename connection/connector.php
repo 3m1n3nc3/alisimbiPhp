@@ -50,29 +50,33 @@ if (isset($_POST['login'])) {
 
 	if ($username == '' || $password == '') {
      	$msg = errorMessage($LANG['_user_required']);  
-    } elseif ($firstname == '') {
+    } elseif ($username == $user_data['username']) {
+    	$msg = infoMessage($LANG['username_used']);
+	} elseif ($firstname == '') {
      	$msg = errorMessage($LANG['_firstname_required']);  
     } elseif ($lastname == '') {
      	$msg = errorMessage($LANG['_lastname_required']);  
     } elseif ($email == '') {
      	$msg = errorMessage($LANG['_email_required']);  
-    } elseif ($state == '') {
-     	$msg = errorMessage($LANG['_state_required']);  
-    } elseif ($city == '') {
-     	$msg = errorMessage($LANG['_city_required']);  
-    } elseif ($username == $user_data['username']) {
-    	$msg = infoMessage($LANG['username_used']);
-	} else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		$msg = infoMessage($LANG['email_invalid']);
 	} else if ($framework->checkEmail($email, 2) == $email) {
 		$msg = infoMessage($LANG['email_used']);
-	} else {
+	} else if (mb_strlen($framework->db_prepare_input($_POST['password'])) < 7) {
+		$msg = infoMessage($LANG['password_short']);
+	} else if ($framework->db_prepare_input($_POST['password']) !== $framework->db_prepare_input($_POST['cc_password'])) {
+		$msg = infoMessage($LANG['password_mismatch']);
+	} elseif ($state == '') {
+     	$msg = errorMessage($LANG['_state_required']);  
+    } elseif ($city == '') {
+     	$msg = errorMessage($LANG['_city_required']);  
+    } else {
 		$status = 1;
 		$opr = $framework->registrationCall();
 		$msg = $opr == 1 ? successMessage($LANG['_reg_success']) : $opr;
 		$header = cleanUrls($SETT['url'].'/index.php?page=account&profile=home');
 	}
 }
-
+//print_r($_POST);
 $data = array('message' => $msg, 'status' => $status, 'header' => $header);
 echo json_encode($data, JSON_UNESCAPED_SLASHES);

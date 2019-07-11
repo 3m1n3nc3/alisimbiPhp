@@ -158,8 +158,9 @@ function getCourses($type = null, $course = null) {
 
 function getModules($type = null, $course = null) {
     global $framework;
-    if ($type) {
-        $sql = sprintf("SELECT * FROM " . TABLE_MODULES . " WHERE id = '%s' AND status = '1'", $course);
+    if ($type) { 
+        $sql = sprintf("SELECT * FROM " . TABLE_MODULES . " AS modules LEFT JOIN " . TABLE_COURSE_MODULES . " AS course_modules ON `modules`.`id` = `course_modules`.`module_id`" 
+                . " WHERE course_id = '%s'", $course);
     } else {
         $sql = sprintf("SELECT * FROM " . TABLE_MODULES);
     }
@@ -296,24 +297,43 @@ function accountAccess($type = null) {
 }
 
 // course and modules boxes HTML
-function courseModuleCard($image, $title, $intro, $duration, $view, $edit, $type = null) {
-    global $user_role;
-    $edit = $user_role >= 3 ? '<a href="'.$edit.'" class="btn btn-sm btn-outline-secondary">Edit</a>' : '';
+function courseModuleCard($contentArr, $type = null, $text = 1) {
+    global $user_role, $framework, $SETT;
     $col = '4';
+    $duration = ' ';
     if ($type) {
+        // This controls the modules
         $col = '3';
+        $intro = $framework->myTruncate($contentArr['intro'], 150);
+        $photo = getImage($contentArr['cover'], 1);
+        $edlink = cleanUrls($SETT['url'].'/index.php?page=training&module=edit&moduleid='.$contentArr['id']); 
+        $view = cleanUrls($SETT['url'].'/index.php?page=training&course=view&courseid='.$contentArr['course_id'].'&moduleid='.$contentArr['id']);
+        $edit = $user_role >= 3 ? '<a href="'.$edlink.'" class="btn btn-sm btn-outline-secondary">Edit</a>' : '';
+        $vb = $text == 1 ? '<a href="'.$view.'" class="btn btn-sm btn-outline-secondary">Start</a>' : '';
+    } else {
+        // This controls the courses
+        $intro = $framework->myTruncate($contentArr['intro'], 200);
+        $photo = getImage($contentArr['cover'], 1);
+        $edlink = cleanUrls($SETT['url'].'/index.php?page=training&course=edit&courseid='.$contentArr['id']);
+        $view = cleanUrls($SETT['url'].'/index.php?page=training&course=view&courseid='.$contentArr['id']);
+        $edit = $user_role >= 3 ? '<a href="'.$edlink.'" class="btn btn-sm btn-outline-secondary">Edit</a>' : '';
+        $vb = $text == 1 ? '<a href="'.$view.'" class="btn btn-sm btn-outline-secondary">View Details</a>' : ''; 
     }
+
+    // if $text = 0 don't show the $intro
+   $intro = $text == 1 ? '<p class="card-text"> '.$intro.' </p>' : '';
+    // This is the course and module HTML card
     $card = '
     <div class="col-md-'.$col.'">
         <div class="card mb-4 shadow-sm">
-            <img src="'.$image.'" class="card-img-top">
+            <img src="'.$photo.'" class="card-img-top">
             <div class="card-body">
-                <h4 class="card-title">'.$title.'</h4>
-                <p class="card-text"> '.$intro.' </p>
+                <h4 class="card-title">'.$contentArr['title'].'</h4>
+                '.$intro.'
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                        <a href="'.$view.'" class="btn btn-sm btn-outline-secondary">View</a>
-                         '.$edit.'
+                        '.$vb.'
+                        '.$edit.' 
                     </div>
                     <small class="text-muted">'.$duration.'</small>
                 </div>

@@ -38,7 +38,7 @@ function set_local($type, $value) {
 	$locale = getLocale(); 
 	
 	if($type == 1) {
-		$rows = '<option disabled>Please Select Country</option>';
+		$rows = '<option disabled="disabled" selected="selected">Please Select Country</option>';
 		foreach($locale AS $name) {
 			if(mb_strtolower($value) == mb_strtolower($name['name'])) {
 				$selected = ' selected="selected"';
