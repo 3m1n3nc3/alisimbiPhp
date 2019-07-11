@@ -170,82 +170,7 @@
             <div class="tab-pane fade" id="instructor" role="tabpanel" aria-labelledby="contact-tab">
               <div class="instructors">
                 <!-- Instructor -->
-                <div class="instructor">
-                  <div class="row">
-                    <div class="col-md-5">
-                      <div class="i-profile-img">
-                        <img src="{$site_url}/{$template_path}/{$template_name}/images/t2.jpg"
-                        class="img-responsive" alt="">
-                      </div>
-                      <div class="pt-3">
-                        <p class="i-name">James Smith</p>
-                        <div class="i-rating">
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star-o"></i>
-                          <i class="fa fa-star-o"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-7">
-                      <div class="i-bio">
-                        <p >
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum sed
-                          aperiam deserunt,
-                          quos dolor natus, quas unde expedita numquam nisi eius quaerat
-                          commodi id nihil
-                          vitae quis esse iste cupiditate.
-                        </p>
-                      </div>
-                    </div>
-                    <ul class="i-social">
-                      <li class=""><a href="#"><i class="fa fa-mobile"></i></a></li>
-                      <li class=""><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li class=""><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li class=""><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li class=""><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="instructor">
-                  <div class="row">
-                    <div class="col-md-5">
-                      <div class="i-profile-img">
-                        <img src="{$site_url}/{$template_path}/{$template_name}/images/t1.jpg"
-                        class="img-responsive" alt="">
-                      </div>
-                      <div class="pt-3">
-                        <p class="i-name">Grace Mark</p>
-                        <div class="i-rating">
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star-o"></i>
-                          <i class="fa fa-star-o"></i>
-                        </div>
-                        <ul class="i-social">
-                          <li class=""><a href="#"><i class="fa fa-phone"></i></a></li>
-                          <li class=""><a href="#"><i class="fa fa-facebook"></i></a></li>
-                          <li class=""><a href="#"><i class="fa fa-twitter"></i></a></li>
-                          <li class=""><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                          <li class=""><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="col-md-7">
-                      <div class="i-bio">
-                        <p >
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum sed
-                          aperiam deserunt,
-                          quos dolor natus, quas unde expedita numquam nisi eius quaerat
-                          commodi id nihil
-                          vitae quis esse iste cupiditate.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {$instructor}
                 <!-- Instructor -->
               </div>
             </div>
@@ -643,8 +568,7 @@
                   <div class="form-group">
                     <label for="register-country" class="src-only">Country</label>
                     <div class="custom-select-box">
-                      <select class="" type="text" name="register-country"
-                        id="register-country" onclick="fetch_state()">
+                      <select type="text" name="register-country" class="select-country-list" data-target="register-state" id="register-country" >
                         {$set_country}
                       </select>
                     </div>
@@ -656,7 +580,7 @@
                         class="src-only">State</label>
                         <div class="custom-select-box">
                           <select name="register-state"
-                            id="register-state">
+                            id="register-state" data-target="register-city">
                             <option value="">Select State/Region</option>
                           </select>
                         </div>
@@ -666,8 +590,7 @@
                       <div class="form-group">
                         <label for="register-city" class="src-only">City</label>
                         <div class="custom-select-box">
-                          <select name="register-city"
-                            id="register-city">
+                          <select name="register-city" id="register-city">
                             <option value="">Select City</option>
                           </select>
                         </div>

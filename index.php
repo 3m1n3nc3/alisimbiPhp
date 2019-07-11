@@ -27,10 +27,12 @@ $PTMPL['set_country'] = set_local(1, '');
 // Show the list of available courses on the homepage
 $coursesArr = getCourses();
 $courses = '';
-foreach ($coursesArr as $rslt) { 
-	$courses .= courseModuleCard($rslt);
+if ($coursesArr) {
+	foreach ($coursesArr as $rslt) { 
+		$courses .= courseModuleCard($rslt);
+	}
+	$PTMPL['available_courses'] = $courses;
 }
-$PTMPL['available_courses'] = $courses;
 
 // Get the latest course available
 $new_course = getCourses();
@@ -41,10 +43,23 @@ $PTMPL['course_title_new'] = $course_new['title'];
 $PTMPL['course_cover_new'] = getImage($course_new['cover'], 1);
 $PTMPL['course_intro_new'] = $course_new['intro'];
 $module_newArr = getModules(1, $course_new['id']);
-foreach ($module_newArr  as $rslt) { 
-	$courses_modules .= courseModuleCard($rslt, 1, 0);
+if ($module_newArr) {
+	foreach ($module_newArr  as $rslt) { 
+		$courses_modules .= courseModuleCard($rslt, 1, 0);
+	}
+	$PTMPL['course_modules_new'] = $courses_modules;
 }
-$PTMPL['course_modules_new'] = $courses_modules;
+
+// Get a list of instructors for the new course
+$instructorsArr = getInstructors($course_new['id']);
+$instructor = '';
+if ($instructorsArr) {
+	foreach ($instructorsArr as $ins) {
+		$instructor .= instructorCard($ins);
+		// $ins_rating = userRating($rating$ins['rating']);
+	}
+	$PTMPL['instructor'] = $instructor;
+}
 
 // Show the footer
 $PTMPL['footer'] = contactInformation();
