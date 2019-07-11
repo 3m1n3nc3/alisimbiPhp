@@ -20,7 +20,7 @@ define('DB_PREFIX', '');
 $SETT['dbdriver'] = 'mysql';
 $SETT['dbhost'] = 'localhost';
 $SETT['dbuser'] = 'root';
-$SETT['dbpass'] = 'friendship1A@';
+$SETT['dbpass'] = 'Littleguy@007';
 $SETT['dbname'] = 'alisimbi';
 
 /*
