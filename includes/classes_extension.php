@@ -419,7 +419,7 @@ function instructorCard($ins) {
       <div class="row">
         <div class="col-md-5">
           <div class="i-profile-img">
-            <img src="'.$inst_photo.'"
+              <img src="'.$inst_photo.'"
             class="img-responsive" alt="">
           </div>
           <div class="pt-3">
