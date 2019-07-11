@@ -18,7 +18,7 @@ $PTMPL['template_url'] = $SETT['template_url'] = $SETT['template_path'].'/'.$SET
 
 // Check who is logged in right now
 if (isset($_SESSION['username'])) {
-	$user = $framework->userData($_SESSION['username'], 2);
+		$user = $framework->userData($_SESSION['username'], 2);
 } elseif (isset($_COOKIE['username'])) {
 	$user = $framework->userData($_COOKIE['username'], 2);
 }

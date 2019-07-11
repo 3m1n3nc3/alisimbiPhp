@@ -1,6 +1,4 @@
-<div class="loader_bg">
-  <div class="loader"></div>
-</div>
+
 <!-- Wrapper -->
 <div class="wrapper">
   <div class="vegas"></div>
@@ -663,8 +661,9 @@
                             <label for="register-country" class="src-only">Country</label>
                             <div class="custom-select-box">
                               <select class="" type="text" name="register-country"
-                              id="register-country">
-                              <option value="">Select Country</option>
+                              id="register-country" onchange="fetch_state()">
+                              <option value="" disabled selected="selected">Select Country</option>
+                              {$countries}
                             </select>
                           </div>
                         </div>
@@ -694,8 +693,7 @@
                       </div>
                     </div>
                     <button class="btn btn-block background_green2 text-light"
-                    type="button"
-                    onclick="connector(1, this)">Register
+                    type="button" name="register" onclick="connector(1, this)">Register
                   </button>
                 </form>
               </div>
@@ -761,10 +759,7 @@
             </span>
           </div>
         </div>
-        <!-- End wrapper -->
       </div>
       <div class="close-ss"></div>
     </main>
     <!-- End Main-->
-  </div>
-  <!--End Wrapper-->
