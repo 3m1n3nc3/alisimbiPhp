@@ -1673,7 +1673,7 @@ a, a:hover, a:focus {
 }
 
 .color_green2 {
-  color: #21ffd6;
+  color: #16cc6a;
 }
 
 .color_grey {
@@ -1726,12 +1726,12 @@ a, a:hover, a:focus {
 
 .background_green {
   color: #fff;
-  background: #0caa02 !important;
+  background: #1ecc8b !important;
 }
 
 .background_green2 {
   color: #fff;
-  background: linear-gradient(to top right, #2bff41, #2ac910) !important;
+  background: linear-gradient(to top , #2bff41, #1ecc8b) !important;
 }
 
 .background_black2 {
@@ -2034,10 +2034,10 @@ h1, .h1 {
   cursor: pointer;
   background: #fff;
   border: none;
-  border-radius: 40px;
+  border-radius: 30px;
   display: inline-block;
   vertical-align: middle;
-  /*line-height: 40px;*/
+  line-height: 30px;
   /*min-height: 40px;*/
   padding: 10px 20px;
   font-size: 16px;
@@ -2057,7 +2057,7 @@ h1, .h1 {
 }
 
 .btn:hover, .btn:focus {
-  box-shadow: 0 5px 75px -10px #435065;
+  box-shadow: 0 5px 4px -1px #3b9349;
 }
 
 .btn i {
