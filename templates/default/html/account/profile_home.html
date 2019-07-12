@@ -3,129 +3,147 @@
 <div class="wrapper">
 	<div id="dashboard_tab">
 		<header id="top-nav">
-		<!-- Image and text -->
-		<nav class="navbar navbar-expand-lg navbar-dark">
-			<div class="container">
-				<a class="navbar-brand" href="{$dashboard_url}">
-					<img src="{$logo_url}" width="30" height="30" alt="Alisimbi logo">
-				</a>
-
-				<div class="top_avatar">
-					<div class="user_avatar">
-						<a href="/"><img src="{$photo}" alt="{$username} avatar"></a>
-					</div>
-					<div class="user_name">
-						{$username}
-					</div>
-				</div>
-			</div>
-		</nav>
-
-		<div class="" >
-			<div class="tab">
+			<!-- Image and text -->
+			<nav class="navbar navbar-expand-lg navbar-dark">
 				<div class="container">
-					<ul class="nav nav-tabs" role="tablist">
-						<li class="nav-item">
-							<a class="nav-link active " id="profile_tab" data-toggle="tab" href="#profile" role="tab"
-							aria-controls="profile" aria-selected="false">Welcome</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" id="notification_tab" data-toggle="tab" href="#notification" role="tab"
-							aria-controls="notification" aria-selected="false">Notifications</a>
-						</li>
+					<a class="navbar-brand" href="{$dashboard_url}">
+						<img src="{$logo_url}" width="30" height="30" alt="Alisimbi logo">
+					</a>
 
-						<li class="nav-item">
-							<a class="nav-link" id="course_tab" data-toggle="tab" href="#course" role="tab"
-							aria-controls="course" aria-selected="false">Courses</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</header>
-
-	<div class="tab-content">
-		<div class="tab-pane fade  show" id="notification" role="tabpanel" aria-labelledby="notification-tab">
-			<div class="pad-section">
-				<header>
-					<h3 class="header-text">
-						Notifications
-					</h3>
-				</header>
-			</div>
-		</div>
-		<div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-			<div class="pad-section">
-				<header>
-					<h3 class="header-text">
-						Welcome back, {$fullname}
-					</h3>
-				</header>
-				<div class="row">
-					<div class="col-md-3">
-						<div class="user-info-list card card-default p-3 text-center">
-							<div class="profile_img">
-								<img src="{$photo}" class=" img-thumbnail m-auto ">
-							</div>
+					<div class="top_avatar">
+						<div class="user_avatar">
+							<a href="/"><img src="{$photo}" alt="{$username} avatar"></a>
 						</div>
-
+						<div class="user_name">
+							{$username}
+						</div>
 					</div>
+				</div>
+			</nav>
 
-					<div class="col-md-8 ">
-						<div class="user-info-list card card-default">
-							<div class="card-header card-header-divider">About Me</div>
-							<div class="card-body">
-								<table class="no-border no-strip skills">
-									<tbody class="no-border-x no-border-y">
-										<tr>
-											<td class="icon"><span class="icon fa fa-envelope"></span></td>
-											<td class="item">Email address</td>
-											<td><a href="#">{$email_add}</a></td>
-										</tr>
-										<tr>
-											<td class="icon"><span class="icon fa fa-mobile"></span></td>
-											<td class="item">Phone</td>
-											<td> <a href="#">{$phone_}</a></td>
-										</tr>
-										<tr>
-											<td class="icon"><span class="icon fa fa-map-marker"></span></td>
-											<td class="item">Location</td>
-											<td><a href="#">{$city_}, {$country_}</a></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
+			<div class="" >
+				<div class="tab">
+					<div class="container">
+						<ul class="nav nav-tabs" role="tablist">
+							<li class="nav-item">
+								<a class="nav-link active " id="profile_tab" data-toggle="tab" href="#profile" role="tab"
+								aria-controls="profile" aria-selected="false">Welcome</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="notification_tab" data-toggle="tab" href="#notification" role="tab"
+								aria-controls="notification" aria-selected="false">Notifications</a>
+							</li>
 
-						<p class="hint">You can always update your profile, your certificate will contain the details found when it is being prepared.</p>
-						<a href="{$update_}" class="btn background_green text-white">Update Profile</a>
-
+							<li class="nav-item">
+								<a class="nav-link" id="course_tab" data-toggle="tab" href="#course" role="tab"
+								aria-controls="course" aria-selected="false">Courses</a>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="tab-pane fade  show" id="course" role="tabpanel" aria-labelledby="course-tab">
-			<div class="pad-section">
-				<header>
-					<h3 class="header-text">
-						Courses
-					</h3>
-				</header>
-				<div class="row">
-					{$course}
+		</header>
+
+		<div class="tab-content">
+			<div class="tab-pane fade  show" id="notification" role="tabpanel" aria-labelledby="notification-tab">
+				<div class="pad-section">
+					<header>
+						<h3 class="header-text">
+							Notifications
+						</h3>
+					</header>
+				</div>
+			</div>
+			<div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+				<div class="pad-section">
+					<header>
+						<h3 class="header-text">
+							Welcome back, {$username}
+						</h3>
+					</header>
+					<div class="row">
+						<div class="col-md-3">
+							<div class="user-info-list card card-default p-3 text-center">
+								<div class="profile_img">
+									<img src="{$photo}" class=" img-thumbnail m-auto ">
+								</div>
+							</div>
+							<div class="p-2">
+								{$about_}
+							</div>
+							<hr>
+							<div class="pl-2">
+								<a href="">Edit profile <span class="to-right"><i class="fa fa-edit"></i></span></a>
+							</div>
+						</div>
+
+						<div class="col-md-8 ">
+							<div class="user-info-list card card-default">
+								<div class="card-header card-header-divider">About Me</div>
+								<div class="card-body">
+									<table class="no-border no-strip skills">
+										<tbody class="no-border-x no-border-y">
+											<tr>
+												<td class="icon"><span class="icon fa fa-anchor"></span></td>
+												<td class="item">Full Name</td>
+												<td><a href="#">{$fullname}</a></td>
+											</tr>
+											<tr>
+												<td class="icon"><span class="icon fa fa-envelope"></span></td>
+												<td class="item">Email address</td>
+												<td><a href="#">{$email_add}</a></td>
+											</tr>
+											<tr>
+												<td class="icon"><span class="icon fa fa-mobile"></span></td>
+												<td class="item">Phone</td>
+												<td> <a href="#">{$phone_}</a></td>
+											</tr>
+											{$social_links}
+											<tr>
+												<td class="icon"><span class="icon fa fa-map-marker"></span></td>
+												<td class="item">Location</td>
+												<td><a href="#">{$city_}, {$state_}, {$country_}</a></td>
+											</tr>
+											<tr>
+												<td class="icon"><span class="icon fa fa-key"></span></td>
+												<td class="item">Status</td>
+												<td>{$user_role}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+
+							<p class="hint">You can always update your profile, your certificate will contain the details found when it is being prepared.</p>
+							<a href="{$update_}" class="btn background_green text-white">Update Profile</a>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade  show" id="course" role="tabpanel" aria-labelledby="course-tab">
+				<div class="pad-section">
+					<header>
+						<h3 class="header-text">
+							Courses
+						</h3>
+					</header>
+					{$add_course_link} <!-- This  link can be styled with it's ID: add_course_link -->
+					<div class="row">
+						{$course}
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
-<footer>
-	<div class="text-center">
-		{$site_title_}
-		<div class="copyright">
-			{$copyrights_}
+	<footer>
+		<div class="text-center">
+			{$site_title_}
+			<div class="copyright">
+				{$copyrights_}
+			</div>
 		</div>
 	</div>
-</div>
 </footer>
 </div>

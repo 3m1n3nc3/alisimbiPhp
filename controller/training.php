@@ -7,7 +7,7 @@ function mainContent() {
 	$PTMPL['site_url'] = $SETT['url'];
 
 	if ($user) {
-		if (isset($_GET['course']) && isset($_GET['courseid']) && $_GET['courseid'] != '') {
+		if (isset($_GET['course']) && isset($_GET['courseid']) && $_GET['courseid'] != '' || $_GET['course'] == 'add') {
 
 		    $course = getCourses(1, $_GET['courseid'])[0];
     		$PTMPL['course_title'] = $course['title'];
@@ -25,31 +25,45 @@ function mainContent() {
 
     		/*if you are viewing the course details*/
 			if ($_GET['course'] == 'view') {
-		        $theme = new themer('training/course_info'); $account = '';
+		      $theme = new themer('training/course_info'); $account = '';
 		        // $OLD_THEME = $PTMPL; $PTMPL = array();
 
     		/*if you are paying for the course details*/
 			} elseif ($_GET['course'] == 'get') {
-		        $theme = new themer('training/course_get'); $account = '';
+		      $theme = new themer('training/course_get'); $account = '';
     			$PTMPL['raveverified'] = getImage('raveverified.png');
     			$PTMPL['course_price'] = $course['price'].' NGN';
 
     			/* Rave checkout variables*/
     			 // Rave API Public key
-			 	$public_key = $configuration['rave_public_key'];
-			 	 // Rave API Private key
-				$private_key = $configuration['rave_private_key'];
-				// Check if sandbox is enabled
-				$ravemode = ($configuration['rave_mode'] ? 'api.ravepay.co' : 'ravesandboxapi.flutterwave.com');
-				 // Currency Code
-				$currency_code 	= $configuration['currency'];
-				// Url to redirect to to verify rave
-				$successful_url	= $SETT['url'].'/connection/raveAPI.php';
-				isset($_SESSION['txref']) ? $reference = $_SESSION['txref'] : $reference = '';	
+				 	$public_key = $configuration['rave_public_key'];
+				 	 // Rave API Private key
+					$private_key = $configuration['rave_private_key'];
+					// Check if sandbox is enabled
+					$ravemode = ($configuration['rave_mode'] ? 'api.ravepay.co' : 'ravesandboxapi.flutterwave.com');
+					 // Currency Code
+					$currency_code 	= $configuration['currency'];
+					// Url to redirect to to verify rave
+					$successful_url	= $SETT['url'].'/connection/raveAPI.php';
+					isset($_SESSION['txref']) ? $reference = $_SESSION['txref'] : $reference = '';
+
+				/*if you are adding or editing courses*/
+			} elseif ($_GET['course'] == 'add') {
+		    	$theme = new themer('training/course_add_edit'); $account = '';
+					if (isset($_POST['save'])) {
+						print_r($_POST);
+						$framework->course_title = $framework->db_prepare_input($_POST['course_title']);
+						$framework->introduction = $framework->db_prepare_input($_POST['introduction']);
+						$framework->cover_photo = $framework->db_prepare_input($_POST['cover_photo']);
+						$framework->badge = $framework->db_prepare_input($_POST['badge']);
+						$framework->benefits = $framework->db_prepare_input($_POST['benefits']);
+						$framework->date = $framework->db_prepare_input($_POST['date']);
+						$framework->status = $framework->db_prepare_input($_POST['status']);
+					}
 			}
 		} else {
 	        $theme = new themer('training/home'); $account = '';
-	        $OLD_THEME = $PTMPL; $PTMPL = array();
+	        // $OLD_THEME = $PTMPL; $PTMPL = array();
 	        $courseArr = getCourses();
 	        $course = '';
 	        foreach ($courseArr as $rslt) {

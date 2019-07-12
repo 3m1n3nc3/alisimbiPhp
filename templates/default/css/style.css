@@ -1,12 +1,11 @@
 /* Required height of parents of the Full Page Carousel for proper displaying carousel itself */
-@import url('https://fonts.googleapis.com/css?family=Orbitron|Raleway:300,400,500,600,900|Roboto|Open+Sans&display=swap');
 @import "./font-awesome.css";
-/* @import "./variable.css"; */
+@import "./variable.css";
 @import "./bootstrap.min.css";
 @import "./dashboard.css";
 
 body, html {
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--font-family-sans-serif);
     font-weight: normal;
     font-kerning: auto;
     font-optical-sizing: auto;
@@ -22,9 +21,11 @@ body, html {
 }
 
 a {
-    color: var(--green) ;
+  color: #333;
 }
-
+a[href]:hover{
+  color: var(--green);
+}
 .font_serif {
     font-family: serif;
 }
@@ -1101,13 +1102,13 @@ footer {
   -webkit-flex-flow: row wrap;
   -ms-flex-flow: row wrap;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-content: center;
   height: 100%;
   width: 100%;
   left: -100%;
   overflow: hidden;
-  background: rgba(6, 138, 8, 0.75);
+  background: var(--green-overlay);
   transition: all .35s ease-in-out;
   padding: 5% 10%;
 }
@@ -1128,6 +1129,14 @@ footer {
 }
 .readmore a:hover{
   background: #fff;
-  color: var(--green);
+  color: var(--green) !important;
   box-shadow: 0 2 0 -2 white;
+}
+
+
+.to-right{
+  float: right;
+}
+.to-left{
+  float: left;
 }
