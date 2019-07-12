@@ -1,0 +1,6 @@
+[Fri Jul 12 15:53:08.097656 2019] [php7:notice] [pid 13897] [client 127.0.0.1:34482] PHP Notice:  Undefined index: lang in /var/www/dev/alisimbi/index.php on line 25
+[Fri Jul 12 15:53:08.316682 2019] [php7:warn] [pid 13897] [client 127.0.0.1:34482] PHP Warning:  Invalid argument supplied for foreach() in /var/www/dev/alisimbi/includes/countries.php on line 42
+[Fri Jul 12 15:53:10.145736 2019] [php7:warn] [pid 13897] [client 127.0.0.1:34482] PHP Warning:  Invalid argument supplied for foreach() in /var/www/dev/alisimbi/controller/homepage.php on line 121
+[Fri Jul 12 15:54:09.790061 2019] [php7:warn] [pid 2547] [client 127.0.0.1:34526] PHP Warning:  Invalid argument supplied for foreach() in /var/www/dev/alisimbi/includes/countries.php on line 42, referer: http://dev.server/
+[Fri Jul 12 15:54:09.914114 2019] [php7:warn] [pid 2547] [client 127.0.0.1:34526] PHP Warning:  Invalid argument supplied for foreach() in /var/www/dev/alisimbi/controller/homepage.php on line 121, referer: http://dev.server/
+[Fri Jul 12 15:54:35.276978 2019] [php7:warn] [pid 2592] [client 127.0.0.1:34530] PHP Warning:  Invalid argument supplied for foreach() in /var/www/dev/alisimbi/includes/countries.php on line 42, referer: http://dev.server/
