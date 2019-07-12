@@ -1,0 +1,86 @@
+<div class="wrapper">
+	<div id="dashboard_tab">
+		<header id="top-nav">
+			<!-- Image and text -->
+			<nav class="navbar navbar-expand-lg navbar-dark">
+				<div class="container">
+					<a class="navbar-brand" href="{$dashboard_url}">
+						<img src="{$logo_url}" width="30" height="30" alt="Alisimbi logo">
+					</a>
+
+					<div class="top_avatar">
+						<div class="user_avatar">
+							<a href="/"><img src="{$photo}" alt="{$username} avatar"></a>
+						</div>
+						<div class="user_name">
+							{$username}
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<div class="container m-3">
+			<div class="row">
+				<div class="col-12">
+					<div class="card p-5">
+						<div class="card-block">
+							<h4 class="card-title">Your Profile</h4>
+							<img src="{$photo}" class="w-25 rounded-circle img-thumbnail mx-auto d-block">
+
+							<form method="post" action="">
+								<input type="hidden" name="benefits" value="{$benefits},test,placeholder"> <!-- Input should be comma separated for each benefit -->
+								<div class="border rounded p-2 m-1">
+									Course Title
+									<hr>
+									<p class="card-text">
+										<input type="text" name="course_title" class="form-control mx-2" id="course_title" value="{$course_title}" placeholder="Course Title">
+									</p>
+								</div>
+								<div class="border rounded p-2 m-1">
+									Introduction
+									<hr>
+									<small class="text-danger">Will be truncated if longer than 250 words</small>
+									<p class="card-text">
+										<textarea name="introduction" class="form-control" rows="8" cols="80">{$introduction}</textarea>
+									</p>
+								</div>
+								<div class="border rounded p-2 m-1">
+									Cover Photo
+									<hr>
+									<p class="card-text">
+										<input type="file" name="cover_photo">
+									</p>
+								</div>
+								<div class="border rounded p-2 m-1">
+									Badge
+									<hr>
+									<p class="card-text">
+										<input type="file" name="badge">
+									</p>
+								</div>
+								<div class="border rounded p-2 m-1">
+									Start Date
+									<hr>
+									<p class="card-text">
+										<input type="date" name="date" class="form-control mx-2" id="date" value="{$date}">
+									</p>
+								</div>
+								<div class="border rounded p-2 m-1">
+									Status
+									<hr>
+									<p class="card-text">
+										<select class="form-control" name="status" id="status">
+											<option value="active" id="active">Active</option>
+											<option value="inactive" id="inactive">Inactive</option>
+										</select>
+									</p>
+								</div>
+								<button class="btn btn-primary" name="save">Save Course</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

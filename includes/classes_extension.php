@@ -346,16 +346,20 @@ function courseModuleCard($contentArr, $type = null, $text = 1)
         $photo = getImage($contentArr['cover'], 1);
         $edlink = cleanUrls($SETT['url'] . '/index.php?page=training&module=edit&moduleid=' . $contentArr['id']);
         $view = cleanUrls($SETT['url'] . '/index.php?page=training&course=view&courseid=' . $contentArr['course_id'] . '&moduleid=' . $contentArr['id']);
-        $edit = $user_role >= 3 ? '<a href="' . $edlink . '" class="btn btn-sm btn-outline-secondary">Edit</a>' : '';
-        $vb = $text == 1 ? '<a href="' . $view . '" class="btn btn-sm btn-outline-secondary">Start</a>' : '';
+        $enlink = cleanUrls($SETT['url'] . '/index.php?page=training&course=get&courseid=' . $contentArr['id']);
+        $enroll == 1 ? '<a href="' . $enlink . '">Enroll</a>' : '';
+        $edit = $user_role >= 3 ? '<a href="' . $edlink . '">Edit</a>' : '';
+        $vb = $text == 1 ? '<a href="' . $view . '">Start</a>' : '';
     } else {
         // This controls the courses
         $intro = $framework->myTruncate($contentArr['intro'], 200);
         $photo = getImage($contentArr['cover'], 1);
         $edlink = cleanUrls($SETT['url'] . '/index.php?page=training&course=edit&courseid=' . $contentArr['id']);
         $view = cleanUrls($SETT['url'] . '/index.php?page=training&course=view&courseid=' . $contentArr['id']);
-        $edit = $user_role >= 3 ? '<a href="' . $edlink . '" class="btn btn-sm btn-outline-secondary">Edit</a>' : '';
-        $vb = $text == 1 ? '<a href="' . $view . '" class="btn btn-sm btn-outline-secondary">View Details</a>' : '';
+        $enlink = cleanUrls($SETT['url'] . '/index.php?page=training&course=get&courseid=' . $contentArr['id']);
+        $enroll = $text == 1 ? '<a href="' . $enlink . '">Enroll</a>' : '';
+        $edit = $user_role >= 3 ? '<a href="' . $edlink . '">Edit</a>' : '';
+        $vb = $text == 1 ? '<a href="' . $view . '">View Details</a>' : '';
     }
 
     // if $text = 0 don't show the $intro
@@ -363,59 +367,41 @@ function courseModuleCard($contentArr, $type = null, $text = 1)
     // This is the course and module HTML card
 
     // The module progress bar value placeholder
-    $progress_val = 6;
+    $progress_val = 65;
     // End module progressbar
 
     $card = '
-    <div class="col-md-' . $col . '">
-        <div class="card mb-4 shadow-sm">
-            <img src="' . $photo . '" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title">' . $contentArr['title'] . '</h5>
-                <span style="font-size:15px;">' . $intro . '</span>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                        ' . $vb . '
-                        ' . $edit . '
-                    </div>
-                    <small class="text-muted">' . $duration . '</small>
-                </div>
-            </div>
+    <div class=" ' . $col . '">
+      <div class="module-tile module-tile-wide">
+        <div class="module-icon">
+            <img class="" src="' . $photo . '" title="' . $contentArr['title'] . ' thumbnail" alt="' . $contentArr['title'] . ' thumbnail">
         </div>
-    </div>
-    ';
 
-    $card = '<div class=" ' . $col . '">
-    <div class="module-tile module-tile-wide">
-            <div class="module-icon">
-                <img class="" src="' . $photo . '" title="' . $contentArr['title'] . ' thumbnail" alt="' . $contentArr['title'] . ' thumbnail">
+        <div class="module-info">
+            <div class="swipe-in">
+              <div class="readmore">
+              ' . $edit . '
+              ' . $vb . '
+              ' . $enroll . '
+              </div>
             </div>
-
-            <div class="module-info">
-                <div class="swipe-in">
-                  <div class="readmore">
-                    <a href="">View</a>
-                    <a href="">Enroll</a>
-                  </div>
-                </div>
-                <div class="title">
-                    <a href="">
-                        ' . $contentArr['title'] . '
-                    </a>
-                </div>
-                <div id="module_' . $contentArr['id'] . '" class="module-content">
-                    <p class="">
-                        ' . $intro . '
-                    </p>
-                </div>
-                <span class="progress-value">'.$progress_val.'% complete</span>
+            <div class="title">
+                <a href="">
+                    ' . $contentArr['title'] . '
+                </a>
             </div>
-            <span class="module-progress" data-progress="'.$progress_val.'">
-              <span class="value"></span>
-            </span>
-    </div>
-</div>
-    ';
+            <div id="module_' . $contentArr['id'] . '" class="module-content">
+                <p class="">
+                    ' . $intro . '
+                </p>
+            </div>
+            <span class="progress-value">'.$progress_val.'% complete</span>
+        </div>
+        <span class="module-progress" data-progress="'.$progress_val.'">
+          <span class="value"></span>
+        </span>
+      </div>
+    </div>';
 
     return $card;
 }
