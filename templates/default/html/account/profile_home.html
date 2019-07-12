@@ -58,7 +58,7 @@
 			<div class="pad-section">
 				<header>
 					<h3 class="header-text">
-						Welcome back, {$fullname}
+						Welcome back, {$username}
 					</h3>
 				</header>
 				<div class="row">
@@ -68,7 +68,8 @@
 								<img src="{$photo}" class=" img-thumbnail m-auto ">
 							</div>
 						</div>
-
+						<hr>
+						{$about_}
 					</div>
 
 					<div class="col-md-8 ">
@@ -78,19 +79,30 @@
 								<table class="no-border no-strip skills">
 									<tbody class="no-border-x no-border-y">
 										<tr>
-											<td class="icon"><span class="icon fa fa-envelope"></span></td>
-											<td class="item">Email address</td>
-											<td><a href="#">{$email_add}</a></td>
+											<td class="icon"><span class="icon fa fa-anchor"></span></td>
+											<td class="item">Full Name</td>
+											<td><a href="#">{$fullname}</a></td>
 										</tr>
+											<tr>
+												<td class="icon"><span class="icon fa fa-envelope"></span></td>
+												<td class="item">Email address</td>
+												<td><a href="#">{$email_add}</a></td>
+											</tr>
 										<tr>
 											<td class="icon"><span class="icon fa fa-mobile"></span></td>
 											<td class="item">Phone</td>
 											<td> <a href="#">{$phone_}</a></td>
 										</tr>
+										{$social_links}
 										<tr>
 											<td class="icon"><span class="icon fa fa-map-marker"></span></td>
 											<td class="item">Location</td>
-											<td><a href="#">{$city_}, {$country_}</a></td>
+											<td><a href="#">{$city_}, {$state_}, {$country_}</a></td>
+										</tr>
+										<tr>
+											<td class="icon"><span class="icon fa fa-key"></span></td>
+											<td class="item">Status</td>
+											<td>{$user_role}</td>
 										</tr>
 									</tbody>
 								</table>
@@ -111,6 +123,7 @@
 						Courses
 					</h3>
 				</header>
+				{$add_course_link} <!-- This  link can be styled with it's ID: add_course_link -->
 				<div class="row">
 					{$course}
 				</div>

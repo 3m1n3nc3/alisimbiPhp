@@ -7,7 +7,7 @@ if(isset($_GET['page']) && isset($action[$_GET['page']])) {
 	$page_name = 'homepage';
 }
 if ($user && $page_name == 'homepage') {
-	//$framework->redirect('account&profile=home');
+	// $framework->redirect('account&profile=home');
 }
 
 require_once("controller/{$page_name}.php");
