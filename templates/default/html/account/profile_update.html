@@ -1,57 +1,80 @@
-<div class="container m-3">
-	<div class="row">
-		<div class="col-12">
-			<div class="card p-5">
-				<div class="card-block"> 
-					<h4 class="card-title">Your Profile</h4>
-					<img src="{$photo}" class="w-25 rounded-circle img-thumbnail mx-auto d-block">
+<div class="wrapper">
+	<div id="dashboard_tab">
+		<header id="top-nav">
+			<!-- Image and text -->
+			<nav class="navbar navbar-expand-lg navbar-dark">
+				<div class="container">
+					<a class="navbar-brand" href="{$dashboard_url}">
+						<img src="{$logo_url}" width="30" height="30" alt="Alisimbi logo">
+					</a>
 
-					<form method="post" action="">	
-						<div class="border rounded p-2 m-1">
-							First Name | Lastname
-							<hr>
-							<p class="card-text form-inline">
-								<input type="text" name="fname" class="form-control mx-2" id="fname" value="{$firstname}" placeholder="Firstname"> 
-								<input type="text" name="lname" class="form-control mx-2" id="lname" value="{$lastname}" placeholder="Lastname"> 
-							</p>
-						</div> 
-						<div class="border rounded p-2 m-1">
-							Phone Number
-							<hr>
-							<p class="card-text form-inline">
-								<input type="phone" name="phone" class="form-control mx-2" id="phone" value="{$phone_}" placeholder="Phone"> 
-							</p>
+					<div class="top_avatar">
+						<div class="user_avatar">
+							<a href="/"><img src="{$photo}" alt="{$username} avatar"></a>
 						</div>
-						{$update_social}
-						<div class="border rounded p-2 m-1">
-							Country, State, City
-							<hr>
-							<p class="card-text form-inline">
-								<select name="country" class="form-control mx-2 m-1 select-country-list" data-target="register-state" id="country">
-									<option disabled selected>Select your country</option>
-									{$list_country}
-								</select> 
-								<select name="state" class="form-control m-1 mx-2" id="register-state" data-target="register-city">
-									{$state_select}
-									{$countries}
-								</select>
-								<select name="city" class="form-control m-1 mx-2"  id="register-city">
-									{$city_select}
-									{$countries}
-								</select> 
-							</p>
+						<div class="user_name">
+							{$username}
 						</div>
-						<div class="border rounded p-2 m-1">
-							About
-							<hr>
-							<p class="card-text">
-								<textarea name="about" class="form-control">{$about_}</textarea>
-							</p>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<div class="container m-3">
+			<div class="row">
+				<div class="col-12">
+					<div class="card p-5">
+						<div class="card-block">
+							<h4 class="card-title">Your Profile</h4>
+							<img src="{$photo}" class="w-25 rounded-circle img-thumbnail mx-auto d-block">
+
+							<form method="post" action="">
+								<div class="border rounded p-2 m-1">
+									First Name | Lastname
+									<hr>
+									<p class="card-text form-inline">
+										<input type="text" name="fname" class="form-control mx-2" id="fname" value="{$firstname}" placeholder="Firstname">
+										<input type="text" name="lname" class="form-control mx-2" id="lname" value="{$lastname}" placeholder="Lastname">
+									</p>
+								</div>
+								<div class="border rounded p-2 m-1">
+									Phone Number
+									<hr>
+									<p class="card-text form-inline">
+										<input type="phone" name="phone" class="form-control mx-2" id="phone" value="{$phone_}" placeholder="Phone">
+									</p>
+								</div>
+								{$update_social}
+								<div class="border rounded p-2 m-1">
+									Country, State, City
+									<hr>
+									<p class="card-text form-inline">
+										<select name="country" class="form-control mx-2 m-1 select-country-list" data-target="register-state" id="country">
+											<option disabled selected>Select your country</option>
+											{$list_country}
+										</select>
+										<select name="state" class="form-control m-1 mx-2" id="register-state" data-target="register-city">
+											{$state_select}
+											{$countries}
+										</select>
+										<select name="city" class="form-control m-1 mx-2"  id="register-city">
+											{$city_select}
+											{$countries}
+										</select>
+									</p>
+								</div>
+								<div class="border rounded p-2 m-1">
+									About
+									<hr>
+									<p class="card-text">
+										<textarea name="about" class="form-control">{$about_}</textarea>
+									</p>
+								</div>
+								<p class="card-text">You can always update your profile, your certificate will contain the details found when it is being prepared.</p>
+								<button class="pure-button pure-button-primary m-2" name="save_profile">Save Profile</button>
+							</form>
 						</div>
-						<p class="card-text">You can always update your profile, your certificate will contain the details found when it is being prepared.</p>
-						<button class="pure-button pure-button-primary m-2" name="save_profile">Save Profile</button> 
-					</form>
-				</div> 
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

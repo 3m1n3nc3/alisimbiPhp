@@ -19,68 +19,243 @@ function configuration() {
  * This class holds all major functions of this framework
  */
 class framework {
-	
 	public $username; 
-	public $password;
 	public $email;
+    public $password;
 	public $remember;
-
 	public $firstname;
 	public $lastname;
-
 	public $city;
 	public $state;
 	public $country;
 	public $phone;
-
+    public $user;
 
 	function userData($user = NULL, $type = NULL) {
-		// If type = 0, get all users e.g userData() and Use costom querries
-		// If type = 1, get a particular user by id e.g userData(NULL, 0)
-		// 2 instance = get a particular user by id e.g userData($id, 1)
-		// 3 instance = get a particular user by username e.g userData(king)
+        // if type = 0 fetch all users, and use filter to add custom query
+        // if type = 1 users by their user ids
+        // if type = 2 fetch users by thier usernames
 
 	    global $configuration;
 
 	    // Limit clause to enable pagination
-		if (isset($this->limit)) { 
-			$limit = sprintf('ORDER BY date DESC LIMIT %s, %s', $this->start, $this->limit);
-		} else {
-			$limit = '';
-		} 
+        if (isset($this->limit)) {
+            $limit = sprintf('ORDER BY date DESC LIMIT %s, %s', $this->start, $this->limit);
+        } else {
+            $limit = '';
+        }
+        $filter = isset($this->filter) ? $this->filter : '';
 
-		$filter = (isset($this->filter)) ? $this->filter : '' ;  
-
-	    if (isset($this->search)) {			
-	    	//Search instance
+        if (isset($this->search)) {            //Search instance
 	    	$search = $this->search; 	
-	    	$sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE username LIKE '%s' OR concat_ws(' ', `f_name`, `l_name`) LIKE '%s' OR country LIKE '%s' OR role LIKE '%s' LIMIT %s", '%'.$search.'%', '%'.$search.'%', '%'.$search.'%', '%'.$search.'%', $configuration['data_limit']);  
-	    } elseif ($type == 0) {
-	    	$sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE %s %s", $filter, $limit); 
-	    } elseif ($type == 1) {
+	    	$sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE username LIKE '%s' OR concat_ws(' ', `f_name`, `l_name`) LIKE '%s' OR country LIKE '%s' OR role LIKE '%s' LIMIT %s", '%'.$search.'%', '%'.$search.'%', '%'.$search.'%', '%'.$search.'%', $configuration['data_limit']);
+        } elseif ($type === 0) {
+            $sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE id <> '' %s %s", $filter, $limit);
+        } elseif ($type === 1) {
 	    	$sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE id = '%s'", $user); 
 	    } else {
 	    	// if the username is an email address
 	    	if (filter_var($user, FILTER_VALIDATE_EMAIL)) {
-	    		$sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE email = '%s'", $username); 	//3 instance
+                $sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE email = '%s'", $user);
 	    	} else {
-	    		$sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE username = '%s'", $username); 	//3 instance
+                $sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE username = '%s'", $user);
 	    	}
 	    }
-	    try {
-	        $stmt = $DB->prepare($sql); 
-	        $stmt->execute();
-	        $results = $stmt->fetchAll();
-	    } catch (Exception $ex) {
-	        return errorMessage($ex->getMessage());
-	    } 
-	    if (count($results)>0) {
-	    	if ($username == NULL) {
-	    		return $results;
-	    	} else {
-	    		return $results[0];
-	    	}
-	    }
+        // Process the information
+        $results = $this->dbProcessor($sql, 1);
+        if ($type !== 0) {
+            return $results[0];
+        } else {
+            return $results;
+        }
+    }
+
+    function authenticateUser($type = null)
+    {
+        global $LANG;
+        if (isset($_COOKIE['username']) && isset($_COOKIE['usertoken'])) {
+            $this->username = $_COOKIE['username'];
+            $auth = $this->userData($this->username, 2);
+
+            if ($auth['username']) {
+                $logged = true;
+            } else {
+                $logged = false;
+            }
+        } elseif (isset($this->username)) {
+            $username = $this->username;
+            $auth = $this->userData($username);
+
+            if ($auth['username']) {
+                if ($this->remember == 1) {
+                    setcookie("username", $auth['username'], time() + 30 * 24 * 60 * 60, COOKIE_PATH);
+                    setcookie("usertoken", $auth['token'], time() + 30 * 24 * 60 * 60, COOKIE_PATH);
+
+                    $_SESSION['username'] = $auth['username'];
+
+                    $logged = true;
+                    session_regenerate_id();
+                } else {
+                    $_SESSION['username'] = $auth['username'];
+                    $_SESSION['password'] = $auth['password'];
+                    $logged = true;
+                }
+            }
+            return $username;
+
+        } elseif ($type) {
+            $auth = $this->userData($this->username);
+
+            if ($this->remember == 1) {
+                setcookie("username", $auth['username'], time() + 30 * 24 * 60 * 60, COOKIE_PATH);
+                setcookie("usertoken", $auth['token'], time() + 30 * 24 * 60 * 60, COOKIE_PATH);
+
+                $_SESSION['username'] = $auth['username'];
+
+                $logged = true;
+                session_regenerate_id();
+            } else {
+                return $LANG['data_unmatch'];
+            }
+        }
+
+        if (isset($logged) && $logged == true) {
+            return $auth;
+        } elseif (isset($logged) && $logged == false) {
+            $this->sign_out();
+            return $LANG['data_unmatch'];
+        }
+
+        return false;
+    }
+
+    // Registeration function
+    function registrationCall()
+    {
+        // Prevents bypassing the FILTER_VALIDATE_EMAIL
+        $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
+
+        $token = $this->generateToken();
+        $password = hash('md5', $_POST['password']);
+        $sql = sprintf("INSERT INTO " . TABLE_USERS . " (`email`, `username`, `password`, `f_name`, `l_name`,
+		 `country`, `state`, `city`, `token`) VALUES 
+	        ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", $this->email, $this->username,
+            $this->password, $this->firstname, $this->lastname, $this->country, $this->state, $this->city, $token);
+        $response = $this->dbProcessor($sql, 0, 1);
+
+        if ($response == 1) {
+            $_SESSION['username'] = $this->username;
+            $_SESSION['password'] = $password;
+            $process = 1;
+        }
+        return $response;
+    }
+
+    function updateProfile()
+    {
+        global $user, $LANG;
+        $firstname = $this->db_prepare_input($this->firstname);
+        $lastname = $this->db_prepare_input($this->lastname);
+        $phone = $this->db_prepare_input($this->phone);
+        $xql = '';
+        if (isset($this->social)) {
+            $facebook = $this->facebook;
+            $twitter = $this->twitter;
+            $instagram = $this->instagram;
+            $xql = sprintf(", `facebook` = '%s', `twitter` = '%s', `instagram` = '%s'", $facebook, $twitter, $instagram);
+        }
+        $country = $this->db_prepare_input($this->country);
+        $state = $this->db_prepare_input($this->state) == 'undefined' ? '' : $this->db_prepare_input($this->state);
+        $city = $this->db_prepare_input($this->city) == 'undefined' ? '' : $this->db_prepare_input($this->city);
+        $about = $this->db_prepare_input($this->about);
+
+        if ($firstname == '' || $lastname == '' || $phone == '' || $country == '' ||
+            $state == '' || $city == '' || $about == '') {
+            $response = errorMessage($LANG['_all_required']);
+        } else {
+            $sql = sprintf("UPDATE " . TABLE_USERS . " SET `f_name` = '%s', `l_name` = '%s', " .
+                "`phone` = '%s', `country` = '%s', `state` = '%s', `city` = '%s', `about` = '%s'%s WHERE " .
+                "`id` = '%s'", $firstname, $lastname, $phone, $country, $state, $city, $about, $xql, $user['id']);
+            return $this->dbProcessor($sql, 0);
+            $header = cleanUrls($SETT['url'] . '/index.php?page=account&profile=home');
+        }
+    }
+
+    function sign_out($reset = null)
+    {
+        if ($reset == true) {
+            $this->resetToken();
+        }
+        setcookie("usertoken", '', time() - 3600, COOKIE_PATH);
+        setcookie("username", '', time() - 3600, COOKIE_PATH);
+        unset($_SESSION['username']);
+        unset($_SESSION['password']);
+    }
+
+    function checkEmail($email = NULL, $type = 0)
+    {
+        $sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE 1 AND email = '%s'", mb_strtolower($email));
+        // Process the information
+        $results = $this->dbProcessor($sql, 1);
+        if ($type == 1) {
+            return $results[0];
+        } else {
+            return $results[0]['email'];
+        }
+    }
+
+    function captchaVal($captcha)
+    {
+        global $settings;
+        if ($settings['captcha']) {
+            if ($captcha == "{$_SESSION['captcha']}" && !empty($captcha)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true;
+        }
+    }
+
+    function phoneVal($phone, $type = 0)
+    {
+        global $settings;
+        $phone = $this->db_prepare_input($phone);
+
+        if ($type) {
+            $sql = sprintf("SELECT phone FROM " . TABLE_USERS . " WHERE phone = '%s'", $phone);
+            $rs = $this->dbProcessor($sql, 1)[0];
+            return $rs ? false : true;
+        } else {
+            if (mb_strlen($phone) < 9 OR !preg_match('/^[0-9]+$/', $phone)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
+
+    // Set user roles to determine what user can do
+    function userRoles()
+    {
+        global $user;
+        if ($user) {
+            if ($user['role'] == 'learner') {
+                $role = 0;
+            } elseif ($user['role'] == 'teacher') {
+                $role = 1;
+            } elseif ($user['role'] == 'mod') {
+                $role = 2;
+            } elseif ($user['role'] == 'admin') {
+                $role = 3;
+            } elseif ($user['role'] == 'sudo') {
+                $role = 4;
+            }
+        } else {
+            $role = 0;
+        }
+        return $role;
 	}
 
 	/**
@@ -110,19 +285,18 @@ class framework {
 					} else {
 						$state = '<a class="pass-btn" href="'.$SETT['url'].'/index.php?a=settings&b=languages&language='.$language.'">'.$make.'</a>';
 					}
-					
-					$sort .= 
-						'<div class="padding-5">
-							'.$state.'
-							<div>
+
+                    $sort .= '<div class="padding-5">
+								' . $state . '
 								<div>
-									<strong><a href="'.$url.'" target="_blank">'.$name.'</a></strong>
+									<div>
+										<strong><a href="' . $url . '" target="_blank">' . $name . '</a></strong>
+									</div>
+									<div>
+										' . $by . ': <a href="' . $url . '" target="_blank">' . $author . '</a>
+									</div>
 								</div>
-								<div>
-									'.$by.': <a href="'.$url.'" target="_blank">'.$author.'</a>
-								</div>
-							</div>
-						</div>';
+							</div>';
 				}
 			}
 			
@@ -245,7 +419,8 @@ class framework {
 	/**
 	/*  Generate a random token (MD5 or password_hash)
 	**/
-	function accountToken($length = 10, $type = 0) {
+    function generateToken($length = 10, $type = 0)
+    {
 	    $str = '';
 	    $characters = array_merge(range('A','Z'), range('a','z'), range(0,9));
 	    for($i=0; $i < $length; $i++) {
@@ -256,44 +431,6 @@ class framework {
 	    } else {
 	        return hash('md5', $str.time());
 	    }
-	}
-
-	function seo_plugin($title, $desc, $image = null, $twitter = null, $facebook = null) {
-	    global $SETT, $PTMPL, $configuration, $site_image;
-
-	    $twitter = ($twitter) ? $twitter : $configuration['site_name'];
-	    $facebook = ($facebook) ? $facebook : $configuration['site_name'];
-	    $title = ($title) ? $title.' ' : '';
-	    $titles = $title.'On '.$configuration['site_name'];
-	    $image = ($image) ? $image : $site_image;
-	    $alt = ($title) ? $title : $titles;
-	    $desc = rip_tags(strip_tags(stripslashes($desc)));
-	    $desc = strip_tags(myTruncate($desc, 350));
-	    $url = (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-
-	    $plugin = '
-	    <meta name="description" content="'.$desc.'"/>
-	    <link rel="canonical" href="'.$url.'" />
-	    <meta property="og:locale" content="en_US" />
-	    <meta property="og:type" content="website" />
-	    <meta property="og:title" content="'.$titles.'" />
-	    <meta property="og:url" content="'.$url.'"/>
-	    <meta property="og:description" content="'.$desc.'" />
-	    <meta property="og:site_name" content="'.$configuration['site_name'].'" />
-	    <meta property="article:publisher" content="https://www.facebook.com/'.$configuration['site_name'].'" />
-	    <meta property="article:author" content="https://www.facebook.com/'.$facebook.'" />
-	    <meta property="og:image" content="'.$image.'" />
-	    <meta property="og:image:secure_url" content="'.$image.'" />
-	    <meta property="og:image:width" content="1200" />
-	    <meta property="og:image:height" content="628" />
-	    <meta property="og:image:alt" content="'.$alt.'" />
-	    <meta name="twitter:card" content="summary_large_image" />
-	    <meta name="twitter:description" content="'.$desc.'" />
-	    <meta name="twitter:title" content="'.$titles.'" />
-	    <meta name="twitter:site" content="@'.$configuration['site_name'].'" />
-	    <meta name="twitter:image" content="'.$image.'" />
-	    <meta name="twitter:creator" content="@'.$twitter.'" />';
-	    return $plugin;
 	}
 
 	/** 
@@ -431,9 +568,9 @@ class framework {
 	        header('Location: '.$location);
 	    } else {
 	        if($location) {
-	            header('Location: '.permalink($SETT['url'].'/index.php?a='.$location));
+                header('Location: ' . cleanUrls($SETT['url'] . '/index.php?page=' . $location));
 	        } else {
-	            header('Location: '.permalink($SETT['url'].'/index.php'));
+                header('Location: ' . cleanUrls($SETT['url'] . '/index.php'));
 	        }        
 	    }
 
@@ -472,7 +609,8 @@ class framework {
 			return false;
 		}	
 	}
-	/**
+
+    /**
 	* Check if this request is being made from ajax
 	*/
 	function trueAjax() { 
@@ -547,7 +685,6 @@ class framework {
 		} 
 	}
 }
-
 
 /* 
 * Callback for decodeText()

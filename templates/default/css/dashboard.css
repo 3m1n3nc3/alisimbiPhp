@@ -2,6 +2,8 @@
 #top-nav{
   position: relative;
   overflow: hidden;
+  background: var(--green);
+  color: white
 }
 .top_avatar{
   position: absolute;
@@ -38,8 +40,14 @@
   display: block;
   width: 100%;
 }
+#dashboard_tab .tab{
+  border-top: 1px #229e1c solid;
+  border-bottom: 1px #229e1c solid;
+  padding-top: 30px
+}
 
-#dashboard_tab .nav-item{
+#dashboard_tab .nav-tabs{
+  border: none;
 }
 #dashboard_tab .nav-item .nav-link{
   display: inline-block;
@@ -48,11 +56,11 @@
   border: none;
 }
 #dashboard_tab .nav-item .nav-link.active{
-  border-bottom: 4px solid var(--green);
-  color: #333;
+  background: #fafafa;
+  color: var(--green);
 }
 #dashboard_tab .tab-content{
-  background: #f6f6f6
+  background: #fafafa
 }
 .profile_img{
   background: white;
@@ -94,7 +102,7 @@
   background-clip: border-box;
   border: 0 solid rgba(0,0,0,.125);
   overflow: hidden;
-  padding: 30px;
+  padding: 30px 15px;
 }
 
 
@@ -104,8 +112,8 @@
   color: #3d3d3d;
   margin-bottom: 0;;
   background: white ;
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 15px;
+  padding-right: 15px;
   font-weight: 300;
   text-transform: uppercase;
   display: block;
@@ -140,7 +148,10 @@ table {
 }
 .user-info-list table tr td {
   padding: .615385rem 0;
-  font-weight: 300
+  font-weight: 300;
+}
+.user-info-list table tr td a{
+  color: var(--green)
 }
 .user-info-list table tr td.icon > span {
   vertical-align: middle;
