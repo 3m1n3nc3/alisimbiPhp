@@ -1,4 +1,14 @@
 $(document).ready(function() {
+  "use strict";
+
+
+  let window_hash = window.location.hash;
+
+  $('.nav-link').each(function(){
+    if($(this).attr('href') === window_hash){
+      $(this).tab('show');
+    }
+  })
   $(window).resize(function () {
     if($(window).width > 600){
       $('#popular_course_panel').removeClass('collapse');
@@ -6,7 +16,6 @@ $(document).ready(function() {
       $('#popular_course_panel').addClass('collapse');
     }
   });
-  "use strict";
 
   /* =============================================
   jQuery Countdown
@@ -42,8 +51,8 @@ function connector(type, target) {
   // let preloader = $(target).find('.form-preloader');
   // $(preloader).show();
   $('.loader_bg').fadeToggle();
-  let messager = $('#login_section_alert'); 
- 
+  let messager = $('#login_section_alert');
+
   if (type == 0) {
 
     /*For login*/
@@ -94,7 +103,7 @@ function connector(type, target) {
     var lastname = $('input[name="register-lname"]').val();
     var country = $('select[name="register-country"] option:selected').val();
     var state = $('select[name="register-state"] option:selected').val(); console.log(state);
-    var city = $('select[name="register-city"] option:selected').val(); 
+    var city = $('select[name="register-city"] option:selected').val();
     $.ajax({
       type: "POST",
       url: siteUrl+"/connection/connector.php",
@@ -103,11 +112,11 @@ function connector(type, target) {
       cache: false,
       success: function(html) {
         $('.loader_bg').fadeToggle();
-        var response = html.message; 
+        var response = html.message;
         $(messager).html(response);
         if (html.status == 1) {
-          window.top.location=html.header;        
-        } 
+          window.top.location=html.header;
+        }
       },
       error: function(xhr, status, error) {
         $('.loader_bg').fadeToggle();
@@ -129,9 +138,9 @@ $('.select-country-list').on('change',function (){
 });
 
 
-function fetch_state(sender,receiver) { 
-  var sender_id = sender.options[sender.selectedIndex].id; 
-  
+function fetch_state(sender,receiver) {
+  var sender_id = sender.options[sender.selectedIndex].id;
+
   $.ajax({
     type: 'POST',
     url: siteUrl+'/connection/location.php',
@@ -147,9 +156,9 @@ function fetch_state(sender,receiver) {
 }
 
 function fetch_city(sender, receiver) {
-  var sender_id = sender[0].options[sender[0].selectedIndex].id; 
+  var sender_id = sender[0].options[sender[0].selectedIndex].id;
 
-   $.ajax({
+  $.ajax({
     type: 'POST',
     url: siteUrl+'/connection/location.php',
     data: {state_id:sender_id, type:1},
@@ -161,7 +170,7 @@ function fetch_city(sender, receiver) {
 
 $('.cc-input').keyup(function (){
   if(this.value.length === this.maxLength){
-    var $next = $(this).next('.cc-input'); 
+    var $next = $(this).next('.cc-input');
     if($next.length){
       $next.focus();
     }else{
@@ -186,3 +195,29 @@ $('.cc-num').on("focusin", function(){
   $(".cc-num").attr('type', 'password');
   $(this).attr('type', 'text');
 });
+
+
+$('.module-progress').each(function (){
+  let progress_value = ($(this).attr('data-progress'));
+
+  if(!Number(progress_value)){
+    throw "Not a number";
+  }else{
+    if(progress_value > 100){
+      progress_value = 100;
+      throw "Number must be between 0 & 100. ";
+    }
+  }
+  try{
+    $(this).find('.value').css({
+      left: (progress_value - 100) + "%"
+    });
+  }catch(e){
+    console.log(e.message);
+  }
+})
+
+$(document).find('.nav-item .nav-link').on('click', function(){
+  let href = $(this).attr('href')
+  window.location.hash = href;
+})
