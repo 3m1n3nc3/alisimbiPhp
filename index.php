@@ -56,13 +56,18 @@ if ($module_newArr) {
 
 // Get a list of instructors for the new course
 $instructorsArr = getInstructors($course_new['id']);
+
 $instructor = '';
+$course_instructor = '';
+
 if ($instructorsArr) {
 	foreach ($instructorsArr as $ins) {
 		$instructor .= instructorCard($ins);
+		$course_instructor .= instructorCard($ins, 1);
 		// $ins_rating = userRating($rating$ins['rating']);
 	}
 	$PTMPL['instructor'] = $instructor;
+	$PTMPL['course_instructor'] = $course_instructor;
 }
 
 // Show the footer

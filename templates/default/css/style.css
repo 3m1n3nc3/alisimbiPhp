@@ -1,7 +1,7 @@
 /* Required height of parents of the Full Page Carousel for proper displaying carousel itself */
 @import "./font-awesome.css";
-@import "./variable.css";
 @import "./bootstrap.min.css";
+@import "./variable.css";
 @import "./dashboard.css";
 
 body, html {
@@ -122,6 +122,7 @@ svg.icon:not(.icon--full-color) path {
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
+    align-items: flex-start;
     background: #fff;
     border-bottom: 1px solid #e6e6e6;
     -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, .05);
@@ -131,12 +132,14 @@ svg.icon:not(.icon--full-color) path {
 .instructors .instructor .i-profile-img {
     height: 200px;
     position: relative;
-    width: 100%;
+    width: 150px;
+    height: 150px;
     display: block;
     background: #fff;
     object-position: center;
     object-fit: cover;
     overflow: hidden;
+    margin: 10px;
     /* border-radius: 20px; */
 }
 
@@ -156,26 +159,36 @@ svg.icon:not(.icon--full-color) path {
     transform: scale(1.1);
 }
 
+.instructors .instructor .i-bio{
+margin-left: 10px;
+margin-top: 10px;
+}
 .instructors .instructor .i-bio i-name {
     line-height: 1.5;
     color: rgb(94, 88, 96);
     margin-bottom: 15px;
 }
 
-.instructors .instructor .i-bio .i-name {
+.instructors .instructor .i-name {
     font-size: 16px;
     font-weight: bold;
     position: relative;
     margin-top: 10px;
+    display: block;
+    width: 100%;
 }
 
 .instructors .instructor .i-rating {
     color: var(--green);
+    margin: 5px 10px
+}
+.instructors .instructor .i-rating *{
+  margin-right: 5px
 }
 
 .instructors .instructor .i-social {
     /* border-top: 1px solid #e6e6e6; */
-    margin-top: 15px;
+    margin-top: 5px;
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
@@ -615,33 +628,34 @@ svg.icon:not(.icon--full-color) path {
     padding: 5% 10%;
 }
 
-#popular_course_tab {
+.course_tab {
     background: #fff;
     border-bottom: 1px solid #f1f2f3;
+    color: #888;
 }
 
-#popular_course_tab .nav-item .nav-link {
-    padding: 20px 30px;
+.course_tab .nav-item .nav-link {
+    padding: 30px 30px;
     border: none;
-    color: #a6a6a6;
+    color: currentColor;
 }
 
-#popular_course_tab .nav-item .nav-link.active {
+.course_tab .nav-item .nav-link.active {
     color: #333;
     border-bottom: 2px solid var(--green);
     font-weight: bold
 }
 
-#popular_course_tab_content {
+.course_tab_content {
     background: #f6f6f6;
     color: #333;
 }
 
 .course-header {
     padding: 2.5% 10%;
-    border-left: 6px solid #f1f2f3;
-    border-right: 6px solid #f1f2f3;
-    border-bottom: 1px solid #f1f2f3;
+    /* border-left: 6px solid #f1f2f3; */
+    /* border-right: 6px solid #f1f2f3; */
+    border-bottom: 1px solid #eee;
     display: block;
 }
 
@@ -655,18 +669,18 @@ svg.icon:not(.icon--full-color) path {
 }
 
 .course-hero {
-    padding: 15% 10%;
+    padding: 15% 10% 10%;
     object-fit: fill;
     overflow: hidden;
     position: relative;
     /*height: 300px;*/
-    background: #d6d6d6;
+    background: var(--green);
 }
 
 .course-hero .cover-img img {
     position: absolute;
-    width: 200%;
-    height: 100%;
+    width: 100%;
+    /* height: 100%; */
     right: 0;
     top: 0;
 }
@@ -697,6 +711,7 @@ svg.icon:not(.icon--full-color) path {
 
 
 /* sign-form */
+
 .sign-form {
     margin: 10% 2%;
     color: #d6d6d6;
@@ -717,19 +732,23 @@ svg.icon:not(.icon--full-color) path {
 
 .sign-form.out {
     background: #fff;
-    border-radius: 20px;
+    border-radius: 4px;
     border: 1px solid #d6d6d6;
     overflow: hidden;
     color: hsl(0, 0%, 76%);
 }
 
+
 .sign-form.out .sign-form-content {
     padding: 5% 10%;
+
 }
 
 .sign-form .sign-form-content {
     color: rgb(194, 194, 194);
     padding: 5% 2%;
+    position: relative;
+    overflow: hidden;
 }
 
 @media (max-width: 569px) {
@@ -742,8 +761,8 @@ svg.icon:not(.icon--full-color) path {
     }
 }
 
-.sign-form .sign-form-content .form-control {
-    border-radius: 20px;
+.form-control {
+    border-radius: 4px;
     padding: 20px 25px;
     -webkit-transition: all .5s ease-in-out;
     -o-transition: all .5s ease-in-out;
@@ -753,12 +772,19 @@ svg.icon:not(.icon--full-color) path {
     border: 1px solid #d6d6d6;
 }
 
+.custom-input{
+  display: inline-block;
+}
+.custom-input label{
+  display: block;
+}
 .custom-select-box {
-    width: 100%;
+    /* width: 100%; */
+    /* display: inline-block; */
     font-size: 14px;
     color: #888;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 4px;
     padding: 10px 15px;
     -webkit-transition: all .5s ease-in-out;
     -o-transition: all .5s ease-in-out;
@@ -777,6 +803,8 @@ svg.icon:not(.icon--full-color) path {
     background-image: none;
     -webkit-appearance: none;
     color: currentColor;
+    margin-right: 30px;
+    cursor: default;
 }
 
 .custom-select-box:after {
@@ -795,10 +823,7 @@ svg.icon:not(.icon--full-color) path {
     outline: none;
 }
 
-.sign-form .sign-form-content select.form-control {
-    padding: 10px 20px;
-    height: 45px;
-}
+
 
 .sign-form .sign-form-content .form-control:focus {
     padding-left: 30px;
@@ -814,6 +839,16 @@ svg.icon:not(.icon--full-color) path {
 
 }
 
+.sign-form .sign-form-content select.form-control{
+    padding: 10px 20px;
+    height: 45px;
+
+}
+.sign-form .sign-form-content textarea.form-control {
+  /* border-radius: 2px; */
+  position: relative;
+  overflow: hidden;
+}
 .toggle_btn {
     background: rgba(255, 255, 255, .35);
     padding: 7px;
@@ -929,7 +964,7 @@ footer {
     padding: 20px;
 }
 
-.module-widget {
+.course-widget {
     background-color: #f4f4f4;
     margin-bottom: 10%;
     border: 1px solid #fff;
@@ -937,7 +972,7 @@ footer {
     display: block;
 }
 
-.module-tile {
+.course-tile {
     display: flex;
     flex-flow: row wrap;
     align-items: stretch;
@@ -954,19 +989,19 @@ footer {
     border: 1px solid #e6e6e6;
     margin-bottom: 30px;
     transition: all .35s ease-in-out;
+    border-radius: 9px
 }
-.module-tile:hover {
+.course-tile:hover {
     border: 1px solid #f4f4f4;
 }
-.module-tile .module-progress{
+.course-tile .course-progress{
   position: relative;
   overflow: hidden;
   height: 4px;
-  background: #fff;
-  border: 1px solid #e6e6e6;
+  background: #f4f4f4;
   width: 100%;
 }
-.module-tile .module-progress .value{
+.course-tile .course-progress .value{
   position: absolute;
   left: -100%;
   top: 0;
@@ -974,15 +1009,16 @@ footer {
   height: 100%;
   content: '';
   background: var(--yellow);
+  border-radius: 4px;
 }
 
-.module-tile .progress-value{
+.course-tile .progress-value{
   position: absolute;
   color: var(--yellow);
   right: 15px;
   bottom: 15px;
 }
-.module-tile .module-icon {
+.course-tile .course-icon {
     background: #000;
     width: 30%;
     object-fit: cover;
@@ -991,7 +1027,7 @@ footer {
     overflow: hidden;
     transition: all .35s ease-in-out;
 }
-.module-tile .module-icon img{
+.course-tile .course-icon img{
     position: absolute;
     object-fit: cover;
     object-position: center;
@@ -1001,7 +1037,7 @@ footer {
     right: 0;
 }
 
-.module-tile .module-info{
+.course-tile .course-info{
     width: 70%;
     display: flex;
     flex-flow: column wrap;
@@ -1012,20 +1048,20 @@ footer {
     overflow: hidden;
     transition: all .35s ease-in-out;
 }
-.module-tile .module-info .title{
+.course-tile .course-info .title{
     font-size: 150%;
     font-weight: 400;
     line-height: 1.75;
     padding: 15px 15px 15px 30px;
     border-bottom: 1px solid #eee;
 }
-.module-tile .module-info .module-content{
+.course-tile .course-info .course-content{
     padding: 15px 15px 15px 30px;
     background: #fff;
     flex: auto;
 }
 
-.module-tile .module-info .module-content p{
+.course-tile .course-info .course-content p{
     font-size: 14px;
     position: relative;
     display: block;
@@ -1035,7 +1071,7 @@ footer {
     -ms-text-overflow: -o-ellipsis-lastline;
     text-overflow: -o-ellipsis-lastline;
 }
-.module-tile .module-info .module-content p:after{
+.course-tile .course-info .course-content p:after{
     content: ' ';
     text-align: right;
     position: absolute;
@@ -1046,10 +1082,10 @@ footer {
     background: linear-gradient(to top, rgba(255,55,255,.5). rgba(255,255,255,1) 50%);
 }
 @media (max-width: 500px){
-  .module-tile .module-icon{
+  .course-tile .course-icon{
     width: 5%;
   }
-  .module-tile .module-info{
+  .course-tile .course-info{
     width: 95%;
   }
 }
@@ -1057,6 +1093,7 @@ footer {
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
+  object-fit: contain;
 }
 .suspend{
   position: fixed;
@@ -1108,24 +1145,34 @@ footer {
   width: 100%;
   left: -100%;
   overflow: hidden;
-  background: var(--green-overlay);
+  background: hsla(120, 100%, 37%, .5);
   transition: all .35s ease-in-out;
-  padding: 5% 10%;
+  padding: 0 10%;
 }
 
 .readmore{
-  display: inline-block;
-
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 5px;
+  width: 100%;
 }
 .readmore a{
-  line-height: 1.5;
-  padding: 10px 30px;
+  padding: 10px 20px;
   background: transparent;
-  border: 1px solid #fff;
   color: #fff;
-  border-radius: 20px;
-  margin-right: 5px;
-  transition: all .35s ease-in;
+  margin-right: 10px;
+  box-shadow: 0 6px 45px -10px #cacaca;
+  border: 1px solid currentColor;
+  border-radius: 30px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1.5;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing:normal;
+  text-transform: capitalize;
+  transition: all 0.3s ease-out;
+  color: #333;
 }
 .readmore a:hover{
   background: #fff;
@@ -1140,3 +1187,158 @@ footer {
 .to-left{
   float: left;
 }
+
+
+.above{
+  position: fixed;
+}
+
+fieldset{
+  padding-top: 20px;
+  margin: 20px auto
+}
+legend{
+  margin-bottom: 10px
+}
+label{
+  color: #a6a6a6;
+}
+
+.module-widget {
+    background-color: #fafafa;
+    padding-bottom: 10%;
+    padding: 5% 10%;
+    display: block;
+}
+
+.module-tile {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    width: 100%;
+    position: relative;
+    -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, .05);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, .05);
+    overflow: hidden;
+    background: white;
+    object-fit: cover;
+    object-position: center;
+    min-height: 120px;
+    border: 1px solid #f4f4f4;
+    /* margin-bottom: 30px; */
+    transition: all .35s ease-in-out;
+    /* border-radius: 9px */
+}
+.module-tile:hover {
+    border: 1px solid #e6e6e6;
+}
+.module-tile .module-icon {
+    background: rgba(0,0,0,.02);
+    width: 15%;
+    object-fit: cover;
+    object-position: center;
+    position: relative;
+    overflow: hidden;
+    transition: all .35s ease-in-out;
+    font-size: 3rem;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10px 20px
+}
+.module-tile .module-icon img{
+    position: absolute;
+    object-fit: cover;
+    object-position: center;
+    width:  100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+}
+
+.module-tile .module-info{
+    width: 55%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: stretch;
+    align-content: stretch;
+    align-items: stretch;
+    position: relative;
+    overflow: hidden;
+    transition: all .35s ease-in-out;
+    color: #333;
+}
+
+.module-tile .module-btn{
+    width: 15%;
+  }
+.module-tile .module-info .title{
+    font-size: 120%;
+    font-weight: 300;
+    line-height: 1.5;
+    padding-left:20px;
+    padding-top:20px;
+}
+.module-tile .module-info .module-content{
+  padding-top:20px;
+  padding-left: 20px;
+    background: #fff;
+    flex: auto;
+}
+.module-tile .module-progress{
+  position: relative;
+  overflow: hidden;
+  height: 4px;
+  background: #f4f4f4;
+  width: 100%;
+}
+.module-tile .module-progress .value{
+  position: absolute;
+  left: -100%;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  content: '';
+  background: var(--yellow);
+  border-radius: 4px;
+}
+
+.module-tile .progress-value{
+  position: absolute;
+  color: var(--yellow);
+  left: 20px;
+  bottom: 20px;
+}
+
+/*
+
+.module-tile .module-info .module-content p{
+    font-size: 14px;
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    line-height: 2em;
+    -ms-text-overflow: -o-ellipsis-lastline;
+    text-overflow: -o-ellipsis-lastline;
+}
+
+.module-tile .module-info .module-content p:after{
+    content: ' ';
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    height: 6em;
+    background: linear-gradient(to top, rgba(255,55,255,.5). rgba(255,255,255,1) 50%);
+}
+@media (max-width: 500px){
+  .module-tile .module-icon{
+    width: 5%;
+  }
+  .module-tile .module-info{
+    width: 95%;
+  }
+} */
