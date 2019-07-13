@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 11, 2019 at 02:27 PM
--- Server version: 5.7.26-0ubuntu0.18.04.1
--- PHP Version: 7.2.19-0ubuntu0.18.04.1
+-- Generation Time: Jul 13, 2019 at 05:57 PM
+-- Server version: 5.7.26-0ubuntu0.19.04.1
+-- PHP Version: 7.2.19-0ubuntu0.19.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -13,6 +13,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `alisimbi`
 --
+CREATE DATABASE IF NOT EXISTS `alisimbi` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `alisimbi`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `benefits`
+--
+
+CREATE TABLE `benefits` (
+  `id` int(11) NOT NULL,
+  `title` varchar(128) DEFAULT NULL,
+  `icon` varchar(128) DEFAULT NULL,
+  `description` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `benefits`
+--
+
+INSERT INTO `benefits` (`id`, `title`, `icon`, `description`) VALUES
+(1, 'transcript', 'file-pdf-o', 'Get a PDF transcript so you can study at your own pace.'),
+(2, 'secured', 'shield', 'These course is hosted on our secure servers and your connection is encripted'),
+(3, 'recognized', 'certificate', 'Get a certificate that is recognized by a lot of  organizations, and boost the quality of your CV besides showing that you are interested in learning'),
+(4, 'videos', 'pause-circle', 'This course comes with a video so that you  can feel that connection with our instructors.');
 
 -- --------------------------------------------------------
 
@@ -24,15 +49,19 @@ CREATE TABLE `configuration` (
   `language` varchar(128) NOT NULL DEFAULT 'default',
   `site_name` varchar(128) NOT NULL,
   `cleanurl` enum('0','1') NOT NULL DEFAULT '0',
-  `data_limit` int(11) NOT NULL DEFAULT '15'
+  `data_limit` int(11) NOT NULL DEFAULT '15',
+  `rave_public_key` varchar(128) DEFAULT NULL,
+  `rave_private_key` varchar(128) DEFAULT NULL,
+  `rave_mode` enum('0','1') NOT NULL DEFAULT '0',
+  `currency` varchar(3) NOT NULL DEFAULT 'NGN'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `configuration`
 --
 
-INSERT INTO `configuration` (`language`, `site_name`, `cleanurl`, `data_limit`) VALUES
-('default', 'Alisimbi', '0', 15);
+INSERT INTO `configuration` (`language`, `site_name`, `cleanurl`, `data_limit`, `rave_public_key`, `rave_private_key`, `rave_mode`, `currency`) VALUES
+('default', 'Alisimbi', '0', 15, NULL, NULL, '0', 'NGN');
 
 -- --------------------------------------------------------
 
@@ -71,18 +100,23 @@ CREATE TABLE `courses` (
   `intro` text,
   `cover` varchar(128) DEFAULT NULL,
   `badge` varchar(128) DEFAULT NULL,
+  `benefits` varchar(128) DEFAULT NULL,
+  `price` int(11) NOT NULL DEFAULT '0',
   `status` enum('0','1') DEFAULT '1',
-  `start` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `start` datetime DEFAULT CURRENT_TIMESTAMP,
+  `creator_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `courses`
 --
 
-INSERT INTO `courses` (`id`, `title`, `intro`, `cover`, `badge`, `status`, `start`) VALUES
-(1, 'Farming in rural settlements', 'Occaecat quis ut sed officia laboris non incididunt officia eu in et nulla magna dolore duis occaecat aliqua velit labore ut nulla laborum tempor voluptate ex eu aliquip in proident tempor consectetur mollit ullamco velit dolor laborum non enim ex mollit eu amet aliqua quis est quis dolor deserunt nulla in voluptate amet incididunt id do in do qui ea laborum nostrud irure est pariatur minim nisi do cillum dolor non ad incididunt cillum mollit reprehenderit pariatur dolore qui pariatur dolor proident sint aliquip ut sunt in duis in nisi culpa ex proident est est dolor sed pariatur dolor velit officia elit id magna id enim quis ut voluptate ut minim irure aliquip aute mollit velit nulla ad mollit ea eu laborum reprehenderit deserunt in amet deserunt anim in deserunt officia voluptate proident culpa pariatur dolore sit nisi est exercitation dolore tempor sint anim laborum ullamco sint magna voluptate sed enim consectetur duis excepteur do culpa exercitation ullamco tempor culpa ullamco nostrud incididunt fugiat laborum in esse ut labore nostrud in fugiat reprehenderit labore ut tempor non deserunt tempor fugiat in quis proident esse occaecat esse amet elit ullamco pariatur aute id non qui officia ut officia qui.', 'obj.jpg', '', '1', '2019-07-17 08:28:11'),
-(2, 'Building Fish Mazes', 'Lorem ipsum ut non ut quis amet laborum do amet id fugiat duis esse occaecat dolore dolore eu anim nulla nostrud mollit in in amet irure in veniam excepteur occaecat non dolor id sit incididunt aliqua fugiat tempor ullamco mollit excepteur magna veniam commodo tempor in mollit pariatur cupidatat anim minim consectetur consectetur fugiat qui aute ex laboris anim et quis in deserunt dolore ut est in magna magna duis voluptate do laboris do labore excepteur culpa amet magna irure aute consequat aute voluptate adipisicing excepteur laborum duis in esse non in minim dolore nulla adipisicing proident duis do laborum dolor dolore do fugiat dolore dolore id excepteur irure aute irure ut pariatur ut fugiat amet esse eiusmod quis quis et sed dolor tempor aliquip et dolore culpa excepteur consectetur anim veniam officia pariatur cillum aliquip consectetur adipisicing in in voluptate deserunt cupidatat ullamco amet excepteur cillum excepteur aliquip eu nisi aute dolor nostrud amet excepteur cillum ea commodo irure ad laborum nisi veniam laborum in in ad fugiat labore eu magna veniam quis sunt nisi esse irure consequat laborum eu minim esse ut nulla ut mollit cupidatat laboris dolor excepteur sunt laborum nisi laboris cupidatat ex non exercitation labore elit fugiat consequat esse mollit mollit occaecat duis tempor ut in cupidatat ut in eiusmod in mollit ad officia deserunt ad pariatur amet ad laborum qui ut irure laborum tempor nostrud veniam.', 'here.jpg', '', '1', '2019-07-25 04:32:11'),
-(3, 'Building Egg crate', 'Fugiat tempor ullamco mollit excepteur magna veniam commodo tempor in mollit pariatur cupidatat anim minim consectetur consectetur fugiat qui aute ex laboris anim et quis in deserunt dolore ut est in magna magna duis voluptate do laboris do labore excepteur culpa amet magna irure aute consequat aute voluptate adipisicing excepteur laborum duis in esse non in minim dolore nulla adipisicing proident duis do laborum dolor dolore do fugiat dolore dolore id excepteur irure aute irure ut pariatur ut fugiat amet esse eiusmod quis quis et sed dolor tempor aliquip et dolore culpa excepteur consectetur anim veniam officia pariatur cillum aliquip consectetur adipisicing in in voluptate deserunt cupidatat ullamco amet excepteur cillum excepteur aliquip eu nisi aute dolor nostrud amet excepteur cillum ea commodo irure ad laborum nisi veniam laborum in in ad fugiat labore eu magna veniam quis sunt nisi esse irure consequat laborum eu minim esse ut nulla ut mollit cupidatat laboris dolor excepteur sunt laborum nisi laboris cupidatat ex non exercitation labore elit fugiat consequat esse mollit mollit occaecat duis tempor ut in cupidatat ut in eiusmod in mollit ad officia deserunt ad pariatur amet ad laborum qui ut irure laborum tempor nostrud veniam.', 'singer.jpg', '', '1', '2019-07-25 04:32:11');
+INSERT INTO `courses` (`id`, `title`, `intro`, `cover`, `badge`, `benefits`, `price`, `status`, `start`, `creator_id`) VALUES
+(2, 'Building Fish Mazes', 'Lorem ipsum ut non ut quis amet laborum do amet id fugiat duis esse occaecat dolore dolore eu anim nulla nostrud mollit in in amet irure in veniam excepteur occaecat non dolor id sit incididunt aliqua fugiat tempor ullamco mollit excepteur magna veniam commodo tempor in mollit pariatur cupidatat anim minim consectetur consectetur fugiat qui aute ex laboris anim et quis in deserunt dolore ut est in magna magna duis voluptate do laboris do labore excepteur culpa amet magna irure aute consequat aute voluptate adipisicing excepteur laborum duis in esse non in minim dolore nulla adipisicing proident duis do laborum dolor dolore do fugiat dolore dolore id excepteur irure aute irure ut pariatur ut fugiat amet esse eiusmod quis quis et sed dolor tempor aliquip et dolore culpa excepteur consectetur anim veniam officia pariatur cillum aliquip consectetur adipisicing in in voluptate deserunt cupidatat ullamco amet excepteur cillum excepteur aliquip eu nisi aute dolor nostrud amet excepteur cillum ea commodo irure ad laborum nisi veniam laborum in in ad fugiat labore eu magna veniam quis sunt nisi esse irure consequat laborum eu minim esse ut nulla ut mollit cupidatat laboris dolor excepteur sunt laborum nisi laboris cupidatat ex non exercitation labore elit fugiat consequat esse mollit mollit occaecat duis tempor ut in cupidatat ut in eiusmod in mollit ad officia deserunt ad pariatur amet ad laborum qui ut irure laborum tempor nostrud veniam.', '950921736_1696954136_1909978056_n.jpg', '590350285_32334601_123605503_n.png', ',test,placeholder', 0, '1', '2019-07-11 00:07:00', NULL),
+(3, 'Building Egg crate', 'Fugiat tempor ullamco mollit excepteur magna veniam commodo tempor in mollit pariatur cupidatat anim minim consectetur consectetur fugiat qui aute ex laboris anim et quis in deserunt dolore ut est in magna magna duis voluptate do laboris do labore excepteur culpa amet magna irure aute consequat aute voluptate adipisicing excepteur laborum duis in esse non in minim dolore nulla adipisicing proident duis do laborum dolor dolore do fugiat dolore dolore id excepteur irure aute irure ut pariatur ut fugiat amet esse eiusmod quis quis et sed dolor tempor aliquip et dolore culpa excepteur consectetur anim veniam officia pariatur cillum aliquip consectetur adipisicing in in voluptate deserunt cupidatat ullamco amet excepteur cillum excepteur aliquip eu nisi aute dolor nostrud amet excepteur cillum ea commodo irure ad laborum nisi veniam laborum in in ad fugiat labore eu magna veniam quis sunt nisi esse irure consequat laborum eu minim esse ut nulla ut mollit cupidatat laboris dolor excepteur sunt laborum nisi laboris cupidatat ex non exercitation labore elit fugiat consequat esse mollit mollit occaecat duis tempor ut in cupidatat ut in eiusmod in mollit ad officia deserunt ad pariatur amet ad laborum qui ut irure laborum tempor nostrud veniam.', 'singer.jpg', '', 'transcript,secured,recognized,videos', 0, '1', '2019-07-03 00:07:00', NULL),
+(7, 'How to build farm house', 'Tempor in aliquip qui nulla commodo anim ut sed duis sit ea id sit et nostrud mollit minim veniam irure labore dolor adipisicing dolor aute laborum commodo veniam aute commodo amet nisi aliqua exercitation do do.Tempor in aliquip qui nulla commodo anim ut sed duis sit ea id sit et nostrud mollit minim veniam irure labore dolor adipisicing dolor aute laborum commodo veniam aute commodo amet nisi aliqua exercitation do do.Tempor in aliquip qui nulla commodo anim ut sed duis sit ea id sit et nostrud mollit minim veniam irure labore dolor adipisicing dolor aute laborum commodo veniam aute commodo amet nisi aliqua exercitation do do.', '1187104505_1972298666_1302237813_n.jpg', '1768749353_1753751275_642637538_n.png', ',test,placeholder', 0, '1', '2019-07-10 00:07:00', NULL),
+(8, 'Egg production for farmers', 'Tempor in aliquip qui nulla commodo anim ut sed duis sit ea id sit et nostrud mollit minim veniam irure labore dolor adipisicing dolor aute laborum commodo veniam aute commodo amet nisi aliqua exercitation do do.Tempor in aliquip qui nulla commodo anim ut sed duis sit ea id sit et nostrud mollit minim veniam irure labore dolor adipisicing dolor aute laborum commodo veniam aute commodo amet nisi aliqua exercitation do do.Tempor in aliquip qui nulla commodo anim ut sed duis sit ea id sit et nostrud mollit minim veniam irure labore dolor adipisicing dolor aute laborum commodo veniam aute commodo amet nisi aliqua exercitation do do.', '1254775880_560650264_678827578_n.jpg', '70619917_575355390_459069905_n.png', ',test,placeholder', 0, '1', '2019-07-26 00:07:00', NULL),
+(9, 'Winning Big contests', 'Ea dolore enim do ea duis magna aliqua qui reprehenderit sit in laborum dolore dolore duis incididunt laboris dolor et ea quis voluptate exercitation reprehenderit irure ex voluptate magna.Ea dolore enim do ea duis magna aliqua qui reprehenderit sit in laborum dolore dolore duis incididunt laboris dolor et ea quis voluptate exercitation reprehenderit irure ex voluptate magna.Ea dolore enim do ea duis magna aliqua qui reprehenderit sit in laborum dolore dolore duis incididunt laboris dolor et ea quis voluptate exercitation reprehenderit irure ex voluptate magna.', '2095688297_1154138839_917822841_n.jpg', '1668143284_931782138_1035602380_n.png', 'secured,videos', 234, '1', '2019-07-04 00:07:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -162,25 +196,28 @@ CREATE TABLE `modules` (
   `title` varchar(128) DEFAULT NULL,
   `cover` varchar(128) DEFAULT NULL,
   `video` varchar(128) DEFAULT NULL,
-  `intro` varchar(128) NOT NULL,
+  `intro` text NOT NULL,
   `transcript` text,
   `badge` varchar(128) DEFAULT NULL,
-  `duration` int(11) NOT NULL DEFAULT '1'
+  `duration` int(11) NOT NULL DEFAULT '1',
+  `creator_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `modules`
 --
 
-INSERT INTO `modules` (`id`, `title`, `cover`, `video`, `intro`, `transcript`, `badge`, `duration`) VALUES
-(1, 'Grazing Goals', 'cows.jpg', '1234.mp4', ' esse  enim amet duis adipisicing non nisi minim ullamco ut ut in et voluptate adipisicing cillum ut elit aliquip do ut ', 'Elit nisi elit esse minim consectetur nostrud anim velit amet duis amet esse  enim amet duis adipisicing non nisi minim ullamco ut ut in et voluptate adipisicing cillum ut elit aliquip do ut ', '', 5),
-(2, 'Plant selection', 'here.jpg', '1235.mp4', 'deserunt in aliquip veniam enim tempor sunt ut nulla in sunt aliqua incididunt ', 'ad aliquip aliquip deserunt in aliquip veniam enim tempor sunt ut nulla in sunt aliqua incididunt aute irure sed in pariatur excepteur dolor tempor pariatur fugiat ad dolor dolore ut tempor nostrud et id duis consectetur incididunt dolore tempor dolor id ex nisi pariatur do veniam velit sed nulla ut reprehenderit occaecat sed ut. ', '', 6),
-(3, 'Growing Bigger crops', 'cows.jpg', '1234.mp4', 'consectetur nostrud anim velit amet duis amet ', 'Esse minim consectetur nostrud anim velit amet duis amet esse  enim amet duis adipisicing non nisi minim ullamco ut ut in et voluptate adipisicing cillum ut elit aliquip do ut ', '', 5),
-(4, 'Singular System', 'here.jpg', '1235.mp4', 'pariatur excepteur dolor tempor pariatur fugiat ad dolor dolore', '  aute irure sed in pariatur excepteur dolor tempor pariatur fugiat ad dolor dolore ut tempor nostrud et id duis consectetur incididunt dolore tempor dolor id ex nisi pariatur do veniam velit sed nulla ut reprehenderit occaecat sed ut. ', '', 6),
-(5, 'Simple Work', 'obj.jpg', '1234.mp4', 'veniam excepteur do sed incididunt mollit in enim amet et est aliquip', 'laboris veniam excepteur do sed incididunt mollit in enim amet et est aliquip pariatur in mollit quis culpa consectetur consectetur culpa elit in in fugiat cillum fugiat aute aute esse ad minim aute eiusmod laboris voluptate', '', 4),
-(6, 'Social Farming', 'cows.jpg', '1234.mp4', 'amet duis adipisicing non nisi minim ullamco ut ut in et voluptate adipisicing ', 'et esse  enim amet duis adipisicing non nisi minim ullamco ut ut in et voluptate adipisicing cillum ut elit aliquip do ut  Elit nisi elit esse minim consectetur nostrud anim velit amet duis am', '', 5),
-(7, 'Owning Multiple Lands', 'cows.jpg', '1234.mp4', 'incididunt nulla amet magna culpa dolore minim consectetur reprehenderi', 'eiusmod incididunt nulla amet magna culpa dolore minim consectetur reprehenderit in id in aute aliqua laborum laborum in voluptate enim aute dolor cillum duis do veniam esse occaecat deserunt consequat ', '', 22),
-(8, 'Salivating Cows milk', 'obj.jpg', '1234.mp4', 'veniam excepteur do sed incididunt mollit in enim amet', 'laboris veniam excepteur do sed incididunt mollit in enim amet et est aliquip pariatur in mollit quis culpa consectetur consectetur culpa elit in in fugiat cillum fugiat aute aute esse ad minim aute eiusmod laboris voluptate', '', 4);
+INSERT INTO `modules` (`id`, `title`, `cover`, `video`, `intro`, `transcript`, `badge`, `duration`, `creator_id`) VALUES
+(1, 'Grazing Goals', 'cows.jpg', '1234.mp4', ' esse  enim amet duis adipisicing non nisi minim ullamco ut ut in et voluptate adipisicing cillum ut elit aliquip do ut ', 'Elit nisi elit esse minim consectetur nostrud anim velit amet duis amet esse  enim amet duis adipisicing non nisi minim ullamco ut ut in et voluptate adipisicing cillum ut elit aliquip do ut ', '', 5, 0),
+(2, 'Plant selection', 'here.jpg', '1235.mp4', 'deserunt in aliquip veniam enim tempor sunt ut nulla in sunt aliqua incididunt ', 'ad aliquip aliquip deserunt in aliquip veniam enim tempor sunt ut nulla in sunt aliqua incididunt aute irure sed in pariatur excepteur dolor tempor pariatur fugiat ad dolor dolore ut tempor nostrud et id duis consectetur incididunt dolore tempor dolor id ex nisi pariatur do veniam velit sed nulla ut reprehenderit occaecat sed ut. ', '', 6, 0),
+(3, 'Growing Bigger crops', '1635170479_376140385_816286088_n.jpg', '1234.mp4', 'consectetur nostrud anim velit amet duis amet', 'Esse minim consectetur nostrud anim velit amet duis amet esse  enim amet duis adipisicing non nisi minim ullamco ut ut in et voluptate adipisicing cillum ut elit aliquip do ut', '877068376_290509973_1549788050_n.png', 5, 8),
+(4, 'Singular System', 'here.jpg', '1235.mp4', 'pariatur excepteur dolor tempor pariatur fugiat ad dolor dolore', '  aute irure sed in pariatur excepteur dolor tempor pariatur fugiat ad dolor dolore ut tempor nostrud et id duis consectetur incididunt dolore tempor dolor id ex nisi pariatur do veniam velit sed nulla ut reprehenderit occaecat sed ut. ', '', 6, 0),
+(5, 'Simple Work', 'obj.jpg', '1234.mp4', 'veniam excepteur do sed incididunt mollit in enim amet et est aliquip', 'laboris veniam excepteur do sed incididunt mollit in enim amet et est aliquip pariatur in mollit quis culpa consectetur consectetur culpa elit in in fugiat cillum fugiat aute aute esse ad minim aute eiusmod laboris voluptate', '', 4, 0),
+(6, 'Social Farming', 'cows.jpg', '1234.mp4', 'amet duis adipisicing non nisi minim ullamco ut ut in et voluptate adipisicing ', 'et esse  enim amet duis adipisicing non nisi minim ullamco ut ut in et voluptate adipisicing cillum ut elit aliquip do ut  Elit nisi elit esse minim consectetur nostrud anim velit amet duis am', '', 5, 0),
+(7, 'Owning Multiple Lands', 'cows.jpg', '1234.mp4', 'incididunt nulla amet magna culpa dolore minim consectetur reprehenderi', 'eiusmod incididunt nulla amet magna culpa dolore minim consectetur reprehenderit in id in aute aliqua laborum laborum in voluptate enim aute dolor cillum duis do veniam esse occaecat deserunt consequat ', '', 22, 0),
+(8, 'Salivating Cows milk', 'obj.jpg', '1234.mp4', 'veniam excepteur do sed incididunt mollit in enim amet', 'laboris veniam excepteur do sed incididunt mollit in enim amet et est aliquip pariatur in mollit quis culpa consectetur consectetur culpa elit in in fugiat cillum fugiat aute aute esse ad minim aute eiusmod laboris voluptate', '', 4, 0),
+(9, 'Growing Faster', '466251843_2131297300_732634645_n.jpg', NULL, 'Sunt do in dolor officia ullamco sunt sunt ut est voluptate et elit duis cillum nulla laborum id tempor dolore dolore non ut veniam qui sunt irure anim ad non quis adipisicing sint reprehenderit exercitation esse consequat anim aute fugiat officia dolore voluptate in et sunt dolore nisi cupidatat excepteur', 'Sunt do in dolor officia ullamco sunt sunt ut est voluptate et elit duis cillum nulla laborum id tempor dolore dolore non ut veniam qui sunt irure anim ad non quis adipisicing sint reprehenderit exercitation esse consequat anim aute fugiat officia dolore voluptate in et sunt dolore nisi cupidatat excepteur est labore eiusmod minim velit enim exercitation sit commodo consectetur velit laboris dolor dolor dolor veniam minim dolore adipisicing magna fugiat dolore nisi voluptate consequat commodo sunt voluptate ut labore sunt ut dolor cillum nulla occaecat ut consectetur nulla exercitation laboris voluptate qui laborum officia pariatur sunt nisi amet officia aliqua ut veniam culpa irure velit id quis deserunt laborum sit elit ut aliquip et voluptate aute ullamco veniam dolor enim commodo do excepteur commodo in id dolore adipisicing in incididunt incididunt laboris et dolore commodo duis nisi do in nisi aliqua laborum sit commodo officia ut aliquip cupidatat in ex sunt ut do ex eu eiusmod esse aute esse pariatur mollit eu sint laborum aliqua non in nulla elit dolore sunt in voluptate eiusmod enim culpa velit eu.', '585601809_1728100493_1574795546_n.png', 5, 0),
+(10, 'Subtle way in', '1293676812_517058292_1503424651_n.jpg', NULL, 'Qui laborum sit exercitation excepteur commodo ad magna exercitation labore eiusmod in mollit elit nisi adipisicing esse aliqua ut eiusmod incididunt fugiat sit adipisicing sunt tempor aute veniam esse amet eiusmod nulla officia esse deserunt duis magna culpa labore in est non nisi duis commodo nulla cillum', 'Qui laborum sit exercitation excepteur commodo ad magna exercitation labore eiusmod in mollit elit nisi adipisicing esse aliqua ut eiusmod incididunt fugiat sit adipisicing sunt tempor aute veniam esse amet eiusmod nulla officia esse deserunt duis magna culpa labore in est non nisi duis commodo nulla cillum dolor sunt officia exercitation commodo cupidatat pariatur commodo fugiat dolor voluptate labore eu ea sunt nisi officia dolore duis dolor eu occaecat minim exercitation excepteur in ut incididunt dolor exercitation ut dolor ut qui aliquip esse minim cupidatat ut incididunt id ut nostrud anim est enim officia dolore nulla irure tempor sed nisi sunt voluptate deserunt do exercitation pariatur exercitation ex in labore veniam exercitation sit labore et aliqua consectetur nisi eiusmod qui eiusmod magna pariatur officia ut quis nisi labore ut aute velit velit adipisicing sed proident do ex ut fugiat magna commodo non aute est esse nulla nisi ex dolor enim excepteur laborum consectetur culpa amet aute esse qui cupidatat ex irure eiusmod dolore duis non elit amet officia officia est quis proident cillum non dolor cupidatat officia consequat elit ut enim nisi aliquip non reprehenderit duis dolore sed tempor cupidatat veniam enim ullamco ut enim irure dolore labore duis.', '1077307433_915018255_1906615370_n.png', 21, 8);
 
 -- --------------------------------------------------------
 
@@ -320,6 +357,12 @@ INSERT INTO `users` (`id`, `username`, `password`, `email`, `phone`, `facebook`,
 --
 
 --
+-- Indexes for table `benefits`
+--
+ALTER TABLE `benefits`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `contact`
 --
 ALTER TABLE `contact`
@@ -390,6 +433,11 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `benefits`
+--
+ALTER TABLE `benefits`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
@@ -398,7 +446,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `course_modules`
 --
@@ -418,7 +466,7 @@ ALTER TABLE `instructors`
 -- AUTO_INCREMENT for table `modules`
 --
 ALTER TABLE `modules`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `news`
 --

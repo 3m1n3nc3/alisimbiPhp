@@ -254,22 +254,47 @@ class framework {
 	* Manage the editing and creation of courses and modules
 	*/
 	function courseModuleEntry($type = 0) {
-		global $SETT, $LANG, $configuration;
-		$title = $this->course_title;
-		$intro = $this->introduction;
-		$cover = $this->cover_photo;
-		$badge = $this->badge;
-		$benefits = $this->benefits;
-		$status = $this->status;
-		$start = $this->start ? $this->start : date('Y-m-d H:m:i', strtotime('today'));
+		global $SETT, $LANG, $configuration, $user;
+		// if type == 0: Add new course
+		// if type == 1: Add new course
+		// if type == 2: Add new Module
+		// if type == 3: Update Module
+
+		if ($type == 0 || $type == 1) {
+			$title = $this->course_title;
+			$price = $this->course_price;
+			$intro = $this->introduction;
+			$benefits = $this->benefits;
+			$status = $this->status;
+			$cover = $this->cover_photo;
+			$badge = $this->badge;
+			$start = $this->start ? $this->start : date('Y-m-d H:m:i', strtotime('today'));
+		} elseif ($type == 2 || $type == 3) {
+			$module_title = $this->module_title;
+			$transcript = $this->transcript;
+			$introduction = $this->introduction;
+			$duration = $this->duration;
+			$cover = $this->cover_photo;
+			$badge = $this->badge;
+		}
+
 		if ($type == 0) {
 			$sql = sprintf("INSERT INTO " . TABLE_COURSES . " (`title`, `intro`, `cover`, `badge`, `benefits`,"
-				. " `status`, `start`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')", $title, $intro, 
-				$cover, $badge, $benefits, $status, $start);
+				. " `status`, `price`, `start`, `creator_id`) VALUES ('%s', '%s', '%s', '%s', '%s', %s', '%s', "
+				. " '%s', '%s')", $title, $intro, $cover, $badge, $benefits, $status, $price, $start, $user['id']);
 		} elseif ($type == 1) {
 			$sql = sprintf("UPDATE " . TABLE_COURSES . " SET `title` = '%s', `intro` = '%s', `cover` = '%s'," 
-				. " `badge` = '%s', `benefits` = '%s', `status` = '%s', `start` = '%s' WHERE id = '%s'", $title, 
-				$intro, $cover, $badge, $benefits, $status, $start, $this->course_id); 
+				. " `badge` = '%s', `benefits` = '%s', `status` = '%s', `price` = '%s', `start` = '%s'"
+				. " WHERE id = '%s'", $title, $intro, $cover, $badge, $benefits, $status, $price, $start, 
+				$this->course_id); 
+		} elseif ($type == 2) {
+			$sql = sprintf("INSERT INTO " . TABLE_MODULES . " (`title`, `transcript`, `intro`, `duration`, `cover`,"
+				. " `badge`, `creator_id`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')", $module_title, 
+				$transcript, $introduction, $duration, $cover, $badge, $user['id']);
+		} elseif ($type == 3) {
+			$sql = sprintf("UPDATE " . TABLE_MODULES . " SET `title` = '%s', `transcript` = '%s', `intro` = '%s',"
+				. " `duration` = '%s', `cover` = '%s', `badge` = '%s' WHERE id = '%s'", $module_title, $transcript, 
+				$introduction, $duration, $cover, $badge, $this->module_id);
 		}
 		$results = $this->dbProcessor($sql, 0, 1);
 		return $results;

@@ -28,6 +28,17 @@ $PTMPL['register_link'] = cleanUrls($SETT['url'].'/?page=account&register=true')
 
 $PTMPL['set_country'] = set_local(1, '');
 
+$benefits = '';
+$getBenefits = getBenefits(); 
+if ($getBenefits) {
+	foreach ($getBenefits as $key => $value) {
+		$benefits .= '
+		<span style="cursor: pointer;" class="ben" id="list_benefit_'
+			.$value['id'].'">'.$value['title'].'</span>';
+	}
+}
+$PTMPL['show_benefits'] = $benefits;
+
 // Show the list of available courses on the homepage
 $coursesArr = getCourses();
 $courses = '';

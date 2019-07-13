@@ -24,24 +24,16 @@
 				<div class="col-12">
 					<div class="card p-5">
 						<div class="card-block">
-							<h4 class="card-title">{$course_create_header}</h4>
+							<h4 class="card-title">{$module_create_header}</h4>
+							{$add_video_btn}
+							<div class="container m-2 text-center">{$module_message}</div>
 
-							<div class="container m-2 text-center">{$course_message}</div>
-
-							<form method="post" action="" enctype="multipart/form-data">
-								<input type="hidden" name="benefits" value="" id="benefits"> <!-- Input should be comma separated for each benefit -->
+							<form method="post" action="" enctype="multipart/form-data"> 
 								<div class="border rounded p-2 m-1">
-									Course Title
+									Module Title
 									<hr>
 									<p class="card-text">
-										<input type="text" name="course_title" class="form-control mx-2" id="course_title" value="{$course_title}" placeholder="Course Title">
-									</p>
-								</div>
-								<div class="border rounded p-2 m-1">
-									Course Price ({$currency})
-									<hr>
-									<p class="card-text">
-										<input type="text" name="price" class="form-control mx-2" id="price" value="{$course_price}" placeholder="Course Price">
+										<input type="text" name="module_title" class="form-control mx-2" id="module_title" value="{$module_title}" placeholder="Module Title">
 									</p>
 								</div>
 								<div class="border rounded p-2 m-1">
@@ -49,20 +41,16 @@
 									<hr>
 									<small class="text-danger">Will be truncated if longer than 250 words</small>
 									<p class="card-text">
-										<textarea name="introduction" class="form-control" rows="8" cols="80">{$introduction}</textarea>
+										<textarea name="introduction" class="form-control" rows="3" cols="80">{$introduction}</textarea>
 									</p>
 								</div>
 								<div class="border rounded p-2 m-1">
-									Benefits
-									<br><small class="text-info">Click to add</small>
-									<hr>
+									Transcript
+									<hr> 
 									<p class="card-text">
-										<div id="benefits_div" class="text-warning">
-											{$show_benefits}
-										</div>
-										<div id="selected_benefits" class="text-success"></div>
+										<textarea name="transcript" class="form-control" rows="8" cols="80">{$transcript}</textarea>
 									</p>
-								</div>
+								</div> 
 								<div class="border rounded p-2 m-1">
 									Cover Photo
 									<hr>
@@ -80,23 +68,13 @@
 									</p>
 								</div>
 								<div class="border rounded p-2 m-1">
-									Start Date
+									Duration
 									<hr>
 									<p class="card-text">
-										<input type="date" name="date" class="form-control mx-2" id="date" value="{$date}">
+										<input type="text" name="duration" class="form-control mx-2" id="duration" value="{$duration}">
 									</p>
-								</div>
-								<div class="border rounded p-2 m-1">
-									Status
-									<hr>
-									<p class="card-text">
-										<select class="form-control" name="status" id="status">
-											<option value="1" id="active">Active</option>
-											<option value="0" id="inactive">Inactive</option>
-										</select>
-									</p>
-								</div>
-								<button class="btn btn-primary" name="save">{$course_create_btn}</button>
+								</div> 
+								<button class="btn btn-primary" name="save">{$module_create_btn}</button>
 							</form>
 						</div>
 					</div>
