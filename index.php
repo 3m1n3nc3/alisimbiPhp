@@ -28,6 +28,17 @@ $PTMPL['register_link'] = cleanUrls($SETT['url'].'/?page=account&register=true')
 
 $PTMPL['set_country'] = set_local(1, '');
 
+$benefits = '';
+$getBenefits = getBenefits(); 
+if ($getBenefits) {
+	foreach ($getBenefits as $key => $value) {
+		$benefits .= '
+		<span style="cursor: pointer;" class="ben" id="list_benefit_'
+			.$value['id'].'">'.$value['title'].'</span>';
+	}
+}
+$PTMPL['show_benefits'] = $benefits;
+
 // Show the list of available courses on the homepage
 $coursesArr = getCourses();
 $courses = '';
@@ -56,13 +67,18 @@ if ($module_newArr) {
 
 // Get a list of instructors for the new course
 $instructorsArr = getInstructors($course_new['id']);
+
 $instructor = '';
+$course_instructor = '';
+
 if ($instructorsArr) {
 	foreach ($instructorsArr as $ins) {
 		$instructor .= instructorCard($ins);
+		$course_instructor .= instructorCard($ins, 1);
 		// $ins_rating = userRating($rating$ins['rating']);
 	}
 	$PTMPL['instructor'] = $instructor;
+	$PTMPL['course_instructor'] = $course_instructor;
 }
 
 // Show the footer

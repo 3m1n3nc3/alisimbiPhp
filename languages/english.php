@@ -51,6 +51,8 @@ $LANG['no_empty_intro'] = 'Introduction is Empty';
 $LANG['no_empty_cover'] = 'Please select a cover photo';
 $LANG['course_added'] = 'New course have been added successfully';
 $LANG['course_updated'] = 'Course have been updated successfully';
+$LANG['module_added'] = 'New module have been added successfully';
+$LANG['module_updated'] = 'Module have been updated successfully';
 
 
 // Alisimbi texts

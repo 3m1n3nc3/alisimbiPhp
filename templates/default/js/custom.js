@@ -31,9 +31,66 @@ $(document).ready(function() {
     });
   });
 
+  // Benefits selection function 
+
+  $('.ben').click(function (e) {
+      if ($('#selected_benefits').is(':empty')) {
+        var sep = ''; 
+      } else {
+        var sep = ','; 
+      }
+      var theid = '#'+$('.ben').attr('id');
+      console.log(theid);
+      var benefit_st = ''; 
+      var benefit = ''; 
+      $('.ben').each(function () {
+          benefit = sep+e.target.innerHTML;
+          benefit_st = '<span style="text-transform: uppercase;">'+benefit+'</span>';
+      });
+      $('#selected_benefits').append(benefit_st);
+      $('#benefits').attr("value", $('#benefits').attr("value") + benefit); 
+      $(theid).remove();
+  });  
+  // ======================================
+
+$('#uploadSubmit').submit(function(event){
+  if($('#uploadFile').val()) {
+    event.preventDefault();
+    $('#loader-icon').show();
+    $('#targetLayer').hide();
+    $(this).ajaxSubmit({
+      target: '#targetLayer',
+      beforeSubmit:function(){
+      $('.progress-bar').width('50%');
+    },
+    uploadProgress: function(event, position, total, percentageComplete) {
+      $('.progress-bar').animate({
+        width: percentageComplete + '%'
+      }, 
+      {
+      duration: 1000
+      });
+    },
+    success:function(){
+      $('#loader-icon').hide();
+      $('#targetLayer').show();
+    },
+    resetForm: true
+    });
+  }
+  return false;
+ }); 
+
 });
 
-
+$('#computer').on('click', function(){
+  $('#uploadvideo_form').show();
+  $('#uploadYoutube_form').hide();
+})
+$('#youtube').on('click', function(){
+  $('#uploadYoutube_form').show();
+  $('#uploadvideo_form').hide();
+})
 
 function errorHtml(message, response) {
   htmlX =
@@ -127,15 +184,6 @@ function connector(type, target) {
   }
 }
 
-$('.select-country-list').on('change',function (){
-  try{
-    let target =  $('#' +$(this).attr('data-target'));
-    fetch_state(this, target);
-  }
-  catch(e){
-    console.log(e.message);
-  }
-});
 
 
 function fetch_state(sender,receiver) {
@@ -221,3 +269,14 @@ $(document).find('.nav-item .nav-link').on('click', function(){
   let href = $(this).attr('href')
   window.location.hash = href;
 })
+
+
+$('.select-country-list').on('change',function (){
+  try{
+    let target =  $('#' +$(this).attr('data-target'));
+    fetch_state(this, target);
+  }
+  catch(e){
+    console.log(e.message);
+  }
+});
