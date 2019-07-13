@@ -24,10 +24,11 @@
 				<div class="col-12">
 					<div class="card p-5">
 						<div class="card-block">
-							<h4 class="card-title">Your Profile</h4>
-							<img src="{$photo}" class="w-25 rounded-circle img-thumbnail mx-auto d-block">
+							<h4 class="card-title">{$course_create_header}</h4>
 
-							<form method="post" action="">
+							<div class="container m-2 text-center">{$course_message}</div>
+
+							<form method="post" action="" enctype="multipart/form-data">
 								<input type="hidden" name="benefits" value="{$benefits},test,placeholder"> <!-- Input should be comma separated for each benefit -->
 								<div class="border rounded p-2 m-1">
 									Course Title
@@ -48,14 +49,16 @@
 									Cover Photo
 									<hr>
 									<p class="card-text">
-										<input type="file" name="cover_photo">
+										<label for="cover_photo" class="btn btn-primary">Choose File ...</label>
+										<input type="file" name="cover_photo" id="cover_photo" style="display: none;">
 									</p>
 								</div>
 								<div class="border rounded p-2 m-1">
 									Badge
 									<hr>
 									<p class="card-text">
-										<input type="file" name="badge">
+										<label for="badge" class="btn btn-primary">Choose File ...</label>
+										<input type="file" name="badge" id="badge" style="display: none;">
 									</p>
 								</div>
 								<div class="border rounded p-2 m-1">
@@ -70,12 +73,12 @@
 									<hr>
 									<p class="card-text">
 										<select class="form-control" name="status" id="status">
-											<option value="active" id="active">Active</option>
-											<option value="inactive" id="inactive">Inactive</option>
+											<option value="1" id="active">Active</option>
+											<option value="0" id="inactive">Inactive</option>
 										</select>
 									</p>
 								</div>
-								<button class="btn btn-primary" name="save">Save Course</button>
+								<button class="btn btn-primary" name="save">{$course_create_btn}</button>
 							</form>
 						</div>
 					</div>

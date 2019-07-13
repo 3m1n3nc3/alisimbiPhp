@@ -49,30 +49,30 @@ function mainContent() {
             $PTMPL['twitter_link'] = $user['twitter'] ? '<a href="http://twitter.com/' . $user['twitter'] . '">http://instagram.com/' . $user['twitter'] . '</a>' : '';
             $PTMPL['facebook_link'] = $user['facebook'] ? '<a href="http://facebook.com/' . $user['facebook'] . '">http://facebook.com/' . $user['facebook'] . '</a>' : '';
 
-						$social_links = '';
-						$social_links .= $user['facebook'] ? '
-							<tr>
-								<td class="icon"><span class="icon fa fa-facebook"></span></td>
-								<td class="item">Facebook</td>
-								<td> <a href="http://facebook.com/' . $user['facebook'] . '">http://.com/' . $user['facebook'] . '</a></td>
-							</tr>' : '';
+			$social_links = '';
+			$social_links .= $user['facebook'] ? '
+				<tr>
+					<td class="icon"><span class="icon fa fa-facebook"></span></td>
+					<td class="item">Facebook</td>
+					<td> <a href="http://facebook.com/' . $user['facebook'] . '">http://.com/' . $user['facebook'] . '</a></td>
+				</tr>' : '';
 
-						$social_links .= $user['facebook'] ? '
-							<tr>
-								<td class="icon"><span class="icon fa fa-twitter"></span></td>
-								<td class="item">Twitter</td>
-								<td> <a href="http://twitter.com/' . $user['twitter'] . '">http://twitter.com/' . $user['twitter'] . '</a></td>
-							</tr>' : '';
+			$social_links .= $user['facebook'] ? '
+				<tr>
+					<td class="icon"><span class="icon fa fa-twitter"></span></td>
+					<td class="item">Twitter</td>
+					<td> <a href="http://twitter.com/' . $user['twitter'] . '">http://twitter.com/' . $user['twitter'] . '</a></td>
+				</tr>' : '';
 
-						$social_links .= $user['instagram'] ? '
-							<tr>
-								<td class="icon"><span class="icon fa fa-instagram"></span></td>
-								<td class="item">Instagram</td>
-								<td> <a href="http://instagram.com/' . $user['instagram'] . '">http://instagram.com/' . $user['instagram'] . '</a></td>
-							</tr>' : '';
-						$PTMPL['social_links'] = $social_links;
+			$social_links .= $user['instagram'] ? '
+				<tr>
+					<td class="icon"><span class="icon fa fa-instagram"></span></td>
+					<td class="item">Instagram</td>
+					<td> <a href="http://instagram.com/' . $user['instagram'] . '">http://instagram.com/' . $user['instagram'] . '</a></td>
+				</tr>' : '';
+			$PTMPL['social_links'] = $social_links;
 
-						$PTMPL['city_'] = $user['city'];
+			$PTMPL['city_'] = $user['city'];
             $PTMPL['state_'] = $user['state'];
             $PTMPL['country_'] = $user['country'];
             $PTMPL['state_select'] = $user['state'] ? '<option selected="selected" value="'.$user['state'].'">'.$user['state'].'</option>' : '<option disabled>Select your state</option>';
@@ -80,10 +80,10 @@ function mainContent() {
             $PTMPL['about_'] = $user['about'];
             $PTMPL['update_'] = cleanUrls($SETT['url'].'/index.php?page=account&profile=update');
 
-						$PTMPL['user_role'] = ucfirst($user['role']);
+			$PTMPL['user_role'] = ucfirst($user['role']);
 
-						$add_course_link = cleanUrls($SETT['url'].'/index.php?page=training&course=add');
-						$PTMPL['add_course_link'] = '<a href="'.$add_course_link.'" id="add_course_link">Add Course</a>';
+			$add_course_link = cleanUrls($SETT['url'].'/index.php?page=training&course=add');
+			$PTMPL['add_course_link'] = '<a href="'.$add_course_link.'" id="add_course_link">Add Course</a>';
 
             // If the user is administrative show the social inputs
             $update_social = '';
@@ -106,12 +106,12 @@ function mainContent() {
             $framework->redirect('account&profile=home');
         }
 
-				$courseArr = getCourses();
-				$course = '';
-				foreach ($courseArr as $rslt) {
+		$courseArr = getCourses();
+		$course = '';
+		foreach ($courseArr as $rslt) {
           $course .= courseModuleCard($rslt);
-				}
-				$PTMPL['course'] = $course;
+		}
+		$PTMPL['course'] = $course;
 
     } else {
         if (isset($_GET['register']) && $_GET['register'] == 'true') {
