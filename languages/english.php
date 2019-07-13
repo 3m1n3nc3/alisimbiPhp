@@ -46,6 +46,11 @@ $LANG['_all_required'] = 'All fields are required';
 $LANG['data_unmatch'] = 'The information you provided does not match our records';
 $LANG['password_mismatch'] = 'Password and Confirm Password do not match';
 $LANG['password_short'] = 'The provided password is too short, it should be at least 7 characters';
+$LANG['no_empty_title'] = 'Title is empty';
+$LANG['no_empty_intro'] = 'Introduction is Empty';
+$LANG['no_empty_cover'] = 'Please select a cover photo';
+$LANG['course_added'] = 'New course have been added successfully';
+$LANG['course_updated'] = 'Course have been updated successfully';
 
 
 // Alisimbi texts
