@@ -70,8 +70,7 @@ class framework {
         }
     }
 
-    function authenticateUser($type = null)
-    {
+    function authenticateUser($type = null) {
         global $LANG;
         if (isset($_COOKIE['username']) && isset($_COOKIE['usertoken'])) {
             $this->username = $_COOKIE['username'];
@@ -130,8 +129,7 @@ class framework {
     }
 
     // Registeration function
-    function registrationCall()
-    {
+    function registrationCall() {
         // Prevents bypassing the FILTER_VALIDATE_EMAIL
         $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
 
@@ -151,8 +149,7 @@ class framework {
         return $response;
     }
 
-    function updateProfile()
-    {
+    function updateProfile() {
         global $user, $LANG;
         $firstname = $this->db_prepare_input($this->firstname);
         $lastname = $this->db_prepare_input($this->lastname);
@@ -181,8 +178,7 @@ class framework {
         }
     }
 
-    function sign_out($reset = null)
-    {
+    function sign_out($reset = null) {
         if ($reset == true) {
             $this->resetToken();
         }
@@ -192,8 +188,7 @@ class framework {
         unset($_SESSION['password']);
     }
 
-    function checkEmail($email = NULL, $type = 0)
-    {
+    function checkEmail($email = NULL, $type = 0) {
         $sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE 1 AND email = '%s'", mb_strtolower($email));
         // Process the information
         $results = $this->dbProcessor($sql, 1);
@@ -204,8 +199,7 @@ class framework {
         }
     }
 
-    function captchaVal($captcha)
-    {
+    function captchaVal($captcha) {
         global $settings;
         if ($settings['captcha']) {
             if ($captcha == "{$_SESSION['captcha']}" && !empty($captcha)) {
@@ -218,8 +212,7 @@ class framework {
         }
     }
 
-    function phoneVal($phone, $type = 0)
-    {
+    function phoneVal($phone, $type = 0) {
         global $settings;
         $phone = $this->db_prepare_input($phone);
 
@@ -237,8 +230,7 @@ class framework {
     }
 
     // Set user roles to determine what user can do
-    function userRoles()
-    {
+    function userRoles() {
         global $user;
         if ($user) {
             if ($user['role'] == 'learner') {
@@ -256,6 +248,31 @@ class framework {
             $role = 0;
         }
         return $role;
+	}
+
+	/**
+	* Manage the editing and creation of courses and modules
+	*/
+	function courseModuleEntry($type = 0) {
+		global $SETT, $LANG, $configuration;
+		$title = $this->course_title;
+		$intro = $this->introduction;
+		$cover = $this->cover_photo;
+		$badge = $this->badge;
+		$benefits = $this->benefits;
+		$status = $this->status;
+		$start = $this->start ? $this->start : date('Y-m-d H:m:i', strtotime('today'));
+		if ($type == 0) {
+			$sql = sprintf("INSERT INTO " . TABLE_COURSES . " (`title`, `intro`, `cover`, `badge`, `benefits`,"
+				. " `status`, `start`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')", $title, $intro, 
+				$cover, $badge, $benefits, $status, $start);
+		} elseif ($type == 1) {
+			$sql = sprintf("UPDATE " . TABLE_COURSES . " SET `title` = '%s', `intro` = '%s', `cover` = '%s'," 
+				. " `badge` = '%s', `benefits` = '%s', `status` = '%s', `start` = '%s' WHERE id = '%s'", $title, 
+				$intro, $cover, $badge, $benefits, $status, $start, $this->course_id); 
+		}
+		$results = $this->dbProcessor($sql, 0, 1);
+		return $results;
 	}
 
 	/**
@@ -286,17 +303,18 @@ class framework {
 						$state = '<a class="pass-btn" href="'.$SETT['url'].'/index.php?a=settings&b=languages&language='.$language.'">'.$make.'</a>';
 					}
 
-                    $sort .= '<div class="padding-5">
-								' . $state . '
-								<div>
-									<div>
-										<strong><a href="' . $url . '" target="_blank">' . $name . '</a></strong>
-									</div>
-									<div>
-										' . $by . ': <a href="' . $url . '" target="_blank">' . $author . '</a>
-									</div>
-								</div>
-							</div>';
+                    $sort .= '
+                    <div class="padding-5">
+						' . $state . '
+						<div>
+							<div>
+								<strong><a href="' . $url . '" target="_blank">' . $name . '</a></strong>
+							</div>
+							<div>
+								' . $by . ': <a href="' . $url . '" target="_blank">' . $author . '</a>
+							</div>
+						</div>
+					</div>';
 				}
 			}
 			
@@ -646,6 +664,77 @@ class framework {
 	    	return $success;
 	    }
 	    return $fail;
+	}
+
+	/**
+	/* this function controls file uploads	
+	 **/	
+	function uploader($file = null, $type = 0, $eck = null) {
+		// File arguments
+		$errors = array();
+		$uploade_type = '';
+
+		// Generate the image properties  
+		if ($type == 0 && isset($file['name'])) { 
+			$_FILE = $file;
+			$allowed = array("jpeg","jpg","png");
+			$size = 1097152;
+			$uploade_type .= 'Cover Photo';
+			$error = $file['name'] == '' ? "Please select an image for cover photo. " : 
+			$error = "File type not allowed for Cover Photo, use a JPEG, JPG or PNG file. ";
+			$w = 3200; $h = 2000;
+    		$dir = 'img'; 
+		} elseif ($type == 1 && isset($file['name'])) {
+			$_FILE = $file;
+			$allowed = array("png");
+			$size = 1097152;
+			$uploade_type .= 'Badge';
+			$error = $file['name'] == '' ? "Please select an image for badge. " : 
+			$error = "File type not allowed for Badge, use a PNG file. ";
+			$w = 3200; $h = 2000;
+    		$dir = 'img'; 
+		} 
+		$file_name = $_FILE['name'];
+		$file_size = $_FILE['size'];
+		$file_tmp = $_FILE['tmp_name'];
+		$file_type= $_FILE['type'];
+		$lower = explode('.',$_FILE['name']);
+		$file_ext = strtolower(end($lower));
+		  
+	    $new_image = mt_rand().'_'.mt_rand().'_'.mt_rand().'_n.'.$file_ext; 
+
+	    // Check if file is allowed for upload type
+		if(in_array($file_ext,$allowed)=== false){
+		    $errors[] = $error;
+		}
+		if($file_size > $size){
+    		$errors[].= $uploade_type.' should not be more than '.$size.'MB';
+		}
+
+		/*
+		// Check for errors in the file upload before uploading, 
+		// To avoid multiple waste of storage
+		 */
+		if ($eck) {
+			if (in_array($file_ext,$allowed) && empty($errors)==true) { 
+				return 1;
+			} else {
+				return $errors[0];
+			}
+		} else {
+			// Crop and compress the image
+			if (in_array($file_ext,$allowed) && empty($errors)==true) {
+				// Create a new ImageResize object
+	      		$image = new \Gumlet\ImageResize($file_tmp);
+	      		$cd = getcwd();
+	        	// Manipulate the image
+	        	$image->crop($w, $h);
+	        	$image->save($cd.'/uploads/'.$dir.'/'.$new_image);    
+				return $new_image;
+			} else {
+				return $errors[0];
+			}
+		}		
 	}
 
 	/**
