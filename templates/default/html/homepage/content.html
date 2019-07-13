@@ -19,10 +19,10 @@
       </h4>
       <div class="space_5 hidden-xs"></div>
       <div class="btns">
-        <div class="ss-btn btn bordered shw-1" data-target="explore">
-          <i class="fa fa-angle-double-right"></i> Explore our courses
+        <div class="ss-btn btn  bordered shw-1" data-target="explore">
+          <i class="fa fa-angle-right"></i> Explore our courses
         </div>
-        <div class="ss-btn btn bordered shw-1" data-target="right">
+        <div class="ss-btn btn background_green2 bordered shw-1" data-target="right">
           <span class="badge background_yellow">New</span> Course available
         </div>
       </div>
@@ -46,7 +46,7 @@
               </h2>
             </div>
             <div class="course-cta">
-              <a class="ss-btn btn background_yellow text-white shw-1" data-target="payment_section"
+              <a class="btn background_green2 bordered shw-1" data-target="payment_section"
               href="{$course_get_new}">
               <i class="fa fa-credit-card"></i> Get Course
             </a>
@@ -58,7 +58,7 @@
       </div>
 
       <!-- #popular-course-tab -->
-      <div id="popular_course_tab">
+      <div  class="course_tab">
         <ul class="nav nav-tabs" role="tablist">
           <li class="nav-item">
             <a aria-controls="description of course tab" aria-selected="true" class="nav-link active"
@@ -91,15 +91,15 @@
           <div class="course-hero">
             <div class="cover-img">
               <img alt="" src="{$site_url}/{$template_path}/{$template_name}/images/w3.jpg">
-              <div class="overlay light"></div>
+              <div class="overlay dark"></div>
             </div>
             <div class="container hero-content">
-              <div class="row align-content-center">
-                <p class="lead ">
+              <div class="row justify-content-center">
+                <p class="lead text-center text-white">
                   Get Exclusive Access to this course and plenty other features that we have
                   to offer.
                 </p>
-                <a class="ss-btn btn background_yellow text-white" data-target="payment_section"
+                <a class="ss-btn btn background_green2" data-target="payment_section"
                 href="{$course_get_new}">
                 <i class="fa fa-credit-card"></i> Get Course
               </a>
@@ -262,7 +262,7 @@
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <button class="btn">
+                  <button class="btn ">
                     <i class="fa fa-paper-plane-o"></i>
                     <input class="btn-send" type="submit" value="Send message">
                   </button>
@@ -593,17 +593,16 @@
                 type="password">
               </div>
               <div class="form-group">
-                <label class="src-only" for="register-country">Country</label>
-                <div class="custom-select-box">
-                  <select class="select-country-list" data-target="register-state" id="register-country"
-                  name="register-country" type="text">
-                  {$set_country}
-                </select>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
+                <div class="custom-input">
+                  <label class="src-only" for="register-country">Country</label>
+                  <div class="custom-select-box">
+                    <select class="select-country-list" data-target="register-state" id="register-country" name="register-country" type="text">
+                      {$set_country}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="custom-input">
                   <label class="src-only"
                   for="register-state">State</label>
                   <div class="custom-select-box">
@@ -613,9 +612,8 @@
                   </select>
                 </div>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
+
+              <div class="custom-input">
                 <label class="src-only" for="register-city">City</label>
                 <div class="custom-select-box">
                   <select id="register-city" name="register-city">
@@ -624,15 +622,14 @@
                 </div>
               </div>
             </div>
-          </div>
-          <button class="btn btn-block background_green2 text-light"
-          onclick="connector(1, this)"
-          type="button">Register
-        </button>
-      </form>
+            <button class="btn btn-block background_green2 text-light"
+            onclick="connector(1, this)"
+            type="button">Register
+          </button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 </div>
 <!-- End login_section-->
 <!--  login_section -->
@@ -645,6 +642,7 @@
       <div class="lead">
         Explore a catalog of all our available courses
       </div>
+      <button class="ss-btn btn background_green2 bordered shw-1" data-target="login">Get Started</button>
     </div>
     <div class="row suspend-right">
       <div class="col-md-12">
