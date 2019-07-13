@@ -2031,22 +2031,23 @@ h1, .h1 {
 }
 
 .btn {
+  background: transparent;
   cursor: pointer;
-  background: #fff;
-  border: none;
-  border-radius: 30px;
+  box-shadow: 0 6px 45px -10px #cacaca;
+  border: 1px solid currentColor;
+  border-radius: 4px;
   display: inline-block;
   vertical-align: middle;
-  line-height: 30px;
+  line-height: 1.5;
   /*min-height: 40px;*/
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing:normal;
-  text-transform: uppercase;
+  text-transform: capitalize;
   margin: 20px 5px;
-  transition: 0.3s background, 0.3s box-shadow;
-  color: currentColor;
+  transition: all 0.3s ease-out;
+  color: #333;
 }
 
 .shw {
@@ -2057,7 +2058,11 @@ h1, .h1 {
 }
 
 .btn:hover, .btn:focus {
-  box-shadow: 0 5px 4px -1px #3b9349;
+  /* box-shadow: 0 5px 4px -1px hsl(129, 42%, 5%); */
+  border: 1px solid var(--white);
+  box-shadow: 0 2px 1px 1px #e6e6e6;
+  background: initial;
+
 }
 
 .btn i {
@@ -2072,8 +2077,8 @@ h1, .h1 {
 }
 
 .btn.bordered:hover {
-  background: white;
-  color: black;
+  /* background: white; */
+  /* color: black; */
 }
 
 .d_table {
@@ -2260,7 +2265,7 @@ h1, .h1 {
 }
 
 .services {
-  background: #f7f7f7;
+  background: #fafafa;
   padding: 60px 20px;
 }
 
@@ -2274,7 +2279,7 @@ h1, .h1 {
   text-align: center;
 }
 
-.services .service {
+.services .service:nth-child(odd) {
   border-right: 1px solid #eaf1f7;
   padding-right: 5%;
 }
@@ -2450,7 +2455,7 @@ h1, .h1 {
 
 .contact .btn:hover {
   color: #1d3650;
-  background: linear-gradient(to top right, #2bebff, #00ff72) !important;
+  /* background: linear-gradient(to top right, #2bebff, #00ff72) !important; */
   box-shadow: 0 10px 45px -10px #a0a0a0;
 }
 
@@ -2800,5 +2805,3 @@ h1, .h1 {
     font-size: 12px;
   }
 }
-
-/*# sourceMappingURL=style.css.map */
