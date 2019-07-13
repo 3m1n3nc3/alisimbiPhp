@@ -16,3 +16,4 @@ define('TABLE_USERS', DB_PREFIX.'users');
 define('TABLE_COUNTRIES', DB_PREFIX . 'countries');
 define('TABLE_STATES', DB_PREFIX . 'states');
 define('TABLE_CITIES', DB_PREFIX . 'cities');
+define('TABLE_BENEFITS', DB_PREFIX . 'benefits');

@@ -82,8 +82,12 @@ function mainContent() {
 
 			$PTMPL['user_role'] = ucfirst($user['role']);
 
-			$add_course_link = cleanUrls($SETT['url'].'/index.php?page=training&course=add');
-			$PTMPL['add_course_link'] = '<a href="'.$add_course_link.'" id="add_course_link">Add Course</a>';
+            // Create course and module links
+            $add_course_link = cleanUrls($SETT['url'].'/index.php?page=training&course=add');
+            $PTMPL['add_course_link'] = '<a href="'.$add_course_link.'" id="add_course_link">Add Course</a>';
+
+            $add_module_link = cleanUrls($SETT['url'].'/index.php?page=training&module=add');
+            $PTMPL['add_module_link'] = '<a href="'.$add_module_link.'" id="add_module_link">Add Module</a>';
 
             // If the user is administrative show the social inputs
             $update_social = '';

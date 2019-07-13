@@ -171,28 +171,28 @@ function getCourses($type = null, $course = null)
     return $framework->dbProcessor($sql, 1);
 }
 
-function getModules($type = null, $course = null)
-{
+function getModules($type = null, $id = null, $x=null) {
     global $framework;
-    if ($type) {
+
+    if ($type == 1) {
         $sql = sprintf("SELECT * FROM " . TABLE_MODULES . " AS modules LEFT JOIN " . TABLE_COURSE_MODULES . " AS course_modules ON `modules`.`id` = `course_modules`.`module_id`"
-            . " WHERE course_id = '%s'", $course);
+            . " WHERE course_id = '%s'", $id);
+    } elseif ($type == 2) {
+        $sql = sprintf("SELECT * FROM " . TABLE_MODULES . " WHERE id = '%s'", $id);
     } else {
-        $sql = sprintf("SELECT * FROM " . TABLE_MODULES);
+       $sql = sprintf("SELECT * FROM " . TABLE_MODULES . "%s", $x ? $x : '');
     }
     return $framework->dbProcessor($sql, 1);
 }
 
-function getInstructors($course)
-{
+function getInstructors($course) {
     global $framework;
     $sql = sprintf("SELECT * FROM " . TABLE_USERS . " AS users LEFT JOIN " . TABLE_INSTRUCTORS . " AS instructors ON `users`.`id` = `instructors`.`user_id`"
         . " WHERE course_id = '%s'", $course);
     return $framework->dbProcessor($sql, 1);
 }
 
-function getNews($link = null)
-{
+function getNews($link = null) {
     global $framework;
     if ($link) {
         $sql = sprintf("SELECT * FROM " . TABLE_NEWS . " WHERE link = '%s' OR id = '%s' AND state = '1'", $link, $link);
@@ -202,8 +202,7 @@ function getNews($link = null)
     return $framework->dbProcessor($sql, 1);
 }
 
-function getVlog($link = null)
-{
+function getVlog($link = null) {
     global $framework;
     if ($link) {
         $sql = sprintf("SELECT * FROM " . TABLE_TRAINING . " WHERE link = '%s' OR id = '%s'", $link, $link);
@@ -213,8 +212,13 @@ function getVlog($link = null)
     return $framework->dbProcessor($sql, 1);
 }
 
-function getContactInfo($id = null)
-{
+function getBenefits() {
+    global $framework;
+    $sql = sprintf("SELECT * FROM " . TABLE_BENEFITS);
+    return $framework->dbProcessor($sql, 1);
+}
+
+function getContactInfo($id = null) {
     global $framework;
     if ($id) {
         $id = $id;
@@ -347,7 +351,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1)
         $edlink = cleanUrls($SETT['url'] . '/index.php?page=training&module=edit&moduleid=' . $contentArr['id']);
         $view = cleanUrls($SETT['url'] . '/index.php?page=training&course=view&courseid=' . $contentArr['course_id'] . '&moduleid=' . $contentArr['id']);
         $enlink = cleanUrls($SETT['url'] . '/index.php?page=training&course=get&courseid=' . $contentArr['id']);
-        $enroll == 1 ? '<a href="' . $enlink . '">Enroll</a>' : '';
+        $enroll = $text == 1 ? '<a href="' . $enlink . '">Enroll</a>' : '';
         $edit = $user_role >= 3 ? '<a href="' . $edlink . '">Edit</a>' : '';
         $vb = $text == 1 ? '<a href="' . $view . '">Start</a>' : '';
     } else {
