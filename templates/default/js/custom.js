@@ -184,15 +184,6 @@ function connector(type, target) {
   }
 }
 
-$('.select-country-list').on('change',function (){
-  try{
-    let target =  $('#' +$(this).attr('data-target'));
-    fetch_state(this, target);
-  }
-  catch(e){
-    console.log(e.message);
-  }
-});
 
 
 function fetch_state(sender,receiver) {
@@ -278,3 +269,14 @@ $(document).find('.nav-item .nav-link').on('click', function(){
   let href = $(this).attr('href')
   window.location.hash = href;
 })
+
+
+$('.select-country-list').on('change',function (){
+  try{
+    let target =  $('#' +$(this).attr('data-target'));
+    fetch_state(this, target);
+  }
+  catch(e){
+    console.log(e.message);
+  }
+});

@@ -5,11 +5,33 @@ function mainContent() {
 
 	$PTMPL['page_title'] = ucfirst($_GET['page']);
 	$PTMPL['site_url'] = $SETT['url'];
+<<<<<<< HEAD
 	$PTMPL['currency'] = $configuration['currency'];
+=======
+	$PTMPL['copyrights_'] = '&copy; '. date('Y').' '.$contact_['c_line'];
+	$PTMPL['site_title_'] = $configuration['site_name'];
+>>>>>>> 9d5d23d2c13c334d14e724d54c5c4834fad43d8f
 
 	if ($user) {
 		if (isset($_GET['course'])) {
 
+<<<<<<< HEAD
+		    $course = getCourses(1, $_GET['courseid'])[0];
+    		$PTMPL['course_title'] = $course['title'];
+    		$PTMPL['course_cover'] = '<p><img style="width: 250px; float: left; padding: 10px;" src="'.getImage($course['cover'], 1).'" class="image_class"></p>';
+    		$PTMPL['course_cover_url'] = getImage($course['cover'], 1);
+    		$PTMPL['course_intro'] = $course['intro'];
+    		$moduleArr = getModules(1, $_GET['courseid']);
+    		$modules = '';
+    		foreach ($moduleArr as $mAr) {
+    			$modules .= courseModuleCard($mAr, 1);
+    		}
+    		$get = cleanUrls($SETT['url'].'/index.php?page=training&course=get&courseid='.$_GET['courseid']);
+    		$PTMPL['course_modules'] = $modules;
+    		$PTMPL['course_get_btn_url'] = $get;
+    		$PTMPL['course_toggle_descr'] = '<a href="#course_descr" class="action_toggle" data-toggle="collapse">Toggle description</a>';
+    		// $PTMPL['course_'] = $course[''];
+=======
 			if (isset($_GET['courseid']) && $_GET['courseid'] != '' && $_GET['course'] != 'add' && $_GET['course'] != 'edit') {
 			    $course = getCourses(1, $_GET['courseid'])[0];
 
@@ -32,6 +54,7 @@ function mainContent() {
 	    		$PTMPL['course_get_btn'] = '<a href="'.$get.'" class="btn btn-md btn-success"><i class="fa fa-credit-card"></i>Get Course</a>';
 	    		// $PTMPL['course_'] = $course[''];
 			}
+>>>>>>> 1978b98bc9a2372918e7d0bde4b763b63412a6e4
 
     		/*if you are viewing the course details*/
 			if ($_GET['course'] == 'view') {
