@@ -1,0 +1,55 @@
+<div class="wrapper">
+	<div id="dashboard_tab">
+		<header id="top-nav">
+			<!-- Image and text -->
+			<nav class="navbar navbar-expand-lg navbar-dark">
+				<div class="container">
+					<a class="navbar-brand" href="{$dashboard_url}">
+						<img src="{$logo_url}" width="30" height="30" alt="Alisimbi logo">
+					</a>
+					<div class="top_avatar">
+						<div class="user_avatar">
+							<a href="/"><img src="{$photo}" alt="{$username} avatar"></a>
+						</div>
+						<div class="user_name">
+							{$username}
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<div class="container m-3">					
+			<div class="card p-5">
+				<div class="card-block">
+					<h4 class="card-title">{$title_header}</h4>
+					<div class="container m-2 text-center">{$link_message}</div>  
+
+					<div class="row">
+						<div class="col-sm-4 border-right">
+							{$list_modules}
+						</div>
+						<div class="col-sm-8">
+							<iframe width="640" height="368"
+								scrolling="no"
+								style="border: none; overflow: hidden; cursor: not-allowed" 
+								src="{$video_log}">
+							</iframe> 
+
+							<p>
+							  <a class="btn btn-primary" data-toggle="collapse" href="#viewTranscript" role="button" aria-expanded="false" aria-controls="collapseTranscript">
+							    View Transcript
+							  </a> 
+							</p>
+							<div class="collapse" id="viewTranscript">
+							  <div class="card card-body">
+							    {$transcript}
+							  </div>
+							</div>
+							{$course_edit_btn}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

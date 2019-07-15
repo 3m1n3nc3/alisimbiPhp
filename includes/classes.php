@@ -7,6 +7,7 @@
 //======================================================================\\
 
 $framework = new framework; 
+$user_role = $framework->userRoles();
 
 //Fetch settings from database
 function configuration() {
@@ -276,11 +277,12 @@ class framework {
 			$duration = $this->duration;
 			$cover = $this->cover_photo;
 			$badge = $this->badge;
+			$secure_key = $this->secure_key;
 		}
 
 		if ($type == 0) {
 			$sql = sprintf("INSERT INTO " . TABLE_COURSES . " (`title`, `intro`, `cover`, `badge`, `benefits`,"
-				. " `status`, `price`, `start`, `creator_id`) VALUES ('%s', '%s', '%s', '%s', '%s', %s', '%s', "
+				. " `status`, `price`, `start`, `creator_id`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', "
 				. " '%s', '%s')", $title, $intro, $cover, $badge, $benefits, $status, $price, $start, $user['id']);
 		} elseif ($type == 1) {
 			$sql = sprintf("UPDATE " . TABLE_COURSES . " SET `title` = '%s', `intro` = '%s', `cover` = '%s'," 
@@ -288,13 +290,35 @@ class framework {
 				. " WHERE id = '%s'", $title, $intro, $cover, $badge, $benefits, $status, $price, $start, 
 				$this->course_id); 
 		} elseif ($type == 2) {
-			$sql = sprintf("INSERT INTO " . TABLE_MODULES . " (`title`, `transcript`, `intro`, `duration`, `cover`,"
-				. " `badge`, `creator_id`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')", $module_title, 
-				$transcript, $introduction, $duration, $cover, $badge, $user['id']);
+			$sql = sprintf("INSERT INTO " . TABLE_MODULES . " (`title`, `transcript`, `intro`, `duration`,"
+				. " `cover`, `badge`, `secure_code`, `creator_id`) VALUES ('%s', '%s', '%s', '%s', '%s',"
+				. " '%s', '%s', '%s')", $module_title, $transcript, $introduction, $duration, $cover, 
+				$badge, $secure_key, $user['id']);
 		} elseif ($type == 3) {
-			$sql = sprintf("UPDATE " . TABLE_MODULES . " SET `title` = '%s', `transcript` = '%s', `intro` = '%s',"
-				. " `duration` = '%s', `cover` = '%s', `badge` = '%s' WHERE id = '%s'", $module_title, $transcript, 
-				$introduction, $duration, $cover, $badge, $this->module_id);
+			$sql = sprintf("UPDATE " . TABLE_MODULES . " SET `title` = '%s', `transcript` = '%s', `intro`"
+				. " = '%s', `duration` = '%s', `cover` = '%s', `badge` = '%s', `secure_code` = '%s'"
+				. " WHERE id = '%s'", $module_title, $transcript, $introduction, $duration, $cover, 
+				$badge, $secure_key, $this->module_id);
+		}
+		$results = $this->dbProcessor($sql, 0, 1);
+		 
+		if ($results == 1 && ($type == 0 || $type == 2)) {
+			$order = sprintf(" WHERE creator_id = '%s' ORDER BY id DESC", $user['id']);
+			$m = getCourses(null, null, $order)[0]; 
+			$this->addInstructor($user['id'], $m['id']);
+		}
+		return $results;
+	}
+
+	/*
+	Add an instructor, when you create a new course
+	And when you link a module to a course
+	 */
+	function addInstructor($uid, $courseid, $type = null) {
+		global $SETT, $LANG, $configuration, $user;
+		if ($type == null) {
+			$sql = sprintf("INSERT INTO " . TABLE_INSTRUCTORS . " (`course_id`, `user_id`) VALUES ('%s', '%s')",
+				$courseid, $uid);
 		}
 		$results = $this->dbProcessor($sql, 0, 1);
 		return $results;

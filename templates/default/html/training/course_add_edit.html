@@ -27,7 +27,7 @@
 							<h4 class="card-title">{$course_create_header}</h4>
 
 							<div class="container m-2 text-center">{$course_message}</div>
-
+							{$link_module_link}
 							<form method="post" action="" enctype="multipart/form-data">
 								<input type="hidden" name="benefits" value="" id="benefits"> <!-- Input should be comma separated for each benefit -->
 								<div class="border rounded p-2 m-1">
@@ -41,7 +41,7 @@
 									Course Price ({$currency})
 									<hr>
 									<p class="card-text">
-										<input type="text" name="price" class="form-control mx-2" id="price" value="{$course_price}" placeholder="Course Price">
+										<input type="number" name="price" class="form-control mx-2" id="price" value="{$course_price}" placeholder="Course Price" onkeypress="return isNumeric(event)">
 									</p>
 								</div>
 								<div class="border rounded p-2 m-1">
@@ -67,7 +67,7 @@
 									Cover Photo
 									<hr>
 									<p class="card-text">
-										<label for="cover_photo" class="btn btn-primary">Choose File ...</label>
+										<label for="cover_photo" class="btn">Choose File ...</label>
 										<input type="file" name="cover_photo" id="cover_photo" style="display: none;">
 									</p>
 								</div>
@@ -75,7 +75,7 @@
 									Badge
 									<hr>
 									<p class="card-text">
-										<label for="badge" class="btn btn-primary">Choose File ...</label>
+										<label for="badge" class="btn">Choose File ...</label>
 										<input type="file" name="badge" id="badge" style="display: none;">
 									</p>
 								</div>
@@ -96,7 +96,7 @@
 										</select>
 									</p>
 								</div>
-								<button class="btn btn-primary" name="save">{$course_create_btn}</button>
+								<button class="btn" name="save">{$course_create_btn}</button>
 							</form>
 						</div>
 					</div>

@@ -57,6 +57,8 @@ $PTMPL['course_get_new'] = cleanUrls($SETT['url'].'/index.php?page=training&cour
 $PTMPL['course_title_new'] = $course_new['title'];
 $PTMPL['course_cover_new'] = getImage($course_new['cover'], 1);
 $PTMPL['course_intro_new'] = $course_new['intro'];
+$PTMPL['course_benefits_new'] = fetchBenefits($course_new['id']);
+
 $module_newArr = getModules(1, $course_new['id']);
 if ($module_newArr) {
 	foreach ($module_newArr  as $rslt) {
@@ -74,8 +76,7 @@ $course_instructor = '';
 if ($instructorsArr) {
 	foreach ($instructorsArr as $ins) {
 		$instructor .= instructorCard($ins);
-		$course_instructor .= instructorCard($ins, 1);
-		// $ins_rating = userRating($rating$ins['rating']);
+		$course_instructor .= instructorCard($ins, 1); 
 	}
 	$PTMPL['instructor'] = $instructor;
 	$PTMPL['course_instructor'] = $course_instructor;

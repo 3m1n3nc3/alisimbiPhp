@@ -48,7 +48,14 @@
 									Transcript
 									<hr> 
 									<p class="card-text">
-										<textarea name="transcript" class="form-control" rows="8" cols="80">{$transcript}</textarea>
+										<textarea id="editor" name="transcript" class="form-control" rows="8" cols="80">{$transcript}</textarea>      
+										<script>
+									        ClassicEditor
+									            .create( document.querySelector( '#editor' ) )
+									            .catch( error => {
+									                console.error( error );
+									            } );
+									    </script>
 									</p>
 								</div> 
 								<div class="border rounded p-2 m-1">
@@ -68,7 +75,7 @@
 									</p>
 								</div>
 								<div class="border rounded p-2 m-1">
-									Duration
+									Duration (MINS)
 									<hr>
 									<p class="card-text">
 										<input type="text" name="duration" class="form-control mx-2" id="duration" value="{$duration}">
