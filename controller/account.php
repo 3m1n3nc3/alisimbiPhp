@@ -78,30 +78,39 @@ function mainContent() {
             $PTMPL['state_select'] = $user['state'] ? '<option selected="selected" value="'.$user['state'].'">'.$user['state'].'</option>' : '<option disabled>Select your state</option>';
             $PTMPL['city_select'] = $user['city'] ? '<option selected="selected" value="'.$user['city'].'">'.$user['city'].'</option>' : '<option disabled>Select your city</option>';
             $PTMPL['about_'] = $user['about'];
-            $PTMPL['update_'] = cleanUrls($SETT['url'].'/index.php?page=account&profile=update');
+            $PTMPL['update_profile'] = cleanUrls($SETT['url'].'/index.php?page=account&profile=update');
 
 			$PTMPL['user_role'] = ucfirst($user['role']);
+ 
+            // Create course and module links 
+            $PTMPL['add_course_link'] = secureButtons('background_green2 bordered', 'Add Course', 3, null, null); 
 
-            // Create course and module links
-            $add_course_link = cleanUrls($SETT['url'].'/index.php?page=training&course=add');
-            $PTMPL['add_course_link'] = '<a href="'.$add_course_link.'" id="add_course_link">Add Course</a>';
+            $PTMPL['add_module_link'] = secureButtons('background_green2 bordered', 'Add Module', 2, null, null);  
 
-            $add_module_link = cleanUrls($SETT['url'].'/index.php?page=training&module=add');
-            $PTMPL['add_module_link'] = '<a href="'.$add_module_link.'" id="add_module_link">Add Module</a>';
+            $all_courses_link = cleanUrls($SETT['url'].'/index.php?page=training');
+            $PTMPL['all_courses_link'] = $all_courses_link;   
 
             // If the user is administrative show the social inputs
             $update_social = '';
             if ($user_role >= 3) {
                 $update_social = '
-                <div class="border rounded p-2 m-1">
-                    Facebook | Twitter | Instagram
-                    <hr>
-                    <p class="card-text form-inline">
-                        <input type="text" name="facebook" class="form-control mx-2 m-1" id="facebook" value="'.$user['facebook'].'" placeholder="Facebook">
-                        <input type="text" name="twitter" class="form-control mx-2 m-1" id="twitter" value="'.$user['twitter'].'" placeholder="Twitter">
-                        <input type="text" name="instagram" class="form-control mx-2 m-1" id="instagram" value="'.$user['instagram'].'" placeholder="Instagram">
-                    </p>
-                </div>';
+                <div class="user-info-list card card-default p-3">
+					<fieldset>
+						<legend class="">Social media links</legend>
+						<div class="form-group">
+						<label class="hint">Facebook</label>
+						<input type="text" name="facebook" class="form-control mx-2 m-1" id="facebook" value="'.$user['facebook'].'" placeholder="Facebook">
+						</div>
+						<div class="form-group">
+						<label class="hint">Twitter</label>
+						<input type="text" name="twitter" class="form-control mx-2 m-1" id="twitter" value="'.$user['twitter'].'" placeholder="Twitter">
+						</div>
+						<div class="form-group">
+						<label class="hint">Instagram</label>
+						<input type="text" name="instagram" class="form-control mx-2 m-1" id="instagram" value="'.$user['instagram'].'" placeholder="Instagram">
+						</div>
+					</fieldset>
+				</div> ';
             }
             $PTMPL['update_social'] = $update_social;
 

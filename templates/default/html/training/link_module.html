@@ -1,0 +1,56 @@
+<div class="wrapper">
+	<div id="dashboard_tab">
+		<header id="top-nav">
+			<!-- Image and text -->
+			<nav class="navbar navbar-expand-lg navbar-dark">
+				<div class="container">
+					<a class="navbar-brand" href="{$dashboard_url}">
+						<img src="{$logo_url}" width="30" height="30" alt="Alisimbi logo">
+					</a>
+					<div class="top_avatar">
+						<div class="user_avatar">
+							<a href="/"><img src="{$photo}" alt="{$username} avatar"></a>
+						</div>
+						<div class="user_name">
+							{$username}
+						</div>
+					</div>
+				</div>
+			</nav> 
+		</header>
+		<div class="container m-3">
+			<div class="row">
+				<div class="col-12">
+					<div class="card p-5">
+						<div class="card-block">
+							<h4 class="card-title">{$module_create_header}</h4>
+							<div class="container m-2 text-center">{$link_message}</div> 
+
+							<!-- this is to handle youtube uploads -->
+							<form id="link_modules_form" method="post" action="">
+								<div class="border rounded p-2 m-1">
+									Select Modules
+									<hr>
+									<p class="card-text">
+										<div class="form-group">
+											<label for="source">Modules</label>
+											<select class="form-control" name="module">
+												<option disabled="disabled" selected="selected">Choose a module</option>
+												{$select_options}
+											</select>
+										</div>
+									</p>
+									<div class="form-group">
+										<input name="link_module" type="submit" id="save" value="Link Module" class="btn btn-primary" />
+									</div>
+								</div>
+							</form> 
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
