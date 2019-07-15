@@ -48,6 +48,7 @@ $LANG['password_mismatch'] = 'Password and Confirm Password do not match';
 $LANG['password_short'] = 'The provided password is too short, it should be at least 7 characters';
 $LANG['no_empty_title'] = 'Title is empty';
 $LANG['no_empty_intro'] = 'Introduction is Empty';
+$LANG['no_empty_benefit'] = 'Please choose at least one benefit';
 $LANG['no_empty_cover'] = 'Please select a cover photo';
 $LANG['course_added'] = 'New course have been added successfully';
 $LANG['course_updated'] = 'Course have been updated successfully';

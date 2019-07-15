@@ -1,6 +1,5 @@
 $(document).ready(function() {
-  "use strict";
-
+  "use strict"; 
 
   let window_hash = window.location.hash;
 
@@ -53,43 +52,22 @@ $(document).ready(function() {
   });  
   // ======================================
 
-$('#uploadSubmit').submit(function(event){
-  if($('#uploadFile').val()) {
-    event.preventDefault();
-    $('#loader-icon').show();
-    $('#targetLayer').hide();
-    $(this).ajaxSubmit({
-      target: '#targetLayer',
-      beforeSubmit:function(){
-      $('.progress-bar').width('50%');
-    },
-    uploadProgress: function(event, position, total, percentageComplete) {
-      $('.progress-bar').animate({
-        width: percentageComplete + '%'
-      }, 
-      {
-      duration: 1000
-      });
-    },
-    success:function(){
-      $('#loader-icon').hide();
-      $('#targetLayer').show();
-    },
-    resetForm: true
-    });
-  }
-  return false;
- }); 
+  $('#uploadSubmit_video').click(function(event){
+    if($('#uploadvideo').val()) { 
+      alert('here');
+    }
+    return false;
+  }); 
 
-});
+}); 
 
 $('#computer').on('click', function(){
-  $('#uploadvideo_form').show();
+  $('#pcfile').show();
   $('#uploadYoutube_form').hide();
 })
 $('#youtube').on('click', function(){
   $('#uploadYoutube_form').show();
-  $('#uploadvideo_form').hide();
+  $('#pcfile').hide();
 })
 
 function errorHtml(message, response) {
@@ -280,3 +258,10 @@ $('.select-country-list').on('change',function (){
     console.log(e.message);
   }
 });
+
+function isNumeric(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}  

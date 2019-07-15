@@ -33,7 +33,7 @@ function mainContent() {
 	}
 	$PTMPL['new_lisiting'] = $news_list;
 
-	// Fetch and Show the vlog content
+	// Fetch and Show the vlog content 
 	$vloger = getVlog();
 	$vlog_list = '';
 	foreach ($vloger as $content) {
