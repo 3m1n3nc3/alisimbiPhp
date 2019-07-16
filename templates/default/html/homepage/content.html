@@ -41,7 +41,7 @@
         <header>
           <div class="course-header">
             <div class="course-title">
-              <h2 class="header-text font_bold text-dark">
+              <h2 class="header-text font_bold color_green">
                 {$course_title_new}
               </h2>
             </div>
@@ -64,7 +64,7 @@
             <a aria-controls="description of course tab" aria-selected="true" class="nav-link active"
             data-toggle="tab"
             href="#descr_tab_content" role="tab"
-            title="description of course tab">About Course</a>
+            title="description of course tab">Descripton</a>
           </li>
           <li class="nav-item">
             <a aria-controls="benefits of course tab" aria-selected="false" class="nav-link"
@@ -85,25 +85,7 @@
           <div aria-labelledby="home-tab" class="tab-pane fade show active " id="descr_tab_content"
           role="tabpanel">
           <div class="pad-section">
-            <p class="pre">{$course_intro_new}</p>
-          </div>
-          <!-- Course hero -->
-          <div class="course-hero">
-            <div class="cover-img">
-              <img alt="" src="{$site_url}/{$template_path}/{$template_name}/images/w3.jpg">
-              <div class="overlay dark"></div>
-            </div>
-            <div class="container hero-content">
-              <div class="row justify-content-center">
-                <p class="lead text-center text-white">
-                  Get Exclusive Access to this course and plenty other features that we have
-                  to offer.
-                </p>
-                <a class="ss-btn btn background_green2" data-target="payment_section"
-                href="{$course_get_new}">
-                <i class="fa fa-credit-card"></i> Get Course
-              </a>
-            </div>
+            <p class="para">{$course_intro_new}</p>
           </div>
         </div>
         <!-- End course hero -->
@@ -112,40 +94,58 @@
       <!-- Benefit tab -->
       <div aria-labelledby="benefit_tab" class="tab-pane fade" id="benefit_tab_content" role="tabpanel">
         <div class="services">
-          <div class="container"> 
+          <div class="container">
             <div class="row">
               {$course_benefits_new}
             </div>
           </div>
         </div>
-      </div>
-      <!-- Benefit tab -->
-      <!-- Instructor tab -->
-      <div aria-labelledby="contact-tab" class="tab-pane fade" id="instructor_tab_content"
-      role="tabpanel">
-      <div class="pad-section">
+        <!-- Benefit tab -->
+        <!-- Instructor tab -->
+        <div aria-labelledby="contact-tab" class="tab-pane fade" id="instructor_tab_content"
+        role="tabpanel">
         <div class="instructors">
-          <!-- Instructors-->
-          {$instructor}
-          <!-- Instructors -->
+          <div class="pad-section">  <!-- Instructors-->
+            {$instructor}
+            <!-- Instructors -->
+          </div>
         </div>
+        <!-- Instructor -->
       </div>
-      <!-- Instructor -->
+      <!-- Instructor tab -->
+      <!-- Module tab -->
+      <div aria-labelledby="module_tab" class="tab-pane fade " id="module_tab_content"
+      role="tabpanel">
+      <div class="module-widget">
+        {$course_modules_new}
+      </div>
     </div>
-    <!-- Instructor tab -->
     <!-- Module tab -->
-    <div aria-labelledby="module_tab" class="tab-pane fade " id="module_tab_content"
-    role="tabpanel">
-    <div class="module-widget">
-      {$course_modules_new}
-    </div>
   </div>
-  <!-- Module tab -->
-</div>
-<!-- #popular-course-content -->
+  <!-- #popular-course-content -->
 </div>
 <!-- #popular-course-tab -->
 
+<!-- Course hero -->
+<div class="course-hero">
+  <div class="cover-img">
+    <img alt="" src="{$site_url}/{$template_path}/{$template_name}/images/w3.jpg">
+    <div class="overlay dark"></div>
+  </div>
+  <div class="container hero-content">
+    <div class="row justify-content-center">
+      <p class="lead text-center text-white">
+        Get Exclusive Access to this course and plenty other features that we have
+        to offer.
+      </p>
+      <a class="ss-btn btn background_green2" data-target="payment_section"
+      href="{$course_get_new}">
+      <i class="fa fa-credit-card"></i> Get Course
+    </a>
+  </div>
+</div>
+</div>
+<!-- End course hero -->
 <div class="space_5"></div>
 
 <!--                    Contact-->
@@ -243,14 +243,9 @@
   <div class="d_table">
     <div class="d_table_v">
       <h1 class="font_bold">Get notified!</h1>
-      <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        Beatae
-        cumque
-        deserunt
-        dignissimos dolor doloremque</p>
-        <div class="space_10"></div>
-        <form class="subscribe" action="http://laaris.com/coming-soon-23/subscribe.php"
-        method="POST">
+      <p class="text-white">Be the first to know when the course is ready!</p>
+      <div class="space_10"></div>
+      <form class="subscribe" action="" method="POST">
         <div class="form-group">
           <div class="controls">
             <!-- Field  -->
@@ -585,12 +580,10 @@
       </div>
       <button class="ss-btn btn background_green2 bordered shw-1" data-target="login">Get Started</button>
     </div>
-    <div class="row suspend-right">
-      <div class="col-md-12">
-        <div class="pad-section">
-          <div class="">
+    <div class=" suspend-right">
+      <div class="pad-section">
+        <div class="row">
             {$available_courses}
-          </div>
         </div>
       </div>
     </div>

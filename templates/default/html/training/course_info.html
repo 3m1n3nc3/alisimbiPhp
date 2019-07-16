@@ -28,15 +28,9 @@
 					aria-controls="logout" aria-selected="false">Logout</a>
 				</div>
 			</div>
-
-			<div class="course-banner">
-				<img alt="" class="img-fluid" src="{$course_cover_url}"/>
-			</div>
-		</header>
-		<header>
 			<div class="course-header">
 				<div class="course-title">
-					<h2 class="header-text font_bold text-dark">
+					<h2 class="header-text font_bold text-white">
 						{$course_title}
 					</h2>
 				</div>
@@ -45,7 +39,11 @@
 					{$course_edit_btn}
 				</div>
 			</div>
+			<div class="course-banner">
+				<img alt="" class="img-fluid" src="{$course_cover_url}"/>
+			</div>
 		</header>
+
 		<div class="dashboard_content " id="course_descr">
 			<div class="course_tab">
 				<div class="container">
@@ -61,26 +59,23 @@
 							data-toggle="tab"
 							href="#benefit_tab_content" role="tab">Benefits</a>
 						</li>
-						<li class="nav-item">
-							<a aria-controls="module tab" aria-selected="false" class="nav-link" data-toggle="tab"
-							href="#module_tab_content" role="tab">Modules</a>
-						</li>
 					</ul>
 				</div>
 			</div>
 
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8">
-						<!-- Tab content -->
-						<div class="tab-content" id="popular_course_tab_content">
-							<!-- Description tab -->
-							<div aria-labelledby="intro-tab" class="tab-pane fade show active " id="descr_tab_content" role="tabpanel">
-								<div class="pad-section">
-									<p class="">{$course_intro}</p>
+			<div class="card">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8">
+							<!-- Tab content -->
+							<div class="tab-content" >
+								<!-- Description tab -->
+								<div aria-labelledby="intro-tab" class="tab-pane fade show active " id="descr_tab_content" role="tabpanel">
+									<div class="px-5 py-2">
+										<p class="para">{$course_intro}</p>
+									</div>
 								</div>
-							</div>
-							<!-- Intro -->
+								<!-- Intro -->
 
 							<!-- Benefit -->
 							<div aria-labelledby="benefit_tab" class="tab-pane fade" id="benefit_tab_content" role="tabpanel">
@@ -91,26 +86,36 @@
 										</div>
 									</div>
 								</div>
+								<!-- Benefit -->
 							</div>
-							<!-- Benefit -->
-							<!-- Modules -->
-							<div aria-labelledby="module_tab" class="tab-pane fade " id="module_tab_content" role="tabpanel">
+							<!-- Tab content -->
+							<div class="space_5"></div>
+							<div class="user-info-list ">
 								<div class="pad-section">
+									<div class="card-head">
+										<h3 class="header-text">
+											Modules
+										</h3>
+									</div>
 									{$course_modules_new}
 								</div>
 							</div>
-							<!-- Modules -->
 						</div>
-						<!-- Tab content -->
-					</div>
-					<div class="col-md-4">
-						<div class="user-info-list ">
-							<div class="card-tile">
-								<div class="container p-0">
-									<div class="card-head">
-										<div class="card-title">
-											<h3 class="title">Instructors</h3>
-											<span class="caption">Highly trained instructors</span>
+						<div class="col-md-4 background_lightgrey py-3">
+							<div class="user-info-list ">
+								<div class="card-tile">
+									<div class="container p-0">
+										<div class="card-head">
+											<div class="card-title">
+												<h3 class="title">Instructors</h3>
+												<span class="caption">Highly trained instructors</span>
+											</div>
+										</div>
+										<hr>
+										<div class="card-content">
+											<div class="instructors">
+												{$course_instructor}
+											</div>
 										</div>
 									</div>
 									<hr>
