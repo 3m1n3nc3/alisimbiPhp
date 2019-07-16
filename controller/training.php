@@ -9,7 +9,8 @@ function mainContent() {
 	$PTMPL['currency'] = $configuration['currency'];
  
 	$PTMPL['copyrights_'] = '&copy; '. date('Y').' '.$contact_['c_line'];
-	$PTMPL['site_title_'] = $configuration['site_name']; 
+	$PTMPL['site_title_'] = $configuration['site_name'];
+	//$ac = courseAccess(1); print_r($ac);
 
 	if ($user) {          
 		// Create course and module links 
@@ -341,7 +342,7 @@ function mainContent() {
 					$framework->module_title = $framework->db_prepare_input($_POST['module_title']);
 					$framework->transcript = $framework->db_prepare_input($_POST['transcript']);
 					$framework->introduction = $framework->db_prepare_input($_POST['introduction']);
-					$framework->duration = $framework->db_prepare_input($_POST['duration']);   
+					$framework->duration = $_POST['duration'] < 1 ? 1 : $framework->db_prepare_input($_POST['duration']);   
 					$framework->files = $_FILES;
 
 					if ($_POST['module_title'] == '') {
@@ -412,7 +413,7 @@ function mainContent() {
 	        $course = '';
 	        foreach ($courseArr as $rslt) {
 	        	$course .= courseModuleCard($rslt);
-	        }
+	        } 
 	        $PTMPL['course'] = $course;
 		}
 	} else {
