@@ -223,7 +223,7 @@ $('.cc-num').on("focusin", function(){
 });
 
 
-$('.module-progress').each(function (){
+$('.course-progress').each(function (){
   let progress_value = ($(this).attr('data-progress'));
 
   if(!Number(progress_value)){
