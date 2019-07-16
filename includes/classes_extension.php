@@ -437,6 +437,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1)
     $edit = secureButtons(null, 'Edit Module', 0, null, $contentArr['id'], 1);
     $vb = $text == 1 ? '<a href="' . $view . '">Start</a>' : ''; 
     $start_learning = cleanUrls($SETT['url'] . '/index.php?page=training&course=now_learning&courseid=' . $contentArr['course_id'] . '&moduleid=' . $contentArr['id']);
+    $progress_val = $contentArr['duration'];
   } else {
     // This controls the courses
     $intro = $framework->myTruncate($contentArr['intro'], 200);
@@ -446,6 +447,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1)
     $enroll = $text == 1 ? '<a href="' . $enlink . '">Enroll/Start</a>' : '';
     $edit = secureButtons(null, 'Edit Module', 0, null, $contentArr['id'], 1);
     $vb = $text == 1 ? '<a href="' . $view . '">View Details</a>' : '';
+    $progress_val = courseDuration($contentArr['id']);
   }
  
   // if $text = 0 don't show the $intro
@@ -453,7 +455,6 @@ function courseModuleCard($contentArr, $type = null, $text = 1)
   // This is the course and module HTML card
 
   // The module progress bar value placeholder
-  $progress_val = 65;
   // End module progressbar
 
   $course_card = !$type ? '
@@ -498,7 +499,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1)
       <i class="fa fa-book"></i>
     </div>
     <div class="module-info">
-      <span class="progress-value">'.$progress_val.'% complete</span>
+      <span class="progress-value">'.$progress_val.' Minutes</span>
       <div class="title">
         <a href="">
           ' . $contentArr['title'] . '
@@ -655,4 +656,34 @@ function fetchBenefits($course_id) {
     } 
   }
   return $list_benefits;
+}
+
+function courseDuration($course) {
+  global $framework;
+  
+  $duration = 0;
+  $access_log = courseAccess(1, $course);
+
+  $sql = sprintf("SELECT SUM(duration) AS duration FROM " . TABLE_MODULES . " AS modules LEFT JOIN " . TABLE_COURSE_MODULES . " AS course_modules ON `modules`.`id` = `course_modules`.`module_id` WHERE course_id = '%s'", $course);
+  $sum = $framework->dbProcessor($sql, 1)[0];
+
+  if ($access_log['course_id'] == $course) {
+    if ($access_log['time_spent'] > 1 && $sum['duration'] > 1) {
+      $duration = ($access_log['time_spent'] * 100)/$sum['duration'];
+      $duration = round($duration);
+    }
+  }
+
+  return $duration;
+}
+
+function courseAccess($type, $course_id) {
+  global $framework, $user;
+  if ($type) {
+    $sql = sprintf("SELECT * FROM " . TABLE_COURSE_ACCESS . " WHERE user_id = '%s' AND course_id = '%s'", 
+      $user['id'], $course_id);
+    $results = $framework->dbProcessor($sql, 1)[0];
+  }
+  $res = $results;
+  return $res;
 }
