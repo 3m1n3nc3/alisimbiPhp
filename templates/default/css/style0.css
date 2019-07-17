@@ -1731,7 +1731,7 @@ a, a:hover, a:focus {
 
 .background_green2 {
   color: #fff;
-  background: linear-gradient(to top , hsl(149, 74%, 40%), hsl(149, 74%, 45%)) !important;
+  background: linear-gradient(to top, hsl(149, 74%, 40%), hsl(149, 74%, 45%)) !important;
 }
 
 .background_black2 {
@@ -2023,7 +2023,7 @@ h1, .h1 {
   }
 
   .btn {
-    left: 0;position: relative;
+    left: 0;
     display: block;
     position: relative;
     width: 100%
@@ -2181,7 +2181,6 @@ h1, .h1 {
 
 .brand {
   position: absolute;
-  top: 5vh;
   left: 5vw;
   width: 150px;
   top: 0;
@@ -2341,7 +2340,7 @@ h1, .h1 {
 }
 
 #works .item a:hover {
-  cursor: url("drag_b.png"), url("drag_b.png"), auto !important;
+  /*cursor: url("drag_b.png"), url("drag_b.png"), auto !important;*/
 }
 
 #works .item img {
@@ -2617,7 +2616,6 @@ h1, .h1 {
   color: #fff;
   letter-spacing: .5px;
   /* border-radius: 50px; */
-  border: none;
   font-size: 14px;
   background: none;
   box-shadow: none;
@@ -2655,37 +2653,43 @@ h1, .h1 {
   top: 10px;
   right: 5vw;
   z-index: 8;
+
 }
 
 .social li {
   width: 40px;
-  height: 40px;
-  border-radius: 30px;
-  padding: 5px 0;
+  height: auto;
+  border-radius: 40px;
+  padding: 5px;
   font-size: 20px;
   text-align: center;
   box-shadow: none;
   color: #fff;
   cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
 }
 
+.social li a:hover {
+  color: currentColor;
+}
 .social li:hover {
   box-shadow: 0 5px 50px -5px #ffffff;
 }
 
-.social li:hover:nth-child(2) {
+.social li:hover:nth-child(1) {
   background: #306dc4;
 }
 
-.social li:hover:nth-child(3) {
+.social li:hover:nth-child(2) {
   background: #1edcff;
 }
 
-.social li:hover:nth-child(4) {
+.social li:hover:nth-child(3) {
   background: #3384bc;
 }
 
-.social li:hover:nth-child(5) {
+.social li:hover:nth-child(4) {
   background: #f2143a;
 }
 

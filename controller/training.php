@@ -12,12 +12,12 @@ function mainContent() {
 	$PTMPL['site_title_'] = $configuration['site_name'];
 	//$ac = courseAccess(1); print_r($ac);
 
-	if ($user) {
-		// Create course and module links
+    if ($user) {
+        // Create course and module links
         $PTMPL['add_course_link'] = secureButtons('background_green2 bordered', 'Add Course', 3, null, null);
         $PTMPL['add_module_link'] = secureButtons('background_green2 bordered', 'Add Module', 2, null, null);
 
-		if (isset($_GET['course'])) {
+        if (isset($_GET['course'])) {
 			if (isset($_GET['courseid']) && $_GET['courseid'] != '') {
 		    	$course = getCourses(1, $_GET['courseid'])[0];
 	    		$PTMPL['course_title'] = $course['title'];
@@ -52,11 +52,13 @@ function mainContent() {
 	    		$get = cleanUrls($SETT['url'].'/index.php?page=training&course=get&courseid='.$_GET['courseid']);
 	    		$PTMPL['course_modules'] = $PTMPL['course_modules_new'] = $modules;
 	    		$PTMPL['course_get_btn_url'] = $get;
-	    		$PTMPL['course_edit_btn'] = secureButtons(null, 'Edit Course', 1, $_GET['courseid'], null);
+
+//	    		$PTMPL['get_started_btn'] = secureButtons('text-white', 'Get Started', 1, $_GET['courseid'], null);
+                $PTMPL['course_edit_btn'] = secureButtons('text-white', 'Edit Course', 1, $_GET['courseid'], null);
 	    		$PTMPL['course_toggle_descr'] = '<a href="#course_descr" class="action_toggle" data-toggle="collapse">Toggle description</a>';
 			}
 
-    		// $PTMPL['course_'] = $course[''];
+            // $PTMPL['course_'] = $course[''];
 			if (isset($_GET['courseid']) && $_GET['courseid'] != '' && $_GET['course'] != 'add' && $_GET['course'] != 'edit') {
 			    $course = getCourses(1, $_GET['courseid'])[0];
 
@@ -78,7 +80,7 @@ function mainContent() {
 	    		$PTMPL['course_modules'] = $modules;
 	    		$PTMPL['course_get_btn'] = '<a href="'.$get.'" class="btn btn-md btn-success"><i class="fa fa-credit-card"></i>Get Course</a>';
 	    		// $PTMPL['course_'] = $course[''];
-			}
+            }
 
     		/*if you are viewing the course details*/
 			if ($_GET['course'] == 'view') {
@@ -134,7 +136,7 @@ function mainContent() {
 						$PTMPL['course_price'] = $course['price'];
 						$PTMPL['introduction'] = $course['intro'];
 						$PTMPL['date'] = $course['start'];
-						$PTMPL['status'] = $course['status'];
+                        $PTMPL['status'] = $course['status'];
 						$PTMPL['course_create_btn'] = 'Update Course';
 						$PTMPL['course_create_header'] = 'Update Course: '.$course['title'];
 	    			}
@@ -150,7 +152,7 @@ function mainContent() {
 					$PTMPL['course_price'] = $_POST['price'];
 					$PTMPL['introduction'] = $_POST['introduction'];
 					$PTMPL['date'] = $_POST['date'];
-					$PTMPL['status'] = $_POST['status'];
+                    $PTMPL['status'] = $_POST['status'];
 
 					$framework->course_title = $framework->db_prepare_input($_POST['course_title']);
 					$framework->course_price = $framework->db_prepare_input($_POST['price']);
@@ -159,7 +161,7 @@ function mainContent() {
 					$date = date('Y-m-d H:m:i', strtotime($framework->db_prepare_input($_POST['date'])));
 					$framework->start = $date;
 					$framework->status = $framework->db_prepare_input($_POST['status']);
-					$framework->files = $_FILES;
+                    $framework->files = $_FILES;
 
 					if ($_POST['course_title'] == '') {
 						$msg = errorMessage($LANG['no_empty_title']);
@@ -178,12 +180,12 @@ function mainContent() {
 							$eck_err .= $eck_1 !==1 ? ' '.$eck_1 : '';
 							$eck_err .= $eck_2 !==1 ? ' '.$eck_2 : '';
 							$msg = errorMessage($eck_err);
-						} else {
+                        } else {
 							// If files uploaded without errors, proceed to save.
 							if (isset($_GET['courseid'])) {
-								$framework->cover_photo = empty($_FILES['cover_photo']['name']) ? $course['cover'] :
+                                $framework->cover_photo = empty($_FILES['cover_photo']['name']) ? $course['cover'] :
 								$framework->uploader($_FILES['cover_photo'], 0);
-								$framework->badge = empty($_FILES['badge']['name']) ? $course['badge'] :
+                                $framework->badge = empty($_FILES['badge']['name']) ? $course['badge'] :
 								$framework->uploader($_FILES['badge'], 0);
 							} else {
 								$framework->cover_photo = $framework->uploader($_FILES['cover_photo'], 0);
@@ -210,7 +212,7 @@ function mainContent() {
 				}
 			} elseif (isset($_GET['course']) && $_GET['course'] == 'link_module') {
 		        $theme = new themer('training/link_module'); $account = '';
-		        // $OLD_THEME = $PTMPL; $PTMPL = array();
+                // $OLD_THEME = $PTMPL; $PTMPL = array();
 
 			    // Set the page title
 			    $PTMPL['page_title'] = 'Link Modules to '.$course['title'];
@@ -221,14 +223,14 @@ function mainContent() {
 				$options = '';
 				if ($get_modules) {
 					foreach ($get_modules as $module) {
-						$options .= '<option value="'.$module['id'].'">'.$module['title'].'</option>';
+                        $options .= '<option value="' . $module['id'] . '">' . $module['title'] . '</option>';
 					}
 				}
 		        $PTMPL['select_options'] = $options;
 		        if (isset($_POST['module'])) {
 		        	$process = linkModule($_POST['module'], $_GET['courseid']);
 		        	if ($process == 1) {
-		        		$PTMPL['link_message'] = successMessage('Module has been successfully linked with '.$course['title']);
+                        $PTMPL['link_message'] = successMessage('Module has been successfully linked with ' . $course['title']);
 		        	} else {
 		        		$PTMPL['link_message'] = infoMessage($process);
 		        	}
@@ -237,8 +239,8 @@ function mainContent() {
 		        }
 			} elseif (isset($_GET['course']) && $_GET['course'] == 'now_learning') {
 		        $theme = new themer('training/now_learning'); $account = '';
-		        // $OLD_THEME = $PTMPL; $PTMPL = array();
-		        //
+                // $OLD_THEME = $PTMPL; $PTMPL = array();
+                //
 		        $get_modules = getModules(2, $_GET['moduleid'])[0];
 		        $PTMPL['title_header'] = $course['title'];
 		        $PTMPL['list_modules'] = studyModules($_GET['courseid'], $_GET['moduleid']);
@@ -247,11 +249,11 @@ function mainContent() {
 		        $PTMPL['transcript'] = $get_modules['transcript'];
 		        $PTMPL['course_edit_btn'] = secureButtons('background_green2', 'Edit Course', 1, $_GET['courseid'], $_GET['moduleid']);
 			}
-		} elseif (isset($_GET['module']) && $_GET['module'] == 'edit' && isset($_GET['action'])) {
+        } elseif (isset($_GET['module']) && $_GET['module'] == 'edit' && isset($_GET['action'])) {
 	        $theme = new themer('training/upload_video'); $account = '';
-	        // $OLD_THEME = $PTMPL; $PTMPL = array();
+            // $OLD_THEME = $PTMPL; $PTMPL = array();
 			// Page to upload and link video
-	        //
+            //
 		    $get_modules = getModules(2, $_GET['moduleid'])[0];
 
 		    // Set the page title
@@ -261,6 +263,7 @@ function mainContent() {
 		    $PTMPL['animation_link'] = $SETT['url'].'/'.$SETT['template_url'].'/img/loader.gif';
 			$PTMPL['module_create_header'] = 'Upload video for '.$get_modules['title'];
 			$PTMPL['module_id'] = $get_modules['id'];
+            $PTMPL['module_cover_photo'] = $get_modules['cover'];
 			$PTMPL['youtube_url'] = strpos($get_modules['video'], "youtube.com") == true ? $get_modules['video'] : '';
 			if (isset($_POST['youtube_url'])) {
 				$post_url = $framework->db_prepare_input($_POST['youtube_url']);
@@ -282,7 +285,7 @@ function mainContent() {
 					if ($results == 1) {
 						$msg = successMessage('Video uploaded successfully');
 			        	$x = getModules(2, $mid)[0];
-						$PTMPL['preview'] = '
+                        $PTMPL['preview'] = '
 						<div class="col-md-4">
 							<iframe width="420" height="315"
 								src="'.getVideo($x['video']).'">
@@ -298,9 +301,9 @@ function mainContent() {
 			}
 
 		} elseif (isset($_GET['module'])) {
-			if ($_GET['module'] == 'add' || $_GET['module'] == 'edit') {
+            if ($_GET['module'] == 'add' || $_GET['module'] == 'edit') {
 		        $theme = new themer('training/module_add_edit'); $account = '';
-		        // $OLD_THEME = $PTMPL; $PTMPL = array();
+                // $OLD_THEME = $PTMPL; $PTMPL = array();
 
 		    	$PTMPL['module_create_btn'] = 'Create module';
 				$PTMPL['module_create_header'] = 'Create a new module';
@@ -320,7 +323,7 @@ function mainContent() {
 						$PTMPL['module_title'] = $get_modules['title'];
 						$PTMPL['transcript'] = $get_modules['transcript'];
 						$PTMPL['introduction'] = $get_modules['intro'];
-						$PTMPL['duration'] = $get_modules['duration'];
+                        $PTMPL['duration'] = $get_modules['duration'];
 						$PTMPL['module_create_btn'] = 'Update Module';
 
 						/*
@@ -329,20 +332,20 @@ function mainContent() {
 						$add_video_btn = cleanUrls($SETT['url'].'/index.php?page=training&module=edit&moduleid='.$_GET['moduleid'].'&action=add_video');
 						$PTMPL['add_video_btn'] = '<a href="'.$add_video_btn.'" class="btn">Proceed to upload video</a>';
 			    	}
-			    }
+                }
 
 			    // Save the profile info
-				if (isset($_POST['save'])) {
-					$response = null;
+                if (isset($_POST['save'])) {
+                    $response = null;
 		    		$PTMPL['module_title'] = $_POST['module_title'];
 					$PTMPL['transcript'] = $_POST['transcript'];
 					$PTMPL['introduction'] = $_POST['introduction'];
-					$PTMPL['duration'] = $_POST['duration'];
+                    $PTMPL['duration'] = $_POST['duration'];
 
 					$framework->module_title = $framework->db_prepare_input($_POST['module_title']);
 					$framework->transcript = $framework->db_prepare_input($_POST['transcript']);
 					$framework->introduction = $framework->db_prepare_input($_POST['introduction']);
-					$framework->duration = $_POST['duration'] < 1 ? 1 : $framework->db_prepare_input($_POST['duration']);
+                    $framework->duration = $_POST['duration'] < 1 ? 1 : $framework->db_prepare_input($_POST['duration']);
 					$framework->files = $_FILES;
 
 					if ($_POST['module_title'] == '') {
@@ -360,12 +363,12 @@ function mainContent() {
 							$eck_err .= $eck_1 !==1 ? ' '.$eck_1 : '';
 							$eck_err .= $eck_2 !==1 ? ' '.$eck_2 : '';
 							$msg = errorMessage($eck_err);
-						} else {
+                        } else {
 							// If files uploaded without errors, proceed to save.
 							if (isset($_GET['moduleid'])) {
 								$framework->cover_photo = empty($_FILES['cover_photo']['name']) ? $get_modules['cover']
 									: $framework->uploader($_FILES['cover_photo'], 0);
-								$framework->badge = empty($_FILES['badge']['name']) ? $get_modules['badge'] :
+                                $framework->badge = empty($_FILES['badge']['name']) ? $get_modules['badge'] :
 									$framework->uploader($_FILES['badge'], 0);
 								$framework->secure_key = $get_modules['secure_code'] ? $get_modules['secure_code'] : $framework->generateToken();
 							} else {
@@ -407,19 +410,19 @@ function mainContent() {
 
 		} else {
 	        $theme = new themer('training/home'); $account = '';
-	        // $OLD_THEME = $PTMPL; $PTMPL = array();
+            // $OLD_THEME = $PTMPL; $PTMPL = array();
 
 	        $courseArr = getCourses();
 	        $course = '';
 	        foreach ($courseArr as $rslt) {
 	        	$course .= courseModuleCard($rslt);
-	        }
+            }
 	        $PTMPL['course'] = $course;
 		}
 	} else {
 		$framework->redirect();
 	}
-	if (isset($_GET['view'])) {
+    if (isset($_GET['view'])) {
 
 	}
 
