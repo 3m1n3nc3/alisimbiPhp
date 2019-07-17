@@ -121,7 +121,7 @@ function getImage($image, $type = null)
   }
   return $dir . $image;
 }
- 
+
 function getVideo($source)
 {
   global $SETT, $framework;
@@ -192,7 +192,7 @@ function linkModule($module_id, $course_id)
   global $framework;
   $module_id = $framework->db_prepare_input($module_id);
   $course_id = $framework->db_prepare_input($course_id);
-  $sql = sprintf("INSERT INTO " . TABLE_COURSE_MODULES . " (`course_id`, `module_id`) VALUES ('%s', '%s')", 
+  $sql = sprintf("INSERT INTO " . TABLE_COURSE_MODULES . " (`course_id`, `module_id`) VALUES ('%s', '%s')",
     $course_id, $module_id);
   $x = sprintf(" WHERE course_id = '%s' AND module_id = '%s'", $course_id, $module_id);
   $ver = getModules(3, null, $x)[0];
@@ -265,7 +265,7 @@ function getBenefits($x=null) {
     global $framework;
     $sql = sprintf("SELECT * FROM " . TABLE_BENEFITS . "%s", $x);
     return $framework->dbProcessor($sql, 1);
-}    
+}
 
 function getContactInfo($id = null)
 {
@@ -276,7 +276,7 @@ function getContactInfo($id = null)
     $id = '1';
   }
   $sql = sprintf("SELECT * FROM " . TABLE_CONTACT . " WHERE id = '%s'", $id);
-  return $framework->dbProcessor($sql, 1); 
+  return $framework->dbProcessor($sql, 1);
 }
 
 /**
@@ -390,17 +390,17 @@ function accountAccess($type = null)
 function manageButtons($type=null, $cid=null, $mid=null) {
   global $user_role, $user, $framework, $SETT;
   $link = '';
- 
+
   if ($type == 0) {
-    // Edit Module 
-    $link = cleanUrls($SETT['url'] . '/index.php?page=training&module=edit&moduleid=' . $mid);  
+    // Edit Module
+    $link = cleanUrls($SETT['url'] . '/index.php?page=training&module=edit&moduleid=' . $mid);
   } elseif ($type == 1) {
-    // Edit Course 
-    $link = cleanUrls($SETT['url'] . '/index.php?page=training&course=edit&courseid=' . $cid);   
+    // Edit Course
+    $link = cleanUrls($SETT['url'] . '/index.php?page=training&course=edit&courseid=' . $cid);
   } elseif ($type == 2) {
-    $link = cleanUrls($SETT['url'] . '/index.php?page=training&module=add'); 
+    $link = cleanUrls($SETT['url'] . '/index.php?page=training&module=add');
   } elseif ($type == 3) {
-    $link = cleanUrls($SETT['url'] . '/index.php?page=training&course=add'); 
+    $link = cleanUrls($SETT['url'] . '/index.php?page=training&course=add');
   }
   return $link;
 }
@@ -415,16 +415,16 @@ function secureButtons($class, $title, $type, $cid, $mid, $x=null) {
   $class = $class ? ' '.$class : '';
   $btnClass = $x ? '' : 'btn';
   $_btn = '';
-  $btn = '<a href="'.$link.'" class="'.$btnClass.$class.'">'.$title.'</a>'; 
+  $btn = '<a href="'.$link.'" class="'.$btnClass.$class.'">'.$title.'</a>';
   $allow = 0;
 
   if ($type == 0) {
-    // Edit Module  
+    // Edit Module
     if ($gmd['creator_id'] == $user['id']) {
       $allow = 1;
     }
   } elseif ($type == 1) {
-    // Edit Course  
+    // Edit Course
     if ($gcrs['creator_id'] == $user['id']) {
       $allow = 1;
     }
@@ -457,17 +457,17 @@ function courseModuleCard($contentArr, $type = null, $text = 1)
 {
   global $user_role, $framework, $SETT;
   $col = '4';
-  $duration = ' '; 
+  $duration = ' ';
   if ($type) {
     // This controls the modules
     $col = '3';
     $intro = $framework->myTruncate($contentArr['intro'], 150);
-    $photo = getImage($contentArr['cover'], 1); 
+    $photo = getImage($contentArr['cover'], 1);
     $view = cleanUrls($SETT['url'] . '/index.php?page=training&course=view&courseid=' . $contentArr['course_id'] . '&moduleid=' . $contentArr['id']);
     $enlink = cleanUrls($SETT['url'] . '/index.php?page=training&course=get&courseid=' . $contentArr['id']);
-    $enroll = $text == 1 ? '<a href="' . $enlink . '">Enroll</a>' : ''; 
+    $enroll = $text == 1 ? '<a href="' . $enlink . '">Enroll</a>' : '';
     $edit = secureButtons(null, 'Edit Module', 0, null, $contentArr['id'], 1);
-    $vb = $text == 1 ? '<a href="' . $view . '">Start</a>' : ''; 
+    $vb = $text == 1 ? '<a href="' . $view . '">Start</a>' : '';
     $start_learning = cleanUrls($SETT['url'] . '/index.php?page=training&course=now_learning&courseid=' . $contentArr['course_id'] . '&moduleid=' . $contentArr['id']);
     $progress_val = $contentArr['duration'];
 
@@ -476,7 +476,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1)
   } else {
     // This controls the courses
     $intro = $framework->myTruncate($contentArr['intro'], 200);
-    $photo = getImage($contentArr['cover'], 1); 
+    $photo = getImage($contentArr['cover'], 1);
     $view = cleanUrls($SETT['url'] . '/index.php?page=training&course=view&courseid=' . $contentArr['id']);
     $enlink = cleanUrls($SETT['url'] . '/index.php?page=training&course=get&courseid=' . $contentArr['id']);
     $enroll = $text == 1 ? '<a href="' . $enlink . '">Enroll/Start</a>' : '';
@@ -487,43 +487,77 @@ function courseModuleCard($contentArr, $type = null, $text = 1)
 
   // if $text = 0 don't show the $intro
   $intro = $text ? '<p class="card-text"> ' . $intro . ' </p>' : '';
-  // This is the course and module HTML card 
+  // This is the course and module HTML card
 
   $course_card = !$type ? '
   <div class=" ' . $col . '">
-    <div class="course-tile ">
-      <span class="course-progress" data-progress="'.$progress_val.'">
-        <span class="value"></span>
-      </span>
+  <div class="course-tile ">
+  <span class="course-progress" data-progress="'.$progress_val.'">
+    <span class="value"></span>
+  </span>
+  <div class="course-icon">
+  <img class="" src="' . $photo . '" title="' . $contentArr['title'] . ' thumbnail" alt="' . $contentArr['title'] . ' thumbnail">
+  </div>
+
+  <div class="course-info">
+  <div class="swipe-in">
+    <div class="readmore">
+    ' . $edit . '
+    </div>
+    <div class="readmore">
+    ' . $vb . '
+    </div>
+    <div class="readmore">
+    ' . $enroll . '
+    </div>
+  </div>
+  <div class="title">
+  ' . $contentArr['title'] . '
+  </div>
+  <div id="course' . $contentArr['id'] . '" class="course-content">
+  <p class="">
+  ' . $intro . '
+  </p>
+  </div>
+  <span class="progress-value">'.$progress_val.'% complete</span>
+  </div>
+
+  </div>
+  </div';
+
+
+  $course_card = '
+  <div class="col-md-6 col-sm-6">
+    <div class="course-column ">
+
       <div class="course-icon">
-        <img class="" src="' . $photo . '" title="' . $contentArr['title'] . ' thumbnail" alt="' . $contentArr['title'] . ' thumbnail">
+        <img class="img-responsive" src="' . $photo . '" title="" alt="course image">
+        <div class="course-price">Free</div>
       </div>
-      <div class="course-info">
-        <div class="swipe-in">
-          <div class="readmore">
-            ' . $edit . '
-          </div>
-          <div class="readmore">
-            ' . $vb . '
-          </div>
-          <div class="readmore">
-            ' . $enroll . '
-          </div>
+      <div class="course-content">
+        <div class="title">' . $contentArr['title'] . '</div>
+        <span class="item ">'.$contentArr['duration'].'</span>
+        <span class="item "><i class="fa fa-user"></i> (3)</span>
+        <span class="progress-value">'.$progress_val.'% complete</span>
+      </div>
+
+      <div class="swipe-in">
+        <div class="readmore">
+        ' . $edit . '
         </div>
-        <div class="title">
-          <a href="">
-            ' . $contentArr['title'] . '
-          </a>
+        <div class="readmore">
+        ' . $vb . '
         </div>
         <div id="course' . $contentArr['id'] . '" class="course-content">
           <p class="">
             ' . $framework->rip_tags($intro) . '
           </p>
         </div>
-        <span class="progress-value">'.$progress_val.'% complete</span>
       </div>
     </div>
-  </div>' : '';
+  </div>
+  ';
+
 
   $module_card = $type ? '
   <div class="module-tile module-tile-wide">
@@ -535,8 +569,9 @@ function courseModuleCard($contentArr, $type = null, $text = 1)
       <div class="title">
         <a href="'.$start_learning.'">
           ' . $contentArr['title'] . '
-        </a> 
+        </a>
       </div>
+      <span class="progress-value">'.$progress_val.'% complete</span>
     </div>
     <div class="module-btn">
       <a href="'.$start_learning.'" class="btn">Start/Continue</a>
@@ -550,7 +585,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1)
     </div>
     <div class="module-info">
       <div class="title">
-        <a href="'.$start_learning.'">' . $contentArr['title'] . '</a> 
+        <a href="'.$start_learning.'">' . $contentArr['title'] . '</a>
         '.$unlink_module.'
       </div>
     </div>
@@ -573,7 +608,7 @@ function studyModules($course, $curr=null) {
       $list .= '<a href="'.$link.'"><li class="list-group-item p-3 '.$act.'">'.$value['title'].'</li></a>';
     }
   }
-  $card = 
+  $card =
     '<div class="card" style="width: 20rem;">
       <div class="card-header h3">
         Modules
@@ -581,7 +616,7 @@ function studyModules($course, $curr=null) {
       <ul class="list-group list-group-flush">
         '.$list.'
       </ul>
-    </div>'; 
+    </div>';
     return $card;
 }
 
@@ -618,30 +653,32 @@ function instructorCard($ins, $type=null)
   $social .= $ins['twitter'] ? '<span class="media"><a href="' . $ins['twitter'] . '"><i class="fa fa-twitter"></i></a></span>' : '';
   $social .= $ins['instagram'] ? '<span class="media"><a href="' . $ins['instagram'] . '"><i class="fa fa-instagram"></i></a></span>' : '';
 
-  $landing_page_instructor_card = '
-  <div class="instructor">
-    <div class="">
-      <div class="i-profile-img">
-        <img src="' . $inst_photo . '" class="img-responsive" alt=""/>
-      </div>
-      <div class="pt-3 pl-3">
-        <p class="i-name">' . $inst_fullname . '</p>
-        <div class="i-rating">' . $inst_rating . '</div>
-        <div class="i-social">
-        ' . $social . '
+  $instructor_detail_card = '
+  <div class="instructor justify-content-center align-self-center">
+    <div class="row ">
+      <div class="col-md-3 justify-content-center col-sm-4">
+        <div class="i-profile-img">
+          <img src="' . $inst_photo . '" class="img-responsive" alt=""/>
+        </div>
+        <div class="i-misc">
+          <p class="i-name">' . $inst_fullname . '</p>
+          <div class="i-rating">' . $inst_rating . '</div>
         </div>
       </div>
-    </div>
-    <div class="col">
+    <div class="col-md-9 col-sm-8">
       <div class="i-bio">
       <p >
       ' . $inst_about . '
       </p>
+      <div class="i-social">
+      ' . $social . '
       </div>
+      </div>
+    </div>
     </div>
   </div>';
 
-  $course_page_instructor_card = '
+  $instructor_summary_card = '
           <div class="instructor">
             <div class="i-profile-img">
               <img src="' . $inst_photo . '" class="img-responsive" alt=""/>
@@ -649,20 +686,17 @@ function instructorCard($ins, $type=null)
             <div class="i-bio">
               <div><h4 class="i-name">' . $inst_fullname . '</h4></div>
               <div><span class="i-rating">' . $inst_rating . '</span></div>
-              <div class="i-social">
-              ' . $social . '
-              </div>
             </div>
           </div>';
   if($type === 1){
-    return $course_page_instructor_card;
+    return $instructor_summary_card;
   }else {
-    return $landing_page_instructor_card;
+    return $instructor_detail_card;
   }
 }
 
 function deleteFile($type, $name, $x=null) {
-  global $framework; 
+  global $framework;
 
   if ($type == 0) {
     $ext = 'jpg';
@@ -670,9 +704,9 @@ function deleteFile($type, $name, $x=null) {
   } elseif ($type == 1) {
     $ext = 'mp4';
     $path = 'videos';
-  }    
+  }
 
-  $cd = $x ? getcwd() : '..'; 
+  $cd = $x ? getcwd() : '..';
 
   if ($name !== 'default.'.$ext) {
       if(file_exists($cd.'/uploads/'.$path.'/'.$name)) {
@@ -680,18 +714,18 @@ function deleteFile($type, $name, $x=null) {
           return 1;
       }
   }
-  return null; 
+  return null;
 }
 
 function fetchBenefits($course_id) {
   $x = sprintf(" WHERE id = '%s'", $course_id);
-  $get = getCourses(null, null, $x)[0]['benefits']; 
+  $get = getCourses(null, null, $x)[0]['benefits'];
 
   $benefit = explode(',', $get);
   $list_benefits = '';
   if ($get) {
     foreach ($benefit as $key => $value) {
-      $fetch = getBenefits(sprintf(" WHERE title = '%s'", $value))[0];  
+      $fetch = getBenefits(sprintf(" WHERE title = '%s'", $value))[0];
       $format = '
         <div class="col-xs-6 col-sm-6 service">
           <div class="icon">
@@ -701,14 +735,14 @@ function fetchBenefits($course_id) {
           <p>'.$fetch['description'].'</p>
         </div>';
       $list_benefits .= $format;
-    } 
+    }
   }
   return $list_benefits;
 }
 
 function courseDuration($course) {
   global $framework;
-  
+
   $duration = 0;
   $access_log = courseAccess(1, $course)[0];
 
@@ -728,7 +762,7 @@ function courseDuration($course) {
 function courseAccess($type, $course_id) {
   global $framework, $user;
   if ($type) {
-    $sql = sprintf("SELECT * FROM " . TABLE_COURSE_ACCESS . " WHERE user_id = '%s' AND course_id = '%s'", 
+    $sql = sprintf("SELECT * FROM " . TABLE_COURSE_ACCESS . " WHERE user_id = '%s' AND course_id = '%s'",
       $user['id'], $course_id);
     $results = $framework->dbProcessor($sql, 1);
   }
@@ -739,10 +773,10 @@ function courseAccess($type, $course_id) {
 function headerFooter($type) {
   global $LANG, $SETT, $PTMPL, $contact_, $configuration, $framework, $user;
   if ($type) {
-    $theme = new themer('container/header'); $section = ''; 
+    $theme = new themer('container/header'); $section = '';
   } else {
-    $theme = new themer('container/footer'); $section = ''; 
-  }  
+    $theme = new themer('container/footer'); $section = '';
+  }
   $PTMPL['dashboard_url'] = cleanUrls($SETT['url'].'/index.php?page=homepage');
   $PTMPL['photo'] = getImage($user['photo'], 1);
   $PTMPL['username'] = ucfirst($user['username']);
@@ -750,7 +784,7 @@ function headerFooter($type) {
   $PTMPL['copyright'] = '&copy; '. ucfirst($LANG['copyright']). ' '.date('Y').' '.$contact_['c_line'];
   $PTMPL['logout_url'] = cleanUrls($SETT['url'].'/index.php?page=homepage&logout=true');
 
-  $section = $theme->make(); 
+  $section = $theme->make();
   return $section;
 }
 

@@ -10,6 +10,10 @@
 							<div class="card-title">
 								<h3 class="title">Profile</h3>
 								<span class="caption">Edit your profile here</span>
+								<ul class="card-breadcrumb">
+									<li class="level"><i class="fa fa-home"></i> <a href="">Home</a></li>
+									<li class="level">Edit Profile</li>
+								</ul>
 							</div>
 						</div>
 					</div>
@@ -29,7 +33,7 @@
 												<label class="src-only" for="billing_fname">First
 													name
 												</label>
-												<input class="form-control" id="billing_fname"
+												<input class="form-control" id="billing_fname" value="{$firstname}"
 												name="fname" placeholder="First name" type="text"/>
 											</div>
 										</div>
@@ -39,7 +43,7 @@
 													name
 												</label>
 												<input class="form-control" id="billing_lname"
-												name="lname"
+												name="lname" value="{$lastname}"
 												placeholder="Last name" type="text">
 											</div>
 										</div>
@@ -60,6 +64,7 @@
 											<label class="src-only" for="profile-country">Country</label>
 											<div class="custom-select-box">
 												<select class="select-country-list" data-target="profile-state" id="profile-country" name="country" type="text">
+													<option value="">Select Country</option>
 													{$list_country}
 												</select>
 											</div>
@@ -102,8 +107,10 @@
 								{$update_social}
 							</div>
 						</div>
-						<div class="text-center btn-block">
-							<a href="{$update_profile}" class="btn background_green2"><i class="fa fa-save"></i> Save changes </a>
+						<div class="pad-section">
+							<div class="text-center btn-block">
+								<a href="{$update_profile}" class="btn background_green2"><i class="fa fa-save"></i> Save changes </a>
+							</div>
 						</div>
 					</div>
 				</form>
