@@ -29,7 +29,7 @@ $PTMPL['register_link'] = cleanUrls($SETT['url'].'/?page=account&register=true')
 $PTMPL['set_country'] = set_local(1, '');
 
 $benefits = '';
-$getBenefits = getBenefits(); 
+$getBenefits = getBenefits();
 if ($getBenefits) {
 	foreach ($getBenefits as $key => $value) {
 		$benefits .= '
@@ -76,7 +76,7 @@ $course_instructor = '';
 if ($instructorsArr) {
 	foreach ($instructorsArr as $ins) {
 		$instructor .= instructorCard($ins);
-		$course_instructor .= instructorCard($ins, 1); 
+		$course_instructor .= instructorCard($ins, 1);
 	}
 	$PTMPL['instructor'] = $instructor;
 	$PTMPL['course_instructor'] = $course_instructor;

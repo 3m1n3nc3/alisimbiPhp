@@ -45,7 +45,7 @@
 }
 #dashboard footer{
   position: absolute;
-  botttom: 0;
+  bottom: 0;
   left: 0;
   width: 100%;
 }
@@ -74,7 +74,6 @@
   border: none;
 }
 .dashboard_tab .nav-item .nav-link{
-  display: inline-block;
   padding: 15px 25px;
   color: #f6f6f6;
   border: none;
@@ -92,7 +91,8 @@
   color: var(--green);
   font-weight: bold;
 }
-.dashboard_content{
+
+.dashboard_content {
   background: #f6f6f6;
   color: #333
 
@@ -219,6 +219,7 @@ table {
   margin-bottom: 30px;
   -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.05);
   box-shadow: 0 1px 0 rgba(0,0,0,.05);
+  display: block;
 }
 .card-tile .card-head{
   display: flex;
@@ -229,10 +230,25 @@ table {
   justify-content: space-between;
   align-items: stretch;
   line-height: 2rem;
-  padding: 30px 30px ;
+  padding: 30px 30px;
   color: #3d3d3d;
 }
-.card-tile .card-breadcrumb{
+
+.brcr-tile {
+  background: hsla(0, 0%, 100%, .5);
+  display: flex;
+  position: relative;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  mix-blend-mode: multiply;
+  color: #333333;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.brcr-tile .brcr {
   margin-top: 10px;
   font-size: 12px;
   color: #a6a6a6;
@@ -241,26 +257,29 @@ table {
   -ms-flex-flow: row wrap;
   flex-flow: row wrap;
   width: 100%;
-  background: #f9f9f9;
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 4px
 }
-.card-tile .card-breadcrumb a{
+
+.brcr-tile .brcr a {
   cursor: pointer;
+  color: currentColor;
 }
-.card-tile .card-breadcrumb .level{
+
+.brcr-tile .brcr .level {
   margin-right: 5px;
   display: inline-block;
 }
-.card-tile .card-breadcrumb .level:not(:last-of-type):after{
+
+.brcr-tile .brcr .level:not(:last-of-type):after {
   position: relative;
   margin-left: 5px;
   margin-right: 5px;
-  content: '/'
+  content: '\25cf'
 }
 
-.card-tile .card-breadcrumb:hover{
+.brcr-tile .brcr:hover {
   color: var(--green);
 }
 .card-tile .card-icon{
@@ -288,12 +307,10 @@ table {
 
 }
 .card-tile .card-value{
-  padding-right: 5px;
   text-align: right;
   padding: 10% 5%;
   display: block;
   background: hsla(132, 76%, 41%, 0.17);
-  display: block;
   border-radius: 20px;
   overflow: hidden;
   color: hsl(132, 76%, 41%)
@@ -334,7 +351,8 @@ table {
   border-radius: 4px;
   display: inline-block;
 }
-.empty{
+
+.empty {
   position: relative;
   width: 100%;
   /* height: 100vh; */
@@ -354,15 +372,22 @@ table {
   color: var(--green-overlay)
 }
 
-.empty .icon{
+.empty .icon {
   font-size: 500%;
   margin-bottom: 10px;
   display: block;
 }
 
-.para{
+.para {
   letter-spacing: normal;
   line-height: 1.75;
   font-weight: 400;
-  word-spacing: 1.5
+  word-spacing: 1px
+}
+
+.site_logo {
+  width: 60px;
+  height: 60px;
+  object-position: center;
+  object-fit: cover;
 }
