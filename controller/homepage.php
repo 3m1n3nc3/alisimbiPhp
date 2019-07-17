@@ -49,7 +49,8 @@ function mainContent() {
 
 		// get countries
 		$countries = getLocale();
-		$all_countries = '';
+
+    $all_countries = '';
 		foreach ($countries as $list) {
 				$all_countries .= '<option value="'.$list['name'].'" id="'.$list['id'].'">'.$list['name'].'</option>';
 		}
@@ -59,4 +60,4 @@ function mainContent() {
 	$theme = new themer('homepage/content');
 	return $theme->make();
 }
-?>
+

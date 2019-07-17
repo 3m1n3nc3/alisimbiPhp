@@ -81,14 +81,14 @@ function mainContent() {
             $PTMPL['update_profile'] = cleanUrls($SETT['url'].'/index.php?page=account&profile=update');
 
 			$PTMPL['user_role'] = ucfirst($user['role']);
- 
-            // Create course and module links 
-            $PTMPL['add_course_link'] = secureButtons('background_green2 bordered', 'Add Course', 3, null, null); 
 
-            $PTMPL['add_module_link'] = secureButtons('background_green2 bordered', 'Add Module', 2, null, null);  
+            // Create course and module links
+            $PTMPL['add_course_link'] = secureButtons('background_green2 bordered', 'Add Course', 3, null, null);
+
+            $PTMPL['add_module_link'] = secureButtons('background_green2 bordered', 'Add Module', 2, null, null);
 
             $all_courses_link = cleanUrls($SETT['url'].'/index.php?page=training');
-            $PTMPL['all_courses_link'] = $all_courses_link;   
+            $PTMPL['all_courses_link'] = $all_courses_link;
 
             // If the user is administrative show the social inputs
             $update_social = '';

@@ -1669,11 +1669,11 @@ a, a:hover, a:focus {
 }
 
 .color_green {
-  color: #1ecc8b;
+  color: var(--green);
 }
 
 .color_green2 {
-  color: #16cc6a;
+  color: var(--green);
 }
 
 .color_grey {
@@ -1716,8 +1716,8 @@ a, a:hover, a:focus {
 }
 
 .background_lightgrey {
-  color: hsl(0, 0%, 65%);
-  background: #fafafa;
+  color: hsl(0, 0%, 63%);
+  background: hsl(0, 0%, 95%);
 }
 .background_pink {
   color: #0a243e;
@@ -1726,12 +1726,12 @@ a, a:hover, a:focus {
 
 .background_green {
   color: #fff;
-  background: #1ecc8b !important;
+  background: hsl(149, 74%, 45%) !important;
 }
 
 .background_green2 {
   color: #fff;
-  background: linear-gradient(to top , #2bff41, #1ecc8b) !important;
+  background: linear-gradient(to top, hsl(149, 74%, 40%), hsl(149, 74%, 45%)) !important;
 }
 
 .background_black2 {
@@ -2023,7 +2023,7 @@ h1, .h1 {
   }
 
   .btn {
-    left: 0;position: relative;
+    left: 0;
     display: block;
     position: relative;
     width: 100%
@@ -2059,10 +2059,10 @@ h1, .h1 {
 
 .btn:hover, .btn:focus {
   /* box-shadow: 0 5px 4px -1px hsl(129, 42%, 5%); */
-  border: 1px solid var(--white);
-  box-shadow: 0 2px 1px 1px #e6e6e6;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 2px 2px 1px hsla(0, 0%, 20%, 0.31);
   background: initial;
-
+  color: hsl(149, 74%, 25%) !important;
 }
 
 .btn i {
@@ -2077,8 +2077,8 @@ h1, .h1 {
 }
 
 .btn.bordered:hover {
-  /* background: white; */
-  /* color: black; */
+  background: white;
+  color: #888;
 }
 
 .d_table {
@@ -2124,7 +2124,7 @@ h1, .h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to left, rgba(5, 101, 17, 0.8), rgba(25, 9, 103, 0));
+  background: linear-gradient(to bottom, hsla(149, 74%, 45%, 0.25) 30%, hsl(149, 74%, 45%));
   z-index: 999999;
 }
 
@@ -2154,6 +2154,7 @@ h1, .h1 {
   bottom: 50%;
   box-shadow: -1.5em 0 0 var(--green);
   animation: loader 1s linear infinite;
+  border-radius: 3em
 }
 
 .loader:after {
@@ -2180,7 +2181,6 @@ h1, .h1 {
 
 .brand {
   position: absolute;
-  top: 5vh;
   left: 5vw;
   width: 150px;
   top: 0;
@@ -2340,7 +2340,7 @@ h1, .h1 {
 }
 
 #works .item a:hover {
-  cursor: url("drag_b.png"), url("drag_b.png"), auto !important;
+  /*cursor: url("drag_b.png"), url("drag_b.png"), auto !important;*/
 }
 
 #works .item img {
@@ -2421,7 +2421,6 @@ h1, .h1 {
   display: block;
   margin: 2px 0 0;
   padding: 0 25px;
-  border-radius: 30px;
   transition: .3s ease;
   border: 1px solid #F0F2F7;
   color: #1d3650;
@@ -2616,8 +2615,7 @@ h1, .h1 {
   line-height: 54px;
   color: #fff;
   letter-spacing: .5px;
-  border-radius: 50px;
-  border: none;
+  /* border-radius: 50px; */
   font-size: 14px;
   background: none;
   box-shadow: none;
@@ -2655,37 +2653,43 @@ h1, .h1 {
   top: 10px;
   right: 5vw;
   z-index: 8;
+
 }
 
 .social li {
   width: 40px;
-  height: 40px;
-  border-radius: 30px;
-  padding: 5px 0;
+  height: auto;
+  border-radius: 40px;
+  padding: 5px;
   font-size: 20px;
   text-align: center;
   box-shadow: none;
   color: #fff;
   cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
 }
 
+.social li a:hover {
+  color: currentColor;
+}
 .social li:hover {
   box-shadow: 0 5px 50px -5px #ffffff;
 }
 
-.social li:hover:nth-child(2) {
+.social li:hover:nth-child(1) {
   background: #306dc4;
 }
 
-.social li:hover:nth-child(3) {
+.social li:hover:nth-child(2) {
   background: #1edcff;
 }
 
-.social li:hover:nth-child(4) {
+.social li:hover:nth-child(3) {
   background: #3384bc;
 }
 
-.social li:hover:nth-child(5) {
+.social li:hover:nth-child(4) {
   background: #f2143a;
 }
 
