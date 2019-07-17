@@ -181,7 +181,6 @@ svg.icon:not(.icon--full-color) path {
     font-weight: 300;
 
 }
-
 .instructors .instructor .i-bio .i-name {
     line-height: 1.5;
     color: rgb(94, 88, 96);
@@ -194,14 +193,28 @@ svg.icon:not(.icon--full-color) path {
     position: relative;
     margin-top: 10px;
     display: block;
+    text-align: center;
     width: 100%;
 }
 
 .instructors .instructor .i-rating {
     color: var(--green);
     margin: 10px 0;
-    display: block;
+    display: flex;
+    width: 100%;
+    flex-flow: row nowrap;
 }
+
+.instructors .instructor .i-misc {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    margin: 7px auto;
+}
+
 .instructors .instructor .i-rating *{
     margin-right: 5px
 }
@@ -211,7 +224,7 @@ svg.icon:not(.icon--full-color) path {
     margin-top: 5px;
     display: flex;
     flex-flow: row wrap;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-start;
     width: 100%;
 }
@@ -695,6 +708,7 @@ svg.icon:not(.icon--full-color) path {
     /* border-right: 6px solid #f1f2f3; */
     border-bottom: 1px solid #eee;
     background: var(--green);
+    background: rgba(0, 0, 0, .4);
     filter: contrast(90%);
     display: block;
 }
@@ -860,7 +874,7 @@ svg.icon:not(.icon--full-color) path {
     top: 0;
     margin-top: 10px;
     content: '\f107';
-    font-family: var(--font-awesome)
+    font-family: fontAwesome
 }
 
 .custom-select-box select:focus {
@@ -947,8 +961,11 @@ svg.icon:not(.icon--full-color) path {
     line-height: 1.5;
     color: #a6a6a6;
     letter-spacing: 9px;
+    padding: 0;
     z-index: 1;
-    padding: 0 20px;
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
     border-radius: 20px;
     border: 1px solid #d6d6d6;
 }
@@ -962,6 +979,7 @@ svg.icon:not(.icon--full-color) path {
 }
 
 .cc-group .cc-input {
+    border: 1px solid red;
     background: transparent;
     padding: 10px 0;
     font-size: 18px;
@@ -971,6 +989,7 @@ svg.icon:not(.icon--full-color) path {
     z-index: 2;
     position: relative;
     display: inline-block;
+    /* border-bottom: 1px solid #f6f6f6; */
 }
 
 .cc-group .cc-num {
@@ -979,6 +998,7 @@ svg.icon:not(.icon--full-color) path {
 
 .cc-group .cc-input::placeholder {
     font-size: 14px;
+    line-height: 20px;
     vertical-align: middle;
     color: #d6d6d6;
     text-align: left;
@@ -1204,34 +1224,42 @@ footer {
 }
 
 .course-column .course-content {
-    padding: 15px 15px 60px
+    padding: 15px 15px 60px;
+    display: block;
+    width: 100%;
 }
 
+.course-column .course-content .title {
+    margin-bottom: 10px;
+}
 .course-column .course-icon .course-price {
     position: absolute;
     right: 5px;
     background: var(--green-overlay);
-    width: 20%;
+    width: auto;
     height: auto;
     top: 0;
     z-index: 10;
-    padding: 7px;
+    padding: 7px 14px 14px;
     text-align: center;
     color: white;
     font-size: 1.5em;
-    padding-bottom: 10px;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     box-shadow: 0 2px 7px -2px #39853c;
     border: 1px solid white;
+    display: inline-block;
+    vertical-align: top;
     border-top: none;
 }
 
-.course-column .course-icon .course-price:before {
+.course-column .course-icon .course-price .currency:before {
     position: relative;
-    margin-right: 5px;
+    margin-right: 2px;
     font-size: 12px;
     content: '\20A6';
+    display: inline-block;
+    vertical-align: top;
 }
 
 .course-column .course-content .item {
@@ -1298,6 +1326,7 @@ footer {
 .swipe-in{
     position: absolute;
     top: 0;
+    left: 0;
     display: flex;
     -webkit-flex-flow: row wrap;
     -ms-flex-flow: row wrap;
@@ -1325,6 +1354,7 @@ footer {
 .readmore a {
     padding: 10px 20px 5px;
     background: transparent;
+    color: #fff;
     margin-right: 10px;
     box-shadow: 0 6px 45px -10px #cacaca;
     border: 1px solid currentColor;
@@ -1380,6 +1410,7 @@ select option {
 }
 .module-widget {
     background-color: #fafafa;
+    padding-bottom: 10%;
     padding: 5% 10%;
     display: block;
 }

@@ -27,6 +27,9 @@ $PTMPL['language'] = $_COOKIE['lang'];
 $PTMPL['register_link'] = cleanUrls($SETT['url'].'/?page=account&register=true');
 
 $PTMPL['set_country'] = set_local(1, '');
+$PTMPL['global_header'] = headerFooter(1);
+$PTMPL['global_footer'] = headerFooter(0);
+
 
 $benefits = '';
 $getBenefits = getBenefits();
@@ -67,6 +70,9 @@ if ($module_newArr) {
 	$PTMPL['course_modules_new'] = $courses_modules;
 }
 
+// Logout url
+$PTMPL['logout_url'] = cleanUrls($SETT['url'] . '/index.php?page=homepage&logout=true');
+
 // Get a list of instructors for the new course
 $instructorsArr = getInstructors($course_new['id']);
 
@@ -80,14 +86,9 @@ if ($instructorsArr) {
 	}
 	$PTMPL['instructor'] = $instructor;
 	$PTMPL['course_instructor'] = $course_instructor;
-}
-
-// Show the footer
-$PTMPL['footer'] = contactInformation();
-
+} 
 // Render the page
-$PTMPL['content'] = mainContent();
-$PTMPL['footer'] = 'contactInformation()';
+$PTMPL['content'] = mainContent(); 
 
 $theme = new themer('container');
 echo $theme->make();

@@ -6,7 +6,9 @@
 // http://www.passcontest.com/                                          \\
 //======================================================================\\
 
-$framework = new framework; 
+use Gumlet\ImageResize;
+
+$framework = new framework;
 $user_role = $framework->userRoles();
 
 //Fetch settings from database
@@ -187,6 +189,7 @@ class framework {
         setcookie("username", '', time() - 3600, COOKIE_PATH);
         unset($_SESSION['username']);
         unset($_SESSION['password']);
+        return 1;
     }
 
     function checkEmail($email = NULL, $type = 0) {
@@ -309,6 +312,51 @@ class framework {
 		}
 		return $results;
 	}
+
+    /*
+    Add questions to a module
+     */
+    function addQuestions($type = null)
+    {
+        global $SETT, $LANG, $configuration, $user;
+        if ($type == 1) {
+            $sql = sprintf("UPDATE " . TABLE_QUESTION . " SET `question` = '%s' WHERE id = '%s'", $this->question, $this->question_id);
+        } else {
+            $sql = sprintf("INSERT INTO " . TABLE_QUESTION . " (`question`, `module_id`, `correct`) VALUES ('%s', '%s', '%s')", $this->question, $this->module_id, $this->correct);
+        }
+
+        $add_q = $this->dbProcessor($sql, 0, 1);
+        $get_q = getQuestions($this->module_id)[0];
+        if ($add_q == 1) {
+            $question_id = $get_q['id'];
+            $c1 = $c2 = $c3 = $c4 = 0;
+            if ($this->correct == 1) {
+                $c1 = 1;
+            } elseif ($this->correct == 2) {
+                $c2 = 1;
+            } elseif ($this->correct == 3) {
+                $c2 = 1;
+            } elseif ($this->correct == 4) {
+                $c2 = 1;
+            }
+            if ($type == null) {
+                $sql = sprintf("INSERT INTO " . TABLE_ANSWER
+                    . " (`answer`, `question_id`, `module_id`, `correct`) VALUES "
+                    . " ('%s', '%s', '%s', '%s'),"
+                    . " ('%s', '%s', '%s', '%s'),"
+                    . " ('%s', '%s', '%s', '%s'),"
+                    . " ('%s', '%s', '%s', '%s')",
+                    $this->answer1, $question_id, $this->module_id, $c1,
+                    $this->answer2, $question_id, $this->module_id, $c2,
+                    $this->answer3, $question_id, $this->module_id, $c3,
+                    $this->answer4, $question_id, $this->module_id, $c4
+                );
+                return $this->dbProcessor($sql, 0, 1);
+            }
+
+        }
+        return $add_q;
+    }
 
 	/*
 	Add an instructor, when you create a new course
@@ -479,8 +527,13 @@ class framework {
 	/**
 	/*  Sanitize text input function
 	**/
-	function db_prepare_input($string) {
-	    return trim(addslashes($string));
+    function db_prepare_input($string, $x = null)
+    {
+        $string = trim(addslashes($string));
+        if ($x) {
+            return $string;
+        }
+        return filter_var($string, FILTER_SANITIZE_STRING);
 	}
 
 	/**
@@ -774,7 +827,7 @@ class framework {
 			// Crop and compress the image
 			if (in_array($file_ext,$allowed) && empty($errors)==true) {
 				// Create a new ImageResize object
-	      		$image = new \Gumlet\ImageResize($file_tmp);
+                $image = new ImageResize($file_tmp);
 	      		$cd = getcwd();
 	        	// Manipulate the image
 	        	$image->crop($w, $h);

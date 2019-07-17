@@ -8,7 +8,6 @@
                     <a class="navbar-brand" href="{$dashboard_url}">
                         <img alt="{$site_title_} logo" height="60" src="{$site_logo}" width="60">
                     </a>
-
                     <div class="top_avatar">
                         <div class="user_avatar">
                             <a data-toggle="collapse" href="#logout" title="edit profile">
@@ -25,7 +24,7 @@
             <div class="text-right collapse" id="logout">
                 <div class="container">
                     <a aria-controls="logout" aria-selected="false" class="logout"
-                       href="" role="link">Logout</a>
+                       href="{$logout_url}" role="link">Logout</a>
                 </div>
             </div>
             <div class="dashboard_tab">
@@ -34,8 +33,7 @@
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a aria-controls="profile" aria-selected="false" class="nav-link active "
-                                   data-toggle="tab"
-                                   href="#welcome"
+                                   data-toggle="tab" href="#welcome"
                                    id="welcome_tab" role="tab">Welcome</a>
                             </li>
                             <li class="nav-item">
@@ -43,15 +41,12 @@
                                    href="#notification"
                                    id="notification_tab" role="tab">Notifications</a>
                             </li>
-
                             <li class="nav-item">
                                 <a aria-controls="course" aria-selected="false" class="nav-link" data-toggle="tab"
                                    href="#course"
                                    id="course_tab" role="tab">Courses</a>
                             </li>
-
                             <li class="nav-item">
-
                             </li>
                         </ul>
                     </div>
@@ -59,8 +54,6 @@
             </div>
         </header>
         <!-- #top-nav  -->
-
-
         <!-- dashboard content -->
         <div class="tab-content dashboard_content">
             <div aria-labelledby="notification-tab" class="tab-pane fade  show" id="notification" role="tabpanel">
@@ -98,7 +91,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="pad-section">
                     <div class="row">
                         <div class="col-md-3">
@@ -107,7 +99,6 @@
                                     <img class=" img-thumbnail m-auto " src="{$photo}">
                                 </div>
                             </div>
-
                             <div class="card">
                                 <div class="py-2 px-3">
                                     {$about_}
@@ -117,9 +108,7 @@
                                     <a class="btn" href="{$update_profile}"><i class="fa fa-edit"></i> Edit profile </a>
                                 </div>
                             </div>
-
                         </div>
-
                         <div class="col-md-8 ">
                             <div class="user-info-list card card-default">
                                 <div class="card-header card-header-divider">About Me</div>
@@ -156,10 +145,8 @@
                                     </table>
                                 </div>
                             </div>
-
                             <p class="hint">You can always update your profile, your certificate will contain the
                                 details found when it is being prepared.</p>
-
                             <div class="user-info-list ">
                                 <div class="card-tile">
                                     <div class="card-head">
@@ -215,10 +202,8 @@
                             </div>
                             <div class="collapse" id="course_actions">
                                 <div class="card-foot">
-
                                     <div class="card-action">
-                                        <a class="btn background_green2 bordered" href="{$all_courses_link}">Add
-                                            course</a>
+                                        {$add_course_link} &nbsp; &nbsp; {$add_module_link}
                                         <a class="btn" href="{$all_courses_link}">Explore other courses</a>
                                     </div>
                                 </div>
@@ -246,18 +231,7 @@
                 </div>
             </div>
         </div>
-        <!-- dashboard content -->
-
-        <!-- footer -->
-        <footer>
-            <div class="text-center">
-                {$site_title_}
-                <div class="copyright">
-                    {$copyrights_}
-                </div>
-            </div>
-        </footer>
-        <!-- footer -->
+        {$global_footer}
     </div>
     <!-- dashboard -->
 </div>
