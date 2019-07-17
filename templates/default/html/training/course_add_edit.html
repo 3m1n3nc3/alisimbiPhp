@@ -1,27 +1,9 @@
 <div class="wrapper">
-	<div id="dashboard_tab">
-		<header id="top-nav">
-			<!-- Image and text -->
-			<nav class="navbar navbar-expand-lg navbar-dark">
-				<div class="container">
-					<a class="navbar-brand" href="{$dashboard_url}">
-						<img src="{$logo_url}" width="30" height="30" alt="Alisimbi logo">
-					</a>
-
-					<div class="top_avatar">
-						<div class="user_avatar">
-							<a href="/"><img src="{$photo}" alt="{$username} avatar"></a>
-						</div>
-						<div class="user_name">
-							{$username}
-						</div>
-					</div>
-				</div>
-			</nav>
-		</header>
+	<div id="dashboard">
+		{$global_header} 
 		<div class="container m-3">
 			<div class="row">
-				<div class="col-12">
+				<div class="col-8">
 					<div class="card p-5">
 						<div class="card-block">
 							<h4 class="card-title">{$course_create_header}</h4>
@@ -49,8 +31,15 @@
 									<hr>
 									<small class="text-danger">Will be truncated if longer than 250 words</small>
 									<p class="card-text">
-										<textarea name="introduction" class="form-control" rows="8" cols="80">{$introduction}</textarea>
-									</p>
+										<textarea id="editor" name="introduction" class="form-control" rows="8" cols="80">{$introduction}</textarea>
+									</p>  
+									<script>
+								        ClassicEditor
+								            .create( document.querySelector( '#editor' ) )
+								            .catch( error => {
+								                console.error( error );
+								            } );
+								    </script>
 								</div>
 								<div class="border rounded p-2 m-1">
 									Benefits
@@ -101,7 +90,16 @@
 						</div>
 					</div>
 				</div>
+				<div class="col-4">
+					<div class="card">
+						<div class="card-block m-2">
+						<h4 class="card-title">Edit the modules for this course</h4>
+							{$edit_course_modules}
+						</div> 
+					</div>
+				</div>
 			</div>
 		</div>
+		{$global_footer}
 	</div>
 </div>

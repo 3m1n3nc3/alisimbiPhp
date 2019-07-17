@@ -8,7 +8,7 @@ function mainContent() {
 	$account = '';
     if ($user) {
         if (isset($_GET['profile'])) {
-            if ($_GET['profile'] == 'home') {
+            if ($_GET['profile'] == 'home') { 
                 $theme = new themer('account/profile_home');
                 // $OLD_THEME = $PTMPL; $PTMPL = array();
             } elseif ($_GET['profile'] == 'update') {

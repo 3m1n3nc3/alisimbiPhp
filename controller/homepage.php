@@ -1,7 +1,7 @@
 <?php
 
 function mainContent() {
-	global $PTMPL, $LANG, $SETT, $configuration, $framework;
+	global $PTMPL, $LANG, $SETT, $configuration, $framework, $user, $user_role;
 	// Dont touch anything above this line
 
 	$PTMPL['page_title'] = getHome('1')[0]['title'];
@@ -17,6 +17,13 @@ function mainContent() {
 	$PTMPL['testimony'] = 'Testimonials';
 	$PTMPL['sponsors'] = 'Sponsors'; 
 
+	if ($user && $user_role < 3) {
+		header("Location: ".cleanUrls($SETT['url'].'/index.php?page=account'));
+	} 
+	if(isset($_GET['logout'])) { 
+        $out = $framework->sign_out();
+        $out == true ? header('Location: '.cleanUrls($SETT['url'].'/index.php?page=homepage')) : '';
+	}
 	// Set social values
 	$contact = getContactInfo()[0];
 	$facebook = $twitter = $instagram = $youtube = '';
@@ -46,18 +53,16 @@ function mainContent() {
     $PTMPL['phone'] = $contact['phone'];
     $PTMPL['login_slider'] = accountAccess();
 
-
-		// get countries
-		$countries = getLocale();
-
-    $all_countries = '';
-		foreach ($countries as $list) {
-				$all_countries .= '<option value="'.$list['name'].'" id="'.$list['id'].'">'.$list['name'].'</option>';
-		}
-		$PTMPL['countries'] = $all_countries;
+	// get countries
+	$countries = getLocale();
+	$all_countries = '';
+	foreach ($countries as $list) {
+			$all_countries .= '<option value="'.$list['name'].'" id="'.$list['id'].'">'.$list['name'].'</option>';
+	}
+	$PTMPL['countries'] = $all_countries;
 		
 	// Dont touch anything below this line
 	$theme = new themer('homepage/content');
 	return $theme->make();
 }
-
+?>
