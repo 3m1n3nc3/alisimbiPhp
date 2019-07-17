@@ -18,3 +18,5 @@ define('TABLE_STATES', DB_PREFIX . 'states');
 define('TABLE_CITIES', DB_PREFIX . 'cities');
 define('TABLE_BENEFITS', DB_PREFIX . 'benefits');
 define('TABLE_COURSE_ACCESS', DB_PREFIX . 'course_access');
+define('TABLE_QUESTION', DB_PREFIX . 'questions');
+define('TABLE_ANSWER', DB_PREFIX . 'answers');

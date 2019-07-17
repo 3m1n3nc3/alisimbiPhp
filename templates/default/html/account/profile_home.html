@@ -1,264 +1,233 @@
 <!-- Wrapper -->
 <div class="wrapper">
-    <div id="dashboard">
-        <header id="top-nav">
-            <!-- Nav with logo and avatar-->
-            <nav class="navbar navbar-expand-lg navbar-dark">
-                <div class="container">
-                    <a class="navbar-brand" href="{$dashboard_url}">
-                        <img alt="{$site_title_} logo" height="60" src="{$site_logo}" width="60">
-                    </a>
-
-                    <div class="top_avatar">
-                        <div class="user_avatar">
-                            <a data-toggle="collapse" href="#logout" title="edit profile">
-                                <img alt="{$username} avatar" src="{$photo}">
-                            </a>
-                        </div>
-                        <div class="user_name">
-                            {$username}
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <!-- Nav with logo and avatar -->
-            <div class="text-right collapse" id="logout">
-                <div class="container">
-                    <a aria-controls="logout" aria-selected="false" class="logout"
-                       href="" role="link">Logout</a>
-                </div>
-            </div>
-            <div class="dashboard_tab">
-                <div class="tab">
-                    <div class="container">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a aria-controls="profile" aria-selected="false" class="nav-link active "
-                                   data-toggle="tab"
-                                   href="#welcome"
-                                   id="welcome_tab" role="tab">Welcome</a>
-                            </li>
-                            <li class="nav-item">
-                                <a aria-controls="notification" aria-selected="false" class="nav-link" data-toggle="tab"
-                                   href="#notification"
-                                   id="notification_tab" role="tab">Notifications</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a aria-controls="course" aria-selected="false" class="nav-link" data-toggle="tab"
-                                   href="#course"
-                                   id="course_tab" role="tab">Courses</a>
-                            </li>
-
-                            <li class="nav-item">
-
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- #top-nav  -->
-
-
-        <!-- dashboard content -->
-        <div class="tab-content dashboard_content">
-            <div aria-labelledby="notification-tab" class="tab-pane fade  show" id="notification" role="tabpanel">
-                <div class="user-info-list ">
-                    <div class="card-tile">
-                        <div class="container">
-                            <div class="card-head">
-                                <div class="card-title">
-                                    <h3 class="title">Notification</h3>
-                                    <span class="caption">Access all your notifications here</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pad-section">
-                    <div class="">
-                        <div class="empty">
-                            <i class="fa fa-bell-o icon"></i>
-                            <p class="small para">No notification</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div aria-labelledby="welcome-tab" class="tab-pane fade show active" id="welcome" role="tabpanel">
-                <div class="user-info-list ">
-                    <div class="card-tile">
-                        <div class="container">
-                            <div class="card-head">
-                                <div class="card-title">
-                                    <h3 class="title">Welcome back </h3>
-                                    <span class="caption">{$username}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pad-section">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="user-info-list card card-default p-3 text-center">
-                                <div class="profile_img">
-                                    <img class=" img-thumbnail m-auto " src="{$photo}">
-                                </div>
-                            </div>
-
-                            <div class="card">
-                                <div class="py-2 px-3">
-                                    {$about_}
-                                </div>
-                                <hr>
-                                <div>
-                                    <a class="btn" href="{$update_profile}"><i class="fa fa-edit"></i> Edit profile </a>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-md-8 ">
-                            <div class="user-info-list card card-default">
-                                <div class="card-header card-header-divider">About Me</div>
-                                <div class="card-body">
-                                    <table class="no-border no-strip skills">
-                                        <tbody class="no-border-x no-border-y">
-                                        <tr>
-                                            <td class="icon"><span class="icon fa fa-user"></span></td>
-                                            <td class="item">Full Name</td>
-                                            <td><a href="#">{$fullname}</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="icon"><span class="icon fa fa-envelope"></span></td>
-                                            <td class="item">Email address</td>
-                                            <td><a href="#">{$email_add}</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="icon"><span class="icon fa fa-mobile"></span></td>
-                                            <td class="item">Phone</td>
-                                            <td><a href="#">{$phone_}</a></td>
-                                        </tr>
-                                        {$social_links}
-                                        <tr>
-                                            <td class="icon"><span class="icon fa fa-map-marker"></span></td>
-                                            <td class="item">Location</td>
-                                            <td><a href="#">{$city_}, {$state_}, {$country_}</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="icon"><span class="icon fa fa-key"></span></td>
-                                            <td class="item">Status</td>
-                                            <td>{$user_role}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                            <p class="hint">You can always update your profile, your certificate will contain the
-                                details found when it is being prepared.</p>
-
-                            <div class="user-info-list ">
-                                <div class="card-tile">
-                                    <div class="card-head">
-                                        <div class="container">
-                                            <div class="row justify-content-center">
-                                                <div class="col-md-10 col-sm-8">
-                                                    <div class="card-title">
-                                                        <h3 class="title">Course Track</h3>
-                                                        <span class="caption">Your course track shows you how many courses you are currently taking, and their respective progress</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2 col-sm-4">
-                                                    <div class="card-value">
-                                                        <span>23</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-foot">
-                                        <div class="card-action">
-                                            <a class="btn" href="">Continue learning</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div aria-labelledby="course-tab" class="tab-pane fade  show" id="course" role="tabpanel">
-                <div class="user-info-list ">
-                    <div class="card-tile">
-                        <div class="container">
-                            <div class="card-head ">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-10 col-sm-8">
-                                            <div class="card-title">
-                                                <h3 class="title">Course Track</h3>
-                                                <span class="caption">Your course track shows you how many courses you are currently taking, and their respective progress</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2 col-sm-4">
-                                            <div class="card-value">
-                                                <span>23</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="action_toggle" data-toggle="collapse" href="#course_actions">Toggle action
-                                        <i class="fa fa-angle-down"></i></a>
-                                </div>
-                            </div>
-                            <div class="collapse" id="course_actions">
-                                <div class="card-foot">
-
-                                    <div class="card-action">
-                                        <a class="btn background_green2 bordered" href="{$all_courses_link}">Add
-                                            course</a>
-                                        <a class="btn" href="{$all_courses_link}">Explore other courses</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pad-section">
-                    <div class="row ">
-                        <div class="col-md-4">
-                            <div class="mb-4 px-3">
-                                <div class="">
-                                    <input class="form-control" id="" name="" type="search">
-                                    <a class="btn" href=""><i class="fa f-search"></i> Search courses</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="row">
-                                {$course}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- dashboard content -->
-
-        <!-- footer -->
-        <footer>
-            <div class="text-center">
-                {$site_title_}
-                <div class="copyright">
-                    {$copyrights_}
-                </div>
-            </div>
-        </footer>
-        <!-- footer -->
-    </div>
-    <!-- dashboard -->
-</div>
-<!-- Wrapper -->
+	<div id="dashboard"> 
+		<header id="top-nav">
+			<!-- Nav with logo and avatar-->
+			<nav class="navbar navbar-expand-lg navbar-dark">
+				<div class="container">
+					<a class="navbar-brand" href="{$dashboard_url}">
+						<img src="{$logo_url}" width="30" height="30" alt="{$site_title_} logo">
+					</a>
+					<div class="top_avatar">
+						<div class="user_avatar">
+							<a href="#logout" title="edit profile" data-toggle="collapse">
+								<img src="{$photo}" alt="{$username} avatar">
+							</a>
+						</div>
+						<div class="user_name">
+							{$username}
+						</div>
+					</div>
+				</div>
+			</nav>
+			<!-- Nav with logo and avatar -->
+			<div class="text-right collapse" id="logout">
+				<div class="container">
+					<a class="logout"  href="{$logout_url}" role="link"
+					aria-controls="logout" aria-selected="false">Logout</a>
+				</div>
+			</div>
+			<div class="dashboard_tab">
+				<div class="tab">
+					<div class="container">
+						<ul class="nav nav-tabs" role="tablist">
+							<li class="nav-item">
+								<a class="nav-link active " id="welcome_tab" data-toggle="tab" href="#welcome" role="tab"
+								aria-controls="profile" aria-selected="false">Welcome</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="notification_tab" data-toggle="tab" href="#notification" role="tab"
+								aria-controls="notification" aria-selected="false">Notifications</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="course_tab" data-toggle="tab" href="#course" role="tab"
+								aria-controls="course" aria-selected="false">Courses</a>
+							</li>
+							<li class="nav-item">
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- #top-nav  -->
+		<!-- dashboard content -->
+		<div class="tab-content dashboard_content" >
+			<div class="tab-pane fade  show" id="notification" role="tabpanel" aria-labelledby="notification-tab">
+				<div class="user-info-list ">
+					<div class="card-tile">
+						<div class="container">
+							<div class="card-head">
+								<div class="card-title">
+									<h3 class="title">Notification</h3>
+									<span class="caption">Access all your notifications here</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="pad-section" >
+				</div>
+			</div>
+			<div class="tab-pane fade show active" id="welcome" role="tabpanel" aria-labelledby="welcome-tab">
+				<div class="user-info-list ">
+					<div class="card-tile">
+						<div class="container">
+							<div class="card-head">
+								<div class="card-title">
+									<h3 class="title">Welcome back </h3>
+									<span class="caption">{$username}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="pad-section">
+					<div class="row">
+						<div class="col-md-3">
+							<div class="user-info-list card card-default p-3 text-center">
+								<div class="profile_img">
+									<img src="{$photo}" class=" img-thumbnail m-auto ">
+								</div>
+							</div>
+							<div class="card">
+								<div class="py-2 px-3">
+									{$about_}
+								</div>
+								<hr>
+								<div >
+									<a href="{$update_profile}" class="btn"><i class="fa fa-edit"></i> Edit profile </a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-8 ">
+							<div class="user-info-list card card-default">
+								<div class="card-header card-header-divider">About Me</div>
+								<div class="card-body">
+									<table class="no-border no-strip skills">
+										<tbody class="no-border-x no-border-y">
+											<tr>
+												<td class="icon"><span class="icon fa fa-user"></span></td>
+												<td class="item">Full Name</td>
+												<td><a href="#">{$fullname}</a></td>
+											</tr>
+											<tr>
+												<td class="icon"><span class="icon fa fa-envelope"></span></td>
+												<td class="item">Email address</td>
+												<td><a href="#">{$email_add}</a></td>
+											</tr>
+											<tr>
+												<td class="icon"><span class="icon fa fa-mobile"></span></td>
+												<td class="item">Phone</td>
+												<td> <a href="#">{$phone_}</a></td>
+											</tr>
+											{$social_links}
+											<tr>
+												<td class="icon"><span class="icon fa fa-map-marker"></span></td>
+												<td class="item">Location</td>
+												<td><a href="#">{$city_}, {$state_}, {$country_}</a></td>
+											</tr>
+											<tr>
+												<td class="icon"><span class="icon fa fa-key"></span></td>
+												<td class="item">Status</td>
+												<td>{$user_role}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<p class="hint">You can always update your profile, your certificate will contain the details found when it is being prepared.</p>
+							<div class="user-info-list ">
+								<div class="card-tile">
+									<div class="card-head">
+										<div class="container">
+											<div class="row justify-content-center">
+												<div class="col-md-10 col-sm-8">
+													<div class="card-title">
+														<h3 class="title">Course Track</h3>
+														<span class="caption">Your course track shows you how many courses you are currently taking, and their respective progress</span>
+													</div>
+												</div>
+												<div class="col-md-2 col-sm-4">
+													<div class="card-value">
+														<span>23</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="card-foot">
+										<div class="card-action">
+											<a href="" class="btn">Continue learning</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade  show" id="course" role="tabpanel" aria-labelledby="course-tab">
+				<div class="user-info-list ">
+					<div class="card-tile">
+						<div class="container">
+							<div class="card-head ">
+								<div class="container">
+									<div class="row">
+										<div class="col-md-10 col-sm-8">
+											<div class="card-title">
+												<h3 class="title">Course Track</h3>
+												<span class="caption">Your course track shows you how many courses you are currently taking, and their respective progress</span>
+											</div>
+										</div>
+										<div class="col-md-2 col-sm-4">
+											<div class="card-value">
+												<span>23</span>
+											</div>
+										</div>
+									</div>
+									<a href="#course_actions" class="action_toggle" data-toggle="collapse" >Toggle action <i class="fa fa-angle-down"></i></a>
+								</div>
+							</div>
+							<div id="course_actions" class="collapse">
+								<div class="card-foot" >
+									<div class="card-action">
+										{$add_course_link} &nbsp; &nbsp; {$add_module_link}
+										<a href="{$all_courses_link}" class="btn">Explore other courses</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="pad-section">
+					<header>
+						<h3 class="header-text">
+						Courses
+						</h3>
+					</header>
+					
+					<div class="row ">
+						<div class="col-md-4">
+							<div class="mb-4 px-3">
+								<div class="">
+									<input type="search" class="form-control" name="" id="">
+									<a href="" class="btn"><i class="fa f-search"></i> Search courses</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="col-md-12">
+								<div class="">
+									{$course} 
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{$global_footer}
+		</div>
+		<!-- dashboard -->
+	</div>
+	<!-- Wrapper -->
