@@ -1,35 +1,6 @@
 <div class="wrapper">
-	<div id="dashboard">
-		<header id="top-nav">
-			<!-- Nav with logo and avatar-->
-			<nav class="navbar navbar-expand-lg navbar-dark">
-				<div class="container">
-					<a class="navbar-brand" href="{$dashboard_url}">
-						<img src="{$logo_url}" width="30" height="30" alt="{$site_title_} logo">
-					</a>
-
-					<div class="top_avatar">
-						<div class="user_avatar">
-							<a href="#logout" title="edit profile" data-toggle="collapse">
-								<img src="{$photo}" alt="{$username} avatar">
-							</a>
-						</div>
-						<div class="user_name">
-							{$username}
-						</div>
-					</div>
-				</div>
-			</nav>
-			<!-- Nav with logo and avatar -->
-			<div class="text-right collapse" id="logout">
-				<div class="container">
-					<a class="logout"  href="" role="link"
-					aria-controls="logout" aria-selected="false">Logout</a>
-				</div>
-			</div>
-
-		</header>
-		<!-- #top-nav  -->
+	<div id="dashboard"> 
+		{$global_header} 
 
 		<div class=" dashboard_content">
 			<div class="user-info-list ">
@@ -138,17 +109,7 @@
 				</form>
 			</div>
 		</div>
-
-		<!-- footer -->
-		<footer>
-			<div class="text-center">
-				{$site_title_}
-				<div class="copyright">
-					{$copyrights_}
-				</div>
-			</div>
-		</footer>
-		<!-- footer -->
+		{$global_footer}
 	</div>
 </div>
 <!--
