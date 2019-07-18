@@ -7,7 +7,6 @@
                     <a class="navbar-brand" href="{$dashboard_url}">
                         <img alt="Alisimbi logo" height="30" src="{$logo_url}" width="30">
                     </a>
-
                     <div class="top_avatar">
                         <div class="user_avatar">
                             <a href="/"><img alt="{$username} avatar" src="{$photo}"></a>
@@ -20,8 +19,6 @@
             </nav>
             <!-- Image and text -->
         </header>
-
-
         <div class="dashboard_content">
             <div class="user-info-list ">
                 <div class="card-tile">
@@ -40,18 +37,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="course-banner">
-                        <img alt="Cover photo" class="img-fluid" src="{$module_cover_photo}"/>
-                    </div>
+                    {$mast_cover_photo}
                 </div>
             </div>
-
-
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-sm-12">
                         <form action="" enctype="multipart/form-data" method="post">
-
                             <div class="user-info-list card-default card">
                                 <div class="card-tile">
                                     <div class="container ">
@@ -60,24 +52,20 @@
                                                 <h3 class="title">{$module_create_header}</h3>
                                                 <div class="hint">
                                                     Privilege level:
-                                                    <small class="badge badge-warning">Admin</small>
+                                                    <small class="badge badge-warning">{$user_priviledge}</small>
                                                 </div>
-
                                             </div>
                                         </div>
-
-
-                                        <div>
+                                        <div class="text-center"> 
                                             {$module_message}
                                         </div>
-
                                         <div class="space_5"></div>
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="module_title">Module Title</label>
                                                 <input class="form-control" id="module_title" name="module_title"
-                                                       placeholder="Module Title" type="text"
-                                                       value="{$module_title}">
+                                                placeholder="Module Title" type="text"
+                                                value="{$module_title}">
                                             </div>
                                         </div>
                                         <div class="card-body">
@@ -85,40 +73,38 @@
                                                 <div class="hint to-right text-danger">Max: 250 words</div>
                                                 <label for="introduction">Introduction</label>
                                                 <textarea class="form-control" cols="80" id="introduction"
-                                                          name="introduction" rows="3">{$introduction}</textarea>
+                                                name="introduction" rows="3">{$introduction}</textarea>
                                             </div>
-
                                             <div class="form-group">
                                                 <label for="duration">Duration (mins)</label>
                                                 <div class="hint small">What is the average time to complete this
                                                     module
                                                 </div>
                                                 <input class="form-control mx-2" id="duration" name="duration"
-                                                       type="text"
-                                                       value="{$duration}"/>
+                                                type="text"
+                                                value="{$duration}"/>
                                             </div>
-
                                             <div class="form-group">
                                                 <label for="transcript_editor">Transcript</label>
                                                 <textarea class="form-control" cols="80"
-                                                          id="transcript_editor" name="transcript"
-                                                          rows="8">{$transcript}</textarea>
+                                                id="transcript_editor" name="transcript"
+                                                rows="8">{$transcript}</textarea>
                                                 <script>
-                                                    ClassicEditor
-                                                        .create(document.querySelector('#transcript_editor'))
-                                                        .catch(error => {
-                                                            console.error(error);
-                                                        });
+                                                ClassicEditor
+                                                .create(document.querySelector('#transcript_editor'))
+                                                .catch(error => {
+                                                console.error(error);
+                                                });
                                                 </script>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="space_5"></div>
-                            <!--                            Cover Photo and badge-->
-                            <div class="user-info-list card card-default"
-                            >
+
+                            <div class="space_5"></div> 
+                            
+                            <div class="user-info-list card card-default">
                                 <div class="form-group">
                                     <div class="row justify-content-center">
                                         <div class="col-md-6 ">
@@ -129,10 +115,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-body align-self-center">
-                                                    <label class="btn btn-primary" for="cover_photo">Choose
-                                                        File ...</label>
+                                                    <label class="btn btn-primary" for="cover_photo" id="forcover">Choose File...</label>
                                                     <input id="cover_photo" name="cover_photo" style="display: none;"
-                                                           type="file">
+                                                    type="file">
                                                 </div>
                                             </div>
                                         </div>
@@ -144,23 +129,32 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-body align-self-center">
-                                                    <label class="btn btn-primary" for="badge">Choose File
-                                                        ...</label>
+                                                    <label class="btn btn-primary" for="badge" id="forbadge"> Choose File...</label>
                                                     <input id="badge" name="badge" style="display: none;"
-                                                           type="file">
+                                                    type="file">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!--                            Cover Photo and badge-->
-                            <div class="space_5"></div>
+                            <div class="px-3">
+                                <button class="btn background_green2" name="save">{$module_create_btn}</button>
+                            </div>
                         </form>
                     </div>
-
                     <div class="col-md-4 col-sm-12">
-                        <div class="user-info-list card card-default p-3 text-left">
+                        <div class="user-info-list card card-default p-3 text-left" {$video_pre_notice}>
+                            <div class="card-head">
+                                <div class="card-title">
+                                    Video Upload
+                                </div>
+                            </div>
+                            <div class="card-body align-self-center">
+                                You would be able to upload a video for this module when you are in edit mode
+                            </div>
+                        </div>
+                        <div class="user-info-list card card-default p-3 text-left" {$video_post_notice}>
                             <div class="card-head">
                                 <div class="card-title">
                                     Video Upload
@@ -170,64 +164,61 @@
                             <!--                            </div>-->
                             <div class="card-body align-self-center">
                                 <button class="btn btn-block" data-target="#video_source_box" data-toggle="collapse">
-                                    Browse/Embed
-                                    <!--                                    {$add_video_btn}-->
+                                Browse/Embed <i class="fa fa-upload"></i>
+                                <!--                                    {$add_video_btn}-->
                                 </button>
                             </div>
-
                             <div class="card-block collapse" id="video_source_box">
                                 <div class="">
                                     <div class="hint">Choose Video Source</div>
                                     <table class="table">
                                         <tbody>
-                                        <tr>
-                                            <th>
-                                                <label for="youtube">Youtube</label>
-                                            </th>
-                                            <th>
-                                                <input checked="checked" class="" id="youtube" name="source"
-                                                       type="radio" value="youtube">
-                                            </th>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                <label for="computer">File in my computer</label>
-                                            </th>
-                                            <th>
-                                                <input class="" id="computer" name="source" type="radio"
-                                                       value="computer">
-                                            </th>
-                                        </tr>
-
+                                            <tr>
+                                                <th>
+                                                    <label for="youtube">Youtube</label>
+                                                </th>
+                                                <th>
+                                                    <input checked="checked" class="" id="youtube" name="source"
+                                                    type="radio" value="youtube">
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <label for="computer">File in my computer</label>
+                                                </th>
+                                                <th>
+                                                    <input class="" id="computer" name="source" type="radio"
+                                                    value="computer">
+                                                </th>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
                                 <!-- this is to handle youtube uploads -->
                                 <div class="user-info-list card card-default p-3 text-left" id="uploadYoutube_form"
-                                     {$display_val}>
+                                    {$display_val}>
                                     <div class="card-head">
                                         <div class="card-title">
                                             Youtube
                                         </div>
                                     </div>
-                                    <div class="mb-3"> {$module_message}</div>
+                                    <div class="mb-3" id="youtube_msg"> {$module_message}</div>
                                     <div class="">
-                                        {$preview}
-                                        <form action="#save_message" method="post">
+                                        <div class="text-center" id="youtube_preview"></div>
+                                        <form>
+                                            <input id="module_id" type="hidden" value="{$module_id}">
                                             <div class="form-group">
                                                 <label for="youtube_url">Youtube Embed link</label>
-                                                <input class="form-control" id="youtube_url" name="youtube_url"
-                                                       type="text" value="{$youtube_url}">
+                                                <input class="form-control" id="youtube_url" name="youtube_url" type="text" value="{$youtube_url}">
                                             </div>
                                             <div class="align-self-center">
-                                                <input class="btn btn-block" id="save" type="submit" value="upload"/>
+                                                <button class="btn btn-block" id="save" type="button" onclick="addYoutube()"> Upload <i class="fa fa-upload"></i></button>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
-
                                 <div class="user-info-list card card-default p-3 text-left" id="pcfile"
-                                     style="display: none;">
+                                    style="display: none;">
                                     <div class="card-head">
                                         <div class="card-title">
                                             File from your computer
@@ -237,7 +228,7 @@
                                         <div id="iframe_major"></div>
                                         <small class="text-danger">Only MP4 files are allowed</small>
                                         <form action="{$vid_processor}" enctype="multipart/form-data" id="form1"
-                                              method="post">
+                                            method="post">
                                             <div id="fileName"></div>
                                             <div id="fileSize"></div>
                                             <div id="fileType"></div>
@@ -247,7 +238,7 @@
                                                 Upload...
                                             </label>
                                             <input accept="mp4" id="videoSource" name="videoSource"
-                                                   onchange="fileSelected();" style="display: none;" type="file"/>
+                                            onchange="fileSelected();" style="display: none;" type="file"/>
                                             <input id="module_id" type="hidden" value="{$module_id}">
                                         </form>
                                         <div class="align-self-center">
@@ -258,12 +249,6 @@
                                 <!-- This is to handle local uploads -->
                             </div>
                         </div>
-                    </div>
-
-                    <div class="space_5"></div>
-
-                    <div class="px-3">
-                        <button class="btn background_green2" name="save">{$module_create_btn}</button>
                     </div>
                 </div>
             </div>

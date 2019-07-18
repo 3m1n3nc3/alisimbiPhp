@@ -28,7 +28,7 @@ function mainContent() {
                         $framework->twitter = $_POST['instagram'];
                         $framework->instagram = $_POST['twitter'];
                         $framework->social = 1;
-                    }
+                    } 
                     $framework->updateProfile();
                     $framework->redirect('account&profile=home');
                 }
@@ -119,12 +119,13 @@ function mainContent() {
             $framework->redirect('account&profile=home');
         }
 
-		$courseArr = getCourses();
+		$courseArr = courseAccess(2);
 		$course = '';
 		foreach ($courseArr as $rslt) {
           $course .= courseModuleCard($rslt);
 		}
 		$PTMPL['course'] = $course;
+        $PTMPL['course_count'] = count($courseArr);
 
     } else {
         if (isset($_GET['register']) && $_GET['register'] == 'true') {

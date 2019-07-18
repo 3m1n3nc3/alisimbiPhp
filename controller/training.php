@@ -25,6 +25,8 @@ function mainContent() {
 	    		$PTMPL['course_cover_url'] = getImage($course['cover'], 1);
 	    		$PTMPL['course_intro'] = $course['intro'];
 
+			    //Show user role
+			    $PTMPL['user_priviledge'] = ucfirst($user['role']);
 
 	    		$moduleArr = getModules(1, $_GET['courseid']);
 	    		$modules = '';
@@ -170,13 +172,13 @@ function mainContent() {
 					$framework->files = $_FILES;
 
 					if ($_POST['course_title'] == '') {
-						$msg = errorMessage($LANG['no_empty_title']);
+						$msg = messageNotice($LANG['no_empty_title'], 3);
 					} elseif ($_POST['introduction'] == '') {
-						$msg = errorMessage($LANG['no_empty_intro']);
+						$msg = messageNotice($LANG['no_empty_intro'], 3);
 					} elseif ($_POST['benefits'] == '') {
-						$msg = errorMessage($LANG['no_empty_benefit']);
+						$msg = messageNotice($LANG['no_empty_benefit'], 3);
 					} elseif (empty($_FILES['cover_photo'])) {
-						$msg = errorMessage($LANG['no_empty_cover']);
+						$msg = messageNotice($LANG['no_empty_cover'], 3);
 					} else {
 						// Check if images uploaded without errors
 						$eck_1 = $framework->uploader($_FILES['badge'], 1, 1);
@@ -185,7 +187,7 @@ function mainContent() {
 						if (!isset($_GET['courseid']) && ($eck_1 !== 1 || $eck_2 !== 1)) {
 							$eck_err .= $eck_1 !==1 ? ' '.$eck_1 : '';
 							$eck_err .= $eck_2 !==1 ? ' '.$eck_2 : '';
-							$msg = errorMessage($eck_err);
+							$msg = messageNotice($eck_err, 3);
 						} else {
 							// If files uploaded without errors, proceed to save.
 							if (isset($_GET['courseid'])) {
@@ -201,16 +203,16 @@ function mainContent() {
 							// Save the input
 							if ($_GET['course'] == 'add') {
 								$response = $framework->courseModuleEntry(0);
-								$resp = successMessage($LANG['course_added']);
+								$resp = messageNotice($LANG['course_added'], 1);
 							} elseif ($_GET['course'] == 'edit') {
 								$framework->course_id = $framework->db_prepare_input($_GET['courseid']);
 								$response = $framework->courseModuleEntry(1);
-								$resp = successMessage($LANG['course_updated']);
+								$resp = messageNotice($LANG['course_updated'], 1);
 							}
 							if ($response == 1) {
 								$msg = $resp;
 							} else {
-								$msg = infoMessage($response);
+								$msg = messageNotice($response);
 							}
 						}
 					}
@@ -395,9 +397,13 @@ function mainContent() {
 
 		    	$PTMPL['module_create_btn'] = 'Create module';
 				$PTMPL['module_create_header'] = 'Create a new module';
+				$PTMPL['module_id'] = isset($_GET['moduleid']) ? $_GET['moduleid'] : '';
+
+				isset($_GET['moduleid']) ? $PTMPL['video_pre_notice'] = 'style="display: none;"' : 
+				$PTMPL['video_post_notice'] = 'style="display: none;"';
 
 			    // Set the page title
-			    $PTMPL['page_title'] = 'Create new module';
+			    $PTMPL['page_title'] = 'Create new module';			    
 
 			   	if ($_GET['module'] == 'edit' && isset($_GET['moduleid'])) {
 			    	$get_modules = getModules(2, $_GET['moduleid'])[0];
@@ -413,6 +419,11 @@ function mainContent() {
 						$PTMPL['introduction'] = $get_modules['intro'];
 						$PTMPL['duration'] = $get_modules['duration'];
 						$PTMPL['module_create_btn'] = 'Update Module';
+
+						$PTMPL['mast_cover_photo'] = '
+		                    <div class="course-banner">
+		                        <img alt="Cover photo" class="img-fluid" src="'.getImage($get_modules['cover'], 1).'"/>
+		                    </div>';
 
 						/*
 						Link to add video to the updated created module
@@ -440,20 +451,20 @@ function mainContent() {
 					$framework->files = $_FILES;
 
 					if ($_POST['module_title'] == '') {
-						$msg = errorMessage($LANG['no_empty_title']);
+						$msg = messageNotice($LANG['no_empty_title'], 3);
 					} elseif ($_POST['introduction'] == '') {
-						$msg = errorMessage($LANG['no_empty_intro']);
+						$msg = messageNotice($LANG['no_empty_intro'], 3);
 					} elseif (empty($_FILES['cover_photo'])) {
-						$msg = errorMessage($LANG['no_empty_cover']);
+						$msg = messageNotice($LANG['no_empty_cover'], 3);
 					} else {
 						// Check if images will be uploaded without errors
 						$eck_1 = $framework->uploader($_FILES['badge'], 1, 1);
 						$eck_2 = $framework->uploader($_FILES['cover_photo'], 0, 1);
 						$eck_err = ' ';
-						if (!isset($_GET['moduleid']) && ($eck_1 !== 1 || $eck_2 !== 1)) {
+						if ($eck_1 !== 1 || $eck_2 !== 1) {
 							$eck_err .= $eck_1 !==1 ? ' '.$eck_1 : '';
 							$eck_err .= $eck_2 !==1 ? ' '.$eck_2 : '';
-							$msg = errorMessage($eck_err);
+							$msg = messageNotice($eck_err, 3);
 						} else {
 							// If files uploaded without errors, proceed to save.
 							if (isset($_GET['moduleid'])) {
@@ -471,16 +482,16 @@ function mainContent() {
 							// Save the input
 							if ($_GET['module'] == 'add') {
 								$response = $framework->courseModuleEntry(2);
-								$resp = successMessage($LANG['module_added']);
+								$resp = messageNotice($LANG['module_added'], 1);
 							} elseif ($_GET['module'] == 'edit') {
 								$framework->module_id = $framework->db_prepare_input($_GET['moduleid']);
 								$response = $framework->courseModuleEntry(3);
-								$resp = successMessage($LANG['module_updated']);
+								$resp = messageNotice($LANG['module_updated'], 1);
 							}
 							if ($response == 1) {
 								$msg = $resp;
 							} else {
-								$msg = infoMessage($response);
+								$msg = messageNotice($response);
 							}
 						}
 					}

@@ -34,9 +34,9 @@ $(document).ready(function () {
 
     $('.ben').click(function (e) {
         if ($('#selected_benefits').is(':empty')) {
-            let sep = '';
+            var sep = '';
         } else {
-            let sep = ',';
+            var sep = ',';
         }
         let theid = '#' + $('.ben').attr('id');
         console.log(theid);
@@ -262,3 +262,37 @@ function isNumeric(evt) {
     return !(charCode > 31 && (charCode < 48 || charCode > 57));
 
 }  
+
+function addYoutube() {
+    var link = $('input[name="youtube_url"]').val();
+    var module_id = $('input[id="module_id"]').val();
+
+    $('#youtube_msg').html('');
+    $('#youtube_preview').html('');
+    $.ajax({
+        type: 'POST',
+        url: siteUrl + '/connection/upload_video.php',
+        data: {youtube_url: link, moduleid: module_id, save: 1},
+        dataType: "json",
+        success: function (html) {
+            $('#youtube_msg').html(html.msg);
+            $('#youtube_preview').html(html.preview); 
+        },
+        error: function (xhr, status, error) { 
+            var errorMessage = 'An Error Occurred - ' + xhr.status + ': ' + xhr.statusText + '<br> ' + error;
+            $("#youtube_preview").html(errorHtml(errorMessage, xhr.responseText));
+        }
+    });
+}
+
+$("#badge").on("change", function() {
+    var file = document.getElementById("badge").files[0];
+    console.log(file);
+    $("#forbadge").html(file.name+" Selected");
+});
+
+$("#cover_photo").on("change", function() {
+    var file = document.getElementById("cover_photo").files[0];
+    console.log(file);
+    $("#forcover").html(file.name+" Selected");
+});
