@@ -73,7 +73,7 @@ if ($module_newArr) {
 }
 
 // Logout url
-$PTMPL['logout_url'] = cleanUrls($SETT['url'].'/index.php?page=homepage&logout=true');
+$PTMPL['logout_url'] = cleanUrls($SETT['url'] . '/index.php?page=homepage&logout=true');
 
 // Get a list of instructors for the new course
 $instructorsArr = getInstructors($course_new['id']);
@@ -88,8 +88,10 @@ if ($instructorsArr) {
 	}
 	$PTMPL['instructor'] = $instructor;
 	$PTMPL['course_instructor'] = $course_instructor;
-} 
-
+} else {
+	$PTMPL['instructor'] = notAvailable('Instructors');
+	$PTMPL['course_instructor'] = notAvailable('Instructors');
+}
 // Render the page
 $PTMPL['content'] = mainContent(); 
 
