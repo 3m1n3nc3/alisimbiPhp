@@ -20,6 +20,15 @@ body, html {
     letter-spacing: 1px
 }
 
+@media (min-width: 576px) and (max-width: 768px) {
+    .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+}
+
+
 *::selection {
     color: #fff;
     background: var(--green);
@@ -28,9 +37,11 @@ body, html {
 a {
     color: #333;
 }
-a[href]:hover{
+
+a[href]:hover {
     color: var(--green);
 }
+
 .font_serif {
     font-family: var(--font-family-serif);
 }
@@ -112,9 +123,9 @@ svg.icon:not(.icon--full-color) path {
 
 .instructors {
     display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: flex-start;
     align-content: center;
     width: 100%;
     position: relative;
@@ -123,11 +134,11 @@ svg.icon:not(.icon--full-color) path {
 
 .instructors .instructor {
     padding: 5% 7% 2%;
-    width: 100%;
+    min-width: 50%;
     position: relative;
     display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
+    flex-flow: column wrap;
+    justify-content: center;
     align-items: flex-start;
     background: #fff;
     border-bottom: 1px solid #e6e6e6;
@@ -148,17 +159,13 @@ svg.icon:not(.icon--full-color) path {
     border-radius: 90px;
 }
 
-@media (max-width: 769px) {
-    .instructors .instructor .i-profile-img {
-        width: 100%;
-        border-radius: 2px;
+@media (min-width: 576px) and (max-width: 992px) {
+    .instructors .instructor {
+        min-width: 100%;
+        /*border-radius: 2px;*/
     }
-
-    .instructors .instructor .i-misc {
-        padding-left: 10px;
-    }
-
 }
+
 .instructors .instructor .i-profile-img img {
     height: 100%;
     width: 100%;
@@ -175,12 +182,13 @@ svg.icon:not(.icon--full-color) path {
     transform: scale(1.1);
 }
 
-.instructors .instructor .i-bio{
+.instructors .instructor .i-bio {
     margin-left: 10px;
     /* margin-top: 10px; */
     font-weight: 300;
 
 }
+
 .instructors .instructor .i-bio .i-name {
     line-height: 1.5;
     color: rgb(94, 88, 96);
@@ -215,7 +223,7 @@ svg.icon:not(.icon--full-color) path {
     margin: 7px auto;
 }
 
-.instructors .instructor .i-rating *{
+.instructors .instructor .i-rating * {
     margin-right: 5px
 }
 
@@ -417,6 +425,7 @@ svg.icon:not(.icon--full-color) path {
 .social.hung {
     text-align: right;
 }
+
 .social.hung .toggle_icon {
     /*color: #0a243e !important;*/
     margin-right: 5px;
@@ -641,7 +650,10 @@ svg.icon:not(.icon--full-color) path {
     font-weight: 700;
     margin-bottom: 20px;
     color: currentColor;
-    letter-spacing: 1px
+    letter-spacing: 1px;
+    -ms-word-wrap: anywhere;
+    word-wrap: anywhere;
+    word-break: normal;
 }
 
 .bold {
@@ -707,8 +719,8 @@ svg.icon:not(.icon--full-color) path {
     /* border-left: 6px solid #f1f2f3; */
     /* border-right: 6px solid #f1f2f3; */
     border-bottom: 1px solid #eee;
-    background: var(--green);
-    background: rgba(0, 0, 0, .4);
+    background: hsl(149, 74%, 40%);
+    /*background-color: hsl(149, 74%, 40%). rgba(0, 0, 0, .94);*/
     filter: contrast(90%);
     display: block;
 }
@@ -744,6 +756,7 @@ svg.icon:not(.icon--full-color) path {
         width: auto;
     }
 }
+
 .course-hero .cover-img .overlay:before {
     position: absolute;
     width: 100%;
@@ -822,7 +835,8 @@ svg.icon:not(.icon--full-color) path {
 
 .form-control {
     border-radius: 4px;
-    padding: 20px 25px;
+    padding-right: 10px;
+    padding-left: 10px;
     -webkit-transition: all .5s ease-in-out;
     -o-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
@@ -831,12 +845,25 @@ svg.icon:not(.icon--full-color) path {
     border: 1px solid #d6d6d6;
 }
 
-.custom-input{
+.form-control::placeholder {
+    color: #d6d6d6;
+}
+
+.form-control:focus {
+    padding-left: 25px;
+    background-color: #fff;
+    color: #333333 !important;
+    border-color: var(--green);
+}
+
+.custom-input {
     display: inline-block;
 }
-.custom-input label{
+
+.custom-input label {
     display: block;
 }
+
 .custom-select-box {
     /* width: 100%; */
     /* display: inline-block; */
@@ -881,32 +908,24 @@ svg.icon:not(.icon--full-color) path {
     outline: none;
 }
 
-
-
-.sign-form .sign-form-content .form-control:focus {
-    padding-left: 30px;
-    background-color: #fff;
-    color: #333333 !important;
-    border-color: var(--green);
-}
-
-
 .sign-form .sign-form-content .form-control::placeholder {
-    color: rgb(194, 194, 194);
+    /*color: rgb(194, 194, 194);*/
     opacity: 1;
 
 }
 
-.sign-form .sign-form-content select.form-control{
+.sign-form .sign-form-content select.form-control {
     padding: 10px 20px;
     height: 45px;
 
 }
+
 .sign-form .sign-form-content textarea.form-control {
     /* border-radius: 2px; */
     position: relative;
     overflow: hidden;
 }
+
 .toggle_btn {
     background: rgba(255, 255, 255, .35);
     padding: 7px;
@@ -1056,14 +1075,16 @@ footer {
 .course-tile:hover {
     border: 1px solid #f4f4f4;
 }
-.course-tile .course-progress{
+
+.course-tile .course-progress {
     position: relative;
     overflow: hidden;
     height: 5px;
     background: #f4f4f4;
     width: 100%;
 }
-.course-tile .course-progress .value{
+
+.course-tile .course-progress .value {
     position: absolute;
     left: -100%;
     top: 0;
@@ -1075,12 +1096,13 @@ footer {
     border-radius: 5px;
 }
 
-.course-tile .progress-value{
+.course-tile .progress-value {
     position: absolute;
     color: var(--yellow);
     right: 30px;
     bottom: 15px;
 }
+
 .course-tile .course-icon {
     background: #f6f6f6;
     width: 30%;
@@ -1090,11 +1112,12 @@ footer {
     overflow: hidden;
     transition: all .35s ease-in-out;
 }
-.course-tile .course-icon img{
+
+.course-tile .course-icon img {
     position: absolute;
     object-fit: cover;
     object-position: center;
-    width:  100%;
+    width: 100%;
     height: 100%;
     left: 0;
     right: 0;
@@ -1105,7 +1128,7 @@ footer {
     transform: scale(1.1);
 }
 
-.course-tile .course-info{
+.course-tile .course-info {
     width: 70%;
     display: flex;
     flex-flow: column wrap;
@@ -1116,14 +1139,16 @@ footer {
     overflow: hidden;
     transition: all .35s ease-in-out;
 }
-.course-tile .course-info .title{
+
+.course-tile .course-info .title {
     font-size: 150%;
     font-weight: 400;
     line-height: 1.75;
     padding: 15px 15px 15px 30px;
     border-bottom: 1px solid #eee;
 }
-.course-tile .course-info .course-content{
+
+.course-tile .course-info .course-content {
     padding-top: 5px;
     padding-bottom: 15px;
     padding-left: 30px;
@@ -1133,7 +1158,7 @@ footer {
     color: #888
 }
 
-.course-tile .course-info .course-content p{
+.course-tile .course-info .course-content p {
     font-size: 14px;
     position: relative;
     display: block;
@@ -1143,7 +1168,8 @@ footer {
     /*-ms-text-overflow: -o-ellipsis-lastline;*/
     /*text-overflow: -o-ellipsis-lastline;*/
 }
-.course-tile .course-info .course-content p:after{
+
+.course-tile .course-info .course-content p:after {
     content: ' ';
     text-align: right;
     position: absolute;
@@ -1153,7 +1179,8 @@ footer {
     height: 6em;
     background: linear-gradient(to top, rgba(255, 55, 255, .5), rgba(255, 255, 255, 1) 50%);
 }
-@media (max-width: 500px){
+
+@media (max-width: 500px) {
     .course-tile .course-icon {
         width: 5%;
     }
@@ -1232,6 +1259,7 @@ footer {
 .course-column .course-content .title {
     margin-bottom: 10px;
 }
+
 .course-column .course-icon .course-price {
     position: absolute;
     right: 5px;
@@ -1279,13 +1307,15 @@ footer {
     right: 15px;
     color: var(--green);
 }
-.relative{
+
+.relative {
     position: relative;
     overflow: hidden;
     box-sizing: border-box;
     object-fit: contain;
 }
-.suspend{
+
+.suspend {
     position: fixed;
     z-index: 222;
     width: 30%;
@@ -1297,11 +1327,11 @@ footer {
     background: white;
 }
 
-.suspend-right{
+.suspend-right {
     margin-left: 30.5%;
 }
 
-@media (max-width: 1027px){
+@media (max-width: 1027px) {
     .pad-section {
         padding: 10% 7%;
     }
@@ -1319,11 +1349,12 @@ footer {
 }
 
 
-*:hover>.swipe-in{
+*:hover > .swipe-in {
     left: 0;
     z-index: 10;
 }
-.swipe-in{
+
+.swipe-in {
     position: absolute;
     top: 0;
     left: 0;
@@ -1344,7 +1375,7 @@ footer {
     border: 1px var(--green-overlay) solid;
 }
 
-.readmore{
+.readmore {
     display: flex;
     flex-flow: row wrap;
     margin-bottom: 5px;
@@ -1370,37 +1401,41 @@ footer {
     color: #333;
     text-align: center;
 }
-.readmore a:hover{
+
+.readmore a:hover {
     background: #fff;
     color: var(--green) !important;
     box-shadow: 0 2px 0 -2px white;
 }
 
 
-.to-right{
+.to-right {
     float: right;
 }
-.to-left{
+
+.to-left {
     float: left;
 }
 
 
-.above{
+.above {
     position: fixed;
 }
 
-fieldset{
+fieldset {
     padding-top: 10px;
     padding-bottom: 10px;
     margin: 20px auto
 }
-legend{
+
+legend {
     margin-bottom: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid #f6f6f6
 }
-label{
+
+label {
     text-transform: capitalize;
     color: #a6a6a6;
 }
@@ -1408,6 +1443,7 @@ label{
 select option {
     text-transform: capitalize;
 }
+
 .module-widget {
     background-color: #fafafa;
     padding-bottom: 10%;
@@ -1428,42 +1464,46 @@ select option {
     background: white;
     object-fit: cover;
     object-position: center;
-    min-height: 120px;
+    min-height: 100px;
     border: 1px solid #f4f4f4;
     /* margin-bottom: 30px; */
     transition: all .35s ease-in-out;
     /* border-radius: 9px */
 }
+
 .module-tile:hover {
     border: 1px solid #e6e6e6;
 }
+
 .module-tile .module-icon {
-    background: rgba(0,0,0,.02);
+    background: rgba(0, 0, 0, .02);
     width: auto;
     object-fit: cover;
     object-position: center;
     position: relative;
     overflow: hidden;
     transition: all .35s ease-in-out;
-    font-size: 3rem;
+    font-size: 2rem;
     text-align: center;
     display: inline-block;
     vertical-align: middle;
     padding: 10px 20px;
     color: rgb(205, 222, 212)
 }
-.module-tile .module-icon img{
+
+.module-tile .module-icon img {
     position: absolute;
     object-fit: cover;
     object-position: center;
-    width:  100%;
+    width: 100%;
     height: 100%;
     left: 0;
     right: 0;
 }
 
-.module-tile .module-info{
-    width: 55%;
+.module-tile .module-info {
+    width: 80%;
+    flex: 1;
     display: flex;
     flex-flow: column wrap;
     justify-content: stretch;
@@ -1473,33 +1513,50 @@ select option {
     overflow: hidden;
     transition: all .35s ease-in-out;
     color: #333;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
 }
 
-.module-tile .module-btn{
-    /* width: 15%; */
-    padding-left: 20px
-}
-.module-tile .module-info .title{
-    font-size: 120%;
+.module-tile .module-info .title {
+    font-size: 14px;
     font-weight: 300;
     line-height: 1.5;
-    padding-left:20px;
-    padding-top:20px;
+    padding-left: 5px;
+    margin-bottom: 10px;
 }
-.module-tile .module-info .module-content{
+
+.module-tile .module-btn {
+    width: 100%;
+    padding: 0 10px;
+    margin-top: 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.module-tile .btn {
+    /*padding: 5px;*/
+    line-height: normal;
+    margin: 2px auto;
+    border: 1px solid transparent;
+}
+
+.module-tile .module-info .module-content {
     padding-top: 20px;
     padding-left: 20px;
     background: #fff;
     flex: auto;
 }
-.module-tile .module-progress{
+
+.module-tile .module-progress {
     position: relative;
     overflow: hidden;
     height: 4px;
     background: #f4f4f4;
     width: 100%;
 }
-.module-tile .module-progress .value{
+
+.module-tile .module-progress .value {
     position: absolute;
     left: -100%;
     bottom: 0;
@@ -1510,10 +1567,11 @@ select option {
     border-radius: 4px;
 }
 
-.module-tile .progress-value{
+.module-tile .progress-value {
     position: relative;
     color: var(--yellow);
-    left: 20px;
+    left: 10px;
+    font-size: 14px;
     /* top: 20px; */
 }
 

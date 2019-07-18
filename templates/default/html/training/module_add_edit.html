@@ -1,37 +1,19 @@
 <div class="wrapper">
     <div id="dashboard_tab">
-        <header id="top-nav">
-            <!-- Image and text -->
-            <nav class="navbar navbar-expand-lg navbar-dark">
-                <div class="container">
-                    <a class="navbar-brand" href="{$dashboard_url}">
-                        <img alt="Alisimbi logo" height="30" src="{$logo_url}" width="30">
-                    </a>
-                    <div class="top_avatar">
-                        <div class="user_avatar">
-                            <a href="/"><img alt="{$username} avatar" src="{$photo}"></a>
-                        </div>
-                        <div class="user_name">
-                            {$username}
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <!-- Image and text -->
-        </header>
+        {$global_header}
         <div class="dashboard_content">
             <div class="user-info-list ">
                 <div class="card-tile">
                     <div class="container p-0">
                         <div class="card-head">
                             <div class="card-title">
-                                <h3 class="title">Edit Module</h3>
+                                <h3 class="title">Modify Module</h3>
                                 <span class="caption">Edit, modify and save your module on this page</span>
-                                <div class="brcr-tile">
+                                <div class="brcr-tile brcr-cover">
                                     <ul class="brcr">
                                         <li class="level"><i class="fa fa-home"></i> <a href="">Home</a></li>
                                         <li class="level"><a href="">Module</a></li>
-                                        <li class="level">{$module_title}</li>
+                                        <li class="level">modify</li>
                                     </ul>
                                 </div>
                             </div>
