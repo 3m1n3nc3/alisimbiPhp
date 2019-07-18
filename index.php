@@ -88,7 +88,10 @@ if ($instructorsArr) {
 	}
 	$PTMPL['instructor'] = $instructor;
 	$PTMPL['course_instructor'] = $course_instructor;
-} 
+} else {
+	$PTMPL['instructor'] = notAvailable('Instructors');
+	$PTMPL['course_instructor'] = notAvailable('Instructors');
+}
 // Render the page
 $PTMPL['content'] = mainContent(); 
 

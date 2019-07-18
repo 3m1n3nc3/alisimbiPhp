@@ -525,6 +525,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
       </div>
     </div>' : '';
 
+    $start_now = $user ? 'Continue' : 'Start';
     $module_card = $type ? '
     <div class="module-tile module-tile-wide">
       <div class="module-icon">
@@ -539,7 +540,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
         <span class="progress-value">' . $progress_val . ' Minutes</span>
       </div>
       <div class="module-btn">
-        <a href="' . $start_learning . '" class="btn">Start/Continue</a>
+        <a href="' . $start_learning . '" class="btn">'.$start_now.'</a>
       </div>
     </div>' : '';
 
@@ -565,8 +566,8 @@ function studyModules($course, $curr = null) {
     $list = '';
     if ($module) {
         foreach ($module as $key => $value) {
-            $act = $curr == $value['id'] ? 'active' : '';
-            $link = cleanUrls($SETT['url'] . '/index.php?page=training&course=now_learning&courseid=' . $course . '&moduleid=' . $value['id']);
+            $act = $curr == $value['module_id'] ? 'active' : '';
+            $link = cleanUrls($SETT['url'] . '/index.php?page=training&course=now_learning&courseid=' . $course . '&moduleid=' . $value['module_id']);
             $list .= '<a href="' . $link . '"><li class="list-group-item p-3 ' . $act . '">' . $value['title'] . '</li></a>';
         }
     }

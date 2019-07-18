@@ -127,11 +127,20 @@ function mainContent() {
             }
             $PTMPL['course'] = $course;
             $PTMPL['course_count'] = count($courseArr).' &nbsp;';
+
+            $crnt = $courseArr[0];
+            $cont_learning = cleanUrls($SETT['url'] . '/index.php?page=training&course=now_learning&courseid=' . $crnt ['current_course'] . '&moduleid=' . $crnt ['current_module']);
+
+            $PTMPL['course_continue'] = '
+            <div class="card-foot">
+                <div class="card-action">
+                    <a class="btn" href="'.$cont_learning.'">Continue learning</a>
+                </div>
+            </div>';       
         } else {
             $PTMPL['course'] = notAvailable('courses');
             $PTMPL['course_count'] = '0 &nbsp;';
         }
-
     } else {
         if (isset($_GET['register']) && $_GET['register'] == 'true') {
             if ($user) {
