@@ -2045,16 +2045,16 @@ h1, .h1 {
   font-weight: 700;
   letter-spacing:normal;
   text-transform: capitalize;
-  margin: 20px 5px;
+  margin: 10px 5px;
   transition: all 0.3s ease-out;
   color: #333;
 }
 
-.shw {
-  box-shadow: 0 5px 95px -10px #000000;
+.shw-0 {
+  box-shadow: none;
 }
 .shw-1{
-  box-shadow: 0 5px 95px -10px #ffffff;
+  box-shadow: 0 5px 95px -10px #000000
 }
 
 .btn:hover, .btn:focus {

@@ -1,179 +1,129 @@
 <div class="wrapper">
-	<div id="dashboard"> 
-		{$global_header} 
+    <div id="dashboard">
+        {$global_header}
+        <div class="brcr-tile brcr-cover">
+            <div class="container">
+                <ul class="brcr">
+                    <li class="level"><i class="fa fa-home"></i>
+                        <a href="{$user_url}">Home</a></li>
+                    <li class="level">Edit Profile</li>
+                </ul>
+            </div>
+        </div>
+        <div class=" dashboard_content">
+            <div class="user-info-list ">
+                <div class="card-tile">
+                    <div class="container p-0">
+                        <div class="card-head">
+                            <div class="card-title">
+                                <h3 class="title">Profile</h3>
+                                <span class="caption">Edit your profile here</span>
 
-		<div class=" dashboard_content">
-			<div class="user-info-list ">
-				<div class="card-tile">
-					<div class="container p-0">
-						<div class="card-head">
-							<div class="card-title">
-								<h3 class="title">Profile</h3>
-								<span class="caption">Edit your profile here</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-			<div class="container">
-				<form method="post" action="" >
-					<div class="row">
-						<div class="col-md-8 user-info-list card card-default">
-							<div class="px-5">
-								<fieldset>
-									<legend>Personal</legend>
-									<div class="row">
-										<div class="col-md-6">
-											<div class="form-group">
-												<label class="src-only" for="billing_fname">First
-													name
-												</label>
-												<input class="form-control" id="billing_fname"
-												name="fname" placeholder="First name" type="text"/>
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="form-group">
-												<label class="src-only" for="billing_lname">Last
-													name
-												</label>
-												<input class="form-control" id="billing_lname"
-												name="lname"
-												placeholder="Last name" type="text">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-6">
-											<div class="form-group">
-												<label for="profile-phone">Phone</label>
-												<input type="phone" name="phone" id="profile-phone" class="form-control" id="phone" value="{$phone_}" placeholder="Phone">
-											</div>
-										</div>
-									</div>
-								</fieldset>
-								<fieldset>
-									<legend>Location</legend>
-									<div class="form-group">
-										<div class="custom-input">
-											<label class="src-only" for="profile-country">Country</label>
-											<div class="custom-select-box">
-												<select class="select-country-list" data-target="profile-state" id="profile-country" name="country" type="text">
-													{$list_country}
-												</select>
-											</div>
-										</div>
-										<div class="custom-input">
-											<label class="src-only" for="profile-state">State</label>
-											<div class="custom-select-box">
-												<select data-target="register-city" id="profile-state" name="state">
-													<option value="">Select State/Region</option>
-													{$state_select}
-												</select>
-											</div>
-										</div>
-										<div class="custom-input">
-											<label class="src-only" for="profile-city">City</label>
-											<div class="custom-select-box">
-												<select id="profile-city" name="city">
-													<option value="">Select City</option>
-													{$city_select}
-												</select>
-											</div>
-										</div>
-									</div>
-								</fieldset>
-								<fieldset>
-									<legend>Biography</legend>
-									<div class="form-group">
-										<label for="">Tell us about you</label>
-										<textarea name="about" class="form-control" rows="5">{$about_}</textarea>
-									</div>
-								</fieldset>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="user-info-list card card-default p-3 text-left">
-								<div class="profile_img">
-									<img src="{$photo}" class=" img-thumbnail m-auto ">
-								</div>
-								<div class="space_5x"></div>
-								{$update_social}
-							</div>
-						</div>
-						<div class="text-center btn-block">
-							<a href="{$update_profile}" class="btn background_green2"><i class="fa fa-save"></i> Save changes </a>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-		{$global_footer}
-	</div>
+            <div class="container">
+                <form action="" method="post">
+                    <div class="row">
+                        <div class="col-md-8 user-info-list card card-default">
+                            <div class="px-5">
+                                <fieldset>
+                                    <legend>Personal</legend>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="src-only" for="billing_fname">First
+                                                    name
+                                                </label>
+                                                <input class="form-control" id="billing_fname" name="fname"
+                                                       placeholder="First name" type="text" value="{$firstname}"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="src-only" for="billing_lname">Last
+                                                    name
+                                                </label>
+                                                <input class="form-control" id="billing_lname"
+                                                       name="lname" placeholder="Last name"
+                                                       type="text" value="{$lastname}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="profile-phone">Phone</label>
+                                                <input class="form-control" id="profile-phone" id="phone" name="phone"
+                                                       placeholder="Phone" type="phone" value="{$phone_}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <legend>Location</legend>
+                                    <div class="form-group">
+                                        <div class="custom-input">
+                                            <label class="src-only" for="profile-country">Country</label>
+                                            <div class="custom-select-box">
+                                                <select class="select-country-list" data-target="profile-state"
+                                                        id="profile-country" name="country" type="text">
+                                                    <option value="">Select Country</option>
+                                                    {$list_country}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="custom-input">
+                                            <label class="src-only" for="profile-state">State</label>
+                                            <div class="custom-select-box">
+                                                <select data-target="register-city" id="profile-state" name="state">
+                                                    <option value="">Select State/Region</option>
+                                                    {$state_select}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="custom-input">
+                                            <label class="src-only" for="profile-city">City</label>
+                                            <div class="custom-select-box">
+                                                <select id="profile-city" name="city">
+                                                    <option value="">Select City</option>
+                                                    {$city_select}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <legend>Biography</legend>
+                                    <div class="form-group">
+                                        <label for="">Tell us about you</label>
+                                        <textarea class="form-control" name="about" rows="5">{$about_}</textarea>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="user-info-list card card-default p-3 text-left">
+                                <div class="profile_img">
+                                    <img class=" img-thumbnail m-auto " src="{$photo}">
+                                </div>
+                                <div class="space_5x"></div>
+                                {$update_social}
+                            </div>
+                        </div>
+                        <div class="pad-section">
+                            <div class="text-center btn-block">
+                                <a class="btn background_green2" href="{$update_profile}"><i class="fa fa-save"></i>
+                                    Save changes </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {$global_footer}
+    </div>
 </div>
-<!--
-<div class="row">
-<div class="col-md-4">
-
-<img src="{$photo}" class="w-25 rounded-circle img-thumbnail mx-auto d-block">
-
-<div class="border rounded p-2 m-1">
-About
-<hr>
-<p class="card-text">
-<textarea name="about" class="form-control">{$about_}</textarea>
-</p>
-</div>
-<p class="card-text">You can always update your profile, your certificate will contain the details found when it is being prepared.</p>
-<button class="pure-button pure-button-primary m-2" name="save_profile">Save Profile</button>
-</div>
-<div class="col-md-8">
-
-</div>
-
-</div>
-</div>
-</div>
-</div> -->
-
-<!--
-
-
-<form method="post" action="">
-<div class="border rounded p-2 m-1">
-First Name | Lastname
-<hr>
-<p class="card-text form-inline">
-<input type="text" name="fname" class="form-control mx-2" id="fname" value="{$firstname}" placeholder="Firstname">
-<input type="text" name="lname" class="form-control mx-2" id="lname" value="{$lastname}" placeholder="Lastname">
-</p>
-</div>
-<div class="border rounded p-2 m-1">
-Phone Number
-<hr>
-<p class="card-text form-inline">
-<input type="phone" name="phone" class="form-control mx-2" id="phone" value="{$phone_}" placeholder="Phone">
-</p>
-</div>
-{$update_social}
-<div class="border rounded p-2 m-1">
-Country, State, City
-<hr>
-<p class="card-text form-inline">
-<select name="country" class="form-control mx-2 m-1 select-country-list" data-target="register-state" id="country">
-<option disabled selected>Select your country</option>
-{$list_country}
-</select>
-<select name="state" class="form-control m-1 mx-2" id="register-state" data-target="register-city">
-{$state_select}
-{$countries}
-</select>
-<select name="city" class="form-control m-1 mx-2"  id="register-city">
-{$city_select}
-{$countries}
-</select>
-</p>
-</div>
-
-</form> -->

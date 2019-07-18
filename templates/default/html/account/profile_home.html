@@ -1,59 +1,33 @@
 <!-- Wrapper -->
 <div class="wrapper">
     <div id="dashboard">
-        <header id="top-nav">
-            <!-- Nav with logo and avatar-->
-            <nav class="navbar navbar-expand-lg navbar-dark">
-                <div class="container">
-                    <a class="navbar-brand" href="{$dashboard_url}">
-                        <img alt="{$site_title_} logo" height="60" src="{$site_logo}" width="60">
-                    </a>
-                    <div class="top_avatar">
-                        <div class="user_avatar">
-                            <a data-toggle="collapse" href="#logout" title="edit profile">
-                                <img alt="{$username} avatar" src="{$photo}">
-                            </a>
-                        </div>
-                        <div class="user_name">
-                            {$username}
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <!-- Nav with logo and avatar -->
-            <div class="text-right collapse" id="logout">
-                <div class="container">
-                    <a aria-controls="logout" aria-selected="false" class="logout"
-                       href="{$logout_url}" role="link">Logout</a>
-                </div>
-            </div>
-            <div class="dashboard_tab">
-                <div class="tab">
-                    <div class="container">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a aria-controls="profile" aria-selected="false" class="nav-link active "
-                                   data-toggle="tab" href="#welcome"
-                                   id="welcome_tab" role="tab">Welcome</a>
-                            </li>
-                            <li class="nav-item">
-                                <a aria-controls="notification" aria-selected="false" class="nav-link" data-toggle="tab"
-                                   href="#notification"
-                                   id="notification_tab" role="tab">Notifications</a>
-                            </li>
-                            <li class="nav-item">
-                                <a aria-controls="course" aria-selected="false" class="nav-link" data-toggle="tab"
-                                   href="#course"
-                                   id="course_tab" role="tab">Courses</a>
-                            </li>
-                            <li class="nav-item">
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </header>
+        {$global_header}
         <!-- #top-nav  -->
+        <div class="dashboard_tab">
+            <div class="tab">
+                <div class="container">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a aria-controls="profile" aria-selected="false" class="nav-link active "
+                               data-toggle="tab" href="#welcome"
+                               id="welcome_tab" role="tab">Welcome</a>
+                        </li>
+                        <li class="nav-item">
+                            <a aria-controls="notification" aria-selected="false" class="nav-link" data-toggle="tab"
+                               href="#notification"
+                               id="notification_tab" role="tab">Notifications</a>
+                        </li>
+                        <li class="nav-item">
+                            <a aria-controls="course" aria-selected="false" class="nav-link" data-toggle="tab"
+                               href="#course"
+                               id="course_tab" role="tab">Courses</a>
+                        </li>
+                        <li class="nav-item">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <!-- dashboard content -->
         <div class="tab-content dashboard_content">
             <div aria-labelledby="notification-tab" class="tab-pane fade  show" id="notification" role="tabpanel">
@@ -139,7 +113,9 @@
                                         <tr>
                                             <td class="icon"><span class="icon fa fa-key"></span></td>
                                             <td class="item">Status</td>
-                                            <td>{$user_role}</td>
+                                            <td>
+                                                <div class="badge badge-warning">{$user_role}</div>
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -203,7 +179,8 @@
                             <div class="collapse" id="course_actions">
                                 <div class="card-foot">
                                     <div class="card-action">
-                                        {$add_course_link} &nbsp; &nbsp; {$add_module_link}
+                                        {$add_course_link}
+                                        {$add_module_link}
                                         <a class="btn" href="{$all_courses_link}">Explore other courses</a>
                                     </div>
                                 </div>
