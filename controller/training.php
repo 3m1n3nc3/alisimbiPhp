@@ -18,15 +18,16 @@ function mainContent() {
         $PTMPL['add_module_link'] = secureButtons('background_green2 bordered', 'Add Module', 2, null, null);
 
 		if (isset($_GET['course'])) {
+
+		    //Show user role
+		    $PTMPL['user_priviledge'] = ucfirst($user['role']);
+
 			if (isset($_GET['courseid']) && $_GET['courseid'] != '') {
 		    	$course = getCourses(1, $_GET['courseid'])[0];
 	    		$PTMPL['course_title'] = $course['title'];
 	    		$PTMPL['course_cover'] = '<p><img style="width: 250px; float: left; padding: 10px;" src="'.getImage($course['cover'], 1).'" class="image_class"></p>';
 	    		$PTMPL['course_cover_url'] = getImage($course['cover'], 1);
 	    		$PTMPL['course_intro'] = $course['intro'];
-
-			    //Show user role
-			    $PTMPL['user_priviledge'] = ucfirst($user['role']);
 
 	    		$moduleArr = getModules(1, $_GET['courseid']);
 	    		$modules = '';
@@ -36,6 +37,8 @@ function mainContent() {
 		    			$modules .= courseModuleCard($mAr, 1);
 						$edit_modules .= courseModuleCard($mAr, 2);
 		    		}
+	    		} else {
+	    			$edit_modules = $modules = notAvailable('Module');
 	    		}
 
 				// Get a list of instructors for the selected course
@@ -51,6 +54,8 @@ function mainContent() {
 					}
 					$PTMPL['instructor'] = $instructor;
 					$PTMPL['_course_instructors'] = $course_instructor;
+				} else {
+					$PTMPL['_course_instructors'] = $PTMPL['instructor'] = notAvailable('Instructor');
 				}
 
 	    		$get = cleanUrls($SETT['url'].'/index.php?page=training&course=get&courseid='.$_GET['courseid']);
@@ -82,6 +87,8 @@ function mainContent() {
 	    			foreach ($moduleArr as $mAr) {
 		    			$modules .= courseModuleCard($mAr, 1);
 		    		}
+	    		} else {
+	    			$modules = notAvailable('Modules');
 	    		}
 
 	    		$get = cleanUrls($SETT['url'].'/index.php?page=training&course=get&courseid='.$_GET['courseid']);
