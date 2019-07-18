@@ -143,9 +143,9 @@ function mainContent() {
         }
     } else {
         if (isset($_GET['register']) && $_GET['register'] == 'true') {
-            if ($user) {
-                $framework->redirect();
-            }
+            // if ($user) {
+            //     $framework->redirect();
+            // }
             $theme = new themer('account/register'); $account = '';
             // $OLD_THEME = $PTMPL; $PTMPL = array();
 

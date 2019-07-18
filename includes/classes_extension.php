@@ -1,7 +1,7 @@
 <?php
 function errorMessage($str) {
     $string = "
-  <span padding: 0.35rem 1.01rem;' class='alert alert-danger'>
+  <span style='padding: 0.35rem 1.01rem;' class='alert alert-danger'>
   <strong>" . $str . "</strong>
   </span>";
     return $string;
@@ -9,7 +9,7 @@ function errorMessage($str) {
 
 function successMessage($str) {
     $string = "
-  <span padding: 0.35rem 1.01rem;' class='alert alert-success'>
+  <span style='padding: 0.35rem 1.01rem;' class='alert alert-success'>
   <strong>" . $str . "</strong>
   </div>";
     return $string;
@@ -17,7 +17,7 @@ function successMessage($str) {
 
 function warningMessage($str) {
     $string = "
-  <span padding: 0.35rem 1.01rem;' class='alert alert-warning'>
+  <span style='padding: 0.35rem 1.01rem;' class='alert alert-warning'>
   <strong>" . $str . "</strong>
   </div>";
     return $string;
@@ -25,33 +25,33 @@ function warningMessage($str) {
 
 function infoMessage($str) {
     $string = "
-  <span padding: 0.35rem 1.01rem;' class='alert alert-info'>
+  <span style='padding: 0.35rem 1.01rem;' class='alert alert-info'>
   <strong>" . $str . "</strong>
   </div>";
     return $string;
 }
 
 function messageNotice($str, $type = null) {
-  switch ($type) {
-    case 1:
-      $alert = 'success';
-      break;
+    switch ($type) {
+        case 1:
+            $alert = 'success';
+            break;
 
-    case 2:
-      $alert = 'warning';
-      break;
+        case 2:
+            $alert = 'warning';
+            break;
 
-    case 3:
-      $alert = 'danger';
-      break;
-    
-    default:
-      $alert = 'info';
-      break;
-  }
-  $string = "
-    <div style='padding: 2px;' class='alert alert-".$alert."'> " . $str ." </div>";
-  return $string;
+        case 3:
+            $alert = 'danger';
+            break;
+
+        default:
+            $alert = 'info';
+            break;
+    }
+    $string = "
+    <div style='padding: 2px;' class='alert alert-" . $alert . "'> " . $str . " </div>";
+    return $string;
 }
 
 function seo_plugin($image, $twitter, $facebook, $desc, $title) {
@@ -221,6 +221,19 @@ function linkModule($module_id, $course_id) {
         }
         return $results;
     }
+}
+
+function doSum($id, $type = null) {
+  global $framework;
+  if ($type == 1) {
+    // Count the course intructors
+    $sql = sprintf("SELECT COUNT(user_id) AS count_intructors FROM " .TABLE_INSTRUCTORS. " WHERE course_id = '%s'", $id);
+  } else {
+    // Count the course duration
+    $sql = sprintf("SELECT SUM(duration) AS course_duration FROM " .TABLE_MODULES. " AS modules LEFT JOIN " .TABLE_COURSE_MODULES. " AS course_modules ON `modules`.`id` = `course_modules`.`module_id` WHERE course_id = '%s'", $id);
+  }
+  $results = $framework->dbProcessor($sql, 1);
+  return $results;
 }
 
 function getInstructors($course = null, $type = null, $x = null) {
@@ -423,11 +436,11 @@ function secureButtons($class, $title, $type, $cid, $mid, $x = null) {
     $btn = '<a href="' . $link . '" class="' . $btnClass . $class . '">' . $title . '</a>';
     $allow = 0;
 
-    if ($type == 0) { 
+    if ($type == 0) {
         // Edit Module
         if ($gmd['creator_id'] == $user['id']) {
             $allow = 1;
-        } 
+        }
     } elseif ($type == 1) {
         // Edit Course
         if ($gcrs['creator_id'] == $user['id']) {
@@ -459,9 +472,9 @@ function simpleButtons($class, $title, $link, $x = null) {
 
 // course and modules boxes HTML
 function courseModuleCard($contentArr, $type = null, $text = 1) {
-    global $user, $user_role, $framework, $SETT;
+    global $user, $user_role, $framework, $marxTime, $SETT;
     $col = '4';
-    $duration = ' ';
+    $duration = 0;
     $price = 0;
     $start_learning = '';
     if ($type) {
@@ -489,7 +502,10 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
         $edit = secureButtons(null, 'Edit Courses', 1, $contentArr['id'], null, 1);
         $vb = $text == 1 ? '<a href="' . $view . '">View Details</a>' : '';
         $progress_val = $user ? '<span class="progress-value">' . courseDuration($contentArr['id']) . '% complete</span>' : '';
-        $price = $contentArr['price'] ? '<span class="currency"></span> '.$contentArr['price'] : 'Free';
+        $price = $contentArr['price'] ? '<span class="currency"></span> ' . $contentArr['price'] : 'Free';
+        $duration = doSum($contentArr['id'])[0]['course_duration'];
+        $duration = $marxTime->minutesConverter($duration, '%02d Hrs %02d Mins');
+        $count_intructors = doSum($contentArr['id'], 1)[0]['count_intructors'];
     }
 
     // if $text = 0 don't show the $intro
@@ -502,16 +518,14 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
         <div class="course-icon">
           <img class="img-responsive" src="' . $photo . '" title="" alt="course image">
           <div class="course-price">
-            '.$price.'
+            ' . $price . '
           </div>
         </div>
         <div class="course-content">
-          <div class="title">' . $contentArr['title'] . '</div>
-          
-          <span class="item ">' . $duration . '</span>
-          <span class="item "><i class="fa fa-user"></i> ($instructors)</span>
-          <span class="item "><i class="fa fa-clock-o"></i> ($duration)</span>
-          '.$progress_val.'
+          <div class="title">' . $contentArr['title'] . '</div> 
+          <span class="item "><i class="fa fa-user"></i> '.$count_intructors.'</span>
+          <span class="item "><i class="fa fa-clock-o"></i> '.$duration.'</span>
+          ' . $progress_val . '
         </div>
         <div class="swipe-in">
           <div class="readmore">
@@ -520,7 +534,6 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
           <div class="readmore">
             ' . $vb . '
           </div>
-          
         </div>
       </div>
     </div>' : '';
@@ -545,14 +558,14 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
     </div>' : '';
 
     $module_edit_card = $type == 2 ? '
-    <div class="module-tile module-tile-wide"> 
+    <div class="module-tile module-tile-wide">
       <div class="module-info">
         <div class="title">
           <a href="' . $start_learning . '">' . $contentArr['title'] . '</a>
-          ' . $unlink_module . '
         </div>
+        ' . $unlink_module . '
+        <div class="module-btn"> ' . secureButtons(null, 'Edit', 0, null, $contentArr['module_id']) . ' </div>
       </div>
-      <div class="module-btn"> ' . secureButtons(null, 'Edit', 0, null, $contentArr['module_id']) . ' </div>
     </div>' : '';
 
     $set_card = $type == 2 ? $module_edit_card : ($type ? $module_card : $course_card);
@@ -572,7 +585,7 @@ function studyModules($course, $curr = null) {
         }
     }
     $card =
-    '<div class="card" style="width: 20rem;">
+        '<div class="card" style="width: 20rem;">
       <div class="card-header h3">
         Modules
       </div>
@@ -641,7 +654,7 @@ function instructorCard($ins, $type = null) {
           </div>
           <div><h4 class="i-name">' . $inst_fullname . '</h4></div>
           <div><span class="i-rating">' . $inst_rating . '</span></div>
-      </div> 
+      </div>
     </div>';
     if ($type === 1) {
         return $instructor_summary_card;
@@ -696,12 +709,12 @@ function fetchBenefits($course_id) {
 }
 
 function notAvailable($item) {
-  return 
-    '<div class="pad-section">
+    return
+        '<div class="pad-section">
         <div class="">
             <div class="empty">
                 <i class="fa fa-question icon"></i>
-                <p class="small para">No '.$item.'</p>
+                <p class="small para">No ' . $item . '</p>
             </div>
         </div>
     </div>';
@@ -726,13 +739,13 @@ function courseDuration($course) {
     return $duration;
 }
 
-function courseAccess($type, $course_id=null) {
+function courseAccess($type, $course_id = null) {
     global $framework, $user;
     if ($type == 1) {
         $sql = sprintf("SELECT * FROM " . TABLE_COURSE_ACCESS . " WHERE user_id = '%s' AND course_id = '%s'",
             $user['id'], $course_id);
     } elseif ($type == 2) {
-      $sql = sprintf("SELECT * FROM " . TABLE_COURSE_ACCESS . " AS access LEFT JOIN " . TABLE_COURSES . " AS courses ON `access`.`course_id` = `courses`.`id` WHERE user_id = '%s'",
+        $sql = sprintf("SELECT * FROM " . TABLE_COURSE_ACCESS . " AS access LEFT JOIN " . TABLE_COURSES . " AS courses ON `access`.`course_id` = `courses`.`id` WHERE user_id = '%s'",
             $user['id']);
     }
     $results = $framework->dbProcessor($sql, 1);
@@ -750,7 +763,7 @@ function headerFooter($type) {
     }
     $PTMPL['dashboard_url'] = cleanUrls($SETT['url'] . '/index.php?page=homepage');
     $PTMPL['user_url'] = $user_url = cleanUrls($SETT['url'] . '/index.php?page=account&profile=home');
-    $PTMPL['username_url'] = simpleButtons(null, 'Account', $user_url);
+    $PTMPL['username_url'] = simpleButtons('bordered shw-0', 'Account', $user_url);
     $PTMPL['photo'] = getImage($user['photo'], 1);
     $PTMPL['username'] = ucfirst($user['username']);
     $PTMPL['site_title_'] = ucfirst($configuration['site_name']);

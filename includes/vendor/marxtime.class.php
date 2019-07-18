@@ -123,6 +123,16 @@ class marxTime
         }
         return $time;
     }
+
+    function minutesConverter($time, $format = '%02d:%02d') {
+        if ($time < 1) {
+            return '0 Hrs 0 Min';
+        }
+        $hours = floor($time / 60);
+        $minutes = ($time % 60);
+        return sprintf($format, $hours, $minutes);
+    }
+
 }
 $marxTime = new marxTime;
 ?>
