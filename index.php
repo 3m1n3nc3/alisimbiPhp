@@ -68,6 +68,8 @@ if ($module_newArr) {
         $courses_modules .= courseModuleCard($rslt, 1, 0);
 	}
 	$PTMPL['course_modules_new'] = $courses_modules;
+} else {
+    $PTMPL['course_modules_new'] = notAvailable('Modules');	
 }
 
 // Logout url
