@@ -11,7 +11,7 @@
 	--yellow: hsl(45, 100%, 51%);
 	--green: hsl(149, 74%, 45%);
 	--green-dark: hsl(149, 74%, 40%);
-	--green-overlay: hsla(149, 74%, 45%, 0.75);
+    --green-overlay: hsla(149, 74%, 40%, 0.375);
 	--teal: hsl(162, 72%, 45%);
 	--cyan: hsl(188, 77%, 40%);
 	--white: hsl(0, 0%, 100%);
