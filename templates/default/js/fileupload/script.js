@@ -57,7 +57,7 @@ function uploadComplete(evt) {
   resp = JSON.parse(evt.target.responseText);
   if (resp.status == 'success') {
     var alert = 'alert-success';
-    document.getElementById('iframe_major').innerHTML = '<iframe src="'+siteUrl+'/uploads/videos/'+resp.rslt+'" width="420" height="315" style="border:none;"></iframe>';
+    document.getElementById('iframe_major').innerHTML = '<iframe src="'+siteUrl+'/uploads/videos/'+resp.rslt+'" width="280" height="210" style="border:none; background:gray;"></iframe>';
   } else if (resp.status == 'error') {
     var alert = 'alert-danger';
   }
