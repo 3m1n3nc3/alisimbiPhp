@@ -571,7 +571,7 @@ function studyModules($course, $curr = null) {
         }
     }
     $card =
-        '<div class="card" style="width: 20rem;">
+    '<div class="card" style="width: 20rem;">
       <div class="card-header h3">
         Modules
       </div>
@@ -614,33 +614,34 @@ function instructorCard($ins, $type = null) {
     $social .= $ins['instagram'] ? '<span class="media"><a href="' . $ins['instagram'] . '"><i class="fa fa-instagram"></i></a></span>' : '';
 
     $instructor_detail_card = '
-<div class="instructor justify-content-center ">
-            <div class="i-misc">
-                <div class="i-profile-img">
-                    <img src="' . $inst_photo . '" class="img-responsive" alt=""/>
+    <div class="instructor justify-content-center ">
+                <div class="i-misc">
+                    <div class="i-profile-img">
+                        <img src="' . $inst_photo . '" class="img-responsive" alt=""/>
+                    </div>
+                    <p class="i-name">' . $inst_fullname . '</p>
+                    <div class="i-rating">' . $inst_rating . '</div>
                 </div>
-                <p class="i-name">' . $inst_fullname . '</p>
-                <div class="i-rating">' . $inst_rating . '</div>
-            </div>
-            <div class="i-bio">
-                <p>
-                    ' . $inst_about . '
-                </p>
-                <div class="i-social">
-                    ' . $social . '
+                <div class="i-bio">
+                    <p>
+                        ' . $inst_about . '
+                    </p>
+                    <div class="i-social">
+                        ' . $social . '
+                    </div>
                 </div>
-            </div>
-</div>';
+    </div>';
 
-    $instructor_summary_card = '<div class="instructor justify-content-center">
-    <div class="i-misc">
-        <div class="i-profile-img">
-            <img src="' . $inst_photo . '" class="img-responsive" alt=""/>
-        </div>
-        <div><h4 class="i-name">' . $inst_fullname . '</h4></div>
-        <div><span class="i-rating">' . $inst_rating . '</span></div>
-    </div> 
-</div>';
+    $instructor_summary_card = '
+    <div class="instructor justify-content-center">
+      <div class="i-misc">
+          <div class="i-profile-img">
+              <img src="' . $inst_photo . '" class="img-responsive" alt=""/>
+          </div>
+          <div><h4 class="i-name">' . $inst_fullname . '</h4></div>
+          <div><span class="i-rating">' . $inst_rating . '</span></div>
+      </div> 
+    </div>';
     if ($type === 1) {
         return $instructor_summary_card;
     } else {

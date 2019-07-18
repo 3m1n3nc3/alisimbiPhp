@@ -121,11 +121,16 @@ function mainContent() {
 
 		$courseArr = courseAccess(2);
 		$course = '';
-		foreach ($courseArr as $rslt) {
-          $course .= courseModuleCard($rslt);
-		}
-		$PTMPL['course'] = $course;
-        $PTMPL['course_count'] = count($courseArr);
+        if ($courseArr) {
+            foreach ($courseArr as $rslt) {
+              $course .= courseModuleCard($rslt);
+            }
+            $PTMPL['course'] = $course;
+            $PTMPL['course_count'] = count($courseArr).' &nbsp;';
+        } else {
+            $PTMPL['course'] = notAvailable('courses');
+            $PTMPL['course_count'] = '0 &nbsp;';
+        }
 
     } else {
         if (isset($_GET['register']) && $_GET['register'] == 'true') {
