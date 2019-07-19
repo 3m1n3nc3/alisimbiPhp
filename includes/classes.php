@@ -307,8 +307,13 @@ class framework {
 		 
 		if ($results == 1 && ($type == 0 || $type == 2)) {
 			$order = sprintf(" WHERE creator_id = '%s' ORDER BY id DESC", $user['id']);
-			$m = getCourses(null, null, $order)[0]; 
+			$m = getCourses(null, null, $order)[0];
+			// Add the creator of the course or module as an instructor
 			$this->addInstructor($user['id'], $m['id']);
+			if ($type == 0) {
+				// Add the course to the creators catalog
+				courseAccess(null, $m['id']);
+			}
 		}
 		return $results;
 	}

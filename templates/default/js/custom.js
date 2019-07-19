@@ -50,14 +50,7 @@ $(document).ready(function () {
         $('#benefits').attr("value", $('#benefits').attr("value") + benefit);
         $(theid).remove();
     });
-    // ======================================
-
-    $('#uploadSubmit_video').click(function (event) {
-        if ($('#uploadvideo').val()) {
-            alert('here');
-        }
-        return false;
-    });
+    // ====================================== 
 
 });
 
@@ -88,12 +81,7 @@ function connector(type, target) {
     $('.loader_bg').fadeToggle();
     let messager = $('#login_section_alert');
 
-    if (type == 0) {
-
-        /*For login*/
-        // var username = $('input[name="username"]').val();
-        // var password = $('input[name="password"]').val();
-        // var remember = $('input[name="remember"]').val();
+    if (type == 0) { 
 
         let username = target.username.value;
         let password = target.password.value;
@@ -162,6 +150,30 @@ function connector(type, target) {
     }
 }
 
+function photoUpload() { 
+
+    formdata = new FormData();
+    if($(this).prop('files').length > 0)
+    {
+        photo = $(this).prop('files')[0];
+        formdata.append("photo", photo);
+    }
+
+    $.ajax({
+        url: siteUrl+'/connection/photo_upload.php',
+        type: "POST",
+        data: formdata,
+        processData: false,
+        contentType: false,
+        success: function (html) {
+            $('#load_msg').html(html); 
+        },
+        error: function (xhr, status, error) { 
+            var errorMessage = 'An Error Occurred - ' + xhr.status + ': ' + xhr.statusText + '<br> ' + error;
+            $("#load_msg").html(errorHtml(errorMessage, xhr.responseText));
+        }
+    });     
+} 
 
 function fetch_state(sender, receiver) {
     var sender_id = sender.options[sender.selectedIndex].id;
@@ -283,7 +295,7 @@ function addYoutube() {
             $("#youtube_preview").html(errorHtml(errorMessage, xhr.responseText));
         }
     });
-}
+} 
 
 $("#badge").on("change", function() {
     var file = document.getElementById("badge").files[0];

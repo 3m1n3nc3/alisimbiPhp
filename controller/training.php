@@ -9,10 +9,14 @@ function mainContent() {
 	$PTMPL['currency'] = $configuration['currency'];
 
 	$PTMPL['copyrights_'] = '&copy; '. date('Y').' '.$contact_['c_line'];
-	$PTMPL['site_title_'] = $configuration['site_name'];
-	//$ac = courseAccess(1); print_r($ac);
+	$PTMPL['site_title_'] = $configuration['site_name']; 
 
-	if ($user) {
+	$cid = isset($_GET['courseid']) ? $_GET['courseid'] : '';
+	// Set the link to redirect users t login page and bring them back to requested page
+	$login_redirect_url = 'account&process=login&referrer='.urlencode($SETT['url'].$_SERVER['REQUEST_URI']);
+	$payment_redirect_url = 'training&course=get&courseid='.$cid.'&referrer='.urlencode($SETT['url'].$_SERVER['REQUEST_URI']);
+
+	if (!isset($_GET['course']) || $_GET['course'] === 'view' || $user) {
 		// Create course and module links
         $PTMPL['add_course_link'] = secureButtons('background_green2 bordered', 'Add Course', 3, null, null);
         $PTMPL['add_module_link'] = secureButtons('background_green2 bordered', 'Add Module', 2, null, null);
@@ -38,7 +42,7 @@ function mainContent() {
 						$edit_modules .= courseModuleCard($mAr, 2);
 		    		}
 	    		} else {
-	    			$edit_modules = $modules = notAvailable('Module');
+	    			$edit_modules = $modules = notAvailable('Modules');
 	    		}
 
 				// Get a list of instructors for the selected course
@@ -58,7 +62,7 @@ function mainContent() {
 					$PTMPL['_course_instructors'] = $PTMPL['instructor'] = notAvailable('Instructor');
 				}
 
-	    		$get = cleanUrls($SETT['url'].'/index.php?page=training&course=get&courseid='.$_GET['courseid']);
+	    		$get = cleanUrls($SETT['url'].'/index.php?page=training&course=now_learning&courseid='.$_GET['courseid']);
 	    		$PTMPL['course_modules'] = $PTMPL['course_modules_new'] = $modules;
 				$PTMPL['edit_course_modules'] = $edit_modules;
 	    		$PTMPL['course_get_btn_url'] = $get;
@@ -111,23 +115,37 @@ function mainContent() {
 		      	$theme = new themer('training/course_get'); $account = '';
 
 			    // Set the page title
-			    $PTMPL['page_title'] = ucfirst($_GET['page']).' - Checkout '.$course['title'];
+			    $PTMPL['page_title'] = 'Checkout '.$course['title'];
+
+			    // Check if user already has this course_modules_new
+			    $check = courseAccess(1, $course['id']);
+			    if ($check) {
+			    	$framework->redirect(urldecode($_GET['referrer']), 1);
+			    }
 
     			$PTMPL['raveverified'] = getImage('raveverified.png');
-    			$PTMPL['course_price'] = $course['price'].' NGN';
+    			$PTMPL['course_price'] = $course['price'].' '.$configuration['currency'];
 
     			/* Rave checkout variables*/
-    			 // Rave API Public key
-				 	$public_key = $configuration['rave_public_key'];
-				 	 // Rave API Private key
-					$private_key = $configuration['rave_private_key'];
-					// Check if sandbox is enabled
-					$ravemode = ($configuration['rave_mode'] ? 'api.ravepay.co' : 'ravesandboxapi.flutterwave.com');
-					 // Currency Code
-					$currency_code 	= $configuration['currency'];
-					// Url to redirect to to verify rave
-					$successful_url	= $SETT['url'].'/connection/raveAPI.php';
-					isset($_SESSION['txref']) ? $reference = $_SESSION['txref'] : $reference = '';
+			 	/*Rave API Public key*/
+			 	$public_key = $configuration['rave_public_key'];
+			 	 // Rave API Private key
+				$private_key = $configuration['rave_private_key'];
+				// Check if sandbox is enabled
+				$ravemode = ($configuration['rave_mode'] ? 'api.ravepay.co' : 'ravesandboxapi.flutterwave.com');
+				 // Currency Code
+				$currency_code 	= $configuration['currency'];
+				// Url to redirect to to verify rave
+				$successful_url	= $SETT['url'].'/connection/raveAPI.php';
+				isset($_SESSION['txref']) ? $reference = $_SESSION['txref'] : $reference = '';
+
+				// If the price of this course is free, add to user's course list
+				if (isset($_POST['pay']) && $course['price'] == 0) {
+					courseAccess(null, $course['id']);
+					$framework->redirect(urldecode($_GET['referrer']), 1);
+				} else {
+
+				}
 
 				/*if you are adding or editing courses*/
 			} elseif ($_GET['course'] == 'add' || $_GET['course'] == 'edit') {
@@ -253,17 +271,78 @@ function mainContent() {
 		        	$PTMPL['link_message'] = infoMessage('You have not selected any module');
 		        }
 			} elseif (isset($_GET['course']) && $_GET['course'] == 'now_learning') {
-		        $theme = new themer('training/now_learning'); $account = '';
-				// $OLD_THEME = $PTMPL; $PTMPL = array();
-				//
-				$get_modules = getModules(2, isset($_GET['moduleid']) ? $_GET['moduleid'] : '')[0];
-		        $PTMPL['title_header'] = $course['title'];
-				$PTMPL['list_modules'] = studyModules($_GET['courseid'], isset($_GET['moduleid']) ? $_GET['moduleid'] : '');
-		        // $vid = $get_modules['video'] ? $get_modules['video'] :
-		        $PTMPL['video_log'] = getVideo($get_modules['video']);
-		        $PTMPL['transcript'] = $get_modules['transcript'];
-				$PTMPL['course_edit_btn'] = secureButtons('background_green2 bordered', 'Edit Course', 1, $_GET['courseid'], isset($_GET['moduleid']) ? $_GET['moduleid'] : '');
-				$PTMPL['percent_complete'] = courseDuration($_GET['courseid']);
+				$grant_access = courseAccess(1, $course['id'])[0];
+				if ($grant_access) {
+			        $theme = new themer('training/now_learning'); $account = '';
+					// $OLD_THEME = $PTMPL; $PTMPL = array();
+					//
+					$xxx = sprintf(" WHERE course_id = '%s' ORDER BY module_id DESC", $_GET['courseid']);
+					$midX = getModules(3, null, $xxx);
+					if (!isset($_GET['moduleid'])) { 
+						$framework->redirect('training&course=now_learning&courseid='.$_GET['courseid'].'&moduleid='.$midX[0]['module_id']);
+					}
+
+					$get_modules = getModules(2, isset($_GET['moduleid']) ? $_GET['moduleid'] : '')[0];
+			        $PTMPL['title_header'] = $course['title'];
+					$PTMPL['list_modules'] = studyModules($_GET['courseid'], isset($_GET['moduleid']) ? $_GET['moduleid'] : '');
+			        // $vid = $get_modules['video'] ? $get_modules['video'] :
+			        $PTMPL['video_log'] = getVideo($get_modules['video']);
+			        $PTMPL['transcript'] = $get_modules['transcript'];
+					$PTMPL['course_edit_btn'] = secureButtons('background_green2 bordered', 'Edit Course', 1, $_GET['courseid'], isset($_GET['moduleid']) ? $_GET['moduleid'] : '');
+					$percent_complete = courseDuration($_GET['courseid']);
+					$PTMPL['percent_complete'] = $percent_complete;
+					if ($percent_complete >= 100 && getQuestions($_GET['courseid'], 2)) {
+						$test_url = cleanUrls($SETT['url'].'/index.php?page=training&course=take_test&courseid='.$_GET['courseid']);
+						$PTMPL['test_btn'] = simpleButtons('background_green2 bordered', 'Take Test', $test_url);
+					}
+
+					// Set the users current course
+					if (isset($_GET['moduleid']) && $_GET['moduleid'] != '') {
+						moduleProgress($_GET['courseid'], $_GET['moduleid'], 1);
+					}
+				} else {
+					$framework->redirect($payment_redirect_url);
+				}
+			} elseif (isset($_GET['course']) && $_GET['course'] == 'take_test') {
+				$theme = new themer('training/take_test');
+
+				$PTMPL['page_title'] = 'Test evaluation for ' . $course['title'];
+				$PTMPL['mast_cover_photo'] = '
+	                <div class="course-banner">
+	                    <img alt="Cover photo" class="img-fluid" src="'.getImage($course['cover'], 1).'"/>
+	                </div>';
+
+	            $questions = getQuestions($course['id'], 2);
+	            $card = '';
+	            foreach ($questions as $quest) {
+	            	$answers = getAnswers($quest['question_id']);
+	            	$answ = '';
+	            	foreach ($answers as $ans) {
+	            		$answ .= '
+	            		<div class="form-group">
+                        	<input type="radio" name="question_'.$quest['question_id'].'" value="'.$ans['id'].'" id="question_1">
+                        	<label for="question_1">'.ucfirst($ans['answer']).'</label>
+                        </div>'; 
+	            	}
+	            	$card .= '
+                    <div class="card card-default"> 
+                        <div class="card-body justify-content-center">  
+                            <p class="card-text"> '.$quest['question'].'</p> 
+                            <hr>  
+                           	'.$answ.' 
+                        </div>
+                    </div>';
+	            }
+                if (isset($_POST['submit'])) {
+	            	foreach ($questions as $quest) {
+	            		$prepare[$quest['question_id']] = $_POST['question_'.$quest['question_id']];
+	            	}
+                }
+	            $framework->questions_ = $prepare;
+
+	            $card .= '<div class="space_3"></div>';
+	            $PTMPL['question_card'] = $card;//echo substr('question_16', 9, 11);
+	            print_r($_POST);
 			}
 		} elseif (isset($_GET['module']) && $_GET['module'] == 'edit' && isset($_GET['action'])) {
 			// Add Video to the lesson
@@ -529,11 +608,8 @@ function mainContent() {
 	        $PTMPL['course'] = $course;
 		}
 	} else {
-		$framework->redirect();
-	}
-	if (isset($_GET['view'])) {
-
-	}
+		$framework->redirect($login_redirect_url);
+	} 
 
 	// Dont touch anything below this line
 	$render = $theme->make();
