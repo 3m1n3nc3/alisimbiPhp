@@ -24,5 +24,12 @@ if (isset($_SESSION['username'])) {
 	$user = $framework->userData($_COOKIE['username'], 2);
 }
 
+if (isset($_GET['referrer'])) {
+	$_SESSION['referrer'] = $_GET['referrer'];
+	$referrer = $_GET['referrer'];
+} else {
+	$referrer = null;
+}
+
 $user_role = $framework->userRoles();
 $contact_ = getContactInfo()[0];

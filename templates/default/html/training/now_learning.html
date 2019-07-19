@@ -1,6 +1,6 @@
 <div class="wrapper">
-	<div id="dashboard">
-		{$global_header} 
+    <div id="dashboard">
+        {$global_header}
 		<div class="container m-3">					
 			<div class="card p-5">
 				<div class="card-block">
@@ -19,9 +19,12 @@
 							</iframe> 
 
 							<p>
-							  <a class="btn" data-toggle="collapse" href="#viewTranscript" role="button" aria-expanded="false" aria-controls="collapseTranscript">
+                                <a aria-controls="collapseTranscript" aria-expanded="false" class="btn"
+                                   data-toggle="collapse" href="#viewTranscript" role="button">
 							    View Transcript
-							  </a>  <span class="font-weight-bold">Course Progress is at {$percent_complete}%</span>
+                                </a> 
+                                <span class="font-weight-bold">Course Progress is at {$percent_complete}%</span>
+                                {$test_btn}
 							</p>
 							<div class="collapse" id="viewTranscript">
 							  <div class="card card-body">
@@ -34,6 +37,6 @@
 				</div>
 			</div>
 		</div>
-		{$global_footer}
+        {$global_footer}
 	</div>
 </div>

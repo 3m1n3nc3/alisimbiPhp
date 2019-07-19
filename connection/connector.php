@@ -1,8 +1,15 @@
 <?php 
 require_once(__DIR__ .'/../includes/autoload.php');
  
-$status = 0;
-$header = 0;
+$status = 0; 
+
+if (isset($_SESSION['referrer'])) {
+	$header = urldecode($_SESSION['referrer']);
+	unset($_SESSION['referrer']);
+} else {
+	$header = cleanUrls($SETT['url'].'/index.php?page=account&profile=home');
+}
+
 if (isset($_POST['login'])) {
 	$username = $framework->db_prepare_input(mb_strtolower($_POST['username']));
 	$password = hash('md5', $framework->db_prepare_input($_POST['password']));
@@ -24,8 +31,7 @@ if (isset($_POST['login'])) {
 	} else {
 		$msg = successMessage($LANG['login_success']); 
 		$status = 1;
-		$framework->authenticateUser();
-		$header = cleanUrls($SETT['url'].'/index.php?page=account&profile=home');
+		$framework->authenticateUser(); 
 	}
 } elseif (isset($_POST['register'])) {
 	$username = $framework->db_prepare_input(mb_strtolower($_POST['username']));
@@ -73,8 +79,7 @@ if (isset($_POST['login'])) {
     } else {
 		$status = 1;
 		$opr = $framework->registrationCall();
-		$msg = $opr == 1 ? successMessage($LANG['_reg_success']) : $opr;
-		$header = cleanUrls($SETT['url'].'/index.php?page=account&profile=home');
+		$msg = $opr == 1 ? successMessage($LANG['_reg_success']) : $opr; 
 	}
 }
 //print_r($_POST);
