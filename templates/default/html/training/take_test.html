@@ -1,0 +1,54 @@
+<div class="wrapper">
+    <div id="dashboard">
+        {$global_header}
+        <div class="dashboard_content">
+            <div class="user-info-list ">
+                <div class="card-tile">
+                    <div class="container p-0">
+                        <div class="card-head">
+                            <div class="card-title">
+                                <h3 class="title">{$page_title}</h3>
+                                <span class="caption">Take your end of session and course evaluation test</span>
+                                <div class="brcr-tile">
+                                    <ul class="brcr">
+                                        <li class="level"><i class="fa fa-home"></i> <a href="">Home</a></li>
+                                        <li class="level"><a href="">Module</a></li>
+                                        <li class="level">{$module_title}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {$mast_cover_photo}
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-12">
+                        <form method="post" action="">
+                            
+                            {$question_card} 
+
+                            <div class="px-3">
+                                <button class="btn background_green2 bordered" type="submit" name="submit">Submit </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <div class="user-info-list card card-default p-3 text-left">
+                            <div class="card-head">
+                                <div class="card-title">
+                                    Edit the modules for this course 
+                                </div>
+                            </div>
+                            <div class="card-body align-self-center">
+                            	{$edit_course_modules}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {$global_footer}
+    </div>
+</div>

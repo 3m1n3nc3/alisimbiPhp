@@ -110,14 +110,17 @@
                                 <div class="profile_img">
                                     <img class=" img-thumbnail m-auto " src="{$photo}">
                                 </div>
+                                <div id="load_msg"></div>
+                                <label for="upload_photo" class="btn">Choose New Photo...</label>
+                                <input type="file" name="upload_photo" id="upload_photo" style="display: none;">
+                                <button type="button" onclick="photoUpload()">Upload</button>
                                 <div class="space_5x"></div>
                                 {$update_social}
                             </div>
                         </div>
                         <div class="pad-section">
                             <div class="text-center btn-block">
-                                <a class="btn background_green2" href="{$update_profile}"><i class="fa fa-save"></i>
-                                    Save changes </a>
+                                <button class="btn background_green2" name="save_profile" type="submit">Save changes <i class="fa fa-save"></i></button>  
                             </div>
                         </div>
                     </div>

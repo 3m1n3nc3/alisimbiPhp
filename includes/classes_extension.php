@@ -249,13 +249,15 @@ function getInstructors($course = null, $type = null, $x = null) {
 }
 
 function getQuestions($id, $type = null) {
-    global $framework;
-    if ($type == 1) {
-        $sql = sprintf("SELECT * FROM " . TABLE_QUESTION . " WHERE 1 AND id = '%s'", $id);
-    } else {
-        $sql = sprintf("SELECT * FROM " . TABLE_QUESTION . " WHERE module_id = '%s' ORDER BY id DESC", $id);
-    }
-    return $framework->dbProcessor($sql, 1);
+  global $framework;
+  if ($type == 1) {
+    $sql = sprintf("SELECT * FROM " . TABLE_QUESTION . " WHERE 1 AND module_id = '%s'", $id);
+  } elseif ($type == 2) {
+    $sql = sprintf("SELECT modules.module_id, course_id, correct, questions.id AS question_id, question FROM " . TABLE_QUESTION . " AS questions LEFT JOIN " . TABLE_COURSE_MODULES . " AS modules ON `questions`.`module_id` = `modules`.`module_id` WHERE course_id = '%s'", $id);
+  } else {
+      $sql = sprintf("SELECT * FROM " . TABLE_QUESTION . " WHERE module_id = '%s' ORDER BY id DESC", $id);
+  }
+  return $framework->dbProcessor($sql, 1);
 }
 
 function getAnswers($id) {
@@ -585,7 +587,7 @@ function studyModules($course, $curr = null) {
         }
     }
     $card =
-        '<div class="card" style="width: 20rem;">
+    '<div class="card" style="width: 20rem;">
       <div class="card-header h3">
         Modules
       </div>
@@ -726,7 +728,7 @@ function courseDuration($course) {
     $duration = 0;
     $access_log = courseAccess(1, $course)[0];
 
-    $sql = sprintf("SELECT SUM(duration) AS duration FROM " . TABLE_MODULES . " AS modules LEFT JOIN " . TABLE_COURSE_MODULES . " AS course_modules ON `modules`.`id` = `course_modules`.`module_id` WHERE course_id = '%s'", $course);
+    $sql = sprintf("SELECT SUM(duration) AS duration FROM " . TABLE_MODULES . " AS modules LEFT JOIN " . TABLE_COURSE_MODULES . " AS course_modules ON `modules`.`id` = `course_modules`.`module_id` WHERE course_id = '%s'", $framework->db_prepare_input($course));
     $sum = $framework->dbProcessor($sql, 1)[0];
 
     if ($access_log['course_id'] == $course) {
@@ -743,13 +745,41 @@ function courseAccess($type, $course_id = null) {
     global $framework, $user;
     if ($type == 1) {
         $sql = sprintf("SELECT * FROM " . TABLE_COURSE_ACCESS . " WHERE user_id = '%s' AND course_id = '%s'",
-            $user['id'], $course_id);
+            $user['id'], $framework->db_prepare_input($course_id));
     } elseif ($type == 2) {
         $sql = sprintf("SELECT * FROM " . TABLE_COURSE_ACCESS . " AS access LEFT JOIN " . TABLE_COURSES . " AS courses ON `access`.`course_id` = `courses`.`id` WHERE user_id = '%s'",
             $user['id']);
+    } else {
+      // Approve users course purchase
+      $var = courseAccess(1, $course_id)[0];
+      $sql = sprintf("INSERT INTO " . TABLE_COURSE_ACCESS . " (`course_id`, `user_id`, `completed`) VALUES ('%s','%s', NULL)", $framework->db_prepare_input($course_id), $user['id']);
+      if ($var) {
+        return 1;
+      } else {
+        return $framework->dbProcessor($sql, 0, 1);
+      }
     }
     $results = $framework->dbProcessor($sql, 1);
     return $results;
+}
+
+function moduleProgress($course_id = null, $module_id = null, $type) {
+  global $framework, $user;
+  $mod_id = $framework->db_prepare_input($module_id);
+  $cou_id = $framework->db_prepare_input($course_id);
+  if ($type == 1) {
+    $gt_dur = getModules(2, $module_id)[0];
+    $gt_acc = courseAccess(1, $course_id)[0];
+    $complete = $gt_acc['completed'] == '' ? $mod_id : $gt_acc['completed'].','.$mod_id;
+    $var = $gt_acc['completed'] ? explode(',', $gt_acc['completed']) : array(); 
+    $time = $gt_acc['time_spent'] == 0 ? $gt_dur['duration'] : $gt_acc['time_spent'] + $gt_dur['duration'];
+    if (!in_array($module_id, $var)) {
+      $sql = sprintf("UPDATE " . TABLE_COURSE_ACCESS . " SET `current_module` = '%s',"
+        . " `time_spent` = '%s', `completed` = '%s' WHERE course_id = '%s'"
+        . " AND user_id = '%s'", $mod_id, $time, $complete, $cou_id, $user['id']);
+    }
+  }
+  return isset($sql) ? $framework->dbProcessor($sql, 0, 1) : 0;
 }
 
 function headerFooter($type) {
@@ -761,15 +791,27 @@ function headerFooter($type) {
         $theme = new themer('container/footer');
         $section = '';
     }
+    $login_link = cleanUrls($SETT['url'] . '/index.php?page=account&process=login');
     $PTMPL['dashboard_url'] = cleanUrls($SETT['url'] . '/index.php?page=homepage');
     $PTMPL['user_url'] = $user_url = cleanUrls($SETT['url'] . '/index.php?page=account&profile=home');
-    $PTMPL['username_url'] = simpleButtons('bordered shw-0', 'Account', $user_url);
-    $PTMPL['photo'] = getImage($user['photo'], 1);
-    $PTMPL['username'] = ucfirst($user['username']);
+    $PTMPL['username_url'] = simpleButtons('bordered shw-0', 'Account', $user_url); 
     $PTMPL['site_title_'] = ucfirst($configuration['site_name']);
-    $PTMPL['copyright'] = '&copy; ' . ucfirst($LANG['copyright']) . ' ' . date('Y') . ' ' . $contact_['c_line'];
+    $PTMPL['copyright'] = '&copy; '.ucfirst($LANG['copyright']).' '.date('Y').' '.$contact_['c_line'];
     $PTMPL['logout_url'] = cleanUrls($SETT['url'] . '/index.php?page=homepage&logout=true');
 
+    $avatar_division = '
+      <div class="top_avatar">
+        <div class="user_avatar">
+          <a data-toggle="collapse" href="#logout" title="edit profile">
+            <img alt="'.ucfirst($user['username']).' avatar" src="'.getImage($user['photo'], 1).'">
+          </a>
+        </div>
+        <div class="user_name">
+          '.ucfirst($user['username']).'
+        </div>
+      </div>';
+
+    $PTMPL['action_btn_link_avatar'] = $user ? $avatar_division : simpleButtons('bordered shw-0', 'Login', $login_link); ;
     $section = $theme->make();
     return $section;
 }

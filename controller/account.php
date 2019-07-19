@@ -7,32 +7,38 @@ function mainContent() {
 	$PTMPL['site_url'] = $SETT['url'];
 	$account = '';
     if ($user) {
-        if (isset($_GET['profile'])) {
-            if ($_GET['profile'] == 'home') { 
-                $theme = new themer('account/profile_home');
-                // $OLD_THEME = $PTMPL; $PTMPL = array();
-            } elseif ($_GET['profile'] == 'update') {
-                $theme = new themer('account/profile_update');
-                // $OLD_THEME = $PTMPL; $PTMPL = array();
-                $PTMPL['list_country'] = getLocale(3, $user['country']);
-                if (isset($_POST['save_profile'])) {
-                    $framework->firstname = $_POST['fname'];
-                    $framework->lastname = $_POST['lname'];
-                    $framework->phone = $_POST['phone'];
-                    $framework->country = $_POST['country'];
-                    $framework->state = isset($_POST['state']) ? $_POST['state'] : $user['state'];
-                    $framework->city = isset($_POST['city']) ? $_POST['city'] : $user['city'];
-                    $framework->about = $_POST['about'];
-                    if ($user_role >= 3) {
-                        $framework->facebook = $_POST['facebook'];
-                        $framework->twitter = $_POST['instagram'];
-                        $framework->instagram = $_POST['twitter'];
-                        $framework->social = 1;
-                    } 
-                    $framework->updateProfile();
-                    $framework->redirect('account&profile=home');
+        if ($_GET['page'] = 'account') {
+            $theme = new themer('account/profile_home');
+            // $OLD_THEME = $PTMPL; $PTMPL = array();
+
+            if (isset($_GET['profile'])) {
+                if ($_GET['profile'] == 'home') { 
+                    $theme = new themer('account/profile_home');
+                    // $OLD_THEME = $PTMPL; $PTMPL = array();
+                } elseif ($_GET['profile'] == 'update') {
+                    $theme = new themer('account/profile_update');
+                    // $OLD_THEME = $PTMPL; $PTMPL = array();
+                    $PTMPL['list_country'] = getLocale(3, $user['country']);
+                    if (isset($_POST['save_profile'])) {
+                        $framework->firstname = $_POST['fname'];
+                        $framework->lastname = $_POST['lname'];
+                        $framework->phone = $_POST['phone'];
+                        $framework->country = $_POST['country'];
+                        $framework->state = isset($_POST['state']) ? $_POST['state'] : $user['state'];
+                        $framework->city = isset($_POST['city']) ? $_POST['city'] : $user['city'];
+                        $framework->about = $_POST['about'];
+                        if ($user_role >= 3) {
+                            $framework->facebook = $_POST['facebook'];
+                            $framework->twitter = $_POST['instagram'];
+                            $framework->instagram = $_POST['twitter'];
+                            $framework->social = 1;
+                        } 
+                        $framework->updateProfile();
+                        $framework->redirect('account&profile=home');
+                    }
                 }
             }
+
             $PTMPL['photo'] = getImage($user['photo'], 1);
             $PTMPL['fullname'] = $user['f_name'].' '.$user['l_name'];
             $PTMPL['firstname'] = $user['f_name'];
@@ -113,11 +119,7 @@ function mainContent() {
 				</div> ';
             }
             $PTMPL['update_social'] = $update_social;
-
-        // When user is not logged in
-        } else {
-            $framework->redirect('account&profile=home');
-        }
+        }  
 
 		$courseArr = courseAccess(2);
 		$course = '';
@@ -129,7 +131,7 @@ function mainContent() {
             $PTMPL['course_count'] = count($courseArr).' &nbsp;';
 
             $crnt = $courseArr[0];
-            $cont_learning = cleanUrls($SETT['url'] . '/index.php?page=training&course=now_learning&courseid=' . $crnt ['current_course'] . '&moduleid=' . $crnt ['current_module']);
+            $cont_learning = cleanUrls($SETT['url'] . '/index.php?page=training&course=now_learning&courseid=' . $crnt['course_id'] . '&moduleid=' . $crnt['current_module']);
 
             $PTMPL['course_continue'] = '
             <div class="card-foot">
@@ -142,7 +144,7 @@ function mainContent() {
             $PTMPL['course_count'] = '0 &nbsp;';
         }
     } else {
-        if (isset($_GET['register']) && $_GET['register'] == 'true') {
+        if (isset($_GET['process']) && $_GET['process'] == 'login') {
             // if ($user) {
             //     $framework->redirect();
             // }
@@ -157,7 +159,7 @@ function mainContent() {
             }
             $PTMPL['countries'] = $all_countries;
         } else {
-            $framework->redirect();
+            $framework->redirect('account&process=login&referrer='.urlencode($SETT['url'].$_SERVER['REQUEST_URI']));
         }
     }
 		$PTMPL['copyrights_'] = '&copy; '. date('Y').' '.$contact_['c_line'];
