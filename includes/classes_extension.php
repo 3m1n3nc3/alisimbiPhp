@@ -556,7 +556,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1)
             <div class="succinct">
                 <span class="item "><i class="fa fa-user"></i> ' . $count_instructors . '</span>
                 <span class="item "><i class="fa fa-clock-o"></i> ' . $duration . '</span>
-                <span class="item "><i class="fa fa-book></i> ' . $num_module . '</span>
+                <span class="item "><i class="fa fa-book"></i> ' . $num_module . '</span>
             </div>
             ' . $progress_val . '
         </div>
