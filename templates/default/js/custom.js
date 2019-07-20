@@ -20,14 +20,20 @@ $(document).ready(function () {
     jQuery Countdown
     ================================================ */
     var date = '2019-07-15';
+    //Ajax to get the date from server
     let countdownDate = new Date(date);
-
+    let now = new Date().getTime();
     $('.countdownValue').each(function () {
         $(this).countdown({
             until: countdownDate,
             padZeroes: true,
             labels: ['hrs', 'min', 'sec']
-        });
+        })
+    }).after(function (req) {
+        //If countdown date is past
+        if (now > countdownDate.getTime()) {
+            $(".popular-course-deck, #new_course_btn").addClass('hide');
+        }
     });
 
     // Benefits selection function 
@@ -50,7 +56,14 @@ $(document).ready(function () {
         $('#benefits').attr("value", $('#benefits').attr("value") + benefit);
         $(theid).remove();
     });
-    // ====================================== 
+    // ======================================
+
+    $('#uploadSubmit_video').click(function (event) {
+        if ($('#uploadvideo').val()) {
+            alert('here');
+        }
+        return false;
+    });
 
 });
 
@@ -81,7 +94,12 @@ function connector(type, target) {
     $('.loader_bg').fadeToggle();
     let messager = $('#login_section_alert');
 
-    if (type == 0) { 
+    if (type == 0) {
+
+        /*For login*/
+        // var username = $('input[name="username"]').val();
+        // var password = $('input[name="password"]').val();
+        // var remember = $('input[name="remember"]').val();
 
         let username = target.username.value;
         let password = target.password.value;
@@ -150,30 +168,6 @@ function connector(type, target) {
     }
 }
 
-function photoUpload() { 
-
-    formdata = new FormData();
-    if($(this).prop('files').length > 0)
-    {
-        photo = $(this).prop('files')[0];
-        formdata.append("photo", photo);
-    }
-
-    $.ajax({
-        url: siteUrl+'/connection/photo_upload.php',
-        type: "POST",
-        data: formdata,
-        processData: false,
-        contentType: false,
-        success: function (html) {
-            $('#load_msg').html(html); 
-        },
-        error: function (xhr, status, error) { 
-            var errorMessage = 'An Error Occurred - ' + xhr.status + ': ' + xhr.statusText + '<br> ' + error;
-            $("#load_msg").html(errorHtml(errorMessage, xhr.responseText));
-        }
-    });     
-} 
 
 function fetch_state(sender, receiver) {
     var sender_id = sender.options[sender.selectedIndex].id;
@@ -273,7 +267,7 @@ function isNumeric(evt) {
     let charCode = (evt.which) ? evt.which : event.keyCode;
     return !(charCode > 31 && (charCode < 48 || charCode > 57));
 
-}  
+}
 
 function addYoutube() {
     var link = $('input[name="youtube_url"]').val();
@@ -288,23 +282,23 @@ function addYoutube() {
         dataType: "json",
         success: function (html) {
             $('#youtube_msg').html(html.msg);
-            $('#youtube_preview').html(html.preview); 
+            $('#youtube_preview').html(html.preview);
         },
-        error: function (xhr, status, error) { 
+        error: function (xhr, status, error) {
             var errorMessage = 'An Error Occurred - ' + xhr.status + ': ' + xhr.statusText + '<br> ' + error;
             $("#youtube_preview").html(errorHtml(errorMessage, xhr.responseText));
         }
     });
-} 
+}
 
-$("#badge").on("change", function() {
+$("#badge").on("change", function () {
     var file = document.getElementById("badge").files[0];
     console.log(file);
-    $("#forbadge").html(file.name+" Selected");
+    $("#forbadge").html(file.name + " Selected");
 });
 
-$("#cover_photo").on("change", function() {
+$("#cover_photo").on("change", function () {
     var file = document.getElementById("cover_photo").files[0];
     console.log(file);
-    $("#forcover").html(file.name+" Selected");
+    $("#forcover").html(file.name + " Selected");
 });

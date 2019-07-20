@@ -1,5 +1,6 @@
 <?php
-function errorMessage($str) {
+function errorMessage($str)
+{
     $string = "
   <span style='padding: 0.35rem 1.01rem;' class='alert alert-danger'>
   <strong>" . $str . "</strong>
@@ -7,7 +8,8 @@ function errorMessage($str) {
     return $string;
 }
 
-function successMessage($str) {
+function successMessage($str)
+{
     $string = "
   <span style='padding: 0.35rem 1.01rem;' class='alert alert-success'>
   <strong>" . $str . "</strong>
@@ -15,7 +17,8 @@ function successMessage($str) {
     return $string;
 }
 
-function warningMessage($str) {
+function warningMessage($str)
+{
     $string = "
   <span style='padding: 0.35rem 1.01rem;' class='alert alert-warning'>
   <strong>" . $str . "</strong>
@@ -23,7 +26,8 @@ function warningMessage($str) {
     return $string;
 }
 
-function infoMessage($str) {
+function infoMessage($str)
+{
     $string = "
   <span style='padding: 0.35rem 1.01rem;' class='alert alert-info'>
   <strong>" . $str . "</strong>
@@ -31,7 +35,8 @@ function infoMessage($str) {
     return $string;
 }
 
-function messageNotice($str, $type = null) {
+function messageNotice($str, $type = null)
+{
     switch ($type) {
         case 1:
             $alert = 'success';
@@ -54,7 +59,8 @@ function messageNotice($str, $type = null) {
     return $string;
 }
 
-function seo_plugin($image, $twitter, $facebook, $desc, $title) {
+function seo_plugin($image, $twitter, $facebook, $desc, $title)
+{
     global $SETT, $PTMPL, $configuration, $site_image;
 
     $twitter = ($twitter) ? $twitter : $configuration['site_name'];
@@ -92,7 +98,8 @@ function seo_plugin($image, $twitter, $facebook, $desc, $title) {
     return $plugin;
 }
 
-function getLocale($type = null, $id = null) {
+function getLocale($type = null, $id = null)
+{
     // $framework->
     global $framework;
     if ($type == 1) {
@@ -119,7 +126,8 @@ function getLocale($type = null, $id = null) {
     }
 }
 
-function getImage($image, $type = null) {
+function getImage($image, $type = null)
+{
     global $SETT;
     if (!$image) {
         $dir = $SETT['url'] . '/uploads/img/';
@@ -138,7 +146,8 @@ function getImage($image, $type = null) {
     return $dir . $image;
 }
 
-function getVideo($source) {
+function getVideo($source)
+{
     global $SETT, $framework;
     $link = $framework->determineLink($source);
 
@@ -154,25 +163,29 @@ function getVideo($source) {
     return $source;
 }
 
-function getHome($content) {
+function getHome($content)
+{
     global $framework;
     $sql = sprintf("SELECT * FROM " . TABLE_HOME . " WHERE title = '%s' OR id = '%s'", $content, $content);
     return $framework->dbProcessor($sql, 1);
 }
 
-function getTestimonials() {
+function getTestimonials()
+{
     global $framework;
     $sql = sprintf("SELECT * FROM " . TABLE_TESTIMONIAL);
     return $framework->dbProcessor($sql, 1);
 }
 
-function getSponsors() {
+function getSponsors()
+{
     global $framework;
     $sql = sprintf("SELECT * FROM " . TABLE_SPONSORS);
     return $framework->dbProcessor($sql, 1);
 }
 
-function getCourses($type = null, $course = null, $x = null) {
+function getCourses($type = null, $course = null, $x = null)
+{
     global $framework;
     if ($type == 1) {
         $sql = sprintf("SELECT * FROM " . TABLE_COURSES . " WHERE id = '%s'", $course);
@@ -182,7 +195,8 @@ function getCourses($type = null, $course = null, $x = null) {
     return $framework->dbProcessor($sql, 1);
 }
 
-function getModules($type = null, $id = null, $x = null) {
+function getModules($type = null, $id = null, $x = null)
+{
     global $framework;
 
     if ($type == 1) {
@@ -198,7 +212,8 @@ function getModules($type = null, $id = null, $x = null) {
     return $framework->dbProcessor($sql, 1);
 }
 
-function linkModule($module_id, $course_id) {
+function linkModule($module_id, $course_id)
+{
     global $framework;
     $module_id = $framework->db_prepare_input($module_id);
     $course_id = $framework->db_prepare_input($course_id);
@@ -223,20 +238,22 @@ function linkModule($module_id, $course_id) {
     }
 }
 
-function doSum($id, $type = null) {
-  global $framework;
-  if ($type == 1) {
-    // Count the course intructors
-    $sql = sprintf("SELECT COUNT(user_id) AS count_intructors FROM " .TABLE_INSTRUCTORS. " WHERE course_id = '%s'", $id);
-  } else {
-    // Count the course duration
-    $sql = sprintf("SELECT SUM(duration) AS course_duration FROM " .TABLE_MODULES. " AS modules LEFT JOIN " .TABLE_COURSE_MODULES. " AS course_modules ON `modules`.`id` = `course_modules`.`module_id` WHERE course_id = '%s'", $id);
-  }
-  $results = $framework->dbProcessor($sql, 1);
-  return $results;
+function doSum($id, $type = null)
+{
+    global $framework;
+    if ($type == 1) {
+        // Count the course intructors
+        $sql = sprintf("SELECT COUNT(user_id) AS count_intructors FROM " . TABLE_INSTRUCTORS . " WHERE course_id = '%s'", $id);
+    } else {
+        // Count the course duration
+        $sql = sprintf("SELECT SUM(duration) AS course_duration FROM " . TABLE_MODULES . " AS modules LEFT JOIN " . TABLE_COURSE_MODULES . " AS course_modules ON `modules`.`id` = `course_modules`.`module_id` WHERE course_id = '%s'", $id);
+    }
+    $results = $framework->dbProcessor($sql, 1);
+    return $results;
 }
 
-function getInstructors($course = null, $type = null, $x = null) {
+function getInstructors($course = null, $type = null, $x = null)
+{
     global $framework;
     if ($type == null) {
         $sql = sprintf("SELECT * FROM " . TABLE_INSTRUCTORS . " AS instructors LEFT JOIN " . TABLE_USERS . " AS users ON `instructors`.`user_id` = `users`.`id`"
@@ -248,25 +265,28 @@ function getInstructors($course = null, $type = null, $x = null) {
     return $framework->dbProcessor($sql, 1);
 }
 
-function getQuestions($id, $type = null) {
-  global $framework;
-  if ($type == 1) {
-    $sql = sprintf("SELECT * FROM " . TABLE_QUESTION . " WHERE 1 AND module_id = '%s'", $id);
-  } elseif ($type == 2) {
-    $sql = sprintf("SELECT modules.module_id, course_id, correct, questions.id AS question_id, question FROM " . TABLE_QUESTION . " AS questions LEFT JOIN " . TABLE_COURSE_MODULES . " AS modules ON `questions`.`module_id` = `modules`.`module_id` WHERE course_id = '%s'", $id);
-  } else {
-      $sql = sprintf("SELECT * FROM " . TABLE_QUESTION . " WHERE module_id = '%s' ORDER BY id DESC", $id);
-  }
-  return $framework->dbProcessor($sql, 1);
+function getQuestions($id, $type = null)
+{
+    global $framework;
+    if ($type == 1) {
+        $sql = sprintf("SELECT * FROM " . TABLE_QUESTION . " WHERE 1 AND module_id = '%s'", $id);
+    } elseif ($type == 2) {
+        $sql = sprintf("SELECT modules.module_id, course_id, correct, questions.id AS question_id, question FROM " . TABLE_QUESTION . " AS questions LEFT JOIN " . TABLE_COURSE_MODULES . " AS modules ON `questions`.`module_id` = `modules`.`module_id` WHERE course_id = '%s'", $id);
+    } else {
+        $sql = sprintf("SELECT * FROM " . TABLE_QUESTION . " WHERE module_id = '%s' ORDER BY id DESC", $id);
+    }
+    return $framework->dbProcessor($sql, 1);
 }
 
-function getAnswers($id) {
+function getAnswers($id)
+{
     global $framework;
     $sql = sprintf("SELECT * FROM " . TABLE_ANSWER . " WHERE 1 AND question_id = '%s'", $id);
     return $framework->dbProcessor($sql, 1);
 }
 
-function getNews($link = null) {
+function getNews($link = null)
+{
     global $framework;
     if ($link) {
         $sql = sprintf("SELECT * FROM " . TABLE_NEWS . " WHERE link = '%s' OR id = '%s' AND state = '1'", $link, $link);
@@ -276,7 +296,8 @@ function getNews($link = null) {
     return $framework->dbProcessor($sql, 1);
 }
 
-function getVlog($link = null) {
+function getVlog($link = null)
+{
     global $framework;
     if ($link) {
         $sql = sprintf("SELECT * FROM " . TABLE_TRAINING . " WHERE link = '%s' OR id = '%s'", $link, $link);
@@ -286,13 +307,15 @@ function getVlog($link = null) {
     return $framework->dbProcessor($sql, 1);
 }
 
-function getBenefits($x = null) {
+function getBenefits($x = null)
+{
     global $framework;
     $sql = sprintf("SELECT * FROM " . TABLE_BENEFITS . "%s", $x);
     return $framework->dbProcessor($sql, 1);
 }
 
-function getContactInfo($id = null) {
+function getContactInfo($id = null)
+{
     global $framework;
     if ($id) {
         $id = $id;
@@ -306,7 +329,8 @@ function getContactInfo($id = null) {
 /**
  * /* This function will convert your urls into cleaner urls
  **/
-function cleanUrls($url) {
+function cleanUrls($url)
+{
     global $configuration; //$configuration['cleanurl'] = 1;
     if ($configuration['cleanurl']) {
         $pager['homepage'] = 'index.php?page=homepage';
@@ -325,7 +349,8 @@ function cleanUrls($url) {
 }
 
 // Side navigation contest management dropdown menu
-function contactInformation($type = null) {
+function contactInformation($type = null)
+{
     global $LANG, $PTMPL, $SETT, $settings;
 
     $contact = getContactInfo()[0];
@@ -386,7 +411,8 @@ function contactInformation($type = null) {
     return $footer;
 }
 
-function accountAccess($type = null) {
+function accountAccess($type = null)
+{
     global $LANG, $PTMPL, $SETT, $settings;
     if ($type == 0) {
         $theme = new themer('homepage/signup');
@@ -408,7 +434,8 @@ function accountAccess($type = null) {
     return $footer;
 }
 
-function manageButtons($type = null, $cid = null, $mid = null) {
+function manageButtons($type = null, $cid = null, $mid = null)
+{
     global $user_role, $user, $framework, $SETT;
     $link = '';
 
@@ -426,7 +453,8 @@ function manageButtons($type = null, $cid = null, $mid = null) {
     return $link;
 }
 
-function secureButtons($class, $title, $type, $cid, $mid, $x = null) {
+function secureButtons($class, $title, $type, $cid, $mid, $x = null)
+{
     global $user, $user_role;
     $link = manageButtons($type, $cid, $mid);
     $gcrs = getCourses(1, $cid)[0];
@@ -462,7 +490,8 @@ function secureButtons($class, $title, $type, $cid, $mid, $x = null) {
     return $btn;
 }
 
-function simpleButtons($class, $title, $link, $x = null) {
+function simpleButtons($class, $title, $link, $x = null)
+{
     global $user, $user_role;
 
     $class = $class ? ' ' . $class : '';
@@ -473,12 +502,12 @@ function simpleButtons($class, $title, $link, $x = null) {
 }
 
 // course and modules boxes HTML
-function courseModuleCard($contentArr, $type = null, $text = 1) {
+function courseModuleCard($contentArr, $type = null, $text = 1)
+{
     global $user, $user_role, $framework, $marxTime, $SETT;
     $col = '4';
-    $duration = 0;
-    $price = 0;
-    $start_learning = '';
+    $duration = $price = 0;
+    $start_learning = $count_instructors = '';
     if ($type) {
         // This controls the modules
         $col = '3';
@@ -501,104 +530,115 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
         $view = cleanUrls($SETT['url'] . '/index.php?page=training&course=view&courseid=' . $contentArr['id']);
         $enlink = cleanUrls($SETT['url'] . '/index.php?page=training&course=get&courseid=' . $contentArr['id']);
         $enroll = $text == 1 ? '<a href="' . $enlink . '">Enroll/Start</a>' : '';
-        $edit = secureButtons(null, 'Edit Courses', 1, $contentArr['id'], null, 1);
-        $vb = $text == 1 ? '<a href="' . $view . '">View Details</a>' : '';
+        $edit = secureButtons(null, 'Edit', 1, $contentArr['id'], null, 1);
+        $vb = $text == 1 ? '<a href="' . $view . '">View</a>' : '';
         $progress_val = $user ? '<span class="progress-value">' . courseDuration($contentArr['id']) . '% complete</span>' : '';
         $price = $contentArr['price'] ? '<span class="currency"></span> ' . $contentArr['price'] : 'Free';
         $duration = doSum($contentArr['id'])[0]['course_duration'];
         $duration = $marxTime->minutesConverter($duration, '%02d Hrs %02d Mins');
-        $count_intructors = doSum($contentArr['id'], 1)[0]['count_intructors'];
+        $count_instructors = doSum($contentArr['id'], 1)[0]['count_intructors'];
     }
 
     // if $text = 0 don't show the $intro
     $intro = $text ? '<p class="card-text"> ' . $intro . ' </p>' : '';
     // This is the course and module HTML card
 
-    $course_card = !$type ? '
-    <div class="col-md-6 col-sm-6">
-      <div class="course-column ">
+    $course_card = !$type ? '<div class="col-md-6 col-sm-6">
+    <div class="course-column ">
         <div class="course-icon">
-          <img class="img-responsive" src="' . $photo . '" title="" alt="course image">
-          <div class="course-price">
-            ' . $price . '
-          </div>
+            <img class="img-responsive" src="' . $photo . '" title="" alt="course image">
+            <div class="course-price">
+                ' . $price . '
+            </div>
         </div>
         <div class="course-content">
-          <div class="title">' . $contentArr['title'] . '</div> 
-          <span class="item "><i class="fa fa-user"></i> '.$count_intructors.'</span>
-          <span class="item "><i class="fa fa-clock-o"></i> '.$duration.'</span>
-          ' . $progress_val . '
+            <div class="title">' . $contentArr['title'] . '</div>
+            <div class="succinct">
+                <span class="item "><i class="fa fa-user"></i> ' . $count_instructors . '</span>
+                <span class="item "><i class="fa fa-clock-o"></i> ' . $duration . '</span>
+            </div>
+            ' . $progress_val . '
         </div>
         <div class="swipe-in">
-          <div class="readmore">
-            ' . $edit . '
-          </div>
-          <div class="readmore">
-            ' . $vb . '
-          </div>
+            <div class="readmore">
+                ' . $edit . '
+            </div>
+            <div class="readmore">
+                ' . $vb . '
+            </div>
         </div>
-      </div>
-    </div>' : '';
+    </div>
+</div>' : '';
 
     $start_now = $user ? 'Continue' : 'Start';
     $module_card = $type ? '
     <div class="module-tile module-tile-wide">
-      <div class="module-icon">
-        <i class="fa fa-book"></i>
-      </div>
-      <div class="module-info">
-        <div class="title">
-          <a href="' . $start_learning . '">
-            ' . $contentArr['title'] . '
-          </a>
+        <div class="module-icon"></div>
+        <div class="module-info">
+            <div class="title">
+                <a href="' . $start_learning . '">
+                    ' . $contentArr['title'] . '
+                </a>
+            </div>
+            <span class="progress-value">' . $progress_val . ' Minutes</span>
+            <div class="module-btn">
+                <a href="' . $start_learning . '" class="btn">' . $start_now . '</a>
+            </div>
         </div>
-        <span class="progress-value">' . $progress_val . ' Minutes</span>
-      </div>
-      <div class="module-btn">
-        <a href="' . $start_learning . '" class="btn">'.$start_now.'</a>
-      </div>
     </div>' : '';
 
-    $module_edit_card = $type == 2 ? '
-    <div class="module-tile module-tile-wide">
-      <div class="module-info">
+    $module_edit_card = $type == 2 ? '<div class="module-tile module-tile-wide">
+    <div class="module-icon"></div>
+    <div class="module-info">
         <div class="title">
-          <a href="' . $start_learning . '">' . $contentArr['title'] . '</a>
+            <a href="' . $start_learning . '">' . $contentArr['title'] . '</a>
         </div>
-        ' . $unlink_module . '
-        <div class="module-btn"> ' . secureButtons(null, 'Edit', 0, null, $contentArr['module_id']) . ' </div>
-      </div>
-    </div>' : '';
+        <div class="module-btn background_lightgrey">
+            ' . $unlink_module . secureButtons(null, 'Edit', 0, null, $contentArr['module_id'], 1) . '
+        </div>
+    </div>
+</div>' : '';
 
     $set_card = $type == 2 ? $module_edit_card : ($type ? $module_card : $course_card);
 
     return $set_card;
 }
 
-function studyModules($course, $curr = null) {
+function studyModules($course, $curr = null)
+{
     global $SETT, $framework;
     $module = getModules(1, $course);
-    $list = '';
+    $list = $current_module_title = $current_module_link = '';
+
     if ($module) {
         foreach ($module as $key => $value) {
-            $act = $curr == $value['module_id'] ? 'active' : '';
+            $active = ($curr == $value['module_id']) ? true : false;
             $link = cleanUrls($SETT['url'] . '/index.php?page=training&course=now_learning&courseid=' . $course . '&moduleid=' . $value['module_id']);
-            $list .= '<a href="' . $link . '"><li class="list-group-item p-3 ' . $act . '">' . $value['title'] . '</li></a>';
+            if ($active) {
+                $current_module_title = $value['title'];
+                $current_module_link = $link;
+            }
+            $list .= '<a href="' . $link . '"><li class="list-group-item p-3 ' . (($active) ? 'highlight' : '') . '">' . $value['title'] . '</li></a>';
         }
     }
     $card =
-    '<div class="card" style="width: 20rem;">
-      <div class="card-header h3">
-        Modules
-      </div>
+        '<div class="card-tile">
+    <div class="card-head card-header-divider">
+        <div class="card-title">
+            <h4>Modules</h4>
+        </div>
+    </div>
+    <div class="card-body p-0">
       <ul class="list-group list-group-flush">
         ' . $list . '
       </ul>
-    </div>';
-    return $card;
+   </div>
+</div>';
+    return [$card, $current_module_title, $current_module_link];
 }
 
-function userRating($rating) {
+function userRating($rating)
+{
     $cs = '<i class="fa fa-star"></i>';
     $os = '<i class="fa fa-star-o"></i>';
 
@@ -618,7 +658,8 @@ function userRating($rating) {
     return $rate;
 }
 
-function instructorCard($ins, $type = null) {
+function instructorCard($ins, $type = null)
+{
     $inst_fullname = $ins['f_name'] . ' ' . $ins['l_name'];
     $inst_about = $ins['about'];
     $inst_photo = getImage($ins['photo'], 1);
@@ -665,7 +706,8 @@ function instructorCard($ins, $type = null) {
     }
 }
 
-function deleteFile($type, $name, $x = null) {
+function deleteFile($type, $name, $x = null)
+{
     global $framework;
 
     if ($type == 0) {
@@ -687,7 +729,8 @@ function deleteFile($type, $name, $x = null) {
     return null;
 }
 
-function fetchBenefits($course_id) {
+function fetchBenefits($course_id)
+{
     $x = sprintf(" WHERE id = '%s'", $course_id);
     $get = getCourses(null, null, $x)[0]['benefits'];
 
@@ -710,7 +753,8 @@ function fetchBenefits($course_id) {
     return $list_benefits;
 }
 
-function notAvailable($item) {
+function notAvailable($item)
+{
     return
         '<div class="pad-section">
         <div class="">
@@ -722,7 +766,8 @@ function notAvailable($item) {
     </div>';
 }
 
-function courseDuration($course) {
+function courseDuration($course)
+{
     global $framework;
 
     $duration = 0;
@@ -741,7 +786,8 @@ function courseDuration($course) {
     return $duration;
 }
 
-function courseAccess($type, $course_id = null) {
+function courseAccess($type, $course_id = null)
+{
     global $framework, $user;
     if ($type == 1) {
         $sql = sprintf("SELECT * FROM " . TABLE_COURSE_ACCESS . " WHERE user_id = '%s' AND course_id = '%s'",
@@ -750,39 +796,41 @@ function courseAccess($type, $course_id = null) {
         $sql = sprintf("SELECT * FROM " . TABLE_COURSE_ACCESS . " AS access LEFT JOIN " . TABLE_COURSES . " AS courses ON `access`.`course_id` = `courses`.`id` WHERE user_id = '%s'",
             $user['id']);
     } else {
-      // Approve users course purchase
-      $var = courseAccess(1, $course_id)[0];
-      $sql = sprintf("INSERT INTO " . TABLE_COURSE_ACCESS . " (`course_id`, `user_id`, `completed`) VALUES ('%s','%s', NULL)", $framework->db_prepare_input($course_id), $user['id']);
-      if ($var) {
-        return 1;
-      } else {
-        return $framework->dbProcessor($sql, 0, 1);
-      }
+        // Approve users course purchase
+        $var = courseAccess(1, $course_id)[0];
+        $sql = sprintf("INSERT INTO " . TABLE_COURSE_ACCESS . " (`course_id`, `user_id`, `completed`) VALUES ('%s','%s', NULL)", $framework->db_prepare_input($course_id), $user['id']);
+        if ($var) {
+            return 1;
+        } else {
+            return $framework->dbProcessor($sql, 0, 1);
+        }
     }
     $results = $framework->dbProcessor($sql, 1);
     return $results;
 }
 
-function moduleProgress($course_id = null, $module_id = null, $type) {
-  global $framework, $user;
-  $mod_id = $framework->db_prepare_input($module_id);
-  $cou_id = $framework->db_prepare_input($course_id);
-  if ($type == 1) {
-    $gt_dur = getModules(2, $module_id)[0];
-    $gt_acc = courseAccess(1, $course_id)[0];
-    $complete = $gt_acc['completed'] == '' ? $mod_id : $gt_acc['completed'].','.$mod_id;
-    $var = $gt_acc['completed'] ? explode(',', $gt_acc['completed']) : array(); 
-    $time = $gt_acc['time_spent'] == 0 ? $gt_dur['duration'] : $gt_acc['time_spent'] + $gt_dur['duration'];
-    if (!in_array($module_id, $var)) {
-      $sql = sprintf("UPDATE " . TABLE_COURSE_ACCESS . " SET `current_module` = '%s',"
-        . " `time_spent` = '%s', `completed` = '%s' WHERE course_id = '%s'"
-        . " AND user_id = '%s'", $mod_id, $time, $complete, $cou_id, $user['id']);
+function moduleProgress($course_id = null, $module_id = null, $type)
+{
+    global $framework, $user;
+    $mod_id = $framework->db_prepare_input($module_id);
+    $cou_id = $framework->db_prepare_input($course_id);
+    if ($type == 1) {
+        $gt_dur = getModules(2, $module_id)[0];
+        $gt_acc = courseAccess(1, $course_id)[0];
+        $complete = $gt_acc['completed'] == '' ? $mod_id : $gt_acc['completed'] . ',' . $mod_id;
+        $var = $gt_acc['completed'] ? explode(',', $gt_acc['completed']) : array();
+        $time = $gt_acc['time_spent'] == 0 ? $gt_dur['duration'] : $gt_acc['time_spent'] + $gt_dur['duration'];
+        if (!in_array($module_id, $var)) {
+            $sql = sprintf("UPDATE " . TABLE_COURSE_ACCESS . " SET `current_module` = '%s',"
+                . " `time_spent` = '%s', `completed` = '%s' WHERE course_id = '%s'"
+                . " AND user_id = '%s'", $mod_id, $time, $complete, $cou_id, $user['id']);
+        }
     }
-  }
-  return isset($sql) ? $framework->dbProcessor($sql, 0, 1) : 0;
+    return isset($sql) ? $framework->dbProcessor($sql, 0, 1) : 0;
 }
 
-function headerFooter($type) {
+function headerFooter($type)
+{
     global $LANG, $SETT, $PTMPL, $contact_, $configuration, $framework, $user;
     if ($type) {
         $theme = new themer('container/header');
@@ -794,29 +842,32 @@ function headerFooter($type) {
     $login_link = cleanUrls($SETT['url'] . '/index.php?page=account&process=login');
     $PTMPL['dashboard_url'] = cleanUrls($SETT['url'] . '/index.php?page=homepage');
     $PTMPL['user_url'] = $user_url = cleanUrls($SETT['url'] . '/index.php?page=account&profile=home');
-    $PTMPL['username_url'] = simpleButtons('bordered shw-0', 'Account', $user_url); 
+    $PTMPL['username_url'] = simpleButtons('logout', 'Account', $user_url, 1);
     $PTMPL['site_title_'] = ucfirst($configuration['site_name']);
-    $PTMPL['copyright'] = '&copy; '.ucfirst($LANG['copyright']).' '.date('Y').' '.$contact_['c_line'];
+    $PTMPL['copyright'] = '&copy; ' . ucfirst($LANG['copyright']) . ' ' . date('Y') . ' ' . $contact_['c_line'];
     $PTMPL['logout_url'] = cleanUrls($SETT['url'] . '/index.php?page=homepage&logout=true');
+
 
     $avatar_division = '
       <div class="top_avatar">
         <div class="user_avatar">
           <a data-toggle="collapse" href="#logout" title="edit profile">
-            <img alt="'.ucfirst($user['username']).' avatar" src="'.getImage($user['photo'], 1).'">
+            <img alt="' . ucfirst($user['username']) . ' avatar" src="' . getImage($user['photo'], 1) . '">
           </a>
         </div>
         <div class="user_name">
-          '.ucfirst($user['username']).'
+          ' . ucfirst($user['username']) . '
         </div>
       </div>';
+    $login_division = '<div class="">' . simpleButtons("bordered background_green2", 'Login', $login_link) . ' </div > ';
 
-    $PTMPL['action_btn_link_avatar'] = $user ? $avatar_division : simpleButtons('bordered shw-0', 'Login', $login_link); ;
+    $PTMPL['action_btn_link_avatar'] = $user ? $avatar_division : $login_division;
     $section = $theme->make();
     return $section;
 }
 
-function deleteItems($type = null, $cid, $mid) {
+function deleteItems($type = null, $cid, $mid)
+{
     global $framework, $user, $user_role;
     $allow = 0;
 
@@ -830,7 +881,7 @@ function deleteItems($type = null, $cid, $mid) {
 
     if ($type == 1) {
         // unlink module
-        $sql = sprintf("DELETE FROM " . TABLE_COURSE_MODULES . " WHERE course_id = '%s' AND module_id = '%s'", $cid, $mid);
+        $sql = sprintf("DELETE FROM " . TABLE_COURSE_MODULES . " WHERE course_id = ' % s' AND module_id = ' % s'", $cid, $mid);
     }
     $results = $framework->dbProcessor($sql, 0, 1);
     return $results;
