@@ -1,17 +1,32 @@
-<section class="jumbotron text-center m-4">
-	<div class="container">
-		<h1 class="jumbotron-heading">You are paying for {$course_title}</h1>
-		<hr>  
-		<img src="{$raveverified}">
-		<div class="h4">Your transaction is secured, and your information is encrypted and teporarily stored until the end of this transaction.</div>
-		<hr>
-		<h5 class="jumbotron-heading">Paying for {$course_title} will cost you {$course_price}</h5>
-		<div class="album py-5 bg-light m-4"> 
-			<div class="container">
-                <form method="post" action="" id="cc_pay"> 
-                  <button name="pay" type="submit" class="btn btn-success">Check Out<i class="fa fa-credit-card-alt px-1"></i></button>{$form_body}
-                </form>   
-			</div>
-		</div>		
-	</div>
-</section>
+<div class="wrapper">
+    <div id="dashboard">
+        <div class="dashboard_content">
+            <div class="row justify-content-center">
+                <a class="navbar-brand" href="{$site_url}">
+                    <img alt="{$site_title_} logo" class="site_logo_big" src="{$site_logo}">
+                </a>
+            </div>
+            <section class="jumbotron text-center m-4">
+                <div class="container">
+                    <h1 class="jumbotron-heading">You are paying for {$course_title}</h1>
+                    <hr>
+                    <img src="{$raveverified}">
+                    <div class="h4">Your transaction is secured, and your information is encrypted and teporarily stored
+                        until the end of this transaction.
+                    </div>
+                    <hr>
+                    <h5 class="jumbotron-heading">Paying for {$course_title} will cost you {$course_price}</h5>
+                    <div class="album py-5 bg-light m-4">
+                        <div class="container">
+                            <form action="" id="cc_pay" method="post">
+                                <button class="btn btn-success" name="pay" type="submit">Check Out<i
+                                        class="fa fa-credit-card-alt px-1"></i></button>
+                                {$form_body}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
