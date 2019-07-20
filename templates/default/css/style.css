@@ -736,7 +736,7 @@ svg.icon:not(.icon--full-color) path {
 
 .course-header .course-title {
     display: block;
-    margin-bottom: 60px;
+    margin-bottom: 10px;
     font-size: 4rem;
     color: #fff;
     line-height: 1.2;
@@ -752,7 +752,7 @@ svg.icon:not(.icon--full-color) path {
 
 .course-header .course-cta {
     display: block;
-    margin-top: -25px
+    margin-top: 10px
 }
 
 .course-hero {

@@ -66,24 +66,25 @@
                     </div>
                 </div>
                 <div class="pad-section">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="profile_img">
-                                <img class=" img-thumbnail m-auto " src="{$photo}">
-                            </div>
-                            <div class="card">
-                                <div class="py-3 px-2">
-                                    <div class="para color_grey">
-                                        {$about_}
+                    <div class="user-info-list card card-default">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="profile_img">
+                                    <img class=" img-thumbnail m-auto " src="{$photo}">
+                                </div>
+                                <div class="card ">
+                                    <div class="py-3 px-2">
+                                        <div class="para color_grey">
+                                            {$about_}
+                                        </div>
+                                    </div>
+                                    <div class="text-lg-right text-sm-center">
+                                        <a class="btn" href="{$update_profile}"><i class="fa fa-edit"></i> Edit profile
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="text-lg-right text-sm-center">
-                                    <a class="btn" href="{$update_profile}"><i class="fa fa-edit"></i> Edit profile </a>
-                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-8 ">
-                            <div class="user-info-list card card-default">
+                            <div class="col-md-8 ">
                                 <div class="card-header card-header-divider">About Me</div>
                                 <div class="card-body">
                                     <table class="no-border no-strip skills">
@@ -119,31 +120,36 @@
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
-                            <p class="hint">You can always update your profile, your certificate will contain the
-                                details found when it is being prepared.</p>
-                            <div class="user-info-list ">
-                                <div class="card-tile">
-                                    <div class="card-head">
-                                        <div class="container">
-                                            <div class="row justify-content-center">
-                                                <div class="col-md-10 col-sm-8">
-                                                    <div class="card-title">
-                                                        <h3 class="title">Course Track</h3>
-                                                        <span class="caption">Your course track shows you how many courses you are currently taking, and their respective progress</span>
+                                <div class="card-body">
+                                    <p class="hint">
+                                        You can always update your profile, your certificate will contain
+                                        the
+                                        details found when it is being prepared.</p>
+                                </div>
+                                <div class="user-info-list shadow">
+                                    <div class="card-tile">
+                                        <div class="card-head">
+                                            <div class="container">
+                                                <div class="row justify-content-center">
+                                                    <div class="col-md-10 col-sm-8">
+                                                        <div class="card-title">
+                                                            <h3 class="title">Course Track</h3>
+                                                            <span class="caption">Your course track shows you how many courses you are currently taking, and their respective progress</span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-2 col-sm-4">
-                                                    <div class="card-value">
-                                                        <span>{$course_count}</span>
+                                                    <div class="col-md-2 col-sm-4">
+                                                        <div class="card-value">
+                                                            <span>{$course_count}</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        {$course_continue}
                                     </div>
-                                    {$course_continue}
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
