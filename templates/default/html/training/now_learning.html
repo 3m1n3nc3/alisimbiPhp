@@ -1,42 +1,128 @@
 <div class="wrapper">
     <div id="dashboard">
         {$global_header}
-		<div class="container m-3">					
-			<div class="card p-5">
-				<div class="card-block">
-					<h4 class="card-title">{$title_header}</h4>
-					<div class="container m-2 text-center">{$link_message}</div>  
+        <div class="brcr-tile brcr-cover">
+            <div class="container">
+                <ul class="brcr">
+                    <li class="level"><i class="fa fa-home"></i> <a href="{$site_url}">Home</a></li>
+                    <li class="level"><a href="">Course</a></li>
+                    <li class="level">{$title_header}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="dashboard_content">
+            <div class="user-info-list ">
+                <div class="card-tile">
+                    <div class="container p-0">
+                        <div class="card-head">
+                            <div class="card-title">
+                                <h3 class="title">Now Learning</h3>
+                                <span class="caption">You are learning <strong>{$title_header}</strong></span>
+                            </div>
+                        </div>
+                        <div class="card-foot">
+                            {$course_edit_btn}
+                            {$start_test_btn}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
 
-					<div class="row">
-						<div class="col-sm-4 border-right">
-							{$list_modules}
-						</div>
-						<div class="col-sm-8">
-							<iframe width="640" height="368"
-								scrolling="no"
-								style="border: none; overflow: hidden; cursor: not-allowed" 
-								src="{$video_log}">
-							</iframe> 
+                <div class="user-info-list ">
+                    <div class="row">
+                        <div class="col-md-4">
+                            {$list_modules}
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-tile">
+                                <div class="card-head card-header-divider">
+                                    <div class="card-title">
+                                        <h4>{$current_module_title}</h4>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <iframe class="video_frame" src="{$video_log}"></iframe>
+                                </div>
+                                <div class="card-foot">
+                                    <div class="hint">Course Progress:</div>&nbsp;<strong>{$percent_complete}%</strong>
+                                </div>
+                            </div>
+                            <div class="card-tile">
+                                <div class="course_tab">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li class="nav-item">
+                                            <a aria-controls="description of course " aria-selected="true"
+                                               class="nav-link active"
+                                               data-toggle="tab"
+                                               href="#descr_tab_content" role="tab"
+                                               title="description of course tab">description</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a aria-controls="Transcript of course " aria-selected="false"
+                                               class="nav-link"
+                                               data-toggle="tab"
+                                               href="#transcript_tab_content" role="tab">transcript</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a aria-controls="pdf of course" aria-selected="false"
+                                               class="nav-link"
+                                               data-toggle="tab"
+                                               href="#resource_tab_content" role="tab">Resources</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tab-content">
+                                    <!-- Description tab -->
+                                    <div aria-labelledby="intro-tab" class="tab-pane fade show active "
+                                         id="descr_tab_content" role="tabpanel">
+                                        <div class="px-3 py-3">
+                                            <p class="para">{$course_intro}</p>
+                                        </div>
+                                    </div>
+                                    <!-- Intro -->
 
-							<p>
-                                <a aria-controls="collapseTranscript" aria-expanded="false" class="btn"
-                                   data-toggle="collapse" href="#viewTranscript" role="button">
-							    View Transcript
-                                </a> 
-                                <span class="font-weight-bold">Course Progress is at {$percent_complete}%</span>
-                                {$test_btn}
-							</p>
-							<div class="collapse" id="viewTranscript">
-							  <div class="card card-body">
-							    {$transcript}
-							  </div>
-							</div>
-							{$course_edit_btn}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-        {$global_footer}
-	</div>
+                                    <!-- Transcript -->
+                                    <div class="tab-pane fade" id="transcript_tab_content" role="tabpanel">
+                                        <div class="px-3 py-3">
+                                            <p class="para"> {$transcript}</p>
+                                        </div>
+                                    </div>
+                                    <!-- Transcript -->
+                                    <!-- PDF -->
+                                    <div class="tab-pane fade" id="resource_tab_content" role="tabpanel">
+                                        <div class="px-3 py-3">
+                                            <div class="resource">
+                                                <div class="r-item">
+                                                    <a href="">
+                                                        <i class="fa fa-file-pdf-o"></i>
+                                                        <span class="caption" title="pdf">pdf</span>
+                                                    </a>
+                                                </div>
+                                                <div class="r-item">
+                                                    <a href="">
+                                                        <i class="fa fa-file-excel-o"></i>
+                                                        <span class="caption"
+                                                              title="excel worksheet">excel worksheet</span>
+                                                    </a>
+                                                </div>
+                                                <div class="r-item">
+                                                    <a href="">
+                                                        <i class="fa fa-file-archive-o"></i>
+                                                        <span class="caption" title="archives">archives</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- PDF -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {$global_footer}
+        </div>
+    </div>
 </div>

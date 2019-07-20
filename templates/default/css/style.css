@@ -24,7 +24,6 @@ body, html {
     .container {
         width: 100% !important;
         max-width: 100% !important;
-        padding: 0 !important;
     }
 }
 
@@ -135,6 +134,7 @@ svg.icon:not(.icon--full-color) path {
 .instructors .instructor {
     padding: 5% 7% 2%;
     min-width: 50%;
+    min-height: 300px;
     position: relative;
     display: flex;
     flex-flow: column wrap;
@@ -144,6 +144,7 @@ svg.icon:not(.icon--full-color) path {
     border-bottom: 1px solid #e6e6e6;
     -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, .05);
     box-shadow: 0 2px 0 rgba(0, 0, 0, .05);
+    flex: 1;
 }
 
 .instructors .instructor .i-profile-img {
@@ -186,6 +187,7 @@ svg.icon:not(.icon--full-color) path {
     margin-left: 10px;
     /* margin-top: 10px; */
     font-weight: 300;
+    text-align: center;
 
 }
 
@@ -654,6 +656,11 @@ svg.icon:not(.icon--full-color) path {
     -ms-word-wrap: anywhere;
     word-wrap: anywhere;
     word-break: normal;
+    text-transform: capitalize;
+}
+
+.text-shw {
+    text-shadow: 0px 2px 2px rgba(51, 51, 51, 0.39);
 }
 
 .bold {
@@ -698,9 +705,11 @@ svg.icon:not(.icon--full-color) path {
 }
 
 .course_tab .nav-item .nav-link {
-    padding: 30px 30px;
+    padding: 15px 15px;
     border: none;
     color: currentColor;
+    text-transform: capitalize;
+    font-size: 14px;
 }
 
 .course_tab .nav-item .nav-link.active {
@@ -727,6 +736,18 @@ svg.icon:not(.icon--full-color) path {
 
 .course-header .course-title {
     display: block;
+    margin-bottom: 60px;
+    font-size: 4rem;
+    color: #fff;
+    line-height: 1.2;
+    font-weight: 900;
+}
+
+@media (max-width: 560px) {
+    .course-header .course-title {
+        margin-bottom: 30px;
+        font-size: 2.5rem;
+    }
 }
 
 .course-header .course-cta {
@@ -753,7 +774,7 @@ svg.icon:not(.icon--full-color) path {
 @media (max-width: 500px) {
     .course-hero .cover-img img {
         height: 100%;
-        width: auto;
+        width: 100%;
     }
 }
 
@@ -870,7 +891,7 @@ svg.icon:not(.icon--full-color) path {
     font-size: 14px;
     overflow: hidden;
     border-radius: 4px;
-    padding: 10px 15px;
+    padding: 8px 15px;
     -webkit-transition: all .5s ease-in-out;
     -o-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
@@ -898,6 +919,7 @@ svg.icon:not(.icon--full-color) path {
     width: 20px;
     height: 20px;
     color: #888;
+    text-align: center;
     top: 0;
     margin-top: 10px;
     content: '\f107';
@@ -952,9 +974,7 @@ svg.icon:not(.icon--full-color) path {
     border: none;
 }
 
-.course-tab .nav-item .nav-link {
-    padding: 20px 30px;
-    border: none;
+.course-tab .nav-item a {
 }
 
 .course-tab .nav-item .nav-link.active {
@@ -1279,21 +1299,31 @@ footer {
     display: inline-block;
     vertical-align: top;
     border-top: none;
+    font-weight: 700;
 }
 
 .course-column .course-icon .course-price .currency:before {
     position: relative;
-    margin-right: 2px;
     font-size: 12px;
     content: '\20A6';
     display: inline-block;
     vertical-align: top;
+    font-weight: 300px;
+}
+
+.course-tile .course-info .course-content .succinct {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex: 1;
 }
 
 .course-column .course-content .item {
-    display: inline-block;
-    margin-right: 5px;
+    display: block;
+    /*margin-right: 5px;*/
     color: hsl(0, 0%, 51%)
+
 }
 
 .course-column .course-content .title {
@@ -1308,6 +1338,10 @@ footer {
     color: var(--green);
 }
 
+.explore {
+    background-color: hsl(0, 23%, 91%);
+}
+
 .relative {
     position: relative;
     overflow: hidden;
@@ -1317,7 +1351,7 @@ footer {
 
 .suspend {
     position: fixed;
-    z-index: 222;
+    z-index: 10;
     width: 30%;
     height: 100%;
     overflow: hidden;
@@ -1383,9 +1417,9 @@ footer {
 }
 
 .readmore a {
-    padding: 10px 20px 5px;
+    padding: 5px 20px;
     background: transparent;
-    color: #fff;
+    /*color: #fff;*/
     margin-right: 10px;
     box-shadow: 0 6px 45px -10px #cacaca;
     border: 1px solid currentColor;
@@ -1446,9 +1480,12 @@ select option {
 
 .module-widget {
     background-color: #fafafa;
-    padding-bottom: 10%;
-    padding: 5% 10%;
+    /*padding: 5% 10%;*/
     display: block;
+}
+
+.module-counter {
+    counter-reset: module-tile;
 }
 
 .module-tile {
@@ -1458,17 +1495,16 @@ select option {
     justify-content: flex-start;
     width: 100%;
     position: relative;
-    -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, .05);
-    box-shadow: 0 2px 0 rgba(0, 0, 0, .05);
+    -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, .105);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, .105);
     overflow: hidden;
     background: white;
     object-fit: cover;
     object-position: center;
     min-height: 100px;
     border: 1px solid #f4f4f4;
-    /* margin-bottom: 30px; */
+    margin-bottom: 15px;
     transition: all .35s ease-in-out;
-    /* border-radius: 9px */
 }
 
 .module-tile:hover {
@@ -1486,9 +1522,17 @@ select option {
     font-size: 2rem;
     text-align: center;
     display: inline-block;
+    margin: 0;
     vertical-align: middle;
     padding: 10px 20px;
-    color: rgb(205, 222, 212)
+    color: hsl(0, 0%, 89%);
+    font-weight: 700;
+    mix-blend-mode: multiply;
+}
+
+.module-tile .module-icon:before {
+    counter-increment: module-tile;
+    content: counter(module-tile);
 }
 
 .module-tile .module-icon img {
@@ -1513,32 +1557,49 @@ select option {
     overflow: hidden;
     transition: all .35s ease-in-out;
     color: #333;
+    border-left: 2px solid var(--gray-light);
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
+}
+
+.module-tile .module-info .title a {
+    margin-left: 5px;
+    /*border: 1px solid currentColor;*/
 }
 
 .module-tile .module-info .title {
     font-size: 14px;
     font-weight: 300;
     line-height: 1.5;
-    padding-left: 5px;
     margin-bottom: 10px;
+    border-bottom: 1px dashed #d6d6d6
 }
 
 .module-tile .module-btn {
     width: 100%;
-    padding: 0 10px;
-    margin-top: 10px;
+    padding: 10px 10px;
     font-size: 14px;
-    margin-bottom: 10px;
 }
 
-.module-tile .btn {
-    /*padding: 5px;*/
+.module-tile a {
+    padding: 5px 10px;
     line-height: normal;
     margin: 2px auto;
-    border: 1px solid transparent;
+    font-size: 12px;
+    /*color: var(--green);*/
+    display: inline-block;
+}
+
+.module-tile .module-btn a {
+    background-color: #fff;
+    border-radius: 2px;
+    border: 1px solid currentColor;
+    border-bottom-width: 2px;
+}
+
+.module-tile .module-btn a:hover {
+    background: var(--green);
 }
 
 .module-tile .module-info .module-content {
@@ -1640,4 +1701,91 @@ select option {
     align-content: center;
     text-align: center;
     color: #e6e6e6;
+}
+
+.ben {
+    padding: 5px 10px;
+    display: inline-block;
+    margin-bottom: 4px;
+    border: 2px solid;
+    border-top-width: 1px;
+}
+
+.resource {
+    display: flex;
+    flex: 1;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.resource .r-item {
+    font-size: 60px;
+    margin-right: 20px;
+    color: #a6a6a6;
+    position: relative;
+    width: 60px;
+    text-align: center;
+}
+
+.resource .r-item .caption {
+    display: block;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+*.highlight {
+    background: var(--green-overlay) !important;
+    color: #fff;
+    font-weight: 700;
+}
+
+.hide {
+    display: none !important;
+    visibility: hidden;
+}
+
+.video_frame {
+    width: 100%;
+    display: block;
+    min-height: 250px;
+    object-fit: cover;
+    object-position: center;
+    scroll-snap-type: none;
+    border: none;
+    overflow: hidden;
+    position: relative;
+    cursor: not-allowed;
+}
+
+.upload_pin {
+    position: absolute;
+    background: #f4f4f4;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    left: 50%;
+    bottom: 0;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
+    font-size: 20px;
+    object-position: center;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-box-shadow: 0px 4px 8px #000;
+    color: #333;
+    cursor: pointer;
+    -moz-box-shadow: 0px 4px 8px #000;
+    box-shadow: 0px 4px 8px #000;
+}
+
+.upload_pin:hover {
+    color: var(--green);
 }

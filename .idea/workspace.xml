@@ -5,20 +5,102 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f36086c-b457-4f78-92d6-ba767f4aacb5" name="Default Changelist" comment="Merge branch 'resolution' of https://github.com/3m1n3nc3/alisimbiPhp into resolution&#10;&#10;# Conflicts:&#10;#&#9;controller/homepage.php&#10;#&#9;controller/training.php&#10;#&#9;error.log&#10;#&#9;includes/classes_extension.php&#10;#&#9;templates/default/css/dashboard.css&#10;#&#9;templates/default/css/style0.css&#10;#&#9;templates/default/css/variable.css&#10;#&#9;templates/default/html/account/profile_home.html&#10;#&#9;templates/default/html/account/profile_update.html&#10;#&#9;templates/default/html/homepage/content.html&#10;#&#9;templates/default/html/training/course_info.html&#10;#&#9;templates/default/html/training/home.html&#10;#&#9;templates/default/html/training/module_add_edit.html&#10;#&#9;templates/default/js/custom.js">
+      <change beforePath="$PROJECT_DIR$/.idea/alisimbi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/alisimbi.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/composerJson.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/composerJson.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d0777356-e903-4bf5-bbcf-a501db8828b9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d0777356-e903-4bf5-bbcf-a501db8828b9.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/root.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/root.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alisimbi.sql" beforeDir="false" afterPath="$PROJECT_DIR$/alisimbi.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/connection/connector.php" beforeDir="false" afterPath="$PROJECT_DIR$/connection/connector.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/connection/location.php" beforeDir="false" afterPath="$PROJECT_DIR$/connection/location.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/connection/photo_upload.php" beforeDir="false" afterPath="$PROJECT_DIR$/connection/photo_upload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/connection/upload_video.php" beforeDir="false" afterPath="$PROJECT_DIR$/connection/upload_video.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/training.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/training.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/error.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/classes.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/classes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/classes_extension.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/classes_extension.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/constants.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/constants.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locale.sql" beforeDir="false" afterPath="$PROJECT_DIR$/locale.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/css/bootstrap-select.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/bootstrap-select.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/default/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/dashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/css/preloader.gif" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/preloader.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/css/pure-min.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/pure-min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/css/stroke_icon.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/stroke_icon.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/default/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/default/css/style0.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/style0.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/css/uploader.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/uploader.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/default/css/variable.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/variable.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/font/fontello/fontello08e1.eot" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/font/fontello/fontello08e1.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/font/fontello/fontello08e1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/font/fontello/fontello08e1.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/font/fontello/fontello08e1.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/font/fontello/fontello08e1.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/font/fontello/fontello08e1.woff" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/font/fontello/fontello08e1.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/font/fontello/fontello08e1.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/font/fontello/fontello08e1.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/html/account/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/account/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/default/html/account/profile_home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/account/profile_home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/default/html/account/profile_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/account/profile_update.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/html/account/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/account/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/default/html/container/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/container/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/default/html/homepage/content.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/homepage/content.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/html/homepage/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/homepage/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/html/partial.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/partial.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/html/training/add_questions.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/add_questions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/html/training/course_add_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/course_add_edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/html/training/course_get.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/course_get.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/default/html/training/course_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/course_info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/html/training/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/html/training/link_module.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/link_module.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/default/html/training/module_add_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/module_add_edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/html/training/now_learning.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/now_learning.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/html/training/take_test.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/take_test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/html/training/upload_video.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/upload_video.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/img/border-image.png" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/img/border-image.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/img/icons.png" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/img/icons.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/img/loader.gif" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/img/loader.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/img/raveverified.png" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/img/raveverified.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/js/bootstrap-select.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/js/bootstrap-select.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/js/ckeditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/js/ckeditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/js/custom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/js/fileupload/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/js/fileupload/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/1104964548_1999808181_2109771550_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1104964548_1999808181_2109771550_n.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/1117575548_1644772583_1221161113_n.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1117575548_1644772583_1221161113_n.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/1126235064_694408361_1269459394_n.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1126235064_694408361_1269459394_n.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/1239738311_25007336_812689415_n.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1239738311_25007336_812689415_n.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/1264765621_136861335_753111275_n.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1264765621_136861335_753111275_n.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/1267971864_1508098222_1431329653_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1267971864_1508098222_1431329653_n.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/1318414274_178722639_1566536545_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1318414274_178722639_1566536545_n.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/1351121296_395472417_901397762_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1351121296_395472417_901397762_n.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/1381441986_1967678521_322549641_n.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1381441986_1967678521_322549641_n.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/1466121137_1148508010_1028774394_n.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1466121137_1148508010_1028774394_n.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/1518552764_2051961206_418870363_n.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1518552764_2051961206_418870363_n.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/1569028606_1242033421_593751457_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1569028606_1242033421_593751457_n.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/1681424921_803980159_778844034_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1681424921_803980159_778844034_n.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/1713207144_1041877524_346361011_n.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1713207144_1041877524_346361011_n.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/1779767643_1875758380_1703755364_n.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1779767643_1875758380_1703755364_n.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/1781141897_1361286276_839619606_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1781141897_1361286276_839619606_n.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/1893116749_217999079_861368879_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1893116749_217999079_861368879_n.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/1955125133_1330618045_1003715858_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1955125133_1330618045_1003715858_n.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/2093004397_1507239086_1872300956_n.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/2093004397_1507239086_1872300956_n.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/39283445_631686594_2028908985_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/39283445_631686594_2028908985_n.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/507064966_735836057_410694_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/507064966_735836057_410694_n.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/590350285_32334601_123605503_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/590350285_32334601_123605503_n.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/699403423_2109563433_1717062400_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/699403423_2109563433_1717062400_n.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/797913795_570634012_537211558_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/797913795_570634012_537211558_n.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/87179062_243665097_326628346_n.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/87179062_243665097_326628346_n.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/872541950_1631821693_1614954296_n.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/872541950_1631821693_1614954296_n.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/950921736_1696954136_1909978056_n.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/950921736_1696954136_1909978056_n.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/951227724_69528760_857796464_n.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/951227724_69528760_857796464_n.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/994367359_167873750_906025023_n.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/994367359_167873750_906025023_n.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/img/994855119_1041962009_1288335880_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/994855119_1041962009_1288335880_n.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/videos/1972153517_671281916_v.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/videos/1972153517_671281916_v.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/videos/defaultvid.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/videos/defaultvid.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,48 +138,23 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/templates/default/html/account/profile_update.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="147">
-                  <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/templates/default/css/dashboard.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="399">
-                  <caret line="296" column="23" selection-start-line="296" selection-start-column="23" selection-end-line="296" selection-end-column="23" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/default/html/homepage/content.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="583" column="25" lean-forward="true" selection-start-line="583" selection-start-column="25" selection-end-line="583" selection-end-column="25" />
+              <folding>
+                <element signature="n#div#0;n#div#3;n#div#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>-price</find>
-      <find>.price</find>
-      <find>\</find>
-      <find>foot</find>
-      <find>footer</find>
-      <find>i-mis</find>
-      <find>$course_edit_btn</find>
-      <find>course_edit_btn</find>
-      <find>instr</find>
-      <find>instruc</find>
-      <find>card-</find>
       <find>site</find>
       <find>contai</find>
       <find>course-hea</find>
@@ -116,12 +173,26 @@
       <find>brcr</find>
       <find>background_green2</find>
       <find>start_</find>
+      <find>explore</find>
+      <find>.explo</find>
+      <find>.explore</find>
+      <find>upload</find>
+      <find>about</find>
+      <find>about_</find>
+      <find>_about_</find>
+      <find>empty</find>
+      <find>action_btn_link_avatar</find>
+      <find>top_ava</find>
+      <find>emp</find>
       <find>username_url</find>
     </findStrings>
     <replaceStrings>
       <replace>.brcr-tile .brcr</replace>
       <replace>let</replace>
     </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -139,23 +210,24 @@
         <option value="$PROJECT_DIR$/controller/homepage.php" />
         <option value="$PROJECT_DIR$/templates/default/html/training/upload_video.html" />
         <option value="$PROJECT_DIR$/templates/default/js/custom.js" />
-        <option value="$PROJECT_DIR$/templates/default/html/training/home.html" />
         <option value="$PROJECT_DIR$/templates/default/html/container.html" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/controller/training.php" />
-        <option value="$PROJECT_DIR$/includes/config.php" />
         <option value="$PROJECT_DIR$/controller/account.php" />
-        <option value="$PROJECT_DIR$/templates/default/html/homepage/content.html" />
         <option value="$PROJECT_DIR$/templates/default/html/training/module_add_edit.html" />
-        <option value="$PROJECT_DIR$/templates/default/css/style.css" />
-        <option value="$PROJECT_DIR$/templates/default/html/account/profile_home.html" />
         <option value="$PROJECT_DIR$/templates/default/css/variable.css" />
-        <option value="$PROJECT_DIR$/templates/default/html/container/header.html" />
-        <option value="$PROJECT_DIR$/templates/default/css/style0.css" />
         <option value="$PROJECT_DIR$/templates/default/html/training/course_info.html" />
-        <option value="$PROJECT_DIR$/includes/classes_extension.php" />
+        <option value="$PROJECT_DIR$/includes/config.php" />
+        <option value="$PROJECT_DIR$/controller/training.php" />
+        <option value="$PROJECT_DIR$/templates/default/css/style0.css" />
+        <option value="$PROJECT_DIR$/templates/default/html/training/home.html" />
         <option value="$PROJECT_DIR$/templates/default/html/account/profile_update.html" />
+        <option value="$PROJECT_DIR$/templates/default/html/account/register.html" />
+        <option value="$PROJECT_DIR$/templates/default/html/container/header.html" />
+        <option value="$PROJECT_DIR$/templates/default/css/style.css" />
         <option value="$PROJECT_DIR$/templates/default/css/dashboard.css" />
+        <option value="$PROJECT_DIR$/templates/default/html/account/profile_home.html" />
+        <option value="$PROJECT_DIR$/includes/classes_extension.php" />
+        <option value="$PROJECT_DIR$/templates/default/html/homepage/content.html" />
       </list>
     </option>
   </component>
@@ -171,11 +243,10 @@
     <option name="height" value="735" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -183,72 +254,67 @@
               <item name="alisimbi" type="b2602c69:ProjectViewProjectNode" />
               <item name="alisimbi" type="462c0819:PsiDirectoryNode" />
             </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
             <path>
-              <item name="alisimbi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alisimbi" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
             </path>
             <path>
-              <item name="alisimbi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alisimbi" type="462c0819:PsiDirectoryNode" />
-              <item name="includes" type="462c0819:PsiDirectoryNode" />
+              <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="controller" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="alisimbi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alisimbi" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="includes" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="alisimbi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alisimbi" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="default" type="462c0819:PsiDirectoryNode" />
+              <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="alisimbi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alisimbi" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="default" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="default" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="alisimbi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alisimbi" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="default" type="462c0819:PsiDirectoryNode" />
-              <item name="html" type="462c0819:PsiDirectoryNode" />
+              <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="default" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="css" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="alisimbi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alisimbi" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="default" type="462c0819:PsiDirectoryNode" />
-              <item name="html" type="462c0819:PsiDirectoryNode" />
-              <item name="account" type="462c0819:PsiDirectoryNode" />
+              <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="default" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="html" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="alisimbi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alisimbi" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="default" type="462c0819:PsiDirectoryNode" />
-              <item name="html" type="462c0819:PsiDirectoryNode" />
-              <item name="container" type="462c0819:PsiDirectoryNode" />
+              <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="default" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="html" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="homepage" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="alisimbi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alisimbi" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="default" type="462c0819:PsiDirectoryNode" />
-              <item name="html" type="462c0819:PsiDirectoryNode" />
-              <item name="homepage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="alisimbi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alisimbi" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="default" type="462c0819:PsiDirectoryNode" />
-              <item name="html" type="462c0819:PsiDirectoryNode" />
-              <item name="training" type="462c0819:PsiDirectoryNode" />
+              <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="default" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="html" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="training" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -296,6 +362,7 @@
       <workItem from="1562881048729" duration="5754000" />
       <workItem from="1563280298655" duration="23243000" />
       <workItem from="1563447273246" duration="8347000" />
+      <workItem from="1563606493364" duration="7986000" />
     </task>
     <task id="LOCAL-00001" summary="Edit module ui update">
       <created>1563367004954</created>
@@ -315,13 +382,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82858000" />
+    <option name="totallyTimeSpent" value="94358000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-37" width="1366" height="805" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -335,7 +402,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49924242" weight="0.32914925" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.34030685" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5007576" side_tool="true" weight="0.32914925" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5007576" side_tool="true" weight="0.32900432" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32900432" />
       <window_info anchor="bottom" id="Inspection Results" order="13" visible="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -381,13 +448,6 @@
     <entry file="file://$PROJECT_DIR$/error.log">
       <provider selected="true" editor-type-id="LogFileEditorProvider" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="34" column="22" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/default/images/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -403,26 +463,6 @@
           <folding>
             <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#form#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/html/training/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-          <folding>
-            <element signature="n#nav#0;n#header#0;n#div#0;n#div#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="264" lean-forward="true" selection-start-line="264" selection-end-line="264" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -445,64 +485,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="317">
           <caret line="83" column="34" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/training.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#p#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="29" column="32" lean-forward="true" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/html/homepage/content.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="466" column="34" lean-forward="true" selection-start-line="466" selection-start-column="34" selection-end-line="466" selection-end-column="34" />
-          <folding>
-            <element signature="n#div#0;n#div#3;n#div#0;n#!!top" />
-            <element signature="n#div#1;n#div#3;n#div#0;n#!!top" />
-            <element signature="e#1352#1359#0" expanded="true" />
-            <element signature="n#li#0;n#ul#0;n#div#1;n#div#0;n#div#5;n#div#0;n#!!top" />
-            <element signature="n#li#1;n#ul#0;n#div#1;n#div#0;n#div#5;n#div#0;n#!!top" />
-            <element signature="n#li#2;n#ul#0;n#div#1;n#div#0;n#div#5;n#div#0;n#!!top" />
-            <element signature="n#li#3;n#ul#0;n#div#1;n#div#0;n#div#5;n#div#0;n#!!top" />
-            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#5;n#div#0;n#!!top" />
-            <element signature="n#div#3;n#div#0;n#div#1;n#div#0;n#div#5;n#div#0;n#!!top" />
-            <element signature="n#div#2;n#div#0;n#div#5;n#div#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="837" column="21" selection-start-line="837" selection-start-column="21" selection-end-line="837" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/account.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="138" column="13" lean-forward="true" selection-start-line="138" selection-start-column="13" selection-end-line="138" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/html/account/profile_home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="26" lean-forward="true" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -533,13 +515,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/css/style0.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="1733" selection-start-line="1733" selection-end-line="1734" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/default/html/training/course_info.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
@@ -547,34 +522,149 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/classes_extension.php">
+    <entry file="file://$PROJECT_DIR$/controller/training.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="789" column="25" selection-start-line="789" selection-start-column="25" selection-end-line="789" selection-end-column="25" />
+        <state relative-caret-position="188">
+          <caret line="278" column="35" lean-forward="true" selection-start-line="278" selection-start-column="35" selection-end-line="278" selection-end-column="35" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#p#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#p#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/js/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2000">
+          <caret line="304" lean-forward="true" selection-start-line="304" selection-end-line="304" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="37" column="22" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/css/style0.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="1725" lean-forward="true" selection-start-line="1725" selection-end-line="1725" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/misc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="35" lean-forward="true" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/constants.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/classes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="169" column="14" selection-start-line="169" selection-start-column="9" selection-end-line="169" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/account.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="85" column="20" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/html/account/profile_update.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="119" column="52" selection-start-line="119" selection-start-column="52" selection-end-line="119" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/html/homepage/signup.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/html/account/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+          <folding>
+            <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="748" column="22" selection-start-line="748" selection-start-column="22" selection-end-line="748" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/css/dashboard.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="448" column="18" selection-start-line="448" selection-start-column="18" selection-end-line="448" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/html/account/profile_home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="83" column="30" lean-forward="true" selection-start-line="83" selection-start-column="30" selection-end-line="83" selection-end-column="30" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#!!top" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/default/html/container/header.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="21" column="35" lean-forward="true" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+        <state relative-caret-position="352">
+          <caret line="18" column="38" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/html/account/profile_update.html">
+    <entry file="file://$PROJECT_DIR$/includes/classes_extension.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        <state relative-caret-position="212">
+          <caret line="844" column="44" selection-start-line="844" selection-start-column="44" selection-end-line="844" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/css/dashboard.css">
+    <entry file="file://$PROJECT_DIR$/templates/default/html/training/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="296" column="23" selection-start-line="296" selection-start-column="23" selection-end-line="296" selection-end-column="23" />
+        <state relative-caret-position="352">
+          <caret line="49" column="18" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/html/homepage/content.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="583" column="25" lean-forward="true" selection-start-line="583" selection-start-column="25" selection-end-line="583" selection-end-column="25" />
+          <folding>
+            <element signature="n#div#0;n#div#3;n#div#0;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -284,8 +284,11 @@ function mainContent() {
 
 					$get_modules = getModules(2, isset($_GET['moduleid']) ? $_GET['moduleid'] : '')[0];
 			        $PTMPL['title_header'] = $course['title'];
-					$PTMPL['list_modules'] = studyModules($_GET['courseid'], isset($_GET['moduleid']) ? $_GET['moduleid'] : '');
-			        // $vid = $get_modules['video'] ? $get_modules['video'] :
+                    $get_module_list = studyModules($_GET['courseid'], isset($_GET['moduleid']) ? $_GET['moduleid'] : '');
+                    $PTMPL['list_modules'] = $get_module_list[0];
+                    $PTMPL['current_module_title'] = $get_module_list[1];
+                    $PTMPL['current_module_link'] = $get_module_list[2];
+// $vid = $get_modules['video'] ? $get_modules['video'] :
 			        $PTMPL['video_log'] = getVideo($get_modules['video']);
 			        $PTMPL['transcript'] = $get_modules['transcript'];
 					$PTMPL['course_edit_btn'] = secureButtons('background_green2 bordered', 'Edit Course', 1, $_GET['courseid'], isset($_GET['moduleid']) ? $_GET['moduleid'] : '');
