@@ -67,18 +67,17 @@
                 </div>
                 <div class="pad-section">
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="user-info-list card card-default p-3 text-center">
-                                <div class="profile_img">
-                                    <img class=" img-thumbnail m-auto " src="{$photo}">
-                                </div>
+                        <div class="col-md-4">
+                            <div class="profile_img">
+                                <img class=" img-thumbnail m-auto " src="{$photo}">
                             </div>
                             <div class="card">
-                                <div class="py-2 px-3">
-                                    {$about_}
+                                <div class="py-3 px-2">
+                                    <div class="para color_grey">
+                                        {$about_}
+                                    </div>
                                 </div>
-                                <hr>
-                                <div>
+                                <div class="text-lg-right text-sm-center">
                                     <a class="btn" href="{$update_profile}"><i class="fa fa-edit"></i> Edit profile </a>
                                 </div>
                             </div>
@@ -197,9 +196,9 @@
                         </div>
                         <div class="col-md-8">
                             <div class="row">
-                                {$course} 
-                            </div> 
-                            {$course_continue} 
+                                {$course}
+                            </div>
+                            {$course_continue}
                         </div>
                     </div>
                 </div>

@@ -1,13 +1,15 @@
 <header id="top-nav">
     <!-- Nav with logo and avatar-->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark justify-content-between align-items-center">
             <a class="navbar-brand" href="{$site_url}">
                 <img alt="{$site_title_} logo" class="site_logo" src="{$site_logo}">
             </a>
-            {$action_btn_link_avatar}
-        </div>
-    </nav>
+            <div class="">
+                {$action_btn_link_avatar}
+            </div>
+        </nav>
+    </div>
     <!-- Nav with logo and avatar -->
     <div class="background_green2">
         <div class="container ">
@@ -16,7 +18,7 @@
                     <div class="container">
                         {$username_url}
                         <a aria-controls="logout" aria-selected="false" class="logout"
-                           href="" role="link">Logout</a>
+                           href="{$logout_url}" role="link">Logout</a>
                     </div>
                 </div>
             </div>

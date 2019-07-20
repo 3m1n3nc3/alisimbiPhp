@@ -22,7 +22,7 @@
                 <div class="ss-btn btn  bordered shw-1" data-target="explore">
                     <i class="fa fa-angle-right"></i> Explore our courses
                 </div>
-                <div class="ss-btn btn background_green2 text-white shw-1" data-target="right">
+                <div class="ss-btn btn background_green2 text-white shw-1" data-target="right" id="new_course_btn">
                     <span class="badge background_yellow">New</span> Course available
                 </div>
             </div>
@@ -114,8 +114,10 @@
                     <!-- Module tab -->
                     <div aria-labelledby="module_tab" class="tab-pane fade " id="module_tab_content"
                          role="tabpanel">
-                        <div class="module-widget">
-                            {$course_modules_new}
+                        <div class="pad-section">
+                            <div class="module-counter">
+                                {$course_modules_new}
+                            </div>
                         </div>
                     </div>
                     <!-- Module tab -->
@@ -146,7 +148,7 @@
             <div class="space_5"></div>
 
             <!--                    Contact-->
-            <div id="contact">
+            <div id="contact" style="display: none;">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="contact">
@@ -236,6 +238,7 @@
             <!-- Contact -->
 
         </div>
+        {$global_footer}
     </div>
     <!--About-->
 
@@ -569,6 +572,7 @@
                     </div>
                 </div>
             </div>
+            {$global_footer}
         </div>
         <!-- End login_section-->
         <!--  login_section -->
@@ -584,12 +588,19 @@
                     <button class="ss-btn btn background_green2 bordered shw-1" data-target="login">Get Started
                     </button>
                 </div>
+
                 <div class=" suspend-right">
+                    <div class="advert landscape">
+                        <div class="ad-card lg">
+                            <img alt="advert img" src=""/>
+                        </div>
+                    </div>
                     <div class="pad-section">
                         <div class="row">
                             {$available_courses}
                         </div>
                     </div>
+                    {$global_footer}
                 </div>
             </div>
         </div>

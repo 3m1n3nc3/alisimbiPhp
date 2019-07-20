@@ -1,45 +1,48 @@
 <div class="wrapper">
     <div id="dashboard">
         {$global_header}
+        <div class="brcr-tile brcr-cover">
+            <div class="container">
+                <ul class="brcr">
+                    <li class="level"><i class="fa fa-home"></i> <a href="{$site_url}">Home</a></li>
+                    <li class="level"><a href="">Course</a></li>
+                    <li class="level">modify</li>
+                </ul>
+            </div>
+        </div>
         <div class="dashboard_content">
             <div class="user-info-list ">
                 <div class="card-tile">
                     <div class="container p-0">
                         <div class="card-head">
                             <div class="card-title">
-                                <h3 class="title">Edit Module</h3>
-                                <span class="caption">Edit, modify and save your module on this page</span>
-                                <div class="brcr-tile">
-                                    <ul class="brcr">
-                                        <li class="level"><i class="fa fa-home"></i> <a href="">Home</a></li>
-                                        <li class="level"><a href="">Module</a></li>
-                                        <li class="level">{$module_title}</li>
-                                    </ul>
-                                </div>
+                                <h3 class="title">Modify Course</h3>
+                                <span class="caption">Add or modify and save your module on this page</span>
                             </div>
                         </div>
                     </div>
-                    {$mast_cover_photo}
+                    <div class="">
+                        {$mast_cover_photo}
+                    </div>
                 </div>
             </div>
             <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-sm-12">
-                        <form method="post" action="" enctype="multipart/form-data">
-                            <div class="user-info-list card-default card">
+                <form action="" enctype="multipart/form-data" method="post">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-12">
+                            <div class="user-info-list card-default card ">
                                 <div class="card-tile">
                                     <div class="container ">
-                                        <div class="card-head p-4">
+                                        <div class="card-head card-header-divider">
                                             <div class="card-title">
                                                 <h3 class="title">{$course_create_header}</h3>
-                                                {$link_module_link}
-                                                <div class="hint">
+                                                <div class="caption">
                                                     Privilege level:
                                                     <small class="badge badge-warning">{$user_priviledge}</small>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="text-center"> 
+                                        <div class="text-center">
                                             {$course_message}
                                         </div>
                                         <div class="space_5"></div>
@@ -48,66 +51,62 @@
                                             <div class="form-group">
                                                 <label for="course_title">Course Title</label>
                                                 <input class="form-control" id="course_title" name="course_title"
-                                                placeholder="Course Title" type="text"
-                                                value="{$course_title}">
-                                            </div>  
+                                                       placeholder="Course Title" type="text"
+                                                       value="{$course_title}">
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="price">Course Price ({$currency})</label>
+                                                        <input class="form-control" id="price" name="price"
+                                                               onkeypress="return isNumeric(event)"
+                                                               placeholder="Course Price" size="10"
+                                                               type="text"
+                                                               value="{$course_price}">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="date">Duration</label>
+                                                        <input class="form-control" id="date" name="date" size="10"
+                                                               type="date" value="{$date}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="status">Status</label>
+                                                        <div class="custom-select-box">
+                                                            <select id="status" name="status">
+                                                                <option id="active" value="1">Active</option>
+                                                                <option id="inactive" value="0">Inactive</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="form-group">
-                                                <label for="price">Course Price ({$currency})</label>
-                                                <input class="form-control" id="price" name="price"
-                                                placeholder="Course Price" type="text"
-                                                value="{$course_price}" onkeypress="return isNumeric(event)">
-                                            </div>  
-                                            <div class="form-group">
-                                                <label for="date">Date</label>
-                                                <input type="date" name="date" class="form-control" id="date" value="{$date}">
-                                            </div>  
-                                            <div class="form-group">
-                                                <label for="status">Status</label>
-												<select class="form-control" name="status" id="status">
-													<option value="1" id="active">Active</option>
-													<option value="0" id="inactive">Inactive</option>
-												</select>
-                                            </div> 
-                                        </div>   
-                                        <div class="form-group">
-                                            <label for="intro_editor">Introduction</label>
-                                            <textarea class="form-control" cols="80" rows="8" 
-                                            id="intro_editor" name="introduction">{$introduction}</textarea>
-                                            <script>
-	                                            ClassicEditor
-	                                            .create(document.querySelector('#intro_editor'))
-	                                            .catch(error => {
-	                                            	console.error(error);
-	                                            });
-                                            </script>
-                                        </div> 
+                                                <label for="intro_editor">Introduction</label>
+                                                <textarea class="form-control" cols="80" id="intro_editor"
+                                                          name="introduction"
+                                                          rows="8">{$introduction}</textarea>
+                                                <script>
+                                                    ClassicEditor
+                                                        .create(document.querySelector('#intro_editor'))
+                                                        .catch(error => {
+                                                            console.error(error);
+                                                        });
+                                                </script>
+                                            </div>
+
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
 
-                            <div class="space_3"></div> 
-                            
-                            <div class="card card-default">
-                                <div class="form-group">
-                                    <div class="justify-content-center">
-                                    	<div class="card-body">
-											<label>Benefits</label>
-											<br><small class="text-info">Click to add</small>
+                            <div class="space_3"></div>
 
-											<hr>
-											<p class="card-text">
-												<div id="benefits_div" class="text-warning">
-													{$show_benefits}
-												</div>
-												<div id="selected_benefits" class="text-success"></div>
-											</p>
-										</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="space_3"></div> 
-                            
                             <div class="user-info-list card card-default">
                                 <div class="form-group">
                                     <div class="row justify-content-center">
@@ -119,8 +118,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-body align-self-center">
-                                                    <label class="btn btn-primary" for="cover_photo" id="forcover">Choose File...</label>
-                                                    <input type="file" name="cover_photo" id="cover_photo" style="display: none;" accept="jpg, jpeg, png">
+                                                    <label class="btn btn-primary" for="cover_photo" id="forcover">Choose
+                                                        File...</label>
+                                                    <input accept="jpg, jpeg, png" id="cover_photo" name="cover_photo"
+                                                           style="display: none;" type="file">
                                                 </div>
                                             </div>
                                         </div>
@@ -132,33 +133,57 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-body align-self-center">
-                                                    <label class="btn btn-primary" for="badge" id="forbadge"> Choose File...</label>
-                                                   <input type="file" name="badge" id="badge" style="display: none;" accept="png">
+                                                    <label class="btn btn-primary" for="badge" id="forbadge"> Choose
+                                                        File...</label>
+                                                    <input accept="png" id="badge" name="badge" style="display: none;"
+                                                           type="file">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="px-3">
-                                <button class="btn" name="save">{$course_create_btn}</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <div class="user-info-list card card-default p-3 text-left">
-                            <div class="card-head">
-                                <div class="card-title">
-                                    Edit the modules for this course 
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <div class="user-info-list card card-default p-3 text-left">
+                                <div class="card-head">
+                                    <div class="card-title">
+                                        Modules
+                                    </div>
+                                    <span class="caption hint">
+                                            Edit the modules for this course
+                                        </span>
+                                    {$link_module_link}
+                                </div>
+                                <div class="pt-3 module-counter">
+                                    {$edit_course_modules}
                                 </div>
                             </div>
-                            <div class="card-body align-self-center">
-                            	{$edit_course_modules}
+
+                            <div class="user-info-list ">
+                                <div class="card-tile">
+                                    <div class="container p-0">
+                                        <div class="card-head">
+                                            <div class="card-title">
+                                                Benefits
+                                            </div>
+                                            <span class="caption hint">Click on the icons below to choose</span>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="color_green" id="benefits_div">
+                                                {$show_benefits}
+                                            </div>
+                                            <div class="text-success" id="selected_benefits"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <div class="pb-5 px-4">
+                            <button class="btn background_green2 bordered" name="save">{$course_create_btn}</button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
         {$global_footer}

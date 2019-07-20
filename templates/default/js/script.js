@@ -10,17 +10,17 @@ $(document).ready(function () {
         $('.oop').css('opacity', '1');
     }, 1200);
 
-    (function($) {
+    (function ($) {
         var s,
             spanizeLetters = {
                 settings: {
                     letters: $('.js-spanize')
                 },
-                init: function() {
+                init: function () {
                     s = this.settings;
                     this.bindEvents();
                 },
-                bindEvents: function(){
+                bindEvents: function () {
                     s.letters.html(function (i, el) {
                         //spanizeLetters.joinChars();
                         var spanizer = $.trim(el).split("");
@@ -31,31 +31,41 @@ $(document).ready(function () {
         spanizeLetters.init();
     })(jQuery);
 
+    let explore_slide = $('.explore');
+    let explore_suspended = $('.explore').find('.suspend');
+
     $('.ss-btn, .toggle_icon').on('click', function () {
         closePanels();
         var b = $(this).attr('data-target');
-        $('.'+ b).addClass('active');
+        $('.' + b).addClass('active');
         $('.left').addClass('hidee');
         $('.close-ss').addClass('active');
         $('.close-mob').addClass('active');
         $('.bg_img').css('opacity', '.25');
+
+        if (explore_slide.hasClass('active')) {
+            explore_suspended.removeClass('hide');
+        }
     });
-    $(document).keyup(function(e){
+    $(document).keyup(function (e) {
         if (e.keyCode == 27) {
             // escape key maps to keycode `27`
-           closePanels();
+            closePanels();
         }
     });
     $('.close-ss, .close-mob').on('click', function () {
         closePanels();
     });
 
-    function closePanels(){
-        $('.subscribe_section, .payment_section, .right, .login, .explore', ).removeClass('active');
+    function closePanels() {
+        $('.subscribe_section, .payment_section, .right, .login, .explore',).removeClass('active');
         $('.left').removeClass('hidee');
         $('.bg_img').css('opacity', '1');
         $('.close-ss').removeClass('active');
         $('.close-mob').removeClass('active');
+        if (!explore_slide.hasClass('active')) {
+            explore_suspended.addClass('hide');
+        }
     }
 
     // -----------------------------------------------------------------------------------------------------

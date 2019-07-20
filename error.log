@@ -240,3 +240,5 @@
 [Fri Jul 19 16:45:15.007453 2019] [php7:notice] [pid 2857] [client 127.0.0.1:42334] PHP Notice:  Undefined variable: prepare in /var/www/dev/alisimbi/controller/training.php on line 328
 [Fri Jul 19 16:45:21.300374 2019] [php7:notice] [pid 952] [client 127.0.0.1:42336] PHP Notice:  Undefined variable: prepare in /var/www/dev/alisimbi/controller/training.php on line 328, referer: http://dev.server/index.php?page=training&course=now_learning&courseid=2&moduleid=12
 [Fri Jul 19 16:57:27.401757 2019] [php7:emerg] [pid 951] [client 127.0.0.1:42476] PHP Parse error:  syntax error, unexpected '{' in /var/www/dev/alisimbi/controller/training.php on line 137, referer: http://dev.server/index.php?page=training&course=view&courseid=3
+[Sat Jul 20 08:06:08.135959 2019] [php7:notice] [pid 1333] [client 127.0.0.1:38900] PHP Notice:  Undefined index: lang in /var/www/dev/alisimbi/index.php on line 25
+[Sat Jul 20 16:58:13.628605 2019] [php7:emerg] [pid 6822] [client 127.0.0.1:41332] PHP Parse error:  syntax error, unexpected 'Login' (T_STRING) in /var/www/dev/alisimbi/includes/classes_extension.php on line 863, referer: http://dev.alisimbi/index.php?page=homepage
