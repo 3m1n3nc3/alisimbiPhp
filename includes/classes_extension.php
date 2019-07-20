@@ -506,7 +506,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1)
 {
     global $user, $user_role, $framework, $marxTime, $SETT;
     $col = '4';
-    $duration = $price = 0;
+    $duration = $price = $num_module = 0;
     $start_learning = $count_instructors = '';
     if ($type) {
         // This controls the modules
@@ -556,6 +556,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1)
             <div class="succinct">
                 <span class="item "><i class="fa fa-user"></i> ' . $count_instructors . '</span>
                 <span class="item "><i class="fa fa-clock-o"></i> ' . $duration . '</span>
+                <span class="item "><i class="fa fa-book></i> ' . $num_module . '</span>
             </div>
             ' . $progress_val . '
         </div>
