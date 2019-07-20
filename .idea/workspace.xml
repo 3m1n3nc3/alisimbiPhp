@@ -4,103 +4,8 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f36086c-b457-4f78-92d6-ba767f4aacb5" name="Default Changelist" comment="Merge branch 'resolution' of https://github.com/3m1n3nc3/alisimbiPhp into resolution&#10;&#10;# Conflicts:&#10;#&#9;controller/homepage.php&#10;#&#9;controller/training.php&#10;#&#9;error.log&#10;#&#9;includes/classes_extension.php&#10;#&#9;templates/default/css/dashboard.css&#10;#&#9;templates/default/css/style0.css&#10;#&#9;templates/default/css/variable.css&#10;#&#9;templates/default/html/account/profile_home.html&#10;#&#9;templates/default/html/account/profile_update.html&#10;#&#9;templates/default/html/homepage/content.html&#10;#&#9;templates/default/html/training/course_info.html&#10;#&#9;templates/default/html/training/home.html&#10;#&#9;templates/default/html/training/module_add_edit.html&#10;#&#9;templates/default/js/custom.js">
-      <change beforePath="$PROJECT_DIR$/.idea/alisimbi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/alisimbi.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/composerJson.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/composerJson.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d0777356-e903-4bf5-bbcf-a501db8828b9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d0777356-e903-4bf5-bbcf-a501db8828b9.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/root.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/root.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+    <list default="true" id="7f36086c-b457-4f78-92d6-ba767f4aacb5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alisimbi.sql" beforeDir="false" afterPath="$PROJECT_DIR$/alisimbi.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/connection/connector.php" beforeDir="false" afterPath="$PROJECT_DIR$/connection/connector.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/connection/location.php" beforeDir="false" afterPath="$PROJECT_DIR$/connection/location.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/connection/photo_upload.php" beforeDir="false" afterPath="$PROJECT_DIR$/connection/photo_upload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/connection/upload_video.php" beforeDir="false" afterPath="$PROJECT_DIR$/connection/upload_video.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/training.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/training.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/error.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/classes.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/classes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/classes_extension.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/classes_extension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/constants.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/constants.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locale.sql" beforeDir="false" afterPath="$PROJECT_DIR$/locale.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/css/bootstrap-select.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/bootstrap-select.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/css/preloader.gif" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/preloader.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/css/pure-min.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/pure-min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/css/stroke_icon.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/stroke_icon.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/css/style0.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/style0.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/css/uploader.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/uploader.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/css/variable.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/variable.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/font/fontello/fontello08e1.eot" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/font/fontello/fontello08e1.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/font/fontello/fontello08e1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/font/fontello/fontello08e1.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/font/fontello/fontello08e1.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/font/fontello/fontello08e1.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/font/fontello/fontello08e1.woff" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/font/fontello/fontello08e1.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/font/fontello/fontello08e1.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/font/fontello/fontello08e1.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/account/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/account/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/account/profile_home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/account/profile_home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/account/profile_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/account/profile_update.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/account/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/account/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/container/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/container/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/homepage/content.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/homepage/content.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/homepage/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/homepage/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/partial.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/partial.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/training/add_questions.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/add_questions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/training/course_add_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/course_add_edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/training/course_get.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/course_get.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/training/course_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/course_info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/training/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/training/link_module.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/link_module.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/training/module_add_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/module_add_edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/training/now_learning.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/now_learning.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/training/take_test.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/take_test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/training/upload_video.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/upload_video.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/img/border-image.png" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/img/border-image.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/img/icons.png" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/img/icons.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/img/loader.gif" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/img/loader.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/img/raveverified.png" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/img/raveverified.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/js/bootstrap-select.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/js/bootstrap-select.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/js/ckeditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/js/ckeditor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/js/custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/js/fileupload/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/js/fileupload/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/js/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/1104964548_1999808181_2109771550_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1104964548_1999808181_2109771550_n.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/1117575548_1644772583_1221161113_n.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1117575548_1644772583_1221161113_n.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/1126235064_694408361_1269459394_n.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1126235064_694408361_1269459394_n.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/1239738311_25007336_812689415_n.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1239738311_25007336_812689415_n.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/1264765621_136861335_753111275_n.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1264765621_136861335_753111275_n.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/1267971864_1508098222_1431329653_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1267971864_1508098222_1431329653_n.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/1318414274_178722639_1566536545_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1318414274_178722639_1566536545_n.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/1351121296_395472417_901397762_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1351121296_395472417_901397762_n.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/1381441986_1967678521_322549641_n.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1381441986_1967678521_322549641_n.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/1466121137_1148508010_1028774394_n.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1466121137_1148508010_1028774394_n.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/1518552764_2051961206_418870363_n.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1518552764_2051961206_418870363_n.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/1569028606_1242033421_593751457_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1569028606_1242033421_593751457_n.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/1681424921_803980159_778844034_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1681424921_803980159_778844034_n.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/1713207144_1041877524_346361011_n.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1713207144_1041877524_346361011_n.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/1779767643_1875758380_1703755364_n.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1779767643_1875758380_1703755364_n.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/1781141897_1361286276_839619606_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1781141897_1361286276_839619606_n.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/1893116749_217999079_861368879_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1893116749_217999079_861368879_n.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/1955125133_1330618045_1003715858_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/1955125133_1330618045_1003715858_n.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/2093004397_1507239086_1872300956_n.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/2093004397_1507239086_1872300956_n.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/39283445_631686594_2028908985_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/39283445_631686594_2028908985_n.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/507064966_735836057_410694_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/507064966_735836057_410694_n.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/590350285_32334601_123605503_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/590350285_32334601_123605503_n.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/699403423_2109563433_1717062400_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/699403423_2109563433_1717062400_n.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/797913795_570634012_537211558_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/797913795_570634012_537211558_n.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/87179062_243665097_326628346_n.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/87179062_243665097_326628346_n.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/872541950_1631821693_1614954296_n.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/872541950_1631821693_1614954296_n.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/950921736_1696954136_1909978056_n.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/950921736_1696954136_1909978056_n.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/951227724_69528760_857796464_n.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/951227724_69528760_857796464_n.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/994367359_167873750_906025023_n.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/994367359_167873750_906025023_n.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/img/994855119_1041962009_1288335880_n.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/img/994855119_1041962009_1288335880_n.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/videos/1972153517_671281916_v.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/videos/1972153517_671281916_v.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/videos/defaultvid.png" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/videos/defaultvid.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -140,13 +45,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/default/html/homepage/content.html">
+        <entry file="file://$PROJECT_DIR$/includes/classes_extension.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="583" column="25" lean-forward="true" selection-start-line="583" selection-start-column="25" selection-end-line="583" selection-end-column="25" />
-              <folding>
-                <element signature="n#div#0;n#div#3;n#div#0;n#!!top" />
-              </folding>
+            <state relative-caret-position="146">
+              <caret line="558" column="77" lean-forward="true" selection-start-line="558" selection-start-column="77" selection-end-line="558" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -155,11 +57,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>site</find>
-      <find>contai</find>
-      <find>course-hea</find>
-      <find>.form-contro</find>
-      <find>course-header</find>
       <find>module</find>
       <find>.btn</find>
       <find>brc</find>
@@ -185,6 +82,11 @@
       <find>top_ava</find>
       <find>emp</find>
       <find>username_url</find>
+      <find>succ</find>
+      <find>['course']</find>
+      <find>course</find>
+      <find>duratip</find>
+      <find>duration</find>
     </findStrings>
     <replaceStrings>
       <replace>.brcr-tile .brcr</replace>
@@ -215,7 +117,6 @@
         <option value="$PROJECT_DIR$/controller/account.php" />
         <option value="$PROJECT_DIR$/templates/default/html/training/module_add_edit.html" />
         <option value="$PROJECT_DIR$/templates/default/css/variable.css" />
-        <option value="$PROJECT_DIR$/templates/default/html/training/course_info.html" />
         <option value="$PROJECT_DIR$/includes/config.php" />
         <option value="$PROJECT_DIR$/controller/training.php" />
         <option value="$PROJECT_DIR$/templates/default/css/style0.css" />
@@ -223,11 +124,13 @@
         <option value="$PROJECT_DIR$/templates/default/html/account/profile_update.html" />
         <option value="$PROJECT_DIR$/templates/default/html/account/register.html" />
         <option value="$PROJECT_DIR$/templates/default/html/container/header.html" />
-        <option value="$PROJECT_DIR$/templates/default/css/style.css" />
-        <option value="$PROJECT_DIR$/templates/default/css/dashboard.css" />
-        <option value="$PROJECT_DIR$/templates/default/html/account/profile_home.html" />
-        <option value="$PROJECT_DIR$/includes/classes_extension.php" />
         <option value="$PROJECT_DIR$/templates/default/html/homepage/content.html" />
+        <option value="$PROJECT_DIR$/templates/default/html/account/profile_home.html" />
+        <option value="$PROJECT_DIR$/templates/default/html/training/course_get.html" />
+        <option value="$PROJECT_DIR$/templates/default/css/dashboard.css" />
+        <option value="$PROJECT_DIR$/templates/default/css/style.css" />
+        <option value="$PROJECT_DIR$/templates/default/html/training/course_info.html" />
+        <option value="$PROJECT_DIR$/includes/classes_extension.php" />
       </list>
     </option>
   </component>
@@ -273,11 +176,6 @@
             <path>
               <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="includes" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
@@ -285,13 +183,6 @@
               <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="default" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="default" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="css" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -306,7 +197,7 @@
               <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="default" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="html" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="homepage" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="account" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -362,7 +253,7 @@
       <workItem from="1562881048729" duration="5754000" />
       <workItem from="1563280298655" duration="23243000" />
       <workItem from="1563447273246" duration="8347000" />
-      <workItem from="1563606493364" duration="7986000" />
+      <workItem from="1563606493364" duration="9979000" />
     </task>
     <task id="LOCAL-00001" summary="Edit module ui update">
       <created>1563367004954</created>
@@ -378,15 +269,28 @@
       <option name="project" value="LOCAL" />
       <updated>1563381327408</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Merge branch 'resolution' of https://github.com/3m1n3nc3/alisimbiPhp into resolution&#10;&#10;# Conflicts:&#10;#&#9;controller/homepage.php&#10;#&#9;controller/training.php&#10;#&#9;error.log&#10;#&#9;includes/classes_extension.php&#10;#&#9;templates/default/css/dashboard.css&#10;#&#9;templates/default/css/style0.css&#10;#&#9;templates/default/css/variable.css&#10;#&#9;templates/default/html/account/profile_home.html&#10;#&#9;templates/default/html/account/profile_update.html&#10;#&#9;templates/default/html/homepage/content.html&#10;#&#9;templates/default/html/training/course_info.html&#10;#&#9;templates/default/html/training/home.html&#10;#&#9;templates/default/html/training/module_add_edit.html&#10;#&#9;templates/default/js/custom.js">
+      <created>1563640731396</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1563640731396</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Merge branch 'resolution' of https://github.com/3m1n3nc3/alisimbiPhp into resolution&#10;&#10;# Conflicts:&#10;#&#9;controller/homepage.php&#10;#&#9;controller/training.php&#10;#&#9;error.log&#10;#&#9;includes/classes_extension.php&#10;#&#9;templates/default/css/dashboard.css&#10;#&#9;templates/default/css/style0.css&#10;#&#9;templates/default/css/variable.css&#10;#&#9;templates/default/html/account/profile_home.html&#10;#&#9;templates/default/html/account/profile_update.html&#10;#&#9;templates/default/html/homepage/content.html&#10;#&#9;templates/default/html/training/course_info.html&#10;#&#9;templates/default/html/training/home.html&#10;#&#9;templates/default/html/training/module_add_edit.html&#10;#&#9;templates/default/js/custom.js">
+      <created>1563642273845</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1563642273845</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94358000" />
+    <option name="totallyTimeSpent" value="96351000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-37" width="1366" height="805" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -400,7 +304,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49924242" weight="0.32914925" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49924242" visible="true" weight="0.32756132" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.34030685" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5007576" side_tool="true" weight="0.32900432" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32900432" />
@@ -431,6 +335,7 @@
     <MESSAGE value="Edit module ui update" />
     <MESSAGE value="Merge branch 'resolution' of https://github.com/3m1n3nc3/alisimbiPhp into resolution&#10;&#10;# Conflicts:&#10;#&#9;controller/homepage.php&#10;#&#9;controller/training.php&#10;#&#9;error.log&#10;#&#9;includes/classes_extension.php&#10;#&#9;templates/default/css/dashboard.css&#10;#&#9;templates/default/css/style0.css&#10;#&#9;templates/default/css/variable.css&#10;#&#9;templates/default/html/account/profile_home.html&#10;#&#9;templates/default/html/account/profile_update.html&#10;#&#9;templates/default/html/homepage/content.html&#10;#&#9;templates/default/html/training/course_info.html&#10;#&#9;templates/default/html/training/home.html&#10;#&#9;templates/default/html/training/module_add_edit.html&#10;#&#9;templates/default/js/custom.js" />
     <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'resolution' of https://github.com/3m1n3nc3/alisimbiPhp into resolution&#10;&#10;# Conflicts:&#10;#&#9;controller/homepage.php&#10;#&#9;controller/training.php&#10;#&#9;error.log&#10;#&#9;includes/classes_extension.php&#10;#&#9;templates/default/css/dashboard.css&#10;#&#9;templates/default/css/style0.css&#10;#&#9;templates/default/css/variable.css&#10;#&#9;templates/default/html/account/profile_home.html&#10;#&#9;templates/default/html/account/profile_update.html&#10;#&#9;templates/default/html/homepage/content.html&#10;#&#9;templates/default/html/training/course_info.html&#10;#&#9;templates/default/html/training/home.html&#10;#&#9;templates/default/html/training/module_add_edit.html&#10;#&#9;templates/default/js/custom.js" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -515,24 +420,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/html/training/course_info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="13" column="14" lean-forward="true" selection-start-line="5" selection-start-column="7" selection-end-line="13" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/training.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="278" column="35" lean-forward="true" selection-start-line="278" selection-start-column="35" selection-end-line="278" selection-end-column="35" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#p#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/default/js/custom.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2000">
@@ -598,53 +485,10 @@
     <entry file="file://$PROJECT_DIR$/templates/default/html/homepage/signup.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/html/account/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
-          <folding>
-            <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
-            <element signature="n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
-            <element signature="n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="748" column="22" selection-start-line="748" selection-start-column="22" selection-end-line="748" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/css/dashboard.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="448" column="18" selection-start-line="448" selection-start-column="18" selection-end-line="448" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/html/account/profile_home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="83" column="30" lean-forward="true" selection-start-line="83" selection-start-column="30" selection-end-line="83" selection-end-column="30" />
-          <folding>
-            <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/default/html/container/header.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="18" column="38" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/classes_extension.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="844" column="44" selection-start-line="844" selection-start-column="44" selection-end-line="844" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -660,11 +504,79 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/default/html/homepage/content.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
+        <state relative-caret-position="42">
           <caret line="583" column="25" lean-forward="true" selection-start-line="583" selection-start-column="25" selection-end-line="583" selection-end-column="25" />
           <folding>
             <element signature="n#div#0;n#div#3;n#div#0;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/html/account/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="8" />
+          <folding>
+            <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/html/training/course_get.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/css/dashboard.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="452" column="10" selection-start-line="452" selection-start-column="10" selection-end-line="452" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="754" column="18" selection-start-line="754" selection-start-column="18" selection-end-line="754" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/html/account/profile_home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="204" column="40" selection-start-line="204" selection-start-column="33" selection-end-line="204" selection-end-column="40" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/training.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="294" column="54" selection-start-line="294" selection-start-column="46" selection-end-line="294" selection-end-column="54" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#p#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#p#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/html/training/course_info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="22" column="91" selection-start-line="22" selection-start-column="91" selection-end-line="22" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/classes_extension.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="558" column="77" lean-forward="true" selection-start-line="558" selection-start-column="77" selection-end-line="558" selection-end-column="77" />
         </state>
       </provider>
     </entry>
