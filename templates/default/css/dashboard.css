@@ -187,8 +187,8 @@
     color: #3d3d3d;
     margin-bottom: 0;;
     background: white;
-    padding-left: 15px;
-    padding-right: 15px;
+    /*padding-left: 15px;*/
+    /*padding-right: 15px;*/
     font-weight: 300;
     text-transform: uppercase;
     display: block;
@@ -265,8 +265,6 @@ table {
 .card-tile {
     background: white;
     margin-bottom: 30px;
-    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .05);
-    box-shadow: 0 1px 0 rgba(0, 0, 0, .05);
     display: block;
 }
 
@@ -281,62 +279,6 @@ table {
     line-height: 2rem;
     padding: 30px 30px;
     color: #3d3d3d;
-}
-
-.brcr-tile {
-    /*background: hsla(0, 0%, 100%, .5);*/
-    display: flex;
-    position: relative;
-    padding: 2% 5%;
-    mix-blend-mode: multiply;
-    color: #333333;
-    -webkit-flex-flow: row wrap;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
-    align-items: center;
-}
-
-.brcr-tile.brcr-cover {
-    color: #fff;
-    background: hsl(149, 74%, 40%);
-}
-
-.brcr-tile .brcr {
-    margin-top: 10px;
-    font-size: 12px;
-    /*color: #a6a6a6;*/
-    display: flex;
-    -webkit-flex-flow: row wrap;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
-    width: 100%;
-    border-radius: 4px;
-    color: currentColor;
-}
-
-.brcr-tile .brcr level {
-    cursor: pointer;
-    color: currentColor;
-}
-
-.brcr-tile .brcr .level {
-    margin-right: 5px;
-    display: inline-block;
-    text-transform: capitalize;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-.brcr-tile .brcr .level:not(:last-of-type):after {
-    position: relative;
-    margin-left: 5px;
-    margin-right: 5px;
-    content: '\25cf'
-}
-
-.brcr-tile .brcr .level a:hover {
-    color: var(--green);
-    text-shadow: 0 2px 2px rgba(255, 255, 255, 0.25);
 }
 
 .card-tile .card-icon {
@@ -399,7 +341,7 @@ table {
 }
 
 .card-tile .card-foot {
-    border-top: 1px solid #e6e6e6;
+    /*border-top: 1px solid #e6e6e6;*/
     padding: 5px 10px 5px;
     display: flex;
     -webkit-flex-flow: row wrap;
@@ -492,4 +434,61 @@ table {
     .video_frame {
         min-height: 250px;
     }
+}
+
+
+.brcr-tile {
+    /*background: hsla(0, 0%, 100%, .5);*/
+    display: flex;
+    position: relative;
+    padding: 2% 5%;
+    mix-blend-mode: multiply;
+    color: #333333;
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.brcr-tile.brcr-cover {
+    color: #fff;
+    background: hsl(149, 74%, 40%);
+}
+
+.brcr-tile .brcr {
+    margin-top: 10px;
+    font-size: 12px;
+    /*color: #a6a6a6;*/
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    width: 100%;
+    border-radius: 4px;
+    color: currentColor;
+}
+
+.brcr-tile .brcr level {
+    cursor: pointer;
+    color: currentColor;
+}
+
+.brcr-tile .brcr .level {
+    margin-right: 5px;
+    display: inline-block;
+    text-transform: capitalize;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.brcr-tile .brcr .level:not(:last-of-type):after {
+    position: relative;
+    margin-left: 5px;
+    margin-right: 5px;
+    content: '\25cf'
+}
+
+.brcr-tile .brcr .level a:hover {
+    color: var(--green);
+    text-shadow: 0 2px 2px rgba(255, 255, 255, 0.25);
 }

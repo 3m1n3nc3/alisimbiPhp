@@ -5,8 +5,8 @@
             <div class="container">
                 <ul class="brcr">
                     <li class="level"><i class="fa fa-home"></i> <a href="{$site_url}">Home</a></li>
-                    <li class="level"><a href="">Course</a></li>
-                    <li class="level">modify</li>
+                    <li class="level"><a href="{$all_course_url}">course</a></li>
+                    <li class="level"><a href="">{$course_title}</a></li>
                 </ul>
             </div>
         </div>
@@ -17,7 +17,7 @@
                         <div class="card-head">
                             <div class="card-title">
                                 <h3 class="title">Modify Course</h3>
-                                <span class="caption">Add or modify and save your module on this page</span>
+                                <span class="caption">Add or modify and save your course on this page</span>
                             </div>
                         </div>
                     </div>
@@ -30,78 +30,75 @@
                 <form action="" enctype="multipart/form-data" method="post">
                     <div class="row">
                         <div class="col-md-8 col-sm-12">
-                            <div class="user-info-list card-default card ">
+                            <div class="user-info-list ">
                                 <div class="card-tile">
-                                    <div class="container ">
-                                        <div class="card-head card-header-divider">
-                                            <div class="card-title">
-                                                <h3 class="title">{$course_create_header}</h3>
-                                                <div class="caption">
-                                                    Privilege level:
-                                                    <small class="badge badge-warning">{$user_priviledge}</small>
-                                                </div>
+                                    <div class="card-head card-header-divider">
+                                        <div class="card-title">
+                                            <h4>{$course_title}</h4>
+                                            <div class="caption">
+                                                Privilege level:
+                                                <small class="badge badge-warning">{$user_priviledge}</small>
                                             </div>
-                                        </div>
-                                        <div class="text-center">
-                                            {$course_message}
-                                        </div>
-                                        <div class="space_5"></div>
-                                        <input type="hidden" name="benefits" value="" id="benefits">
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="course_title">Course Title</label>
-                                                <input class="form-control" id="course_title" name="course_title"
-                                                       placeholder="Course Title" type="text"
-                                                       value="{$course_title}">
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="price">Course Price ({$currency})</label>
-                                                        <input class="form-control" id="price" name="price"
-                                                               onkeypress="return isNumeric(event)"
-                                                               placeholder="Course Price" size="10"
-                                                               type="text"
-                                                               value="{$course_price}">
-
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="form-group">
-                                                        <label for="date">Duration</label>
-                                                        <input class="form-control" id="date" name="date" size="10"
-                                                               type="date" value="{$date}">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="status">Status</label>
-                                                        <div class="custom-select-box">
-                                                            <select id="status" name="status">
-                                                                <option id="active" value="1">Active</option>
-                                                                <option id="inactive" value="0">Inactive</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="intro_editor">Introduction</label>
-                                                <textarea class="form-control" cols="80" id="intro_editor"
-                                                          name="introduction"
-                                                          rows="8">{$introduction}</textarea>
-                                                <script>
-                                                    ClassicEditor
-                                                        .create(document.querySelector('#intro_editor'))
-                                                        .catch(error => {
-                                                            console.error(error);
-                                                        });
-                                                </script>
-                                            </div>
-
                                         </div>
                                     </div>
+                                    <div class="">
+                                        {$course_message}
+                                    </div>
+                                    <div class="space_5"></div>
+                                    <input id="benefits" name="benefits" type="hidden" value="">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="course_title">Course Title</label>
+                                            <input class="form-control" id="course_title" name="course_title"
+                                                   placeholder="Course Title" type="text"
+                                                   value="{$course_title}">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="price">Course Price ({$currency})</label>
+                                                    <input class="form-control" id="price" name="price"
+                                                           onkeypress="return isNumeric(event)"
+                                                           placeholder="Course Price" size="10"
+                                                           type="text"
+                                                           value="{$course_price}">
 
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="date">Duration</label>
+                                                    <input class="form-control" id="date" name="date" size="10"
+                                                           type="date" value="{$date}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="status">Status</label>
+                                                    <div class="custom-select-box">
+                                                        <select id="status" name="status">
+                                                            <option id="active" value="1">Active</option>
+                                                            <option id="inactive" value="0">Inactive</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="intro_editor">Introduction</label>
+                                            <textarea class="form-control" cols="80" id="intro_editor"
+                                                      name="introduction"
+                                                      rows="8">{$introduction}</textarea>
+                                            <script>
+                                                ClassicEditor
+                                                    .create(document.querySelector('#intro_editor'))
+                                                    .catch(error => {
+                                                        console.error(error);
+                                                    });
+                                            </script>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
 
@@ -114,8 +111,8 @@
                                             <div class="pt-4 px-3 text-center">
                                                 <div class="card-head">
                                                     <div class="card-title">
-                                                        Cover Photo
-                                                    </div>
+                                                        <h5> Cover Photo
+                                                        </h5></div>
                                                 </div>
                                                 <div class="card-body align-self-center">
                                                     <label class="btn btn-primary" for="cover_photo" id="forcover">Choose
@@ -129,7 +126,7 @@
                                             <div class="pt-4 px-3 text-center">
                                                 <div class="card-head">
                                                     <div class="card-title">
-                                                        Badge
+                                                        <h5>Badge</h5>
                                                     </div>
                                                 </div>
                                                 <div class="card-body align-self-center">
@@ -145,18 +142,21 @@
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-12">
-                            <div class="user-info-list card card-default p-3 text-left">
-                                <div class="card-head">
-                                    <div class="card-title">
-                                        Modules
-                                    </div>
-                                    <span class="caption hint">
+                            <div class="user-info-list ">
+                                <div class="card-tile">
+                                    <div class="card-head">
+                                        <div class="card-title">
+                                            <h5>Modules</h5>
+                                            <span class="caption hint">
                                             Edit the modules for this course
                                         </span>
-                                    {$link_module_link}
-                                </div>
-                                <div class="pt-3 module-counter">
-                                    {$edit_course_modules}
+                                        </div>
+
+                                        {$link_module_link}
+                                    </div>
+                                    <div class="module-counter">
+                                        {$edit_course_modules}
+                                    </div>
                                 </div>
                             </div>
 
@@ -165,9 +165,9 @@
                                     <div class="container p-0">
                                         <div class="card-head">
                                             <div class="card-title">
-                                                Benefits
+                                                <h5>Benefits</h5>
+                                                <span class="caption hint">Click on the icons below to choose</span>
                                             </div>
-                                            <span class="caption hint">Click on the icons below to choose</span>
                                         </div>
                                         <div class="card-body">
                                             <div class="color_green" id="benefits_div">
