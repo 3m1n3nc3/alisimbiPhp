@@ -28,11 +28,13 @@
             <div class="container">
                 <form action="" method="post">
                     <div class="row">
-                        <div class="col-md-8 user-info-list card card-default">
-                            <div class="px-5">
+                        <div class="col-md-8 user-info-list ">
+                            <div class="card-tile">
                                 <fieldset>
-                                    <legend>Personal</legend>
-                                    <div class="row">
+                                    <div class="card-head card-header-divider">
+                                        <h3 class="">Personal</h3>
+                                    </div>
+                                    <div class="row card-body">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="src-only" for="billing_fname">First
@@ -52,8 +54,6 @@
                                                        type="text" value="{$lastname}">
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="profile-phone">Phone</label>
@@ -64,43 +64,51 @@
                                     </div>
                                 </fieldset>
                                 <fieldset>
-                                    <legend>Location</legend>
-                                    <div class="form-group">
-                                        <div class="custom-input">
-                                            <label class="src-only" for="profile-country">Country</label>
-                                            <div class="custom-select-box">
-                                                <select class="select-country-list" data-target="profile-state"
-                                                        id="profile-country" name="country" type="text">
-                                                    <option value="">Select Country</option>
-                                                    {$list_country}
-                                                </select>
+                                    <div class="card-head card-header-divider">
+                                        <h3 class="">Location</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <div class="custom-input">
+                                                <label class="src-only" for="profile-country">Country</label>
+                                                <div class="custom-select-box">
+                                                    <select class="select-country-list" data-target="profile-state"
+                                                            id="profile-country" name="country" type="text">
+                                                        <option value="">Select Country</option>
+                                                        {$list_country}
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="custom-input">
-                                            <label class="src-only" for="profile-state">State</label>
-                                            <div class="custom-select-box">
-                                                <select data-target="register-city" id="profile-state" name="state">
-                                                    <option value="">Select State/Region</option>
-                                                    {$state_select}
-                                                </select>
+                                            <div class="custom-input">
+                                                <label class="src-only" for="profile-state">State</label>
+                                                <div class="custom-select-box">
+                                                    <select data-target="register-city" id="profile-state" name="state">
+                                                        <option value="">Select State/Region</option>
+                                                        {$state_select}
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="custom-input">
-                                            <label class="src-only" for="profile-city">City</label>
-                                            <div class="custom-select-box">
-                                                <select id="profile-city" name="city">
-                                                    <option value="">Select City</option>
-                                                    {$city_select}
-                                                </select>
+                                            <div class="custom-input">
+                                                <label class="src-only" for="profile-city">City</label>
+                                                <div class="custom-select-box">
+                                                    <select id="profile-city" name="city">
+                                                        <option value="">Select City</option>
+                                                        {$city_select}
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </fieldset>
                                 <fieldset>
-                                    <legend>Biography</legend>
-                                    <div class="form-group">
-                                        <label for="">Tell us about you</label>
-                                        <textarea class="form-control" name="about" rows="5">{$about_}</textarea>
+                                    <div class="card-head card-header-divider">
+                                        <h3 class="">About you</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="">Tell us about you</label>
+                                            <textarea class="form-control" name="about" rows="5">{$about_}</textarea>
+                                        </div>
                                     </div>
                                 </fieldset>
                             </div>

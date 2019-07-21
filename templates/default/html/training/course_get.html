@@ -1,26 +1,72 @@
 <div class="wrapper">
     <div id="dashboard">
         <div class="dashboard_content">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center flex-column align-items-center ">
                 <a class="navbar-brand" href="{$site_url}">
                     <img alt="{$site_title_} logo" class="site_logo_big" src="{$site_logo}">
                 </a>
+                <div class="pad-section">
+                    <img class="img-fluid img-responsive" src="{$raveverified}">
+                </div>
             </div>
-            <section class="jumbotron text-center m-4">
+            <section class="">
                 <div class="container">
-                    <h1 class="jumbotron-heading">You are paying for {$course_title}</h1>
-                    <hr>
-                    <img src="{$raveverified}">
-                    <div class="h4">Your transaction is secured, and your information is encrypted and teporarily stored
-                        until the end of this transaction.
+                    <div class="p-1 text-center">
+                        <p class="para color_black">
+                            Your transaction is secured, and your information is encrypted and temporarily stored
+                            until the end of this transaction.
+                        </p>
                     </div>
-                    <hr>
-                    <h5 class="jumbotron-heading">Paying for {$course_title} will cost you {$course_price}</h5>
-                    <div class="album py-5 bg-light m-4">
-                        <div class="container">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="user-info-tile card card-default">
+                                <div class="card-tile">
+                                    <div class="card-title">
+                                        <h3>Cart</h3>
+                                        <div class="caption">You are paying for the following items</div>
+                                    </div>
+                                    <div class="cart">
+                                        <!--                                            Cart tile-->
+                                        <div class="cart-tile">
+                                            <div class="title">
+                                                <a href="">
+                                                    {$course_title}
+                                                </a>
+                                            </div>
+                                            <div class="card-body p-0">
+                                                <div class="price currency">{$course_price}</div>
+                                                <div class="action">
+                                                    <div class="list-inline">
+                                                        <div class="list-inline-item"><a href="">
+                                                            <i class="fa fa-heart-o"></i>
+                                                        </a></div>
+                                                        <div class="list-inline-item"><a href="">remove</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--                                            Cart tile-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
                             <form action="" id="cc_pay" method="post">
-                                <button class="btn btn-success" name="pay" type="submit">Check Out<i
-                                        class="fa fa-credit-card-alt px-1"></i></button>
+                                <div class="user-info-tile card card-default">
+                                    <div class="card-tile">
+                                        <div class="card-title">
+                                            <h3>Subtotal</h3>
+                                            <div class="caption">A sum total of your intended purchase</div>
+                                        </div>
+                                        <div class="card-foot">
+                                            <div class="font_bold font_4 currency">{$course_price}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="px-2">
+                                    <button class="btn bordered background_green2" name="pay" type="submit">Check Out<i
+                                            class="fa fa-credit-card-alt px-1"></i></button>
+                                </div>
                                 {$form_body}
                             </form>
                         </div>
