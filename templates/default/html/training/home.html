@@ -6,8 +6,8 @@
         <div class="dashboard_content">
             <div class="user-info-list ">
                 <div class="card-tile">
-                    <div class="container p-0">
-                        <div class="card-head">
+                    <div class="card-head card-header-divider">
+                        <div class="container p-0">
                             <div class="card-title">
                                 <h3 class="title">Explore our courses</h3>
                                 <span class="caption hint">Explore a catalog of all our available courses</span>
@@ -23,20 +23,28 @@
 
                 </div>
             </div>
-            <div class="container">
+            <div class="pad-section">
                 <div class="row">
                     <div class="col-md-3 col-lg-4 ">
-                        <div class="pad-section ">
-                            <div class="">
-                                <label class="src-only" for="course_search"></label>
-                                <input class="form-control" id="course_search" name=""
-                                       placeholder="Search courses here" type="search">
-                                <a class="btn" href=""><i class="fa f-search"></i> Search courses</a>
+                        <div class="user-info-list card card-default">
+                            <div class="card-tile">
+                                <div class="card-title">
+                                    <h3>Search</h3>
+                                    <div class="caption">
+                                        Enter a search keyword here
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="form-group">
+                                        <input class="form-control" id="" name="" type="search">
+                                        <a class="btn" href=""><i class="fa f-search"></i> Search courses</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-9 col-lg-8">
-                        <div class="row pt-lg-5 px-4">
+                        <div class="row pt-lg-2 px-4">
                             {$available_courses}
                             <!-- Dashboard content -->
                         </div>

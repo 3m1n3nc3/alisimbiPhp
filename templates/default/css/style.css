@@ -1241,7 +1241,7 @@ footer {
     position: relative;
     overflow: hidden;
     transition: all .35s ease-in-out;
-    min-height: 150px;
+    min-height: 200px;
     /* padding: 15px 10px; */
 }
 
@@ -1291,7 +1291,7 @@ footer {
     padding: 7px 14px 14px;
     text-align: center;
     color: white;
-    font-size: 1.5em;
+    font-size: 20px;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     box-shadow: 0 2px 7px -2px #39853c;
@@ -1305,10 +1305,12 @@ footer {
 .course-column .course-icon .course-price .currency:before {
     position: relative;
     font-size: 12px;
+    /*Naira sign*/
     content: '\20A6';
     display: inline-block;
     vertical-align: top;
     font-weight: 300px;
+    color: #fff;
 }
 
 .course-tile .course-info .course-content .succinct {
@@ -1321,9 +1323,11 @@ footer {
 
 .course-column .course-content .item {
     display: block;
-    /*margin-right: 5px;*/
-    color: hsl(0, 0%, 51%)
+    color: #888;
+}
 
+.course-column .course-content .item .fa {
+    color: #c7c7c7;
 }
 
 .course-column .course-content .title {
@@ -1503,7 +1507,7 @@ select option {
     object-position: center;
     min-height: 100px;
     border: 1px solid #f4f4f4;
-    margin-bottom: 15px;
+    /*margin-bottom: 15px;*/
     transition: all .35s ease-in-out;
 }
 
@@ -1512,7 +1516,7 @@ select option {
 }
 
 .module-tile .module-icon {
-    background: rgba(0, 0, 0, .02);
+    background: rgba(0, 0, 0, .06);
     width: auto;
     object-fit: cover;
     object-position: center;
@@ -1525,7 +1529,7 @@ select option {
     margin: 0;
     vertical-align: middle;
     padding: 10px 20px;
-    color: hsl(0, 0%, 89%);
+    color: hsl(0, 0%, 85%);
     font-weight: 700;
     mix-blend-mode: multiply;
 }
@@ -1558,7 +1562,7 @@ select option {
     transition: all .35s ease-in-out;
     color: #333;
     border-left: 2px solid var(--gray-light);
-    padding-left: 10px;
+    /*padding-left: 10px;*/
     padding-right: 10px;
     padding-top: 10px;
 }
@@ -1573,7 +1577,7 @@ select option {
     font-weight: 300;
     line-height: 1.5;
     margin-bottom: 10px;
-    border-bottom: 1px dashed #d6d6d6
+    /*border-bottom: 1px dashed #d6d6d6*/
 }
 
 .module-tile .module-btn {
@@ -1596,10 +1600,13 @@ select option {
     border-radius: 2px;
     border: 1px solid currentColor;
     border-bottom-width: 2px;
+    margin: 0 2px;
 }
 
 .module-tile .module-btn a:hover {
     background: var(--green);
+    color: #fff;
+    border: 2px solid var(--green);
 }
 
 .module-tile .module-info .module-content {
@@ -1776,4 +1783,70 @@ select option {
 
 .upload_pin:hover {
     color: var(--green);
+}
+
+.cart {
+    counter-reset: cart-tile;
+    padding-top: 15px;
+    display: block;
+    position: relative;
+}
+
+.cart-tile {
+    background: #fff;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .05);
+    display: block;
+    border: 1px rgba(0, 0, 0, .05) solid;
+    position: relative;
+}
+
+.cart-tile:before {
+    position: absolute;
+    width: 60px;
+    height: 100%;
+    counter-increment: cart-tile;
+    content: counter(cart-tile);
+    font-size: 30px;
+    background: var(--gray-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #c6c6c6
+}
+
+.cart-tile .title {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: calc(60px + 15px);
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.cart-tile .price {
+    font-size: inherit;
+    font-weight: 300;
+    display: block;
+    padding-bottom: 10px;
+    padding-left: calc(60px + 15px);
+    margin-bottom: 5px;
+}
+
+.currency:before {
+    content: '\20A6';
+    color: #a6a6a6;
+    padding-right: 2px;
+    font-weight: 300;
+}
+
+.cart-tile .action {
+    border-top: 1px rgba(0, 0, 0, .05) solid;
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: calc(60px + 15px);
 }

@@ -434,29 +434,49 @@ function accountAccess($type = null)
     return $footer;
 }
 
-function manageButtons($type = null, $cid = null, $mid = null)
+function manageTrainingButtons($type = null, $cid = null, $mid = null)
 {
     global $user_role, $user, $framework, $SETT;
-    $link = '';
 
-    if ($type == 0) {
-        // Edit Module
-        $link = cleanUrls($SETT['url'] . '/index.php?page=training&module=edit&moduleid=' . $mid);
-    } elseif ($type == 1) {
-        // Edit Course
-        $link = cleanUrls($SETT['url'] . '/index.php?page=training&course=edit&courseid=' . $cid);
-    } elseif ($type == 2) {
-        $link = cleanUrls($SETT['url'] . '/index.php?page=training&module=add');
-    } elseif ($type == 3) {
-        $link = cleanUrls($SETT['url'] . '/index.php?page=training&course=add');
+    switch ($type) {
+        case 0:
+            // Edit Module
+            $link = cleanUrls($SETT['url'] . '/index.php?page=training&module=edit&moduleid=' . $mid);
+            break;
+        case 1:
+            // Edit Course
+            $link = cleanUrls($SETT['url'] . '/index.php?page=training&course=edit&courseid=' . $cid);
+            break;
+        case 2:
+//            Add module
+            $link = cleanUrls($SETT['url'] . '/index.php?page=training&module=add');
+            break;
+        case 3:
+//            Add Course
+            $link = cleanUrls($SETT['url'] . '/index.php?page=training&course=add');
+            break;
+        default:
+            $link = cleanUrls($SETT['url'] . '/index.php?page=training&module=edit&courseid=' . $cid . '&moduleid=' . $mid);
+            break;
     }
+//    if ($type == 0) {
+//        // Edit Module
+//        $link = cleanUrls($SETT['url'] . '/index.php?page=training&module=edit&moduleid=' . $mid);
+//    } elseif ($type == 1) {
+//        // Edit Course
+//        $link = cleanUrls($SETT['url'] . '/index.php?page=training&course=edit&courseid=' . $cid);
+//    } elseif ($type == 2) {
+//        $link = cleanUrls($SETT['url'] . '/index.php?page=training&module=add');
+//    } elseif ($type == 3) {
+//        $link = cleanUrls($SETT['url'] . '/index.php?page=training&course=add');
+//    }
     return $link;
 }
 
 function secureButtons($class, $title, $type, $cid, $mid, $x = null)
 {
     global $user, $user_role;
-    $link = manageButtons($type, $cid, $mid);
+    $link = manageTrainingButtons($type, $cid, $mid);
     $gcrs = getCourses(1, $cid)[0];
     $gmd = getModules(2, $mid)[0];
 
@@ -487,6 +507,7 @@ function secureButtons($class, $title, $type, $cid, $mid, $x = null)
         $btn = $_btn;
     }
 
+
     return $btn;
 }
 
@@ -508,6 +529,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1)
     $col = '4';
     $duration = $price = $num_module = 0;
     $start_learning = $count_instructors = '';
+
     if ($type) {
         // This controls the modules
         $col = '3';
@@ -516,7 +538,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1)
         $view = cleanUrls($SETT['url'] . '/index.php?page=training&course=view&courseid=' . $contentArr['course_id'] . '&moduleid=' . $contentArr['module_id']);
         $enlink = cleanUrls($SETT['url'] . '/index.php?page=training&course=get&courseid=' . $contentArr['id']);
         $enroll = $text == 1 ? '<a href="' . $enlink . '">Enroll</a>' : '';
-        $edit = secureButtons(null, 'Edit Module', 0, null, $contentArr['id'], 1);
+        $edit = secureButtons(null, 'Edit', 0, null, $contentArr['id'], 1);
         $vb = $text == 1 ? '<a href="' . $view . '">Start</a>' : '';
         $start_learning = cleanUrls($SETT['url'] . '/index.php?page=training&course=now_learning&courseid=' . $contentArr['course_id'] . '&moduleid=' . $contentArr['module_id']);
         $progress_val = $contentArr['duration'];

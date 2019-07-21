@@ -5,8 +5,9 @@
             <div class="container">
                 <ul class="brcr">
                     <li class="level"><i class="fa fa-home"></i> <a href="{$site_url}">Home</a></li>
-                    <li class="level"><a href="">Module</a></li>
-                    <li class="level">modify</li>
+                    <li class="level"><a href="{$all_course_url}">Course</a></li>
+                    <li class="level"><a href="{$course_edit_url}">{$course_title}</a></li>
+                    <li class="level">module</li>
                 </ul>
             </div>
         </div>
@@ -28,59 +29,56 @@
                 <div class="row">
                     <div class="col-md-8 col-sm-12">
                         <form action="" enctype="multipart/form-data" method="post">
-                            <div class="user-info-list card-default card">
+                            <div class="user-info-list ">
                                 <div class="card-tile">
-                                    <div class="container ">
-                                        <div class="card-head card-header-divider">
-                                            <div class="card-title">
-                                                <h3 class="title">{$module_create_header}</h3>
-                                                <div class="caption">
-                                                    Privilege level:
-                                                    <small class="badge badge-warning">{$user_priviledge}</small>
-                                                </div>
+                                    <div class="card-head card-header-divider">
+                                        <div class="card-title">
+                                            <h4>{$module_create_header}</h4>
+                                            <div class="caption">
+                                                Privilege level:
+                                                <small class="badge badge-warning">{$user_priviledge}</small>
                                             </div>
                                         </div>
-                                        <div class="text-center">
-                                            {$module_message}
+                                    </div>
+                                    <div class="text-center">
+                                        {$module_message}
+                                    </div>
+                                    <div class="space_5"></div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="module_title">Module Title</label>
+                                            <input class="form-control" id="module_title" name="module_title"
+                                                   placeholder="Module Title" type="text"
+                                                   value="{$module_title}">
                                         </div>
-                                        <div class="space_5"></div>
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="module_title">Module Title</label>
-                                                <input class="form-control" id="module_title" name="module_title"
-                                                       placeholder="Module Title" type="text"
-                                                       value="{$module_title}">
-                                            </div>
+
+                                        <div class="form-group">
+                                            <div class="hint to-right text-danger">Max: 250 words</div>
+                                            <label for="introduction">Introduction</label>
+                                            <textarea class="form-control" cols="80" id="introduction"
+                                                      name="introduction" rows="3">{$introduction}</textarea>
                                         </div>
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <div class="hint to-right text-danger">Max: 250 words</div>
-                                                <label for="introduction">Introduction</label>
-                                                <textarea class="form-control" cols="80" id="introduction"
-                                                          name="introduction" rows="3">{$introduction}</textarea>
+                                        <div class="form-group">
+                                            <label for="duration">Duration (mins)</label>
+                                            <div class="hint small">What is the average time to complete this
+                                                module
                                             </div>
-                                            <div class="form-group">
-                                                <label for="duration">Duration (mins)</label>
-                                                <div class="hint small">What is the average time to complete this
-                                                    module
-                                                </div>
-                                                <input class="form-control mx-2" id="duration" name="duration"
-                                                       type="text"
-                                                       value="{$duration}"/>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="transcript_editor">Transcript</label>
-                                                <textarea class="form-control" cols="80"
-                                                          id="transcript_editor" name="transcript"
-                                                          rows="8">{$transcript}</textarea>
-                                                <script>
-                                                    ClassicEditor
-                                                        .create(document.querySelector('#transcript_editor'))
-                                                        .catch(error => {
-                                                            console.error(error);
-                                                        });
-                                                </script>
-                                            </div>
+                                            <input class="form-control mx-2" id="duration" name="duration"
+                                                   type="text"
+                                                   value="{$duration}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="transcript_editor">Transcript</label>
+                                            <textarea class="form-control" cols="80"
+                                                      id="transcript_editor" name="transcript"
+                                                      rows="8">{$transcript}</textarea>
+                                            <script>
+                                                ClassicEditor
+                                                    .create(document.querySelector('#transcript_editor'))
+                                                    .catch(error => {
+                                                        console.error(error);
+                                                    });
+                                            </script>
                                         </div>
                                     </div>
                                 </div>
@@ -95,7 +93,7 @@
                                             <div class="pt-4 px-3 text-center">
                                                 <div class="card-head">
                                                     <div class="card-title">
-                                                        Cover Photo
+                                                        <h5>Cover Photo</h5>
                                                     </div>
                                                 </div>
                                                 <div class="card-body align-self-center">
@@ -111,7 +109,7 @@
                                             <div class="pt-4 px-3 text-center">
                                                 <div class="card-head">
                                                     <div class="card-title">
-                                                        Badge
+                                                        <h5>Badge</h5>
                                                     </div>
                                                 </div>
                                                 <div class="card-body align-self-center">
@@ -134,11 +132,12 @@
                         <div class="user-info-list card card-default p-3 text-left">
                             <div class="card-head">
                                 <div class="card-title">
-                                    Modules
-                                </div>
-                                <span class="caption hint">
+                                    <h5>Modules</h5>
+                                    <span class="caption hint">
                                             Number of modules you've created ({$num_module})
                                         </span>
+                                </div>
+
                             </div>
                             <div class="pt-3 module-counter">
                                 {$user_modules}
@@ -147,7 +146,7 @@
                         <div class="user-info-list card card-default p-3 text-left" {$video_pre_notice}>
                             <div class="card-head">
                                 <div class="card-title">
-                                    Video Upload
+                                    <div class="h5"> Video Upload</div>
                                 </div>
                                 <div class="caption hint">
                                     You would be able to upload a video for this module when you are in edit mode
@@ -158,7 +157,7 @@
                         <div class="user-info-list card card-default p-3 text-left" {$video_post_notice}>
                             <div class="card-head">
                                 <div class="card-title">
-                                    Video Upload
+                                    <h5> Video Upload</h5>
                                 </div>
                             </div>
                             <!--                            <div class="card-body align-self-center">-->

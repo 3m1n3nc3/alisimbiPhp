@@ -5,9 +5,9 @@
             <div class="container">
                 <ul class="brcr">
                     <li class="level"><i class="fa fa-home"></i> <a href="{$site_url}">Home</a></li>
-                    <li class="level"><a href="">Course</a></li>
-                    <li class="level">Module</li>
-                    <li class="level">Linkage</li>
+                    <li class="level"><a href="{$all_course_url}">Course</a></li>
+                    <li class="level">{$course_title}</li>
+                    <li class="level">module linkage</li>
                 </ul>
             </div>
         </div>
@@ -31,9 +31,11 @@
                         <div class="user-info-list ">
                             <div class="card-tile">
                                 <div class="card-head card-header-divider">
-                                    <h3 class="title">{$module_create_header}</h3>
-                                    <div class="caption hint">
-                                        Select Modules
+                                    <div class="card-title">
+                                        <h3>{$course_title}</h3>
+                                        <div class="caption">
+                                            Select Modules
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="card-body">
