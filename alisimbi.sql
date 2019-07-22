@@ -2,15 +2,12 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 CREATE DATABASE IF NOT EXISTS `alisimbi` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `alisimbi`;
 
-CREATE TABLE IF NOT EXISTS `answers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `answers` (
+  `id` int(11) NOT NULL,
   `answer` text,
   `question_id` int(11) DEFAULT NULL,
   `module_id` int(11) DEFAULT NULL,
-  `correct` varchar(128) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `questions_id` (`question_id`),
-  KEY `module_id` (`module_id`)
+  `correct` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `answers` (`id`, `answer`, `question_id`, `module_id`, `correct`) VALUES
@@ -27,12 +24,11 @@ INSERT INTO `answers` (`id`, `answer`, `question_id`, `module_id`, `correct`) VA
 (35, 'aliquip nulla esse', 17, 3, '0'),
 (36, 'labore occaecat', 17, 3, '0');
 
-CREATE TABLE IF NOT EXISTS `benefits` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `benefits` (
+  `id` int(11) NOT NULL,
   `title` varchar(128) DEFAULT NULL,
   `icon` varchar(128) DEFAULT NULL,
-  `description` text,
-  PRIMARY KEY (`id`)
+  `description` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `benefits` (`id`, `title`, `icon`, `description`) VALUES
@@ -42,18 +38,17 @@ INSERT INTO `benefits` (`id`, `title`, `icon`, `description`) VALUES
 (4, 'videos', 'pause-circle', 'This course comes with a video so that you  can feel that connection with our instructors.'),
 (5, 'Play and Relearn', 'play', 'Even after you are done with this course you can still come back and learn.');
 
-CREATE TABLE IF NOT EXISTS `completed_courses` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `completed_courses` (
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `course_id` int(11) NOT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `completed_courses` (`id`, `user_id`, `course_id`, `date`) VALUES
 (22, 8, 8, '2019-07-21 01:06:45');
 
-CREATE TABLE IF NOT EXISTS `configuration` (
+CREATE TABLE `configuration` (
   `language` varchar(128) NOT NULL DEFAULT 'default',
   `site_name` varchar(128) NOT NULL,
   `cleanurl` enum('0','1') NOT NULL DEFAULT '0',
@@ -61,14 +56,32 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `rave_public_key` varchar(128) DEFAULT NULL,
   `rave_private_key` varchar(128) DEFAULT NULL,
   `rave_mode` enum('0','1') NOT NULL DEFAULT '0',
-  `currency` varchar(3) NOT NULL DEFAULT 'NGN'
+  `currency` varchar(3) NOT NULL DEFAULT 'NGN',
+  `activation` enum('email','phone','none','') NOT NULL DEFAULT 'email',
+  `mode` enum('0','1') NOT NULL DEFAULT '1',
+  `tracking` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `fbacc` enum('0','1') NOT NULL DEFAULT '1',
+  `fb_appid` varchar(128) DEFAULT NULL,
+  `fb_secret` varchar(128) DEFAULT NULL,
+  `twilio_sid` varchar(128) DEFAULT NULL,
+  `twilio_token` varchar(128) DEFAULT NULL,
+  `twilio_phone` varchar(128) DEFAULT NULL,
+  `captcha` enum('0','1') NOT NULL DEFAULT '0',
+  `smtp` enum('0','1') NOT NULL DEFAULT '1',
+  `sms` enum('0','1') NOT NULL DEFAULT '0',
+  `smtp_server` varchar(128) NOT NULL,
+  `smtp_port` int(6) NOT NULL,
+  `smtp_secure` enum('0','ssl','tls') NOT NULL DEFAULT '1',
+  `smtp_auth` enum('0','1') NOT NULL DEFAULT '1',
+  `smtp_username` varchar(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `smtp_password` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `configuration` (`language`, `site_name`, `cleanurl`, `data_limit`, `rave_public_key`, `rave_private_key`, `rave_mode`, `currency`) VALUES
-('default', 'Alisimbi', '0', 15, 'FLWPUBK-3155553bf5dfd444f8efa588d3fed3f4-X', 'FLWSECK-e1a611682c418f221f5c34e29984d26a-X', '0', 'NGN');
+INSERT INTO `configuration` (`language`, `site_name`, `cleanurl`, `data_limit`, `rave_public_key`, `rave_private_key`, `rave_mode`, `currency`, `activation`, `mode`, `tracking`, `fbacc`, `fb_appid`, `fb_secret`, `twilio_sid`, `twilio_token`, `twilio_phone`, `captcha`, `smtp`, `sms`, `smtp_server`, `smtp_port`, `smtp_secure`, `smtp_auth`, `smtp_username`, `smtp_password`) VALUES
+('default', 'Alisimbi', '0', 15, 'FLWPUBK-3155553bf5dfd444f8efa588d3fed3f4-X', 'FLWSECK-e1a611682c418f221f5c34e29984d26a-X', '0', 'NGN', 'email', '1', '', '1', NULL, NULL, NULL, NULL, NULL, '0', '1', '0', '', 0, '0', '0', '', '');
 
-CREATE TABLE IF NOT EXISTS `contact` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
   `c_line` varchar(128) NOT NULL,
   `address` varchar(128) NOT NULL,
   `email` varchar(128) NOT NULL,
@@ -76,15 +89,14 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `facebook` varchar(128) NOT NULL,
   `twitter` varchar(128) NOT NULL,
   `instagram` varchar(128) NOT NULL,
-  `youtube` varchar(128) NOT NULL,
-  PRIMARY KEY (`id`)
+  `youtube` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `contact` (`id`, `c_line`, `address`, `email`, `phone`, `facebook`, `twitter`, `instagram`, `youtube`) VALUES
 (1, 'Alisimbi Limited', 'Office Address: 69 Old Ring Road, Off Apico House, Abak Road, Uyo.', 'info.alisimbi@gmail.com', '08180391130', 'alisimbi', 'alisimbi_agric', 'alisimbi', '1hhiu121213123');
 
-CREATE TABLE IF NOT EXISTS `courses` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `courses` (
+  `id` int(11) NOT NULL,
   `title` varchar(128) DEFAULT NULL,
   `intro` text,
   `cover` varchar(128) DEFAULT NULL,
@@ -93,8 +105,7 @@ CREATE TABLE IF NOT EXISTS `courses` (
   `price` decimal(9,2) NOT NULL DEFAULT '0.00',
   `status` enum('0','1') DEFAULT '1',
   `start` datetime DEFAULT CURRENT_TIMESTAMP,
-  `creator_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `creator_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `courses` (`id`, `title`, `intro`, `cover`, `badge`, `benefits`, `price`, `status`, `start`, `creator_id`) VALUES
@@ -105,28 +116,25 @@ INSERT INTO `courses` (`id`, `title`, `intro`, `cover`, `badge`, `benefits`, `pr
 (9, 'Winning Big contests', 'Ea dolore enim do ea duis magna aliqua qui reprehenderit sit in laborum dolore dolore duis incididunt laboris dolor et ea quis voluptate exercitation reprehenderit irure ex voluptate magna.Ea dolore enim do ea duis magna aliqua qui reprehenderit sit in laborum dolore dolore duis incididunt laboris dolor et ea quis voluptate exercitation reprehenderit irure ex voluptate magna.Ea dolore enim do ea duis magna aliqua qui reprehenderit sit in laborum dolore dolore duis incididunt laboris dolor et ea quis voluptate exercitation reprehenderit irure ex voluptate magna.', '1381441986_1967678521_322549641_n.jpg', '1267971864_1508098222_1431329653_n.png', 'transcript,recognized,recognized,videos', '23.00', '1', '2019-07-11 00:07:00', NULL),
 (10, 'In do pariatur elit eiusmod mollit exercitation anim ut mollit aliqua', 'In do pariatur elit eiusmod mollit exercitation anim ut mollit aliqua reprehenderit sunt aliquip et dolore velit in in est incididunt magna proident do ullamco dolore nostrud proident labore fugiat commodo cupidatat adipisicing proident ad consequat fugiat nostrud non commodo in eu veniam eu incididunt eiusmod irure irure officia excepteur sit anim mollit deserunt velit ut eiusmod in dolore anim occaecat do tempor veniam ut dolore magna non irure nisi ex elit officia magna velit laboris exercitation dolor occaecat enim ut proident', '87179062_243665097_326628346_n.jpg', '1681424921_803980159_778844034_n.png', 'transcript,secured,recognized,videos', '0.00', '1', '1970-01-01 01:01:00', 8);
 
-CREATE TABLE IF NOT EXISTS `course_access` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `course_access` (
+  `id` int(11) NOT NULL,
   `course_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `current_module` int(11) DEFAULT NULL,
   `completed` varchar(250) DEFAULT NULL,
   `time_spent` int(11) NOT NULL DEFAULT '0',
-  `reg_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  `reg_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `course_access` (`id`, `course_id`, `user_id`, `current_module`, `completed`, `time_spent`, `reg_date`) VALUES
 (9, 3, 8, 6, '2,6', 11, '2019-07-19 17:05:39'),
 (10, 10, 8, 7, '12,7', 42, '2019-07-19 19:52:53'),
-(11, 8, 8, 6, '12,10,6', 46, '2019-07-19 20:59:59'),
-(19, 9, 8, NULL, NULL, 0, '2019-07-21 17:54:12');
+(11, 8, 8, 6, '12,10,6', 46, '2019-07-19 20:59:59');
 
-CREATE TABLE IF NOT EXISTS `course_modules` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `course_modules` (
+  `id` int(11) NOT NULL,
   `course_id` int(11) NOT NULL,
-  `module_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `module_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `course_modules` (`id`, `course_id`, `module_id`) VALUES
@@ -141,22 +149,20 @@ INSERT INTO `course_modules` (`id`, `course_id`, `module_id`) VALUES
 (39, 8, 10),
 (40, 8, 6);
 
-CREATE TABLE IF NOT EXISTS `homer` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `homer` (
+  `id` int(11) NOT NULL,
   `title` varchar(128) NOT NULL,
   `intro` varchar(128) NOT NULL,
-  `description` text NOT NULL,
-  PRIMARY KEY (`id`)
+  `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `homer` (`id`, `title`, `intro`, `description`) VALUES
 (1, 'Welcome to Alisimbi', 'The future of Agribusiness.', 'Learn relevant agribusiness skills and get matched to markets and funding opportunities to grow your business.  START HERE…');
 
-CREATE TABLE IF NOT EXISTS `instructors` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `instructors` (
+  `id` int(11) NOT NULL,
   `course_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `instructors` (`id`, `course_id`, `user_id`) VALUES
@@ -172,8 +178,8 @@ INSERT INTO `instructors` (`id`, `course_id`, `user_id`) VALUES
 (10, 10, 4),
 (12, 3, 4);
 
-CREATE TABLE IF NOT EXISTS `modules` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `modules` (
+  `id` int(11) NOT NULL,
   `title` varchar(128) DEFAULT NULL,
   `cover` varchar(128) DEFAULT NULL,
   `video` varchar(128) DEFAULT NULL,
@@ -182,8 +188,7 @@ CREATE TABLE IF NOT EXISTS `modules` (
   `badge` varchar(128) DEFAULT NULL,
   `duration` int(11) NOT NULL DEFAULT '1',
   `creator_id` int(11) DEFAULT NULL,
-  `secure_code` varchar(128) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `secure_code` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `modules` (`id`, `title`, `cover`, `video`, `intro`, `transcript`, `badge`, `duration`, `creator_id`, `secure_code`) VALUES
@@ -200,15 +205,14 @@ INSERT INTO `modules` (`id`, `title`, `cover`, `video`, `intro`, `transcript`, `
 (11, 'Growing Faster with speed', '872541950_1631821693_1614954296_n.jpg', NULL, 'Lorem ipsum magna eiusmod in occaecat magna dolore quis ea exercitation elit commodo aliquip elit pariatur quis do sunt eu ullamco eu exercitation amet aliquip tempor adipisicing mollit ex do dolor nostrud culpa eiusmod sit culpa dolore sed deserunt aliquip eu.', 'Dolor sint velit nisi deserunt deserunt irure magna sint magna in fugiat duis enim eu excepteur adipisicing aliquip eu in occaecat ut mollit irure aute velit ex nisi non sint culpa aliquip aliquip pariatur in aliquip id consequat exercitation do anim ut laboris nulla anim officia cillum proident fugiat duis eiusmod laborum ad ut ea occaecat adipisicing labore et cillum excepteur do irure anim amet eu occaecat tempor ex incididunt fugiat reprehenderit laborum occaecat sed sed non ad in cillum nulla elit sit amet et culpa velit deserunt sint in sed in ea labore ex pariatur mollit laboris consequat ea sunt sint in nulla deserunt occaecat sunt incididunt do culpa proident sed ut in minim in elit incididunt dolore sit qui ex nostrud in minim ut amet dolor minim adipisicing magna nisi enim sint elit.', '994855119_1041962009_1288335880_n.png', 21, 8, NULL),
 (12, 'Salvation for the animals', '1126235064_694408361_1269459394_n.jpg', '1972153517_671281916_v.mp4', 'Mollit consequat anim anim commodo et aliquip minim mollit dolore incididunt consectetur deserunt qui culpa in nostrud aliquip qui in pariatur dolore velit minim reprehenderit incididunt deserunt do culpa est dolor ex incididunt et aute ut et exercitation nostrud id aliquip ut aute cupidatat aute cillum in officia exercitation excepteur duis laborum exercitation esse culpa ea aliquip sed aliqua aliqua tempor', 'Mollit consequat anim anim commodo et aliquip minim mollit dolore incididunt consectetur deserunt qui culpa in nostrud aliquip qui in pariatur dolore velit minim reprehenderit incididunt deserunt do culpa est dolor ex incididunt et aute ut et exercitation nostrud id aliquip ut aute cupidatat aute cillum in officia exercitation excepteur duis laborum exercitation esse culpa ea aliquip sed aliqua aliqua tempor do in irure non labore ullamco dolor velit dolor reprehenderit voluptate dolor magna ut excepteur amet enim aliqua excepteur dolore enim fugiat dolor ullamco in dolore in ex in dolor anim nostrud ex reprehenderit eiusmod amet culpa ut duis irure qui minim proident velit nostrud dolore mollit excepteur ea sint enim consectetur sed nostrud veniam excepteur ut sint anim proident ad commodo nisi culpa enim mollit adipisicing in veniam anim aliqua sunt qui anim magna velit cupidatat in ea enim dolor pariatur labore anim esse dolor cillum enim sint velit aliqua amet nostrud mollit nulla esse officia ullamco id nisi tempor.\r\nMollit consequat anim anim commodo et aliquip minim mollit dolore incididunt consectetur deserunt qui culpa in nostrud aliquip qui in pariatur dolore velit minim reprehenderit incididunt deserunt do culpa est dolor ex incididunt et aute ut et exercitation nostrud id aliquip ut aute cupidatat aute cillum in officia exercitation excepteur duis laborum exercitation esse culpa ea aliquip sed aliqua aliqua tempor do in irure non labore ullamco dolor velit dolor reprehenderit voluptate dolor magna ut excepteur amet enim aliqua excepteur dolore enim fugiat dolor ullamco in dolore in ex in dolor anim nostrud ex reprehenderit eiusmod amet culpa ut duis irure qui minim proident velit nostrud dolore mollit excepteur ea sint enim consectetur sed nostrud veniam excepteur ut sint anim proident ad commodo nisi culpa enim mollit adipisicing in veniam anim aliqua sunt qui anim magna velit cupidatat in ea enim dolor pariatur labore anim esse dolor cillum enim sint velit aliqua amet nostrud mollit nulla esse officia ullamco id nisi tempor.', '1351121296_395472417_901397762_n.png', 20, 2, '2f8d7569839249d697b1015cd5206a80');
 
-CREATE TABLE IF NOT EXISTS `news` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `image` varchar(128) NOT NULL,
   `content` text NOT NULL,
   `link` varchar(128) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `state` enum('0','1') NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
+  `state` enum('0','1') NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `news` (`id`, `title`, `image`, `content`, `link`, `date`, `state`) VALUES
@@ -216,8 +220,8 @@ INSERT INTO `news` (`id`, `title`, `image`, `content`, `link`, `date`, `state`) 
 (2, 'The singer who planted corns', 'singer.jpg', 'Dolore tempor duis laboris sit veniam in in et dolor in mollit non ullamco aliqua fugiat cupidatat in velit irure voluptate quis eu aliqua cupidatat pariatur ea sit nisi deserunt irure in velit laboris nostrud laboris mollit minim do do ullamco fugiat pariatur minim fugiat excepteur labore reprehenderit voluptate minim exercitation aute ullamco laborum amet deserunt reprehenderit aute esse tempor laboris nulla adipisicing dolor dolor cillum nulla elit commodo incididunt ad dolor nostrud ut ad proident in elit est ut culpa non non aute tempor dolor in anim irure laborum ut in minim sit qui aute quis magna amet magna dolore consectetur commodo nostrud velit minim incididunt duis labore ex deserunt cillum deserunt amet ea in consequat adipisicing amet nostrud aliqua anim nostrud enim sit duis aute do elit ut eiusmod consectetur do sint sed minim dolore duis reprehenderit aliqua quis exercitation esse enim quis in adipisicing aliqua dolor nisi tempor do commodo dolor voluptate culpa do est commodo ex minim ex pariatur in ullamco commodo qui ut officia proident laborum cillum adipisicing sed non dolore fugiat exercitation elit dolore occaecat minim minim nisi culpa in do laborum deserunt elit voluptate ea magna qui nisi tempor ullamco cillum anim voluptate cupidatat magna mollit velit tempor amet laboris qui consectetur commodo officia duis elit ut laborum ea esse sit nostrud excepteur tempor fugiat sunt ea eiusmod pariatur id ut elit nulla irure cillum ut sunt nisi commodo dolore tempor in occaecat in laboris tempor sunt aute cupidatat eu elit consectetur consequat id qui sint reprehenderit quis adipisicing duis culpa.', 'corrn-singer', '2019-07-05 16:55:29', '1'),
 (3, 'What people said about obasanjo farms', 'obj.jpg', 'Dolore tempor duis laboris sit veniam in in et dolor in mollit non ullamco aliqua fugiat cupidatat in velit irure voluptate quis eu aliqua cupidatat pariatur ea sit nisi deserunt irure in velit laboris nostrud laboris mollit minim do do ullamco fugiat pariatur minim fugiat excepteur labore reprehenderit voluptate minim exercitation aute ullamco laborum amet deserunt reprehenderit aute esse tempor laboris nulla adipisicing dolor dolor cillum nulla elit commodo incididunt ad dolor nostrud ut ad proident in elit est ut culpa non non aute tempor dolor in anim irure laborum ut in minim sit qui aute quis magna amet magna dolore consectetur commodo nostrud velit minim incididunt duis labore ex deserunt cillum deserunt amet ea in consequat adipisicing amet nostrud aliqua anim nostrud enim sit duis aute do elit ut eiusmod consectetur do sint sed minim dolore duis reprehenderit aliqua quis exercitation esse enim quis in adipisicing aliqua dolor nisi tempor do commodo dolor voluptate culpa do est commodo ex minim ex pariatur in ullamco commodo qui ut officia proident laborum cillum adipisicing sed non dolore fugiat exercitation elit dolore occaecat minim minim nisi culpa in do laborum deserunt elit voluptate ea magna qui nisi tempor ullamco cillum anim voluptate cupidatat magna mollit velit tempor amet laboris qui consectetur commodo officia duis elit ut laborum ea esse sit nostrud excepteur tempor fugiat sunt ea eiusmod pariatur id ut elit nulla irure cillum ut sunt nisi commodo dolore tempor in occaecat in laboris tempor sunt aute cupidatat eu elit consectetur consequat id qui sint reprehenderit quis adipisicing duis culpa.', 'obasanjo-farms', '2019-07-05 16:55:29', '1');
 
-CREATE TABLE IF NOT EXISTS `payment` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `payment` (
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `payment_id` varchar(128) DEFAULT NULL,
   `amount` float(9,2) DEFAULT NULL,
@@ -228,22 +232,18 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `email` varchar(128) DEFAULT NULL,
   `country` varchar(128) DEFAULT NULL,
   `order_ref` varchar(128) DEFAULT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `payment` (`id`, `user_id`, `payment_id`, `amount`, `currency`, `course`, `pf_name`, `pl_name`, `email`, `country`, `order_ref`, `date`) VALUES
 (4, 8, 'URF_1563728039051_716235', 23.00, 'NGN', 'Winning Big contests', 'Marxemi', 'John', 'marxemi@yahoo.com', 'Nigeria', 'AL-9PRTN-9905D349889AEB1B-VF', '2019-07-21 17:55:27'),
 (5, 3, 'URF_1563728039051_716235', 23.00, 'NGN', 'Winning Big contests', 'Marxemi', 'David', 'marxemi@yahoo.go', 'Ghana', 'AL-9PRTN-9905D349889AEB1B-VF', '2019-07-21 17:55:27');
 
-CREATE TABLE IF NOT EXISTS `questions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `questions` (
+  `id` int(11) NOT NULL,
   `question` text,
   `module_id` int(11) DEFAULT NULL,
-  `correct` varchar(128) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id` (`id`),
-  KEY `module_id` (`module_id`)
+  `correct` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `questions` (`id`, `question`, `module_id`, `correct`) VALUES
@@ -251,26 +251,24 @@ INSERT INTO `questions` (`id`, `question`, `module_id`, `correct`) VALUES
 (16, 'Sint dolore et sed ullamco cupidatat anim officia deserunt minim quis excepteur velit veniam nisi eiusmod do labore irure cillum nisi magna ex cupidatat adipisicing eiusmod nisi sed adipisicing nulla et mollit officia proident ex magna aute sit et ad aute voluptate irure minim id ut elit laborum excepteur voluptate irure nostrud nisi veniam aliquip', 3, '3'),
 (17, 'minim dolor incididunt dolore voluptate mollit nisi eiusmod exercitation officia dolor pariatur labore veniam aliquip nulla esse nisi magna ut nostrud quis sed minim sint irure ut sunt in aliqua ea nisi ut ad non labore occaecat consectetur reprehenderit cupidatat pariatur eu consequat magna exercitation proident consequat in ad ullamco elit dolore adipisicing proident quis quis sed esse nisi elit mollit labore non culpa ut duis anim et tempor laborum nostrud commodo nostrud ut ut minim consectetur aliqua sit et labore magna non aliquip fugiat adipisicing eu pariatur id dolor dolor aute occaecat commodo et ut.', 3, '4');
 
-CREATE TABLE IF NOT EXISTS `sponsors` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sponsors` (
+  `id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
   `image` varchar(128) NOT NULL,
   `company` varchar(128) NOT NULL,
-  `description` text NOT NULL,
-  PRIMARY KEY (`id`)
+  `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `sponsors` (`id`, `name`, `image`, `company`, `description`) VALUES
 (1, 'Ogorchukwu Ovunda', 'ground-logs.jpg', 'Power Machines Limited', 'Eu veniam labore sed id nulla aliquip dolore laborum est pariatur occaecat elit tempor aliqua dolore nisi mollit id eu ut amet in laborum in excepteur dolor.'),
 (2, 'Singer Orodu', 'drinkmilk.jpg', 'Newnify Music Limited', 'Sunt quis quis nisi ad ex amet mollit incididunt aliqua in ea est deserunt ut aliqua commodo occaecat incididunt consequat ad.');
 
-CREATE TABLE IF NOT EXISTS `testimonials` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `testimonials` (
+  `id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
   `organisation` varchar(128) NOT NULL,
   `image` varchar(128) NOT NULL,
-  `content` text NOT NULL,
-  PRIMARY KEY (`id`)
+  `content` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `testimonials` (`id`, `name`, `organisation`, `image`, `content`) VALUES
@@ -278,16 +276,15 @@ INSERT INTO `testimonials` (`id`, `name`, `organisation`, `image`, `content`) VA
 (2, 'Godwin Amaowoh', 'Facebook Inc', 'here.jpg', 'consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
 (3, 'Daniel Obi', 'Microsoft Corp', 'obj.jpg', 'Sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo');
 
-CREATE TABLE IF NOT EXISTS `trainings` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `trainings` (
+  `id` int(11) NOT NULL,
   `title` varchar(128) NOT NULL,
   `content` text NOT NULL,
   `link` varchar(128) NOT NULL,
   `video` varchar(128) NOT NULL,
   `image` varchar(128) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `state` enum('0','1') NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
+  `state` enum('0','1') NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `trainings` (`id`, `title`, `content`, `link`, `video`, `image`, `date`, `state`) VALUES
@@ -295,8 +292,8 @@ INSERT INTO `trainings` (`id`, `title`, `content`, `link`, `video`, `image`, `da
 (2, 'How to drink milk', 'In labore eiusmod non adipisicing aliqua sed anim fugiat id eu sit commodo id culpa dolor ea cillum aliqua voluptate consequat ex ut quis id labore adipisicing magna enim sint excepteur tempor sunt eiusmod ad ad non in non amet veniam irure occaecat eiusmod elit in pariatur ullamco ut et duis irure duis ullamco adipisicing cillum ea qui consequat laborum officia enim ex duis exercitation minim reprehenderit deserunt reprehenderit dolore dolor elit nostrud sunt fugiat pariatur anim pariatur cupidatat adipisicing voluptate velit consequat duis reprehenderit anim et occaecat proident officia esse occaecat irure consequat dolor elit sit ut est dolore irure officia do fugiat adipisicing laboris consectetur cillum in eu ex fugiat laborum magna culpa quis est irure qui veniam cupidatat minim elit aliquip mollit ut ullamco mollit do labore ea consectetur ut quis in incididunt laboris et do sint incididunt adipisicing ullamco elit dolore commodo sit labore do ea ullamco elit minim deserunt minim aute in ad.', 'drink-milk', '1234.mp4', 'drinkmilk.jpg', '2019-07-06 13:33:18', '1'),
 (3, 'how to build groud logs', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'ground-logs', '1235.mp4', 'ground-logs.jpg', '2019-07-06 13:33:18', '1');
 
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
   `username` varchar(128) DEFAULT NULL,
   `password` varchar(128) DEFAULT NULL,
   `email` varchar(128) DEFAULT NULL,
@@ -314,11 +311,105 @@ CREATE TABLE IF NOT EXISTS `users` (
   `role` enum('learner','teacher','mod','admin','sudo') NOT NULL DEFAULT 'learner',
   `rating` int(11) NOT NULL DEFAULT '0',
   `token` varchar(128) DEFAULT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  `status` enum('0','1') NOT NULL DEFAULT '0',
+  `allow_emails` enum('0','1') NOT NULL DEFAULT '1',
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `phone`, `facebook`, `twitter`, `instagram`, `f_name`, `l_name`, `photo`, `city`, `state`, `country`, `about`, `role`, `rating`, `token`, `date`) VALUES
-(4, 'david', '28f20a02bf8a021fab4fcec48afb584e', 'mygames.ng@gmail.com', '3333', NULL, NULL, NULL, 'David', 'Geer', 'cows.jpg', 'Balakan', 'Saki', 'Azerbaijan', 'sssss', 'learner', 0, '478bf19e77d5c61d2f73dc02a6775e6f', '2019-07-08 06:25:16'),
-(8, 'marxemi', '28f20a02bf8a021fab4fcec48afb584e', 'marxemi@yahoo.com', '3333', 'ssssssss', 'sssss', 'sssssss', 'Marxemi', 'John', '527449468_1667354954_644574725_n.png', 'Kaduna', 'Waikato', 'Nigeria', 'Lorem ipsum ut non ut quis amet laborum do amet id fugiat duis esse occaecat dolore dolore eu anim nulla nostrud mollit in in amet irure in veniam excepteur occaecat non dolor id sit incididunt aliqua...', 'sudo', 3, '9b8746b1df8e7f3f3b16e14151f6efbd', '2019-07-08 11:27:45'),
-(9, 'qqqq', '0dc015b3f305f10d9a8bb68b625cdfea', 'qqqq@dd.gg', NULL, NULL, NULL, NULL, 'qqqqq', 'qqqqq', 'drinkmilk.jpg', 'Abovyan', 'Kotaik', 'Armenia', 'Anim nulla nostrud mollit in in amet irure in veniam excepteur occaecat non dolor id sit incididunt aliqua Lorem ipsum ut non ut quis amet laborum do amet id fugiat duis esse occaecat dolore dolore eu.', 'learner', 0, '8967eafbca151e55526712b84e49cd67', '2019-07-11 03:06:30');
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `phone`, `facebook`, `twitter`, `instagram`, `f_name`, `l_name`, `photo`, `city`, `state`, `country`, `about`, `role`, `rating`, `token`, `status`, `allow_emails`, `date`) VALUES
+(4, 'david', '7c6a180b36896a0a8c02787eeafb0e4c', 'mygames.ng@gmail.com', '3333', NULL, NULL, NULL, 'David', 'Geer', 'cows.jpg', 'Balakan', 'Saki', 'Azerbaijan', 'sssss', 'learner', 0, '482509', '0', '1', '2019-07-08 06:25:16'),
+(8, 'marxemi', '7c6a180b36896a0a8c02787eeafb0e4c', 'mygames.ng@gmail.com', '3333', 'ssssssss', 'sssss', 'sssssss', 'Marxemi', 'John', '385560647_185063102_81272240_n.png', 'Kaduna', 'Waikato', 'Nigeria', 'Lorem ipsum ut non ut quis amet laborum do amet id fugiat duis esse occaecat dolore dolore eu anim nulla nostrud mollit in in amet irure in veniam excepteur occaecat non dolor id sit incididunt aliqua...', 'sudo', 3, '', '1', '1', '2019-07-22 17:53:14'),
+(9, 'qqqq', '7c6a180b36896a0a8c02787eeafb0e4c', 'mygames.ng@gmail.com', NULL, NULL, NULL, NULL, 'qqqqq', 'qqqqq', 'drinkmilk.jpg', 'Abovyan', 'Kotaik', 'Armenia', 'Anim nulla nostrud mollit in in amet irure in veniam excepteur occaecat non dolor id sit incididunt aliqua Lorem ipsum ut non ut quis amet laborum do amet id fugiat duis esse occaecat dolore dolore eu.', 'learner', 0, '482509', '0', '1', '2019-07-11 03:06:30'),
+(10, 'admin', '7c6a180b36896a0a8c02787eeafb0e4c', 'mygames.ng@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'sudo', 5, '482509', '0', '1', '2019-07-22 11:40:49');
+
+
+ALTER TABLE `answers`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `questions_id` (`question_id`),
+  ADD KEY `module_id` (`module_id`);
+
+ALTER TABLE `benefits`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `completed_courses`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `courses`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `course_access`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `course_modules`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `homer`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `instructors`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `modules`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `news`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `payment`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `questions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id` (`id`),
+  ADD KEY `module_id` (`module_id`);
+
+ALTER TABLE `sponsors`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `testimonials`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `trainings`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+
+ALTER TABLE `answers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `benefits`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `completed_courses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `courses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `course_access`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `course_modules`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `homer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `instructors`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `modules`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `news`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `payment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `questions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `sponsors`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `testimonials`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `trainings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;

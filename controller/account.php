@@ -78,6 +78,20 @@ function mainContent() {
                         $framework->redirect('account&profile=home');
                     }
                 }
+            } elseif (isset($_GET['unverified'])) {
+                $theme = new themer('account/unverified');
+                // $OLD_THEME = $PTMPL; $PTMPL = array();
+                if (isset($_POST['resend'])) {
+                    $PTMPL['activation_message'] = $framework->account_activation('resend', $user['username']);
+                } elseif (isset($_POST['verify'])) {
+                    if ($_POST['otp'] == '') {
+                        $PTMPL['activation_message'] = messageNotice('Please enter a valid OTP', 3);
+                    } else {
+                        $PTMPL['activation_message'] = $framework->account_activation($_POST['otp'], $user['username']);
+                    }
+                } elseif (!isset($_POST['verify']) || !isset($_POST['verify']) && $user['status'] == 1) {
+                    $framework->redirect('account&profile=home');
+                }
             }
 
             $PTMPL['photo'] = getImage($user['photo'], 1);
@@ -142,12 +156,12 @@ function mainContent() {
             $modal_photo = 
             '<div class="row text-center">         
                 <div class="col mx-auto"> 
-                    <div id="photo-preview" class="cropit">
+                    <div id="photo-preview">
                         <img alt="Profile Photo" src="'.getImage($user['photo'], 1).'"/>
                     </div> 
                 </div>   
-            </div>';
-            $PTMPL['photoPrevievModal'] = modal('photoPreview', $modal_photo, ucfirst($user['username']));
+            </div>'; 
+            $PTMPL['photoPrevievModal'] = modal('photoPreview', $modal_photo, null, 1, null, 1);
 
             $update_social = '';
             if ($user_role >= 3) {

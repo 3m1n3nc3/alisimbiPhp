@@ -38,9 +38,37 @@ function mainContent() {
 			$PTMPL['sitename'] = $configuration['site_name'];
 		}
 
+		// Check if an Admin user exists
+		$us = $framework->userData('admin');
+		$PTMPL['updateadmin'] = $us['username'] ? '<input type="submit" name="update_admin" class="btn" value="Update Admin">' : '<input type="submit" name="create_admin" class="btn" value="Create Admin">';
+
+		if (isset($_POST['create_admin']) || isset($_POST['update_admin'])) {
+			$PTMPL['email'] = $_POST['email'];
+			$email = $framework->db_prepare_input($_POST['email']);
+			$password = hash('md5', $framework->db_prepare_input($_POST['password']));
+			if ($email == '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				$PTMPL['update_admin_msg'] = messageNotice('Invalid Email Address', 3);
+			} elseif ($_POST['password'] == '') {
+				$PTMPL['update_admin_msg'] = messageNotice('Invalid Password', 3);
+			}  elseif (strlen($_POST['password']) < 9) {
+				$PTMPL['update_admin_msg'] = messageNotice('Password Too Short, needs to contain at least 9 characters', 3);
+			} else {
+				if (isset($_POST['create_admin'])) {
+					$sql = sprintf("INSERT INTO " . TABLE_USERS . " (`username`, `password`, `email`, `role`, `rating`, `token`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", 'admin', $password, $email, 'sudo', 5, $framework->generateToken(null, 2));
+					$upd = $framework->dbProcessor($sql, 0, 1);
+					$PTMPL['update_admin_msg'] = $upd == 1 ? messageNotice('Admin user has been created', 1) : messageNotice($upd);
+				} elseif (isset($_POST['update_admin'])) {
+					$sql = sprintf("UPDATE " . TABLE_USERS . " SET `password` = '%s', `email` = '%s', `token` = '%s'", $password, $email, $framework->generateToken(null, 2));
+					$upd = $framework->dbProcessor($sql, 0, 1);
+					$PTMPL['update_admin_msg'] = $upd == 1 ? messageNotice('Admin user has been updated', 1) : messageNotice($upd);
+				}
+			}
+		}
+
 		$PTMPL['no_ravemode'] = $PTMPL['no_cleanurl'] = ' selected="selected"'; 
 		$PTMPL['ravemode'] = $configuration['rave_mode'] ? ' selected="selected"' : ''; 
 		$PTMPL['cleanurl'] = $configuration['cleanurl'] ? ' selected="selected"' : '';
+		$us['role'] == 'mod' ? $PTMPL['mod'] = ' selected="selected"' : $us['role'] == 'admin' ? $PTMPL['admin'] = ' selected="selected"' : $PTMPL['sudo'] = ' selected="selected"';
 	}
 
     $settings = $theme->make();
