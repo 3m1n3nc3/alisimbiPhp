@@ -943,7 +943,7 @@ function modal($modal, $content, $title = null, $size = null, $footer = null, $e
     // Size 1: Small
     // Size 2: Large
     // Size 3: Fluid
-
+ 
     if ($size == 1) {
         $size = ' modal-sm';
     } elseif ($size == 2) {
@@ -951,7 +951,13 @@ function modal($modal, $content, $title = null, $size = null, $footer = null, $e
     } elseif ($size == 3) {
         $size = ' modal-fluid';
     }
-
+    if ($extra == 1) {
+      $no_pad = ' style="padding: 0px;"';
+    } else {
+      $no_pad = '';
+      $extra = $extra;
+    }
+    
     $button = '
     <button type="button" class="close" aria-label="Close" onclick="modal_destroyer(\''.$modal.'Modal\')">
       <span aria-hidden="true">&times;</span>
@@ -961,7 +967,7 @@ function modal($modal, $content, $title = null, $size = null, $footer = null, $e
     '<div class="modal-header">
       <h5 class="modal-title" id="'.$modal.'ModalLabel">'.$title.'</h5>
       '.$button.'
-    </div>' : '<div class="modal-header" style="border-bottom: none; padding: 5px;">'.$button.'</div>';
+    </div>' : '<div class="modal-header" style="border-bottom: none; padding: 0px;">'.$button.'</div>';
 
     $footer_content = $footer ? '<div class="modal-footer">'.$footer.'</div>' : '';
     $modal_menu ='
@@ -969,7 +975,7 @@ function modal($modal, $content, $title = null, $size = null, $footer = null, $e
       <div class="modal-dialog modal-dialog-centered'.$size.$extra.'" role="document">
         <div class="modal-content"> 
           '.$title.'  
-          <div class="modal-body">
+          <div class="modal-body"'.$no_pad.'>
             '.$content.'
           </div>
             '.$footer_content.'

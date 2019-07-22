@@ -64,6 +64,37 @@
 				</div>
 			</form>
 		</div>
+		<div class="border rounded p-3 m-3" id="admin_section">
+			<h3>Administrator</h3>
+			<div class="text-center p-2">{$update_admin_msg}</div>
+			<form method="post" action="#admin_section">
+				<div class="row">
+					<div class="col-md-5">
+						<div class="form-group">
+							<label class="src-only" for="email">Email</label>
+							<input class="form-control" id="email" name="email" placeholder="Email" type="email">
+						</div>
+					</div>
+					<div class="col-md-5">
+						<div class="form-group">
+							<label class="src-only" for="password">Password</label>
+							<input class="form-control" id="password" name="password" placeholder="Password" type="password">
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="form-group">
+							<label class="src-only" for="role">Role</label>
+							<select id="role" name="role" class="form-control">
+								<option value="mod"{$mod}>Moderator</option>
+								<option value="admin"{$admin}>Admin</option>
+								<option value="sudo"{$sudo}>Super User</option>
+							</select>
+						</div>
+					</div>
+					{$updateadmin}
+				</div>
+			</form>
+		</div>
 		<div class="border rounded p-3 m-3" id="user_table">
 			<h3>User Details</h3>
 			<table id='userTable' class='display compact'>
