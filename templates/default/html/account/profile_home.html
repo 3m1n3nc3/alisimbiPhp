@@ -70,7 +70,9 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="profile_img">
-                                    <img class=" img-thumbnail m-auto " src="{$photo}">
+                                    <a href="#" data-toggle="modal" data-target="#photoPreviewModal">
+                                        <img class=" img-thumbnail m-auto " src="{$photo}">
+                                    </a>
                                 </div>
                                 <div class="card ">
                                     <div class="py-3 px-2">
@@ -215,3 +217,4 @@
     <!-- dashboard -->
 </div>
 <!-- Wrapper -->
+{$photoPrevievModal}

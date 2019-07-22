@@ -18,7 +18,6 @@
                             <div class="card-title">
                                 <h3 class="title">Profile</h3>
                                 <span class="caption">Edit your profile here</span>
-
                             </div>
                         </div>
                     </div>
@@ -114,15 +113,11 @@
                                 </div>
                                 <div class="mt-4">
                                     <div class="profile_img">
-                                        <label class="upload_pin" for="upload_photo">
+                                        <a href="#" data-toggle="modal" data-target="#photoModal"  class="upload_pin" for="upload_photo">
                                             <i class="fa fa-edit"></i>
-                                        </label>
+                                        </a>
                                         <img alt="user avatar" class="m-auto " src="{$photo}">
-                                    </div>
-                                    <div id="load_msg"></div>
-
-                                    <input id="upload_photo" name="upload_photo" style="display: none;" type="file">
-                                    <button class="btn btn-block" onclick="photoUpload()" type="button">Upload</button>
+                                    </div> 
                                 </div>
                                 <div class="space_5"></div>
                                 {$update_social}
@@ -141,3 +136,4 @@
         {$global_footer}
     </div>
 </div>
+{$photoModal}

@@ -14,7 +14,7 @@ function mainContent() {
 	$cid = isset($_GET['courseid']) ? $_GET['courseid'] : '';
 	// Set the link to redirect users t login page and bring them back to requested page
 	$login_redirect_url = 'account&process=login&referrer='.urlencode($SETT['url'].$_SERVER['REQUEST_URI']);
-	$payment_redirect_url = 'training&course=get&courseid='.$cid.'&referrer='.urlencode($SETT['url'].$_SERVER['REQUEST_URI']);
+	$payment_redirect_url = 'training&course=get&process=payment&courseid='.$cid.'&referrer='.urlencode($SETT['url'].$_SERVER['REQUEST_URI']);
 
 	if (!isset($_GET['course']) || $_GET['course'] === 'view' || $user) {
 		// Create course and module links
@@ -27,7 +27,17 @@ function mainContent() {
 		    $PTMPL['user_priviledge'] = ucfirst($user['role']);
 
 			if (isset($_GET['courseid']) && $_GET['courseid'] != '') {
+
 		    	$course = getCourses(1, $_GET['courseid'])[0];
+
+				$c_duration = doSum($course['id'])[0]['course_duration'];
+        		$PTMPL['c_duration'] = $marxTime->minutesConverter($c_duration, '%02d Hrs %02d Mins');
+        		$count_ins = doSum($course['id'], 1)[0]['count_intructors'];
+        		$PTMPL['count_instructors'] = $count_ins >= 1 ? $count_ins : '0';
+        		$PTMPL['count_modules'] = getModules(4, $course['id'])[0]['count_modules'];
+
+        		$PTMPL['random_courses'] = twoRandomCourse();
+
 	    		$PTMPL['course_title'] = $course['title'];
 	    		$PTMPL['course_cover'] = '<p><img style="width: 250px; float: left; padding: 10px;" src="'.getImage($course['cover'], 1).'" class="image_class"></p>';
 	    		$PTMPL['course_cover_url'] = getImage($course['cover'], 1);
@@ -95,7 +105,7 @@ function mainContent() {
 	    			$modules = notAvailable('Modules');
 	    		}
 
-	    		$get = cleanUrls($SETT['url'].'/index.php?page=training&course=get&courseid='.$_GET['courseid']);
+	    		$get = cleanUrls($SETT['url'].'/index.php?page=training&course=get&process=payment&courseid='.$_GET['courseid']);
 	    		$PTMPL['course_modules'] = $modules;
 	    		$PTMPL['course_get_btn'] = '<a href="'.$get.'" class="btn btn-md btn-success"><i class="fa fa-credit-card"></i>Get Course</a>';
 	    		// $PTMPL['course_'] = $course[''];
@@ -112,18 +122,19 @@ function mainContent() {
 
     		/*if you are paying for the course details*/
 			} elseif ($_GET['course'] == 'get') {
-		      	$theme = new themer('training/course_get'); $account = '';
 
-			    // Set the page title
-			    $PTMPL['page_title'] = 'Checkout '.$course['title'];
-
-			    // Check if user already has this course_modules_new
+			    // Check if user already has this course
 			    $check = courseAccess(1, $course['id']);
-			    if ($check) {
-			    	$framework->redirect(urldecode($_GET['referrer']), 1);
+			    if ($_GET['process'] == 'payment' && $check) {
+			    	if (isset($_GET['referrer'])) {
+			    		$framework->redirect(urldecode($_GET['referrer']), 1);
+			    	} else {
+			    		$framework->redirect('account&profile=home');
+			    	}
 			    }
 
-    			$PTMPL['raveverified'] = getImage('raveverified.png');
+    			$PTMPL['raveverified'] = getImage('raveverified.png'); 
+				$site_logo = $SETT['url'].'/'.getImage('logo-full.png', 2);
     			$PTMPL['course_price'] = $course['price'].' '.$configuration['currency'];
 
     			/* Rave checkout variables*/
@@ -132,19 +143,188 @@ function mainContent() {
 			 	 // Rave API Private key
 				$private_key = $configuration['rave_private_key'];
 				// Check if sandbox is enabled
-				$ravemode = ($configuration['rave_mode'] ? 'api.ravepay.co' : 'ravesandboxapi.flutterwave.com');
-				 // Currency Code
-				$currency_code 	= $configuration['currency'];
-				// Url to redirect to to verify rave
-				$successful_url	= $SETT['url'].'/connection/raveAPI.php';
-				isset($_SESSION['txref']) ? $reference = $_SESSION['txref'] : $reference = '';
+				$ravemode = ($configuration['rave_mode'] ? 'api.ravepay.co' : 'ravesandboxapi.flutterwave.com'); 
+				// Set the payment reference
+				$reference = isset($_SESSION['txref']) ? $_SESSION['txref'] : '';
+	      	
 
-				// If the price of this course is free, add to user's course list
-				if (isset($_POST['pay']) && $course['price'] == 0) {
-					courseAccess(null, $course['id']);
-					$framework->redirect(urldecode($_GET['referrer']), 1);
-				} else {
+			    if (isset($_GET['data'])) {
+			    	$PTMPL['transref'] = $_GET['data']['txref'];
+			    	$PTMPL['transcharge'] = $_GET['data']['chargedamount'].' '.$_GET['data']['currency'];
+			    	$PTMPL['course_cost'] = $_GET['data']['chargedamount'] - $_GET['data']['appfee'].' '.$_GET['data']['currency'];
+			    	$PTMPL['appfee'] = $_GET['data']['appfee'].' '.$_GET['data']['currency'];
+			    	$PTMPL['transtitle'] = $course['title'];
+			    	$PTMPL['transdate'] = date('Y-m-d H:i:s', strtotime('NOW'));
+					$PTMPL['x_class'] = 'border rounded p-5 m-5 text-left';
+			    } elseif ($check && isset($_GET['type']) && $_GET['type'] = 'free') {
+			    	$PTMPL['transref'] = 'AL-'.mt_rand(5,99).'PRTN-'.strtoupper(uniqid(rand(19*94, true))).'-FREE';
+			    	$PTMPL['transcharge'] = '0.00';
+			    	$PTMPL['course_cost'] = $course['price'];
+			    	$PTMPL['appfee'] = '0.00';
+			    	$PTMPL['transtitle'] = $course['title'];
+			    	$PTMPL['transdate'] = date('Y-m-d H:i:s', strtotime('NOW'));
+					$PTMPL['x_class'] = 'border rounded p-5 m-5 text-left';
+					$check = 2;
+			    }
 
+				if ($_GET['process'] == 'payment') {
+					$theme = new themer('training/course_get'); $account = '';
+				    // Set the page title
+				    $PTMPL['page_title'] = 'Checkout '.$course['title'];
+							
+					// Check If the price of this course is not free
+					if (isset($_POST['pay']) && $course['price'] > 0) {
+
+						// Url to redirect to to verify rave
+						$successful_url	= $SETT['url'].'/connection/raveAPI.php'; 
+
+						$buyer_email = $user['email'];
+						$cntr_code = countries(2, $user['country']);  
+						$purchase_reference = 'AL-'.mt_rand(5,99).'PRTN-'.strtoupper(uniqid(rand(19*94, true))).'-VF';
+						$course_desc = $framework->myTruncate(strip_tags($course['intro']), 100, ' ', '');
+
+						$_SESSION['txref'] = $purchase_reference;	
+						$_SESSION['amount'] = $price = $course['price'];
+						$_SESSION['currency'] = $currency_code = $configuration['currency'];
+						// Store the selected course
+						$_SESSION['selected_course'] = $course['title'];
+						$_SESSION['course_code'] = $course['id'];
+
+						// Parameters for Checkout, which will be sent to Rave
+						// Default payment button class: 'flwpug_getpaid', don't change
+						$form_body = "
+						  <a class=\"flwpug_getpaid\" 
+						  data-PBFPubKey=\"{$public_key}\" 
+						  data-txref=\"{$purchase_reference}\" 
+						  data-amount=\"{$price}\" 
+						  data-customer_email=\"{$buyer_email}\" 
+						  data-currency=\"{$currency_code}\" 
+						  data-pay_button_text=\"Pay Now\" 
+						  data-payment_method=\"both\"
+						  data-custom_description=\"{$course_desc}\"
+						  data-custom_logo=\"{$site_logo}\"
+						  data-country=\"{$cntr_code}\"
+						  data-redirect_url=\"{$successful_url}\"></a>
+						  
+						  <script type=\"text/javascript\" src=\"https://".$ravemode."/flwv3-pug/getpaidx/api/flwpbf-inline.js\"></script>	
+						";
+
+						$PTMPL['form_body'] = $form_body; 
+					} elseif (isset($_POST['pay']) && ($course['price'] == 0 || $course['price'] == 0.00)) {
+						courseAccess(null, $course['id']);
+						$referrer = urlencode($_SESSION['referrer']);
+						$url = $SETT['url'].'/index.php?page=training&course=get&process=status&courseid='.$_GET['courseid'].'&type=free&referrer='.$referrer;
+						$framework->redirect($url, 1);
+					}
+				} elseif ($_GET['process'] == 'status') {
+					$theme = new themer('training/payment_status'); $account = '';
+				    // Set the page title
+				    $PTMPL['page_title'] = $course['title'].' Payment Status';				    
+
+				    // Start validating this payment
+					if(!$check && isset($_GET['type']) && $_GET['type'] == 'canceled') {
+						// If the payment has been canceled
+						$PTMPL['error'] = messageNotice('Trasaction Canceled <br>', 2);	
+						$PTMPL['error'] .= messageNotice('Error <strong>'.$_GET['status'].'</strong>: '.$_GET['message'], 3);					 
+					} elseif(!$check && isset($_GET['type']) && $_GET['type'] == 'successful') { 
+ 
+						// If the flutterwaveREF and OrderREF has been returned by the Return URL
+						if(isset($_GET['data']["flwref"]) && isset($_GET['data']['orderref'])) {
+							$token = $_GET['data']["flwref"];
+							$orderref = $_GET['data']['orderref'];
+
+							//Connect with Verification Server
+					        $query = array(
+					            "SECKEY" => $private_key,
+					            "txref" => $reference
+					        );
+
+							$framework->ravemode = $ravemode;
+							$framework->query = $query;
+					        $resp = $framework->raveValidate(); 
+
+							// manual validation For testing and debugging, useless
+							// $resp = array("status" => 'success', "data" => array("status" => 'successful', "amount" => $_GET['data']['amount'], "paymentid" => $_GET['data']['paymentid'], "orderref" => $orderref));
+							// $_SESSION['selected_course'] = 'Winning Big contests'; 
+							// For testing, DELETE
+
+							// Check if the payment was successful
+							if(strtoupper($resp['status']) == "SUCCESS") {
+								// Validate payment details on server against payment details on client to Verify if the payment is Completed
+								if(($resp['data']['amount'] == $_GET['data']['amount']) && ($resp['data']['paymentid'] == $_GET['data']['paymentid']) && ($resp['data']['orderref'] == $orderref)) {
+
+									// If the payment processing was successful
+									if(strtoupper($resp['data']['status']) == "SUCCESSFUL" && strtoupper($_GET['data']['status']) == "SUCCESSFUL") {
+										
+										// Save this payment for future reference
+
+										// Variables to pass to database
+										$framework->payer_id	= $framework->db_prepare_input($user['id']);
+										$framework->payment_id	= $framework->db_prepare_input($orderref);
+										$framework->amount		= $framework->db_prepare_input($resp['data']['amount']);
+										$framework->currency	= $framework->db_prepare_input($configuration['currency']);
+										$framework->course		= $framework->db_prepare_input($_SESSION['selected_course']); 
+										$framework->payer_fn 	= $framework->db_prepare_input($user['f_name']);
+										$framework->payer_ln	= $framework->db_prepare_input($user['l_name']);
+										$framework->email		= $framework->db_prepare_input($user['email']);
+										$framework->country	 	= $framework->db_prepare_input($user['country']);
+										$framework->order_ref 	= $framework->db_prepare_input($_SESSION['txref']);	 
+			 							 
+			 							// Process this payment and approve the payment
+										$response = $framework->updatePayments();
+										courseAccess(null, $course['id']);  
+
+										// End all sessions
+										unset($_SESSION['txref']);	
+										unset($_SESSION['amount']);
+										unset($_SESSION['currency']); 
+										unset($_SESSION['selected_course']);
+										unset($_SESSION['course_code']);										
+
+										// Temporarily tell the system that the course has been paid for
+										$check = 2;  
+										 
+									} else {
+										if (strtoupper($resp['status']) == 'SUCCESS') {
+											$PTMPL['error'] = messageNotice('Error: Payment Verification failed', 3);
+										} else {
+											$PTMPL['error'] = messageNotice('Error '.$resp['status'].': '.$resp['message'], 3);
+										}
+									}
+								} else {
+									if(strtoupper($resp['status']) == 'SUCCESS') {
+										$PTMPL['error'] = messageNotice('Error: Information Mismatch', 3);
+									} else {
+										$PTMPL['error'] = messageNotice('Error '.$resp['status'].': '.$resp['message'], 3);
+									}
+								}
+							} else {
+								if(strtoupper($resp['status']) == 'SUCCESS'){ 
+									$PTMPL['error'] = messageNotice('Error: Unable to complete payment', 3); 
+								} else {
+									$PTMPL['error'] = messageNotice('Error '.$resp['status'].': '.$resp['message'], 3);
+								}
+							}
+						}			 
+					} 		
+
+					// If the proAccount was just created
+					if ($check == 1 || $check == 2) {
+						if($check == 2) {  
+							$PTMPL['success_title'] = 'Your payment has completed successfully, thanks for your interest in learning';
+							$PTMPL['learning'] = simpleButtons(null, 'Start Learning', isset($_GET['referrer']) ? $_GET['referrer'] : '');
+						} else {
+							$PTMPL['success_title'] = 'You already purchased this course, you can continue learning or try purchasing another course!';
+							$PTMPL['learning'] = simpleButtons(null, 'Continue Learning', isset($_GET['referrer']) ? urldecode($_GET['referrer']) : '');
+						} 
+						// Show the detail of this course
+						$coursesArr = getCourses(1, $_GET['courseid'])[0];
+						$this_course = courseModuleCard($coursesArr); 
+						$PTMPL['this_course'] = $this_course; 			
+					}
+				} elseif (!isset($_GET['process'])) {
+					// redirect to a 404 error page
+					$framework->redirect($login_redirect_url);
 				}
 
 				/*if you are adding or editing courses*/
@@ -288,7 +468,7 @@ function mainContent() {
                     $PTMPL['list_modules'] = $get_module_list[0];
                     $PTMPL['current_module_title'] = $get_module_list[1];
                     $PTMPL['current_module_link'] = $get_module_list[2];
-// $vid = $get_modules['video'] ? $get_modules['video'] :
+					// $vid = $get_modules['video'] ? $get_modules['video'] :
 			        $PTMPL['video_log'] = getVideo($get_modules['video']);
 			        $PTMPL['transcript'] = $get_modules['transcript'];
 					$PTMPL['course_edit_btn'] = secureButtons('background_green2 bordered', 'Edit Course', 1, $_GET['courseid'], isset($_GET['moduleid']) ? $_GET['moduleid'] : '');
@@ -296,7 +476,7 @@ function mainContent() {
 					$PTMPL['percent_complete'] = $percent_complete;
 					if ($percent_complete >= 100 && getQuestions($_GET['courseid'], 2)) {
 						$test_url = cleanUrls($SETT['url'].'/index.php?page=training&course=take_test&courseid='.$_GET['courseid']);
-						$PTMPL['test_btn'] = simpleButtons('background_green2 bordered', 'Take Test', $test_url);
+						$PTMPL['start_test_btn'] = simpleButtons('background_green2 bordered', 'Take Test', $test_url);
 					}
 
 					// Set the users current course
@@ -317,14 +497,17 @@ function mainContent() {
 
 	            $questions = getQuestions($course['id'], 2);
 	            $card = '';
+	            $qt = 1;
+ 
 	            foreach ($questions as $quest) {
+	            	$qtn = $qt++;
 	            	$answers = getAnswers($quest['question_id']);
 	            	$answ = '';
 	            	foreach ($answers as $ans) {
 	            		$answ .= '
 	            		<div class="form-group">
-                        	<input type="radio" name="question_'.$quest['question_id'].'" value="'.$ans['id'].'" id="question_1">
-                        	<label for="question_1">'.ucfirst($ans['answer']).'</label>
+                        	<input type="radio" name="question_'.$qtn.'" value="'.$ans['id'].'" id="question_'.$ans['id'].'">
+                        	<label id="ans_'.$ans['id'].'" for="question_'.$ans['id'].'">'.ucfirst($ans['answer']).'</label>
                         </div>'; 
 	            	}
 	            	$card .= '
@@ -336,16 +519,51 @@ function mainContent() {
                         </div>
                     </div>';
 	            }
-                if (isset($_POST['submit'])) {
-	            	foreach ($questions as $quest) {
-	            		$prepare[$quest['question_id']] = $_POST['question_'.$quest['question_id']];
-	            	}
-                }
-	            $framework->questions_ = $prepare;
-
 	            $card .= '<div class="space_3"></div>';
-	            $PTMPL['question_card'] = $card;//echo substr('question_16', 9, 11);
-	            print_r($_POST);
+	            $PTMPL['question_card'] = $card; 
+
+	            // Validate the provided answers
+                if (isset($_POST['submit'])) {
+                	$qt = 1;
+                	if (isset($_SESSION['answers'])) {
+                		unset($_SESSION['answers']);
+                	}
+
+                	$SESSION['answers'][] = '';
+	            	foreach ($questions as $quest) {  
+	            		$qtn = $qt++;
+	            		$_answer = isset($_POST['question_'.$qtn]) ? $_POST['question_'.$qtn] : 'null';
+	            		$sql = sprintf("SELECT correct FROM " . TABLE_ANSWER . " WHERE id = '%s'", $_answer);
+	            		$submit = $framework->dbProcessor($sql, 1)[0]; 
+	            		if ($submit['correct'] == 0 || !isset($submit['correct'])) { 
+	            			$SESSION['answers']['wrong']['wrong_'.$qtn] = $_answer;
+	            			$_SESSION['answers'] = $SESSION['answers'];
+	            		} else {
+	            			$SESSION['answers']['right']['right_'.$qtn] = $_answer;
+	            			$_SESSION['answers'] = $SESSION['answers'];
+	            		}
+	            	}
+	                $msg = '';
+	                if (isset($_SESSION['answers']['wrong'])) {
+	                	$msg = messageNotice('Some answers you provided were wrong, check and try again');
+	                } else {
+	                	$comp = completeCourse($course['id']);
+	                	if ($comp == 1) {
+	                		$PTMPL['mast_test_photo'] = '
+		                    <div class="course-banner">
+		                        <img alt="Congratulations cover" class="img-fluid" src="'.getImage('complete-banner.png').'"/>
+		                    </div>';
+		                    $PTMPL['return_btn'] = '<a href="' . cleanUrls($SETT['url'] . '/index.php?page=account&profile=home') . '" class="btn btn-block background_green2 bordered">Return to your dashboard</a>';
+		                    $msg = messageNotice('Congratulations, you provided correct answers for all the questions and have thus completed this course, your certificate is on the way and you will be notified', 1);
+	                	} else {
+	                		$msg = messageNotice('We have encountered an error; this is not your fault, please submit your answers again', 3);
+	                	}
+	                }
+	                $PTMPL['answer_message'] = $msg;
+                }
+            	if (isset($_SESSION['answers'])) {
+            		unset($_SESSION['answers']);
+            	}
 			}
 		} elseif (isset($_GET['module']) && $_GET['module'] == 'edit' && isset($_GET['action'])) {
 			// Add Video to the lesson
@@ -392,7 +610,7 @@ function mainContent() {
 								</iframe>
 							</div>';
 						} else {
-							$msg = errorMessage($results);
+							$msg = messageNotice($results);
 						}
 					}
 					$PTMPL['module_message'] = $msg;
@@ -459,9 +677,9 @@ function mainContent() {
 
 					$get_q = getQuestions($_GET['moduleid'])[0];
 					if ($_POST['question'] = '') {
-						$msg = errorMessage("A question is required to save");
+						$msg = messageNotice("A question is required to save");
 					} elseif (!isset($_GET['question']) && ($_POST['answer1'] == '' || $_POST['answer2'] == '' || $_POST['answer3'] == '' || $_POST['answer4'] == '')) {
-						$msg = errorMessage("Sorry, there is no option for an empty option");
+						$msg = messageNotice("Sorry, there is no option for an empty option");
 					} elseif ($get_q['question'] == $framework->question) {
 						$msg = infoMessage("This question is similar to one you had earlier added!");
 					} else {

@@ -57,15 +57,12 @@ $(document).ready(function () {
         $(theid).remove();
     });
     // ======================================
-
-    $('#uploadSubmit_video').click(function (event) {
-        if ($('#uploadvideo').val()) {
-            alert('here');
-        }
-        return false;
-    });
-
 });
+
+function modal_destroyer(modal_name) { 
+    // $('#'+modal_name).modal('dispose');
+    $('#'+modal_name).modal('toggle');
+}
 
 $('#computer').on('click', function () {
     $('#pcfile').show();
