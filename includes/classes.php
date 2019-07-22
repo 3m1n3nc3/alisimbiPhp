@@ -35,7 +35,8 @@ class framework {
 	function userData($user = NULL, $type = NULL) {
         // if type = 0 fetch all users, and use filter to add custom query
         // if type = 1 users by their user ids
-        // if type = 2 fetch users by thier usernames
+        // if type = 2 fetch users by their usernames
+        // if type = 10 fetch users for datatables
 
 	    global $configuration;
 
@@ -54,6 +55,8 @@ class framework {
             $sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE id <> '' %s %s", $filter, $limit);
         } elseif ($type === 1) {
 	    	$sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE id = '%s'", $user); 
+	    }  elseif ($type === 10) {
+	    	$sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE %s", $limit);
 	    } else {
 	    	// if the username is an email address
 	    	if (filter_var($user, FILTER_VALIDATE_EMAIL)) {
@@ -250,6 +253,32 @@ class framework {
             $role = 0;
         }
         return $role;
+	}
+
+	/**
+	* Manage the payments
+	*/
+	function updatePayments($type = null) {
+	  global $framework, $user;
+
+	  $user_id = $framework->payer_id;    
+	  $paymentid = $framework->payment_id;                       
+	  $amount = $framework->amount;
+	  $currency = $framework->currency;
+	  $course = $framework->course;
+	  $fname = $framework->payer_fn;
+	  $lname = $framework->payer_ln;
+	  $email = $framework->email;  
+	  $country = $framework->country;
+	  $orderref = $framework->order_ref;
+
+	  if (!$type) {
+	    $sql = sprintf("INSERT INTO " . TABLE_PAYMENTS . " (`user_id`, `payment_id`, `amount`, `currency`, `course`, `pf_name`, "
+	      . "`pl_name`, `email`, `country`, `order_ref`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", 
+	      $user_id, $paymentid, $amount, $currency, $course, $fname, $lname, $email, $country, $orderref);
+	    $update = $framework->dbProcessor($sql, 0, 1);
+	  }
+	  return $update;
 	}
 
 	/**
@@ -838,6 +867,43 @@ class framework {
 				return $errors[0];
 			}
 		}		
+	}
+
+/**
+ * Rave Payment processing and validation class 
+ */ 
+	function raveValidate() {
+		$ravemode = $this->ravemode;
+		$query = $this->query;
+
+		$data_string = json_encode($query);
+
+	    $ch = curl_init('https://'.$ravemode.'/flwv3-pug/getpaidx/api/v2/verify');                                                                      
+	    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+	    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                              
+	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+	    $response = curl_exec($ch);
+
+	    $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+	    $header = substr($response, 0, $header_size);
+	    $body = substr($response, $header_size);
+
+	    if (curl_error($ch)) {
+			$error_msg = curl_error($ch);
+		}
+		if(isset($error_msg)) {
+	    	return $error_msg;
+		}
+	    curl_close($ch);
+
+	    return json_decode($response, true);	
+	}
+
+
+	function createPDF() {
+		
 	}
 
 	/**

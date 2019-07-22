@@ -20,3 +20,5 @@ define('TABLE_BENEFITS', DB_PREFIX . 'benefits');
 define('TABLE_COURSE_ACCESS', DB_PREFIX . 'course_access');
 define('TABLE_QUESTION', DB_PREFIX . 'questions');
 define('TABLE_ANSWER', DB_PREFIX . 'answers');
+define('TABLE_COMPLETED', DB_PREFIX . 'completed_courses');
+define('TABLE_PAYMENTS', DB_PREFIX . 'payment');
