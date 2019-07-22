@@ -17,11 +17,15 @@ $PTMPL['template_name'] = $SETT['template_name'] = 'default';//$configuration['t
 $PTMPL['template_url'] = $SETT['template_url'] = $SETT['template_path'].'/'.$SETT['template_name'];
 
 // Check who is logged in right now
-if (isset($_SESSION['username'])) {
-		$user = $framework->userData($_SESSION['username'], 2);
-		$user_role = $framework->userRoles();
+if (isset($_SESSION['username'])) { 
+	$user = $framework->userData($_SESSION['username'], 2);
+	$user_role = $framework->userRoles();
 } elseif (isset($_COOKIE['username'])) {
 	$user = $framework->userData($_COOKIE['username'], 2);
+}
+
+if (isset($_GET['profile']) && isset($_GET['username'])) { 
+	$profile = $framework->userData($framework->db_prepare_input($_GET['username']), 2); 
 }
 
 if (isset($_GET['referrer'])) {
@@ -29,7 +33,6 @@ if (isset($_GET['referrer'])) {
 	$referrer = $_GET['referrer'];
 } else {
 	$referrer = null;
-}
-
+} 
 $user_role = $framework->userRoles();
 $contact_ = getContactInfo()[0];
