@@ -55,6 +55,15 @@ $LANG['course_updated'] = 'Course have been updated successfully';
 $LANG['module_added'] = 'New module have been added successfully';
 $LANG['module_updated'] = 'Module have been updated successfully';
 
+// Mail
+$LANG['welcome_msg'] = 'Hello %s, Welcome to %s, your account was successfully created and is pending activation. Click the link below to activate your account, if you can\'t click the link, copy it and paste on your browsers address bar. <p><a href="%s">%s</a></p>';
+
+$LANG['welcome_msg_otp'] = 'Welcome to %s, your account was successfully created and is pending activation.<br>
+	Use this One Time Password to activate your account:
+	<span style="font-weight: bolder; font-size: 25px; color: green;">%s</span>';
+$LANG['activation_subject'] = '%s, activate your %s account';
+$LANG['activation_sent'] = 'Your activation mail with your OTP has been sent to your mailbox, please give us some time to deliver';
+$LANG['activation_already_sent'] = 'An activation mail has already been sent to your mailbox, please check your inbox or SPAM folders';
 
 // Alisimbi texts
 $LANG['support_alisimbi'] = 'Support Alisimbi to develop and translate Agribusiness videos into local languages to help reach more rural Farmers';

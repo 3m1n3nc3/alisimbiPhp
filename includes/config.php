@@ -33,7 +33,7 @@ $SETT['url'] = $protocol.'://'.$_SERVER['HTTP_HOST'];
 /*
 * The Notifications e-mail
 */
-$SETT['email'] = 'support@passengine.com';
+$SETT['email'] = 'support@alisimbi.com';
 
 /*
 * The templates directory
