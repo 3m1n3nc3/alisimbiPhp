@@ -1,6 +1,6 @@
 <?php
 function mainContent() {
-    global $PTMPL, $LANG, $SETT, $configuration, $framework, $marxTime, $user, $profile, $user_role, $contact_;
+    global $PTMPL, $LANG, $SETT, $configuration, $framework, $recovery, $marxTime, $user, $profile, $user_role, $contact_;
     // Dont touch anything above this line
 
     $PTMPL['page_title'] = ucfirst($_GET['page']);
@@ -89,8 +89,8 @@ function mainContent() {
                     } else {
                         $PTMPL['activation_message'] = $framework->account_activation($_POST['otp'], $user['username']);
                     }
-                } elseif (!isset($_POST['verify']) || !isset($_POST['verify']) && $user['status'] == 1) {
-                    $framework->redirect('account&profile=home');
+                } elseif ($user['status'] == 1 && (!isset($_POST['verify']) || !isset($_POST['verify']))) {
+                  $framework->redirect('account&profile=home');
                 }
             }
 
@@ -208,6 +208,111 @@ function mainContent() {
         } else {
             $PTMPL['course'] = notAvailable('courses');
             $PTMPL['course_count'] = '0 &nbsp;';
+        }
+    } elseif (isset($_GET['password_reset'])) { 
+        $theme = new themer('account/forgot_password');
+        // Reset password section
+        // 
+        $form = '
+        <form action="" id="link_modules_form" method="post">
+            <div class="p-2 m-1">
+                <p class="card-text">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label class="src-only" for="password">New Password</label>
+                            <input class="form-control" id="password" name="password" placeholder="New Password" type="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label class="src-only" for="repassword">Repeat Password</label>
+                            <input class="form-control" id="repassword" name="repassword" placeholder="Repeat Password" type="password">
+                        </div>
+                    </div>
+                </p>
+                <div class="form-group">
+                    <input class="btn btn-primary" id="reset" name="reset"
+                    type="submit"
+                    value="Reset Password"/>
+                </div>
+            </div>
+        </form>';
+
+        $request_form = '
+        <form action="" id="link_modules_form" method="post">
+            <div class="p-2 m-1">
+                <p class="card-text">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label class="src-only" for="email">Email Address</label>
+                            <input class="form-control" id="email" name="email" placeholder="Email Address" type="email">
+                        </div>
+                    </div> 
+                </p>
+                <div class="form-group">
+                    <input class="btn btn-primary" id="request" name="request"
+                    type="submit"
+                    value="Request Reset"/>
+                </div>
+            </div>
+        </form>';
+
+        $expired_notice = '
+        <div class="h3 m-3 p-3 text-info">'.$LANG['expired_reset'].'<br>
+            <a href="'.cleanUrls($SETT['url'].'/index.php?page=account&password_reset=true').'" class="btn">Request New Link</a>
+        </div>';
+
+        $success_notice = '
+        <div class="h3 m-3 p-3 text-success">'.$LANG['success_reset'].'<br>
+            <a href="'.cleanUrls($SETT['url'].'/index.php?page=account&register=true').'" class="btn">Login</a>
+        </div>';
+
+        if (isset($_POST['request'])) {
+            if ($_POST['email'] == '' || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                $PTMPL['reset_message'] = messageNotice('Please enter a valid Email Address', 3);
+            } else {
+                $recovery->email_address = $framework->db_prepare_input($_POST['email']);
+                $PTMPL['reset_message'] = $recovery->verify_user();
+            }
+        }
+        if (isset($_GET['username']) && isset($_GET['token'])) {
+            $users = $framework->userData($framework->db_prepare_input($_GET['username']));
+            $token = $framework->db_prepare_input($_GET['token']);
+            $date = date("Y-m-d", strtotime($users['date']));
+
+            if ($users && $users['token']) {
+                if ($_GET['token'] && $date < date("Y-m-d")) {
+                    $PTMPL['reset_form'] = $expired_notice;
+                } else {
+                    $PTMPL['reset_form'] = $form;
+                }
+            } else {
+                $PTMPL['reset_form'] = $expired_notice;
+            }
+
+            $PTMPL['notice'] = 'Set a new password';
+            $PTMPL['title'] = 'Change your Password';
+        } else {
+            $PTMPL['reset_form'] = $request_form;
+            $PTMPL['notice'] = 'Enter email to request reset';
+            $PTMPL['title'] = 'Change your Password';
+        }
+
+        if (isset($_POST['reset'])) {
+            $username = $users['username'];
+            $token = $framework->db_prepare_input($_GET['token']);
+
+            if ($_POST['password'] == '') {
+                $PTMPL['reset_message'] = messageNotice('New Password cannot be left empty', 3);
+            } elseif (strlen($_POST['password']) < 9) {
+                $PTMPL['reset_message'] = messageNotice('New Password cannot contain less than 9 characters', 3);
+            } elseif ($_POST['password'] !== $_POST['repassword']) {
+                $PTMPL['reset_message'] = messageNotice('New Password and and repeat passwords do not match', 3);
+            } else {
+                $return = $recovery->changePassword($username, $_POST['password'], $token);
+                $PTMPL['reset_message'] = $return ? messageNotice("Your password has been changed successfully", 1) : '';
+                $PTMPL['reset_form'] = $success_notice;
+            }
         }
     } else {
         if (isset($_GET['process']) && $_GET['process'] == 'login') {

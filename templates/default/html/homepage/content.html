@@ -271,167 +271,7 @@
         </div>
     </div>
     <!-- End Subscription pane -->
-    <!-- payment_section -->
-    <div class="payment_section sm-section-r">
-        <div class="content">
-            <div class="pad">
-                <h2 class="header-text title">Billing Info</h2>
-                <p>Add a payment method to your account. You will not be charged until you start
-                    using
-                    services. <a href="">Learn more about billing</a></p>
-            </div>
-            <ul class="nav nav-tabs course-tab" role="tablist">
-                <li class="nav-item">
-                    <a aria-controls="credit_tab" aria-selected="true" class="nav-link active"
-                       data-toggle="tab"
-                       href="#billing_tab" role="tab">Credit / Debit Card</a>
-                </li>
-                <li class="nav-item">
-                    <a aria-controls="profile" aria-selected="false" class="nav-link" data-toggle="tab"
-                       href="#paypal_tab" role="tab">PayPal</a>
-                </li>
-            </ul>
-            <div class="tab-content" id="payment_tab_content">
-                <div aria-labelledby="credit-tab" class="tab-pane fade show  " id="paypal_tab"
-                     role="tabpanel">
-                    <div class="pad-section">
-                        <form action="" autocomplete="off" class="cc-form">
-                            <fieldset class="cc-set">
-                                <legend>Enter Card details</legend>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-                <div aria-labelledby="credit-tab" class="tab-pane fade show active " id="billing_tab"
-                     role="tabpanel">
-                    <div class="pad-section">
-                        <form action="" autocomplete="off" class="cc-form">
-                            <!-- Card details-->
-                            <fieldset class="cc-set">
-                                <legend>Enter Card details</legend>
-                                <div class="cc">
-                                    <label for="cc_num">Card Number</label>
-                                    <div class="cc-group" id="cc_num">
-                                        <input class="cc-input cc-num" maxlength="4" name="first_number"
-                                               placeholder="&#9679;&#9679;&#9679;&#9679;"
-                                               size="4"
-                                               type="text">
-                                        <input class="cc-input cc-num" maxlength="4" name="second_number"
-                                               placeholder="&#9679;&#9679;&#9679;&#9679;"
-                                               size="4"
-                                               type="text">
-                                        <input class="cc-input cc-num" maxlength="4" name="third_number"
-                                               placeholder="&#9679;&#9679;&#9679;&#9679;"
-                                               size="4"
-                                               type="text">
-                                        <input class="cc-input cc-num" maxlength="4" name="fourth_number"
-                                               placeholder="&#9679;&#9679;&#9679;&#9679;"
-                                               size="4"
-                                               type="text">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="cc">
-                                            <label for="cc_expiry">Expiry Date</label>
-                                            <div class="cc-group" id="cc_expiry">
-                                                <input class="cc-input divide" maxlength="2"
-                                                       name="month"
-                                                       placeholder="MM" size="1" type="text">
-                                                <span class="cc-input">/</span>
-                                                <input class="cc-input" maxlength="2"
-                                                       name="year"
-                                                       placeholder="YY" size="1" type="text">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="cc">
-                                            <label for="cc_cvc">CVC</label>
-                                            <div class="cc-group">
-                                                <input class="cc-input" id="cc_cvc"
-                                                       maxlength="4"
-                                                       name="cvc"
-                                                       placeholder="CVC" size="4" type="text">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <!--Billing details-->
-                            <fieldset>
-                                <legend>Billing address</legend>
-                                <div class="sign-form">
-                                    <div class="sign-form-content ">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="src-only" for="billing_fname">First
-                                                        name</label>
-                                                    <input class="form-control" id="billing_fname"
-                                                           name="fname"
-                                                           placeholder="First name" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="src-only" for="billing_lname">Last
-                                                        name</label>
-                                                    <input class="form-control" id="billing_lname"
-                                                           name="lname"
-                                                           placeholder="Last name" type="text">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="src-only" for="cc_postcode">Postal
-                                                code</label>
-                                            <input class="form-control" id="cc_postcode"
-                                                   maxlength="7"
-                                                   name="postcode" placeholder="Post code"
-                                                   type="text">
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="src-only" for="billing_state">State/Region</label>
-                                                    <div class="custom-select-box">
-                                                        <select class="" id="billing_state"
-                                                                name="billing-state"
-                                                                type="text">
-                                                            <option value="">Select State / Region
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="src-only"
-                                                           for="billing_city">City</label>
-                                                    <div class="custom-select-box">
-                                                        <select class=""
-                                                                id="billing_city" name="city">
-                                                            <option value="">Select City</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <button class="btn shw-1 background_yellow" type="button">
-                                Proceed with
-                                payment
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End payment_section -->
+ 
     <!--  login_section -->
     <div class="login full-section-r background_lightgrey">
         <div class="container  pt-5">
@@ -466,7 +306,7 @@
                                        name="remember" tabindex="3"
                                        type="checkbox">
                                 <label class="form-check-label" for="login-remember">Keep
-                                    me logged in</label>
+                                    me logged in</label> 
                             </div>
                             <div class="form-group">
                                 <button class="btn background_green2 text-light btn-block" name="submit"
@@ -474,6 +314,7 @@
                                         tabindex="4"
                                         type="button">Login
                                 </button>
+                                <a href="{$forgot_link}"><label class="src-only m-2" style="cursor: grabbing;">Forgot Password?</label></a>
                             </div>
                         </form>
                     </div>

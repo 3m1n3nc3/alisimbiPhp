@@ -24,7 +24,7 @@ class themer {
 	}
 
 	public static function parse($skin) {
-		$skin = preg_replace_callback('/{\$lng->(.+?)}/i', function($matches) {
+		$skin = preg_replace_callback('/{\$lang->(.+?)}/i', function($matches) {
 			global $LANG;
 			return $LANG[$matches[1]];
 		}, $skin);

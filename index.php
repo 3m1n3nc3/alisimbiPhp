@@ -21,10 +21,11 @@ $captcha_url = '/includes/vendor/goCaptcha/goCaptcha.php?gocache='.strtotime('no
 $PTMPL['captcha_url'] = $SETT['url'].$captcha_url;
 
 //$PTMPL['token'] = $_SESSION['token_id'];
-
+ 
 $PTMPL['language'] = $_COOKIE['lang'];
 
-$PTMPL['register_link'] = cleanUrls($SETT['url'].'/?page=account&register=true');
+$PTMPL['register_link'] = cleanUrls($SETT['url'].'/index.php?page=account&register=true');
+$PTMPL['forgot_link'] = cleanUrls($SETT['url'].'/index.php?page=account&password_reset=true');
 
 $PTMPL['set_country'] = set_local(1, '');
 $PTMPL['global_header'] = headerFooter(1);
