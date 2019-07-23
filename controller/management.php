@@ -20,22 +20,44 @@ function mainContent() {
 			$PTMPL['private_k'] = $_POST['pvt-key'];
 			$PTMPL['sitename'] = $_POST['sitename'];
 
+			$PTMPL['smtp_server'] = $_POST['smtp_server'];
+			$PTMPL['smtp_port'] = $_POST['smtp_port'];
+			$PTMPL['smtp_username'] = $_POST['smtp_username'];
+			$PTMPL['smtp_password'] = $_POST['smtp_password']; 
+
 			$public_key = $framework->db_prepare_input($_POST['pub-key']);
 			$private_key = $framework->db_prepare_input($_POST['pvt-key']);
 			$sitename = $framework->db_prepare_input($_POST['sitename']);
 			$currency = $framework->db_prepare_input($_POST['currency']);
 			$cleanurl = $framework->db_prepare_input($_POST['cleanurl']);
 			$ravemode = $framework->db_prepare_input($_POST['ravemode']);
+			$site_mode = $framework->db_prepare_input($_POST['sitemode']);
+
+			$smtp_ = $framework->db_prepare_input($_POST['smtp_']);
+			$smtp_server = $framework->db_prepare_input($_POST['smtp_server']);
+			$smtp_port = $framework->db_prepare_input($_POST['smtp_port']);
+			$smtp_secure = $framework->db_prepare_input($_POST['smtp_secure']);
+			$smtp_auth = $framework->db_prepare_input($_POST['smtp_auth']);
+			$smtp_username = $framework->db_prepare_input($_POST['smtp_username']);
+			$smtp_password = $framework->db_prepare_input($_POST['smtp_password']);
 
 			$sql = sprintf("UPDATE " . TABLE_CONFIG . " SET `site_name` = '%s', `cleanurl` = '%s', `rave_public_key` = '%s',"
-				. " `rave_private_key` = '%s', `rave_mode` = '%s', `currency` = '%s'", $sitename, $cleanurl, $public_key, 
-				$private_key, $ravemode, $currency);
+				. " `rave_private_key` = '%s', `rave_mode` = '%s', `currency` = '%s', `mode` = '%s', `smtp` = '%s',"
+				. " `smtp_server` = '%s', `smtp_port` = '%s', `smtp_secure` = '%s', `smtp_auth` = '%s',"
+				. " `smtp_username` = '%s', `smtp_password` = '%s'", $sitename, $cleanurl, $public_key, $private_key, 
+				$ravemode, $currency, $site_mode, $smtp_, $smtp_server, $smtp_port, $smtp_secure, $smtp_auth, $smtp_username, 
+				$smtp_password);
 			$upd = $framework->dbProcessor($sql, 0, 1);
 			$PTMPL['update_msg'] = $upd == 1 ? messageNotice('Site configuration has been updated', 1) : messageNotice($upd);
 		} else {
 			$PTMPL['public_k'] = $configuration['rave_public_key'];
 			$PTMPL['private_k'] = $configuration['rave_private_key'];
 			$PTMPL['sitename'] = $configuration['site_name'];
+			
+			$PTMPL['smtp_server'] = $configuration['smtp_server'];
+			$PTMPL['smtp_port'] = $configuration['smtp_port'];
+			$PTMPL['smtp_username'] = $configuration['smtp_username'];
+			$PTMPL['smtp_password'] = $configuration['smtp_password']; 
 		}
 
 		// Check if an Admin user exists
@@ -64,11 +86,18 @@ function mainContent() {
 				}
 			}
 		}
-
-		$PTMPL['no_ravemode'] = $PTMPL['no_cleanurl'] = ' selected="selected"'; 
-		$PTMPL['ravemode'] = $configuration['rave_mode'] ? ' selected="selected"' : ''; 
-		$PTMPL['cleanurl'] = $configuration['cleanurl'] ? ' selected="selected"' : '';
-		$us['role'] == 'mod' ? $PTMPL['mod'] = ' selected="selected"' : $us['role'] == 'admin' ? $PTMPL['admin'] = ' selected="selected"' : $PTMPL['sudo'] = ' selected="selected"';
+		$selected = ' selected="selected"';
+		$PTMPL['no_ravemode'] = $PTMPL['no_cleanurl'] = $selected; 
+		$PTMPL['ravemode'] = $configuration['rave_mode'] ? $selected : ''; 
+		$configuration['smtp'] ? $PTMPL['smtp_en'] = ' checked' : $PTMPL['smtp_dis'] = ' checked'; 
+		$PTMPL['cleanurl'] = $configuration['cleanurl'] ? $selected : '';
+		$us['role'] == 'mod' ? $PTMPL['mod'] = $selected : $us['role'] == 'admin' ? $PTMPL['admin'] = $selected : $PTMPL['sudo'] = $selected;
+		$configuration['mode'] ? $PTMPL['sitemod'] = $selected : $PTMPL['no_sitemode'] = $selected;
+		$configuration['smtp_auth'] ? $PTMPL['smtp_auth'] = $selected : $PTMPL['no_smtp_auth'] = $selected;
+		$configuration['smtp_secure'] == 'ssl' ? $PTMPL['smtp_secure_ssl'] = $selected : $configuration['smtp_secure'] == 'tls' ? $PTMPL['smtp_secure_tls'] = $selected : $PTMPL['smtp_secure_off'] = $selected;
+	} else {
+		$theme = new themer('container/404'); $settings = '';
+		$PTMPL['page_title'] = '404 Error';
 	}
 
     $settings = $theme->make();
