@@ -1,0 +1,150 @@
+<div class="wrapper">
+	<div id="dashboard">
+		{$global_header}
+		<div class="caption px-4 pt-4">
+			Privilege level:
+			<small class="badge badge-warning">{$user_priviledge}</small>
+		</div>
+		<div class="border rounded p-3 m-4"{$hidden}>
+			<h3>Configuration</h3>
+			<div class="text-center p-2">{$update_msg}</div>
+			<form action="" method="post">
+				<div class="row">
+					<div class="col-md-5">
+						<div class="form-group">
+							<label class="src-only" for="pub-key">Rave Public Key</label>
+							<input class="form-control" id="pub-key" name="pub-key" placeholder="Rave Public Key" type="text" value="{$public_k}">
+						</div>
+					</div>
+					<div class="col-md-5">
+						<div class="form-group">
+							<label class="src-only" for="pvt-key">Rave Private Key</label>
+							<input class="form-control" id="pvt-key" name="pvt-key" placeholder="Rave Private Key" type="text" value="{$private_k}">
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="form-group">
+							<label class="src-only" for="rv-mod">Rave Mode</label>
+							<select id="rv-mod" name="ravemode" class="form-control">
+								<option value="1"{$ravemode}>Live</option>
+								<option value="0"{$no_ravemode}>Sandbox</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="src-only" for="site_name">Sitename</label>
+							<input class="form-control" id="site_name" name="sitename" placeholder="Site Name" type="text" value="{$sitename}">
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="src-only" for="cleanurl">Clean URLs</label>
+							<select id="cleanurl" name="cleanurl" class="form-control">
+								<option value="1"{$cleanurl}>ON</option>
+								<option value="0"{$no_cleanurl}>OFF</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="src-only" for="currency">Currency</label>
+							<select id="rv-mod" name="currency" class="form-control">
+								<option value="NGN">NGN</option>
+								<option value="USD">USD</option>
+								<option value="GBP">GBP</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					{$hidden_submit}
+				</div>
+			</form>
+		</div>
+		<div class="border rounded p-3 m-3" id="admin_section">
+			<h3>Administrator</h3>
+			<div class="text-center p-2">{$update_admin_msg}</div>
+			<form method="post" action="#admin_section">
+				<div class="row">
+					<div class="col-md-5">
+						<div class="form-group">
+							<label class="src-only" for="email">Email</label>
+							<input class="form-control" id="email" name="email" placeholder="Email" type="email">
+						</div>
+					</div>
+					<div class="col-md-5">
+						<div class="form-group">
+							<label class="src-only" for="password">Password</label>
+							<input class="form-control" id="password" name="password" placeholder="Password" type="password">
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="form-group">
+							<label class="src-only" for="role">Role</label>
+							<select id="role" name="role" class="form-control">
+								<option value="mod"{$mod}>Moderator</option>
+								<option value="admin"{$admin}>Admin</option>
+								<option value="sudo"{$sudo}>Super User</option>
+							</select>
+						</div>
+					</div>
+					{$updateadmin}
+				</div>
+			</form>
+		</div>
+		<div class="border rounded p-3 m-3" id="user_table">
+			<h3>User Details</h3>
+			<table id='userTable' class='display compact'>
+				<thead>
+					<tr>
+						<th>User ID</th>
+						<th><i class="fa fa-trash"></i></th>
+						<th>Username</th>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>City</th>
+						<th>State</th>
+						<th>Country</th>
+						<th>Role</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div class="border rounded p-3 m-3">
+			<h3>Payment Details</h3>
+			<table id='paymentTable' class='display compact'>
+				<thead>
+					<tr>
+						<th>User ID</th>
+						<th><i class="fa fa-trash"></i></th>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Amount</th>
+						<th>Payment ID</th>
+						<th>Order Reference</th>
+						<th>Date</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div class="border rounded p-3 m-3">
+			<h3>Learner Details</h3>
+			<table id='learnerTable' class='display compact'>
+				<thead>
+					<tr>
+						<th>User ID</th>
+						<th><i class="fa fa-trash"></i></th>
+						<th>Username</th>
+						<th>Name</th>
+						<th>Course</th>
+						<th>Date Completed</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+	</div>
+</div>

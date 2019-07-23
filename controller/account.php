@@ -1,13 +1,19 @@
 <?php
 function mainContent() {
-	global $PTMPL, $LANG, $SETT, $configuration, $framework, $marxTime, $user, $user_role, $contact_;
-	// Dont touch anything above this line
+    global $PTMPL, $LANG, $SETT, $configuration, $framework, $marxTime, $user, $profile, $user_role, $contact_;
+    // Dont touch anything above this line
 
-	$PTMPL['page_title'] = ucfirst($_GET['page']);
-	$PTMPL['site_url'] = $SETT['url'];
-	$account = '';
+    $PTMPL['page_title'] = ucfirst($_GET['page']);
+    $PTMPL['site_url'] = $SETT['url'];
+    $account = '';
+    $PTMPL['me'] = 'Me';
+    if ($profile) { 
+        $user = $profile;
+        $PTMPL['me'] = ucfirst($profile['username']);
+        $PTMPL['page_title'] = ucfirst($profile['username']).' Public Profile';
+    }
     if ($user) {
-        if ($_GET['page'] = 'account') {
+        if ($_GET['page'] = 'account') { 
             $theme = new themer('account/profile_home');
             // $OLD_THEME = $PTMPL; $PTMPL = array();
 
@@ -15,9 +21,44 @@ function mainContent() {
                 if ($_GET['profile'] == 'home') { 
                     $theme = new themer('account/profile_home');
                     // $OLD_THEME = $PTMPL; $PTMPL = array();
+                    // 
+                }if ($_GET['profile'] == 'view') {
+                    $theme = new themer('account/profile_view');
+                    // $OLD_THEME = $PTMPL; $PTMPL = array();
                 } elseif ($_GET['profile'] == 'update') {
                     $theme = new themer('account/profile_update');
                     // $OLD_THEME = $PTMPL; $PTMPL = array();
+                    // 
+                    // 
+                    $modal_content = 
+                    '<div class="row text-center">         
+                        <div class="col mx-auto"> 
+                            <div id="crop-preview" class="cropit"></div>
+                            <div id="upload-photo" style="display: none;"></div> 
+                        </div>  
+                        <div class="container" id="action-buttons">                   
+                            <div class="row">
+                                <div class="col-md-12" style="padding:5%;">
+                                    <label for="prof-photo" class="btn">
+                                        Choose Image <i class="fa fa-photo"></i>
+                                    </label>
+                                    <input type="hidden" name="current_photo" value="'.$user['photo'].'">
+                                    <input type="file" id="prof-photo" style="display: none;">
+                                    <button class="btn btn-upload-image" style="margin-top:2%" onclick="upload_action()" disabled="disabled">
+                                    Upload Photo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mx-auto">
+                            <div id="photo-message" class="text-center"></div>
+                        </div>
+                    </div>';
+
+                    $PTMPL['photoModal'] = modal('photo', $modal_content);
+
                     $PTMPL['list_country'] = getLocale(3, $user['country']);
                     if (isset($_POST['save_profile'])) {
                         $framework->firstname = $_POST['fname'];
@@ -36,6 +77,20 @@ function mainContent() {
                         $framework->updateProfile();
                         $framework->redirect('account&profile=home');
                     }
+                }
+            } elseif (isset($_GET['unverified'])) {
+                $theme = new themer('account/unverified');
+                // $OLD_THEME = $PTMPL; $PTMPL = array();
+                if (isset($_POST['resend'])) {
+                    $PTMPL['activation_message'] = $framework->account_activation('resend', $user['username']);
+                } elseif (isset($_POST['verify'])) {
+                    if ($_POST['otp'] == '') {
+                        $PTMPL['activation_message'] = messageNotice('Please enter a valid OTP', 3);
+                    } else {
+                        $PTMPL['activation_message'] = $framework->account_activation($_POST['otp'], $user['username']);
+                    }
+                } elseif (!isset($_POST['verify']) || !isset($_POST['verify']) && $user['status'] == 1) {
+                    $framework->redirect('account&profile=home');
                 }
             }
 
@@ -97,6 +152,17 @@ function mainContent() {
             $PTMPL['all_courses_link'] = $all_courses_link;
 
             // If the user is administrative show the social inputs
+
+            $modal_photo = 
+            '<div class="row text-center">         
+                <div class="col mx-auto"> 
+                    <div id="photo-preview">
+                        <img alt="Profile Photo" src="'.getImage($user['photo'], 1).'"/>
+                    </div> 
+                </div>   
+            </div>'; 
+            $PTMPL['photoPrevievModal'] = modal('photoPreview', $modal_photo, null, 1, null, 1);
+
             $update_social = '';
             if ($user_role >= 3) {
                 $update_social = '

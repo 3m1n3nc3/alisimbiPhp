@@ -56,7 +56,7 @@ if ($coursesArr) {
 $new_course = getCourses();
 $course_new = array_reverse($new_course)[0];
 $courses_modules = '';
-$PTMPL['course_get_new'] = cleanUrls($SETT['url'].'/index.php?page=training&course=get&courseid='.$course_new['id']);
+$PTMPL['course_get_new'] = cleanUrls($SETT['url'].'/index.php?page=training&course=get&process=payment&courseid='.$course_new['id']);
 $PTMPL['course_title_new'] = $course_new['title'];
 $PTMPL['course_cover_new'] = getImage($course_new['cover'], 1);
 $PTMPL['course_intro_new'] = $course_new['intro'];

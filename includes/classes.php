@@ -37,7 +37,8 @@ class framework {
 	function userData($user = NULL, $type = NULL) {
         // if type = 0 fetch all users, and use filter to add custom query
         // if type = 1 users by their user ids
-        // if type = 2 fetch users by thier usernames
+        // if type = 2 fetch users by their usernames
+        // if type = 10 fetch users for datatables
 
 	    global $configuration;
 
@@ -56,6 +57,8 @@ class framework {
             $sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE id <> '' %s %s", $filter, $limit);
         } elseif ($type === 1) {
 	    	$sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE id = '%s'", $user); 
+	    }  elseif ($type === 10) {
+	    	$sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE %s", $limit);
 	    } else {
 	    	// if the username is an email address
 	    	if (filter_var($user, FILTER_VALIDATE_EMAIL)) {
@@ -192,6 +195,50 @@ class framework {
         return 1;
     }
 
+	function account_activation($token, $username) {
+		global $SETT, $LANG, $configuration, $user, $framework;
+		if($token == 'resend') { 
+			// Check if a token has been sent before, and is not expired
+			$sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE username = '%s' AND status = '0'", $framework->db_prepare_input($username));
+			$data = $framework->dbProcessor($sql, 1)[0];
+ 
+			if($user['token'] && date("Y-m-d", strtotime($data['date'])) === date("Y-m-d")) {
+				$date = date("Y-m-d H:i:s");
+				$token = $framework->generateToken(null, 2);
+				$sql = sprintf("UPDATE " . TABLE_USERS . " SET `token` = '%s', `date` = '%s'"
+				." WHERE `username` = '%s'", $token, $date, $framework->db_prepare_input($username));
+				$return = $framework->dbProcessor($sql, 0, 1);
+				if($configuration['activation'] == 'email') {
+					$link = cleanUrls($SETT['url'].'/index.php?a=account&unverified=true&activation='.$token.'&username='.$username);
+					$msg = sprintf($LANG['welcome_msg_otp'], $configuration['site_name'], $token);	
+					$subject = ucfirst(sprintf($LANG['activation_subject'], $username, $configuration['site_name']));
+					
+					$this->username = $username;
+					$this->content = $msg;
+					$this->message = $this->emailTemplate();
+					$this->user_id = $data['id'];  
+					$this->activation = 1;
+	    			$this->mailerDaemon($SETT['email'], $data['email'], $subject);
+	    			return messageNotice($LANG['activation_sent'], 1);
+				}			
+			} else {
+				return messageNotice($LANG['activation_already_sent']);
+			}
+		} else {
+			$sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE username = '%s' AND token = '%s' AND status = '0'", 
+				$framework->db_prepare_input($username), $framework->db_prepare_input($token)); 
+			$return = $framework->dbProcessor($sql, 0, 1);
+			if ($return == 1) {
+				$sql = sprintf("UPDATE " . TABLE_USERS . " SET `status` = '1', `token` = ''"
+				." WHERE `username` = '%s'", $framework->db_prepare_input($username));
+				$return = $framework->dbProcessor($sql, 0, 1);
+				return $return == 1 ? messageNotice('Congratulations, your account was activated successfully', 1) : '';
+			} else {
+				return messageNotice('Invalid OTP', 3);
+			}
+		}
+	}
+
     function checkEmail($email = NULL, $type = 0) {
         $sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE 1 AND email = '%s'", mb_strtolower($email));
         // Process the information
@@ -203,9 +250,115 @@ class framework {
         }
     }
 
+
+	function mailerDaemon($sender, $receiver, $subject) {
+		// Load up the site settings
+		global $SETT, $configuration, $user, $mail;
+
+		$user_data = $this->userData($this->user_id, 1);
+		$message = $this->message;
+
+		// show the message details if test_mode is on
+		$return_response = null;
+		$echo =
+		'<small class="p-1"><div class="text-warning text-justify"
+			Sender: '.$sender.'<br>
+			Receiver: '.$receiver.'<br>
+			Subject: '.$subject.'<br>
+			Message: '.$message.'<br></div>
+		</small>';
+		if ($this->trueAjax() && $configuration['mode'] == 0) {
+			echo $echo;
+		} 
+
+	    // Send a test email message
+	    if (isset($this->test)) {
+	    	$sender = $SETT['email'];
+	    	$receiver = $SETT['email'];
+	    	$subject = 'Test EMAIL Message from '.$configuration['site_name'];
+	    	$message = 'Test EMAIL Message from '.$configuration['site_name'];
+	    	$return_response = successMessage('Test Email Sent');
+	    }
+
+		if ($user_data && $user_data['allow_emails'] == 0 && !isset($this->activation)) {
+			return false;
+		} else {
+			// If the SMTP emails option is enabled in the Admin Panel
+			if($configuration['smtp']) { 
+ 
+				require_once(__DIR__ . '/vendor/autoload.php');
+				
+				//Tell PHPMailer to use SMTP
+				$mail->isSMTP();
+
+				//Enable SMTP debugging
+				// 0 = off 
+				// 1 = client messages
+				// 2 = client and server messages
+				$mail->SMTPDebug = $configuration['mode'] == 0 ? 2 : 0;
+				
+				$mail->CharSet = 'UTF-8';	//Set the CharSet encoding
+				
+				$mail->Debugoutput = 'html'; //Ask for HTML-friendly debug output
+				
+				$mail->Host = $configuration['smtp_server'];	//Set the hostname of the mail server
+				
+				$mail->Port = $configuration['smtp_port'];	//Set the SMTP port number - likely to be 25, 465 or 587
+				
+				$mail->SMTPAuth = $configuration['smtp_auth'] ? true : false;	//Whether to use SMTP authentication
+				
+				$mail->Username = $configuration['smtp_username'];	//Username to use for SMTP authentication
+				
+				$mail->Password = $configuration['smtp_password'];	//Password to use for SMTP authentication
+				
+				$mail->setFrom($sender, $configuration['site_name']);	//Set who the message is to be sent from
+				
+				$mail->addReplyTo($sender, $configuration['site_name']);	//Set an alternative reply-to address
+				if($configuration['smtp_secure'] !=0) {
+					$mail->SMTPSecure = $configuration['smtp_secure'];
+				} else {
+					$mail->SMTPSecure = false;
+				}
+				//Set who the message is to be sent to
+				if(is_array($receiver)) {
+					foreach($receiver as $address) {
+						$mail->addAddress($address);
+					}
+				} else {
+					$mail->addAddress($receiver);
+				}
+				//Set the message subject 
+				$mail->Subject = $subject;
+				//convert HTML into a basic plain-text alternative body,
+				//Read an HTML message body from an external file, convert referenced images to embedded
+				$mail->msgHTML($message);
+
+				//send the message, check for errors
+				if(!$mail->send()) {
+					// Return the error in the Browser's console
+					#echo $mail->ErrorInfo;
+				}
+			} else {
+				$headers  = 'MIME-Version: 1.0' . "\r\n";
+				$headers .= 'Content-type: text/html; charset=utf-8' . PHP_EOL;
+				$headers .= 'From: '.$configuration['site_name'].' <'.$sender.'>' . PHP_EOL .
+					'Reply-To: '.$configuration['site_name'].' <'.$sender.'>' . PHP_EOL .
+					'X-Mailer: PHP/' . phpversion();
+				if(is_array($receiver)) {
+					foreach($receiver as $address) {
+						@mail($address, $subject, $message, $headers);
+					}
+				} else {
+					@mail($receiver, $subject, $message, $headers);
+				}
+			}			
+		}
+		return $return_response;
+	}
+
     function captchaVal($captcha) {
-        global $settings;
-        if ($settings['captcha']) {
+        global $configuration;
+        if ($configuration['captcha']) {
             if ($captcha == "{$_SESSION['captcha']}" && !empty($captcha)) {
                 return true;
             } else {
@@ -217,7 +370,7 @@ class framework {
     }
 
     function phoneVal($phone, $type = 0) {
-        global $settings;
+        global $configuration;
         $phone = $this->db_prepare_input($phone);
 
         if ($type) {
@@ -252,6 +405,65 @@ class framework {
             $role = 0;
         }
         return $role;
+	}
+
+	/*
+	Email template
+	 */
+	function emailTemplate() {
+		global $LANG, $SETT, $configuration, $contact_;
+		$username = $this->username;
+		$content = $this->content;
+		$template = '
+		<div style="background: #f7fff5; padding: 35px;">
+			<div style="width: 200px;">'.$contact_['address'].'</div><hr>
+			<div style="font: green; border: solid 1px lightgray; border-radius: 7px; background: white; margin: 50px; ">
+				<div style="padding: 10px;background: lightgray;display: flex;width: 100%;">
+				<h3>'.ucfirst($configuration['site_name']).'</h3>
+				</div>
+				<div style="margin: 25px;">
+					<p style="font-weight: bolder;">Hello '.$username.',</p>
+					<p style="color: black;">
+						'.$content.'
+					</p>
+				</div>
+			</div>
+			<div style="margin-left: 35px; margin-right: 35px;">This message was sent from '.$SETT['url'].', because you have requested one of our services. Please ignore this message if you are not aware of this action.</div>
+		</div>
+		<div style="text-align: center; padding: 15px; background: #fff;">
+			<div>'.ucfirst($configuration['site_name']).'</div>
+			<div style="color: teal;">
+				&copy; ' . ucfirst($LANG['copyright']) . ' ' . date('Y') . ' ' . $contact_['c_line'].'
+			</div>
+		</div>';
+		return $template;
+	}	
+
+
+	/**
+	* Manage the payments
+	*/
+	function updatePayments($type = null) {
+	  global $framework, $user;
+
+	  $user_id = $framework->payer_id;    
+	  $paymentid = $framework->payment_id;                       
+	  $amount = $framework->amount;
+	  $currency = $framework->currency;
+	  $course = $framework->course;
+	  $fname = $framework->payer_fn;
+	  $lname = $framework->payer_ln;
+	  $email = $framework->email;  
+	  $country = $framework->country;
+	  $orderref = $framework->order_ref;
+
+	  if (!$type) {
+	    $sql = sprintf("INSERT INTO " . TABLE_PAYMENTS . " (`user_id`, `payment_id`, `amount`, `currency`, `course`, `pf_name`, "
+	      . "`pl_name`, `email`, `country`, `order_ref`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", 
+	      $user_id, $paymentid, $amount, $currency, $course, $fname, $lname, $email, $country, $orderref);
+	    $update = $framework->dbProcessor($sql, 0, 1);
+	  }
+	  return $update;
 	}
 
 	/**
@@ -553,6 +765,8 @@ class framework {
 	    }
 	    if ($type == 1) {
 	        return password_hash($str.time(), PASSWORD_DEFAULT);
+	    } if ($type == 2) {
+	    	return rand(400000,900000); 
 	    } else {
 	        return hash('md5', $str.time());
 	    }
@@ -738,8 +952,8 @@ class framework {
     /**
 	* Check if this request is being made from ajax
 	*/
-	function trueAjax() { 
-	    if(strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && isset($_SERVER['HTTP_X_REQUESTED_WITH'])) {
+	function trueAjax() {
+	    if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 	        return true;
 	    } else {
 	        return false;
@@ -842,6 +1056,43 @@ class framework {
 				return $errors[0];
 			}
 		}		
+	}
+
+/**
+ * Rave Payment processing and validation class 
+ */ 
+	function raveValidate() {
+		$ravemode = $this->ravemode;
+		$query = $this->query;
+
+		$data_string = json_encode($query);
+
+	    $ch = curl_init('https://'.$ravemode.'/flwv3-pug/getpaidx/api/v2/verify');                                                                      
+	    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+	    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                              
+	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+	    $response = curl_exec($ch);
+
+	    $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+	    $header = substr($response, 0, $header_size);
+	    $body = substr($response, $header_size);
+
+	    if (curl_error($ch)) {
+			$error_msg = curl_error($ch);
+		}
+		if(isset($error_msg)) {
+	    	return $error_msg;
+		}
+	    curl_close($ch);
+
+	    return json_decode($response, true);	
+	}
+
+
+	function createPDF() {
+		
 	}
 
 	/**

@@ -18,9 +18,9 @@
                         {$course_title}
                 </div>
                 <div class="list-inline px-2 text-light">
-                    <div class="list-inline-item"><i class="fa fa-user"></i> (2)</div>
-                    <div class="list-inline-item"><i class="fa fa-clock-o"></i>({$duration})</div>
-                    <div class="list-inline-item"><i class="fa fa-book"></i>({$num_modules})</div>
+                    <div class="list-inline-item"><i class="fa fa-user"></i> {$count_instructors}</div>
+                    <div class="list-inline-item"><i class="fa fa-clock-o"></i> {$c_duration}</div>
+                    <div class="list-inline-item"><i class="fa fa-book"></i> {$count_modules}</div>
                 </div>
                 <div class="course-cta">
                     <a class="btn background_green2 bordered" href="{$course_get_btn_url}">Get started</a>
@@ -108,7 +108,7 @@
                                         <hr>
                                         <div class="card-content">
                                             <div class="instructors">
-                                                {$course_instructor}
+                                                {$_course_instructors}
                                             </div>
                                         </div>
                                     </div>
@@ -123,37 +123,7 @@
                                             </div>
                                         </div>
                                         <hr>
-                                        <div class="card-content">
-                                            <div class="other_courses">
-                                                <div class="course-column ">
-                                                    <div class="course-icon">
-                                                        <img alt="course image" class="" src="" title="">
-                                                    </div>
-                                                    <div class="course-content">
-                                                        <div class="title"><a href="">Title</a></div>
-                                                        <small class="block hint">3h 50min</small>
-                                                        <small class="block hint">Instructors (1)</small>
-
-                                                    </div>
-                                                </div>
-
-                                                <div class="course-column ">
-                                                    <div class="course-icon">
-                                                        <img alt="course image" class="" src="" title="">
-                                                    </div>
-                                                    <div class="course-content">
-                                                        <div class="title"><a href="">Title</a></div>
-                                                        <small class="block hint">3h 50min</small>
-                                                        <small class="block hint">Instructors (3)</small>
-
-                                                    </div>
-                                                </div>
-
-                                                <div class="row justify-content-center">
-                                                    <a class="btn" href="">Load more</a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {$random_courses}
                                     </div>
                                     <!-- Course hero -->
                                     <div class="course-hero">

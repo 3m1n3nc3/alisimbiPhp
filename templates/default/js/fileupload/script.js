@@ -73,3 +73,58 @@ function uploadFailed(evt) {
 function uploadCanceled(evt) {
   alert("The upload has been canceled by the user or the browser dropped the connection.");
 }
+
+var resize_photo = $('#upload-photo').croppie({
+    enableExif: true,
+    enableOrientation: true,    
+    viewport: { // Default { width: 100, height: 100, type: 'square' } 
+      width: 300,
+      height: 300,
+      type: 'square' //square
+    },
+    boundary: {
+      width: 310,
+      height: 310
+    }
+});
+
+$('#prof-photo').on('change', function () { 
+  $('#upload-photo').show();
+  $('.btn-upload-image').removeAttr('disabled');
+  var reader = new FileReader();
+    reader.onload = function (e) {
+      resize_photo.croppie('bind',{
+        url: e.target.result
+      }).then(function(){
+        console.log('jQuery bind complete');
+      });
+    }
+    reader.readAsDataURL(this.files[0]);
+});
+
+function upload_action(sid) { 
+  $('#photo-message').html('<div id="remove" class="spinner-grow text-success" role="status"><span class="sr-only">Loading...</span></div>'); 
+
+  let cur_photo = $('input[name="current_photo"]').val();
+
+  resize_photo.croppie('result', {
+    type: 'canvas',
+    size: {
+        width: 500
+    }
+  }).then(function (img) {
+    $.ajax({
+      url: siteUrl+"/connection/photo_upload.php?pid="+cur_photo,
+      type: "POST",
+      data: {"ajax_photo":img},
+      success: function (data) {
+        html = '<img src="' + img + '" />';
+        $("#crop-preview").html(html);
+        $("#photo-message").html(data);
+        $("#upload-photo").hide();
+        // $("#saving-load").hide();
+        $("#action-buttons").html('<div class="pt-2">&nbsp</div>');
+      }
+    });
+  }); 
+}
