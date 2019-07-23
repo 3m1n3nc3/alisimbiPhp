@@ -67,18 +67,18 @@ CREATE TABLE `configuration` (
   `twilio_token` varchar(128) DEFAULT NULL,
   `twilio_phone` varchar(128) DEFAULT NULL,
   `captcha` enum('0','1') NOT NULL DEFAULT '0',
-  `smtp` enum('0','1') NOT NULL DEFAULT '1',
+  `smtp` enum('0','1') NOT NULL DEFAULT '0',
   `sms` enum('0','1') NOT NULL DEFAULT '0',
   `smtp_server` varchar(128) NOT NULL,
   `smtp_port` int(6) NOT NULL,
-  `smtp_secure` enum('0','ssl','tls') NOT NULL DEFAULT '1',
-  `smtp_auth` enum('0','1') NOT NULL DEFAULT '1',
+  `smtp_secure` enum('0','ssl','tls') NOT NULL DEFAULT '0',
+  `smtp_auth` enum('0','1') NOT NULL DEFAULT '0',
   `smtp_username` varchar(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `smtp_password` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `configuration` (`language`, `site_name`, `cleanurl`, `data_limit`, `rave_public_key`, `rave_private_key`, `rave_mode`, `currency`, `activation`, `mode`, `tracking`, `fbacc`, `fb_appid`, `fb_secret`, `twilio_sid`, `twilio_token`, `twilio_phone`, `captcha`, `smtp`, `sms`, `smtp_server`, `smtp_port`, `smtp_secure`, `smtp_auth`, `smtp_username`, `smtp_password`) VALUES
-('default', 'Alisimbi', '0', 15, 'FLWPUBK-3155553bf5dfd444f8efa588d3fed3f4-X', 'FLWSECK-e1a611682c418f221f5c34e29984d26a-X', '0', 'NGN', 'email', '1', '', '1', NULL, NULL, NULL, NULL, NULL, '0', '1', '0', '', 0, '0', '0', '', '');
+('default', 'Alisimbi', '0', 15, 'FLWPUBK-3155553bf5dfd444f8efa588d3fed3f4-X', 'FLWSECK-e1a611682c418f221f5c34e29984d26a-X', '0', 'NGN', 'email', '1', '', '1', NULL, NULL, NULL, NULL, NULL, '0', '1', '0', 'smtp.mailtrap.io', 465, 'tls', '1', '2d5d5044378a13', '36f03dd0cf1791');
 
 CREATE TABLE `contact` (
   `id` int(11) NOT NULL,
@@ -129,7 +129,8 @@ CREATE TABLE `course_access` (
 INSERT INTO `course_access` (`id`, `course_id`, `user_id`, `current_module`, `completed`, `time_spent`, `reg_date`) VALUES
 (9, 3, 8, 6, '2,6', 11, '2019-07-19 17:05:39'),
 (10, 10, 8, 7, '12,7', 42, '2019-07-19 19:52:53'),
-(11, 8, 8, 6, '12,10,6', 46, '2019-07-19 20:59:59');
+(11, 8, 8, 6, '12,10,6', 46, '2019-07-19 20:59:59'),
+(12, 9, 8, NULL, NULL, 0, '2019-07-23 14:48:42');
 
 CREATE TABLE `course_modules` (
   `id` int(11) NOT NULL,
@@ -147,7 +148,9 @@ INSERT INTO `course_modules` (`id`, `course_id`, `module_id`) VALUES
 (37, 10, 7),
 (38, 8, 12),
 (39, 8, 10),
-(40, 8, 6);
+(40, 8, 6),
+(41, 7, 6),
+(42, 7, 4);
 
 CREATE TABLE `homer` (
   `id` int(11) NOT NULL,
@@ -176,7 +179,8 @@ INSERT INTO `instructors` (`id`, `course_id`, `user_id`) VALUES
 (8, 7, 9),
 (9, 10, 9),
 (10, 10, 4),
-(12, 3, 4);
+(12, 3, 4),
+(13, 7, 8);
 
 CREATE TABLE `modules` (
   `id` int(11) NOT NULL,
@@ -237,7 +241,8 @@ CREATE TABLE `payment` (
 
 INSERT INTO `payment` (`id`, `user_id`, `payment_id`, `amount`, `currency`, `course`, `pf_name`, `pl_name`, `email`, `country`, `order_ref`, `date`) VALUES
 (4, 8, 'URF_1563728039051_716235', 23.00, 'NGN', 'Winning Big contests', 'Marxemi', 'John', 'marxemi@yahoo.com', 'Nigeria', 'AL-9PRTN-9905D349889AEB1B-VF', '2019-07-21 17:55:27'),
-(5, 3, 'URF_1563728039051_716235', 23.00, 'NGN', 'Winning Big contests', 'Marxemi', 'David', 'marxemi@yahoo.go', 'Ghana', 'AL-9PRTN-9905D349889AEB1B-VF', '2019-07-21 17:55:27');
+(5, 3, 'URF_1563728039051_716235', 23.00, 'NGN', 'Winning Big contests', 'Marxemi', 'David', 'marxemi@yahoo.go', 'Ghana', 'AL-9PRTN-9905D349889AEB1B-VF', '2019-07-21 17:55:27'),
+(6, 8, 'URF_1563889705547_6664035', 23.00, 'NGN', 'Winning Big contests', 'Marxemi', 'John', 'mygames.ng@gmail.com', 'Nigeria', 'AL-75PRTN-6305D370F9CF0896-VF', '2019-07-23 14:48:42');
 
 CREATE TABLE `questions` (
   `id` int(11) NOT NULL,
@@ -317,10 +322,10 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `phone`, `facebook`, `twitter`, `instagram`, `f_name`, `l_name`, `photo`, `city`, `state`, `country`, `about`, `role`, `rating`, `token`, `status`, `allow_emails`, `date`) VALUES
-(4, 'david', '7c6a180b36896a0a8c02787eeafb0e4c', 'mygames.ng@gmail.com', '3333', NULL, NULL, NULL, 'David', 'Geer', 'cows.jpg', 'Balakan', 'Saki', 'Azerbaijan', 'sssss', 'learner', 0, '482509', '0', '1', '2019-07-08 06:25:16'),
-(8, 'marxemi', '7c6a180b36896a0a8c02787eeafb0e4c', 'mygames.ng@gmail.com', '3333', 'ssssssss', 'sssss', 'sssssss', 'Marxemi', 'John', '385560647_185063102_81272240_n.png', 'Kaduna', 'Waikato', 'Nigeria', 'Lorem ipsum ut non ut quis amet laborum do amet id fugiat duis esse occaecat dolore dolore eu anim nulla nostrud mollit in in amet irure in veniam excepteur occaecat non dolor id sit incididunt aliqua...', 'sudo', 3, '', '1', '1', '2019-07-22 17:53:14'),
-(9, 'qqqq', '7c6a180b36896a0a8c02787eeafb0e4c', 'mygames.ng@gmail.com', NULL, NULL, NULL, NULL, 'qqqqq', 'qqqqq', 'drinkmilk.jpg', 'Abovyan', 'Kotaik', 'Armenia', 'Anim nulla nostrud mollit in in amet irure in veniam excepteur occaecat non dolor id sit incididunt aliqua Lorem ipsum ut non ut quis amet laborum do amet id fugiat duis esse occaecat dolore dolore eu.', 'learner', 0, '482509', '0', '1', '2019-07-11 03:06:30'),
-(10, 'admin', '7c6a180b36896a0a8c02787eeafb0e4c', 'mygames.ng@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'sudo', 5, '482509', '0', '1', '2019-07-22 11:40:49');
+(4, 'david', 'a1fa59e79bba1a38bb0684d3298c9ddd', 'mygames.ng@gmail.com', '3333', NULL, NULL, NULL, 'David', 'Geer', 'cows.jpg', 'Balakan', 'Saki', 'Azerbaijan', 'sssss', 'learner', 0, '$2y$10$0yMuveqXdL6Q9J4zShGtbObM9qqCXFCCKEVQ8N8hvL2VGJvsTelgm', '0', '1', '2019-07-23 14:10:24'),
+(8, 'marxemi', 'a1fa59e79bba1a38bb0684d3298c9ddd', 'mygames.ng@gmail.com', '3333', 'ssssssss', 'sssss', 'sssssss', 'Marxemi', 'John', '385560647_185063102_81272240_n.png', 'Kaduna', 'Waikato', 'Nigeria', 'Lorem ipsum ut non ut quis amet laborum do amet id fugiat duis esse occaecat dolore dolore eu anim nulla nostrud mollit in in amet irure in veniam excepteur occaecat non dolor id sit incididunt aliqua...', 'sudo', 3, '', '1', '1', '2019-07-23 14:39:09'),
+(9, 'qqqq', 'a1fa59e79bba1a38bb0684d3298c9ddd', 'mygames.ng@gmail.com', NULL, NULL, NULL, NULL, 'qqqqq', 'qqqqq', 'drinkmilk.jpg', 'Abovyan', 'Kotaik', 'Armenia', 'Anim nulla nostrud mollit in in amet irure in veniam excepteur occaecat non dolor id sit incididunt aliqua Lorem ipsum ut non ut quis amet laborum do amet id fugiat duis esse occaecat dolore dolore eu.', 'learner', 0, '738683', '0', '1', '2019-07-11 03:06:30'),
+(10, 'admin', 'a1fa59e79bba1a38bb0684d3298c9ddd', 'mygames.ng@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'sudo', 5, '', '1', '1', '2019-07-23 13:31:34');
 
 
 ALTER TABLE `answers`
