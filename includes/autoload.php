@@ -14,5 +14,6 @@
 	require_once(__DIR__ . '/countries.php');   
 
 	$framework = new framework; 
+	$recovery = new doRecovery;
 
 	require_once($framework->getLanguage(null, (isset($_GET['lang']) && !empty($_GET['lang']) ? $_GET['lang'] : (isset($_COOKIE['lang']) ? $_COOKIE['lang'] : null)), null));

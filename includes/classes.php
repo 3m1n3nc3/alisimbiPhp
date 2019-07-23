@@ -1,6 +1,6 @@
 <?php
 //======================================================================\\
-// Passengin 1.0 - Php templating engine and framewordk                 \\
+// Passengine 1.0 - Php templating engine and framework                 \\
 // Copyright © Passcontest. All rights reserved.                        \\
 //----------------------------------------------------------------------\\
 // http://www.passcontest.com/                                          \\
@@ -9,6 +9,7 @@
 use Gumlet\ImageResize;
 
 $framework = new framework;
+$recovery = new doRecovery;
 $user_role = $framework->userRoles();
 
 //Fetch settings from database
@@ -202,7 +203,7 @@ class framework {
 			$sql = sprintf("SELECT * FROM " . TABLE_USERS . " WHERE username = '%s' AND status = '0'", $framework->db_prepare_input($username));
 			$data = $framework->dbProcessor($sql, 1)[0];
  
-			if($user['token'] && date("Y-m-d", strtotime($data['date'])) === date("Y-m-d")) {
+			if($user['token'] && date("Y-m-d", strtotime($data['date'])) < date("Y-m-d")) {
 				$date = date("Y-m-d H:i:s");
 				$token = $framework->generateToken(null, 2);
 				$sql = sprintf("UPDATE " . TABLE_USERS . " SET `token` = '%s', `date` = '%s'"
@@ -418,7 +419,8 @@ class framework {
 		<div style="background: #f7fff5; padding: 35px;">
 			<div style="width: 200px;">'.$contact_['address'].'</div><hr>
 			<div style="font: green; border: solid 1px lightgray; border-radius: 7px; background: white; margin: 50px; ">
-				<div style="padding: 10px;background: lightgray;display: flex;width: 100%;">
+				<div style="padding: 10px;background: lightgray;display: flex; width: 100%;">
+				<img src="'.getImage('logo-full.png', 2).'" width="50px" height="auto" alt="'.ucfirst($configuration['site_name']).'Logo">
 				<h3>'.ucfirst($configuration['site_name']).'</h3>
 				</div>
 				<div style="margin: 25px;">
@@ -428,7 +430,7 @@ class framework {
 					</p>
 				</div>
 			</div>
-			<div style="margin-left: 35px; margin-right: 35px;">This message was sent from '.$SETT['url'].', because you have requested one of our services. Please ignore this message if you are not aware of this action.</div>
+			<div style="margin-left: 35px; margin-right: 35px; padding-bottom: 35px;">This message was sent from <a href="'.$SETT['url'].'" target="_blank">'.$SETT['url'].'</a>, because you have requested one of our services. Please ignore this message if you are not aware of this action. You can also make inquiries to <a href="mailto:'.$contact_['email'].'">'.$contact_['email'].'</a></div>
 		</div>
 		<div style="text-align: center; padding: 15px; background: #fff;">
 			<div>'.ucfirst($configuration['site_name']).'</div>
@@ -1130,6 +1132,91 @@ class framework {
 			    }
 			}		
 		} 
+	}
+}
+
+/**
+ * Class to handle all recovery operations
+ */
+class doRecovery extends framework { 
+	public $LANG, $username;	// The username to recover
+	
+	function verify_user() {
+		global $LANG;
+		// Query the database and check if the username exists
+		$result = $this->userData($this->email_address);  
+		
+		// If user is verified or found
+		if ($result) {
+
+			// Generate the recovery key
+			$data = $result;
+			$this->list = array($data['id'], $data['username'], $data['email']);
+			$sentToken = $this->setToken($data['username']);
+			
+			// If the recovery key has been generated
+			if($sentToken) {
+				// Return the username, email and recovery key
+				return $sentToken;
+			}
+		} else {
+			return messageNotice($LANG['not_found_email'], 2);
+		}
+	}
+	
+	function setToken($username) {
+		global $SETT, $LANG, $configuration;
+		// Generate the token
+		$key = $this->generateToken(5, 1);
+				
+		// Prepare to update the database with the token
+		$date = date("Y-m-d H:i:s");
+		$sql = sprintf("UPDATE ".TABLE_USERS." SET `token` = '%s', `date` = '%s' WHERE `username` = '%s'", $this->db_prepare_input($key), $date, $this->db_prepare_input(mb_strtolower($username))); 
+		 
+		$result = $this->dbProcessor($sql, 0, 1); 
+
+		$link = cleanUrls($SETT['url'].'/index.php?page=account&password_reset=true&username='.$username.'&token='.$key);
+		$msg = sprintf($LANG['recovery_msg'], $configuration['site_name'], $link, $link);	
+		$subject = ucfirst(sprintf($LANG['recovery_subject'], $username, $configuration['site_name']));
+		
+		list($uid, $username, $email) = $this->list;
+
+		$this->username = $username;
+		$this->content = $msg;
+		$this->message = $this->emailTemplate();
+		$this->user_id = $uid;  
+		$this->activation = 1;
+		$this->mailerDaemon($SETT['email'], $email, $subject);
+
+		// If token was updated return token
+		if($result == 1) {
+			return messageNotice($LANG['recovery_sent'], 1);
+		} else {
+			return false;
+		}
+	}
+	
+	function changePassword($username, $password, $token) {
+		global $framework;
+		// Check if the username and the token exists
+		$sql = sprintf("SELECT `username` FROM ".TABLE_USERS." WHERE `username` = '%s' AND `token` = '%s'", $this->db_prepare_input(mb_strtolower($username)), $this->db_prepare_input($token));
+		$result = $this->dbProcessor($sql, 1);
+		
+		// If a valid match was found
+		if ($result) {
+			$password = hash('md5', $framework->db_prepare_input($password));
+			
+			// Change the password
+			$sql = sprintf("UPDATE ".TABLE_USERS." SET `password` = '%s', `token` = '' WHERE `username` = '%s'", $password, $this->db_prepare_input(mb_strtolower($username)));  
+
+			$result = $this->dbProcessor($sql, 0, 1);
+
+			if($result == 1) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 	}
 }
 
