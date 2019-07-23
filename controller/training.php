@@ -443,12 +443,12 @@ function mainContent() {
 		        if (isset($_POST['module'])) {
 		        	$process = linkModule($_POST['module'], $_GET['courseid']);
 		        	if ($process == 1) {
-						$PTMPL['link_message'] = successMessage('Module has been successfully linked with ' . $course['title']);
+						$PTMPL['link_message'] = messageNotice('Module has been successfully linked with ' . $course['title'], 1);
 		        	} else {
-		        		$PTMPL['link_message'] = infoMessage($process);
+		        		$PTMPL['link_message'] = messageNotice($process);
 		        	}
 		        } elseif (isset($_POST['link_module'])) {
-		        	$PTMPL['link_message'] = infoMessage('You have not selected any module');
+		        	$PTMPL['link_message'] = messageNotice('You have not selected any module');
 		        }
 			} elseif (isset($_GET['course']) && $_GET['course'] == 'now_learning') {
 				$grant_access = courseAccess(1, $course['id'])[0];

@@ -29,6 +29,7 @@ $LANG['donate'] = 'Donate Now';
 $LANG['invalid_username'] = 'This user has not been registered'; 
 $LANG['invalid_password'] = 'Invalid Password'; 
 $LANG['invalid_email'] = 'Invalid Email'; 
+$LANG['not_found_email'] = 'This Email has not been registered'; 
 $LANG['email_used'] = 'This Email is already in use, please try another'; 
 $LANG['username_used'] = 'Username in use';
 $LANG['password_short'] = 'Password too short';
@@ -55,6 +56,8 @@ $LANG['course_updated'] = 'Course have been updated successfully';
 $LANG['module_added'] = 'New module have been added successfully';
 $LANG['module_updated'] = 'Module have been updated successfully';
 
+$LANG['expired_reset'] = 'This reset link may have been used or has expired!';
+$LANG['success_reset'] = 'Your password has been changed successfully, please log in to continue learning!';
 // Mail
 $LANG['welcome_msg'] = 'Hello %s, Welcome to %s, your account was successfully created and is pending activation. Click the link below to activate your account, if you can\'t click the link, copy it and paste on your browsers address bar. <p><a href="%s">%s</a></p>';
 
@@ -64,6 +67,14 @@ $LANG['welcome_msg_otp'] = 'Welcome to %s, your account was successfully created
 $LANG['activation_subject'] = '%s, activate your %s account';
 $LANG['activation_sent'] = 'Your activation mail with your OTP has been sent to your mailbox, please give us some time to deliver';
 $LANG['activation_already_sent'] = 'An activation mail has already been sent to your mailbox, please check your inbox or SPAM folders';
+
+$LANG['recovery_msg'] = 'You requested for a password reset on your %s account, click on the link below or copy the link to 
+    your browser to reset your password.<br>
+    <div style="border-bottom: solid #86b591 1px; border-top: solid #86b591 1px; padding: 5px; margin: 5px; overflow-wrap: break-word;">
+    	<a href="%s" target="_blank">%s</a>
+    </div>';
+$LANG['recovery_subject'] = '%s, recover your %s account password';
+$LANG['recovery_sent'] = 'Recovery information has been sent to your mailbox, please check your SPAM folders if you cant see our mails';
 
 // Alisimbi texts
 $LANG['support_alisimbi'] = 'Support Alisimbi to develop and translate Agribusiness videos into local languages to help reach more rural Farmers';
