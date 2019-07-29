@@ -204,8 +204,10 @@
 }
 
 #dashboard .card-body {
-    padding: 14px 20px 14px;
-    font-weight: 300
+    padding: 20px 30px 30px;
+    font-weight: 300;
+    position: relative;
+    overflow: hidden;
 }
 
 
@@ -265,6 +267,8 @@ table {
 .card-tile {
     background: white;
     margin-bottom: 30px;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .05);
     display: block;
 }
 
@@ -277,7 +281,7 @@ table {
     justify-content: space-between;
     align-items: stretch;
     line-height: 2rem;
-    padding: 30px 30px;
+    padding: 20px 30px;
     color: #3d3d3d;
 }
 
@@ -303,10 +307,12 @@ table {
 
 .card-tile .card-title > .caption {
     /* padding-right: 5px; */
-    display: inline-block;
+    /*display: inline-block;*/
     font-weight: 300;
     color: #a6a6a6;
+    display: block;
     font-size: .923rem;
+    margin-top: 10px;
 }
 
 .card-tile .card-title > .caption strong {
@@ -387,7 +393,7 @@ table {
     -ms-align-items: center;
     align-items: center;
     text-align: center;
-    color: #e6e6e6;
+    color: #cfcfcf;
 }
 
 .empty .icon {
@@ -456,7 +462,7 @@ table {
 }
 
 .brcr-tile .brcr {
-    margin-top: 10px;
+    margin-top: 5px;
     font-size: 12px;
     /*color: #a6a6a6;*/
     display: flex;

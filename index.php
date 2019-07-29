@@ -7,7 +7,7 @@ if(isset($_GET['page']) && isset($action[$_GET['page']])) {
 	$page_name = 'homepage';
 }
 if ($user && $page_name == 'homepage') {
-	// $framework->redirect('account&profile=home');
+	 $framework->redirect('account&profile=home');
 }
 
 require_once("controller/{$page_name}.php");
@@ -22,7 +22,7 @@ $PTMPL['captcha_url'] = $SETT['url'].$captcha_url;
 
 //$PTMPL['token'] = $_SESSION['token_id'];
  
-$PTMPL['language'] = $_COOKIE['lang'];
+$PTMPL['language'] = (isset($_COOKIE['lang'])) ?? '';
 
 $PTMPL['register_link'] = cleanUrls($SETT['url'].'/index.php?page=account&register=true');
 $PTMPL['forgot_link'] = cleanUrls($SETT['url'].'/index.php?page=account&password_reset=true');

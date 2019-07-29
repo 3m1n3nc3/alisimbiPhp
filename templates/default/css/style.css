@@ -863,7 +863,7 @@ svg.icon:not(.icon--full-color) path {
     transition: all .5s ease-in-out;
     background: #f6f6f6;
     color: rgb(194, 194, 194);
-    border: 1px solid #d6d6d6;
+    border: 1px solid #838383;
 }
 
 .form-control::placeholder {
@@ -879,6 +879,7 @@ svg.icon:not(.icon--full-color) path {
 
 .custom-input {
     display: inline-block;
+    margin-right: 10px;
 }
 
 .custom-input label {
@@ -896,7 +897,7 @@ svg.icon:not(.icon--full-color) path {
     -o-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
     background: #f6f6f6;
-    border: 1px solid #d6d6d6;
+    border: 1px solid #838383;
     color: rgb(194, 194, 194);
     position: relative;
 }
@@ -1475,7 +1476,10 @@ legend {
 
 label {
     text-transform: capitalize;
-    color: #a6a6a6;
+    color: #888;
+    font-size: 14px;
+
+    /*border-bottom: 1px dashed currentColor;*/
 }
 
 select option {
@@ -1849,4 +1853,22 @@ select option {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: calc(60px + 15px);
+}
+
+td{
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.t-responsive{
+    display: block;
+    overflow: hidden;
+    overflow-x: auto;
+    position: relative;
+}
+#dashboard .dashboard_content .t-responsive table{
+    display: table;
+    min-width: 750px !important;
 }
