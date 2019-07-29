@@ -185,6 +185,7 @@
                                     <div class="card-action">
                                         {$add_course_link}
                                         {$add_module_link}
+                                        {$course_continue}
                                         <a class="btn" href="{$all_courses_link}">Explore other courses</a>
                                     </div>
                                 </div>
@@ -192,19 +193,20 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="pad-section">
+                <div class="space_5"></div>
+                <div class="container">
                     <div class="row ">
                         <div class="col-md-4">
                             <div class="user-info-list card card-default">
                                 <div class="card-tile">
-                                    <div class="card-title">
+                                    <div class="card-head">
                                         <h3>Search</h3>
-                                        <div class="caption">
-                                            Enter a search keyword here
-                                        </div>
+
                                     </div>
-                                    <div class="">
+                                    <div class="caption">
+                                        Enter a search keyword here
+                                    </div>
+                                    <div class="card-body">
                                         <div class="form-group">
                                             <input class="form-control" id="" name="" type="search">
                                             <a class="btn" href=""><i class="fa f-search"></i> Search courses</a>
@@ -217,7 +219,6 @@
                             <div class="row">
                                 {$course}
                             </div>
-                            {$course_continue}
                         </div>
                     </div>
                 </div>
