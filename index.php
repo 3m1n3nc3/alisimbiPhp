@@ -6,12 +6,8 @@ if(isset($_GET['page']) && isset($action[$_GET['page']])) {
 } else {
 	$page_name = 'homepage';
 }
-
-if (isset($_GET['logout'])) {
-    $out = $framework->sign_out();
-    $out == true ? header('Location: ' . cleanUrls($SETT['url'] . '/index.php?page=homepage')) : '';
-} elseif ($user && $page_name == 'homepage') {
-	$framework->redirect('account&profile=home');
+if ($user && $page_name == 'homepage') {
+	 $framework->redirect('account&profile=home');
 }
 
 require_once("controller/{$page_name}.php");
@@ -19,7 +15,6 @@ require_once("controller/{$page_name}.php");
 $PTMPL['site_title'] = $configuration['site_name'];
 $PTMPL['site_logo'] = getImage('logo-full.png', 2);
 $PTMPL['site_url'] = $SETT['url'];
-$PTMPL['upload_limit'] = $configuration['upload_lim'];
 $PTMPL['favicon'] = 'favicon.ico';
 
 $captcha_url = '/includes/vendor/goCaptcha/goCaptcha.php?gocache='.strtotime('now');
@@ -27,7 +22,7 @@ $PTMPL['captcha_url'] = $SETT['url'].$captcha_url;
 
 //$PTMPL['token'] = $_SESSION['token_id'];
  
-$PTMPL['language'] = isset($_COOKIE['lang']) ? $_COOKIE['lang'] : '';
+$PTMPL['language'] = (isset($_COOKIE['lang'])) ?? '';
 
 $PTMPL['register_link'] = cleanUrls($SETT['url'].'/index.php?page=account&register=true');
 $PTMPL['forgot_link'] = cleanUrls($SETT['url'].'/index.php?page=account&password_reset=true');
