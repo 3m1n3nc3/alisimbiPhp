@@ -48,37 +48,40 @@ CREATE TABLE `completed_courses` (
 INSERT INTO `completed_courses` (`id`, `user_id`, `course_id`, `date`) VALUES
 (22, 8, 8, '2019-07-21 01:06:45');
 
-CREATE TABLE `configuration` (
-  `language` varchar(128) NOT NULL DEFAULT 'default',
-  `site_name` varchar(128) NOT NULL,
-  `cleanurl` enum('0','1') NOT NULL DEFAULT '0',
-  `data_limit` int(11) NOT NULL DEFAULT '15',
-  `rave_public_key` varchar(128) DEFAULT NULL,
-  `rave_private_key` varchar(128) DEFAULT NULL,
-  `rave_mode` enum('0','1') NOT NULL DEFAULT '0',
-  `currency` varchar(3) NOT NULL DEFAULT 'NGN',
-  `activation` enum('email','phone','none','') NOT NULL DEFAULT 'email',
-  `mode` enum('0','1') NOT NULL DEFAULT '1',
-  `tracking` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `fbacc` enum('0','1') NOT NULL DEFAULT '1',
-  `fb_appid` varchar(128) DEFAULT NULL,
-  `fb_secret` varchar(128) DEFAULT NULL,
-  `twilio_sid` varchar(128) DEFAULT NULL,
-  `twilio_token` varchar(128) DEFAULT NULL,
-  `twilio_phone` varchar(128) DEFAULT NULL,
-  `captcha` enum('0','1') NOT NULL DEFAULT '0',
-  `smtp` enum('0','1') NOT NULL DEFAULT '0',
-  `sms` enum('0','1') NOT NULL DEFAULT '0',
-  `smtp_server` varchar(128) NOT NULL,
-  `smtp_port` int(6) NOT NULL,
-  `smtp_secure` enum('0','ssl','tls') NOT NULL DEFAULT '0',
-  `smtp_auth` enum('0','1') NOT NULL DEFAULT '0',
-  `smtp_username` varchar(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `smtp_password` varchar(128) NOT NULL
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+
+CREATE TABLE IF NOT EXISTS configuration (
+  language varchar(128) NOT NULL DEFAULT 'default',
+  site_name varchar(128) NOT NULL,
+  cleanurl enum('0','1') NOT NULL DEFAULT '0',
+  data_limit int(11) NOT NULL DEFAULT '15',
+  rave_public_key varchar(128) DEFAULT NULL,
+  rave_private_key varchar(128) DEFAULT NULL,
+  rave_mode enum('0','1') NOT NULL DEFAULT '0',
+  currency varchar(3) NOT NULL DEFAULT 'NGN',
+  activation enum('email','phone','none','') NOT NULL DEFAULT 'email',
+  mode enum('0','1') NOT NULL DEFAULT '1',
+  upload_lim int(11) NOT NULL DEFAULT '6',
+  tracking text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  fbacc enum('0','1') NOT NULL DEFAULT '1',
+  fb_appid varchar(128) DEFAULT NULL,
+  fb_secret varchar(128) DEFAULT NULL,
+  twilio_sid varchar(128) DEFAULT NULL,
+  twilio_token varchar(128) DEFAULT NULL,
+  twilio_phone varchar(128) DEFAULT NULL,
+  captcha enum('0','1') NOT NULL DEFAULT '0',
+  smtp enum('0','1') NOT NULL DEFAULT '0',
+  sms enum('0','1') NOT NULL DEFAULT '0',
+  smtp_server varchar(128) NOT NULL,
+  smtp_port int(6) NOT NULL,
+  smtp_secure enum('0','ssl','tls') NOT NULL DEFAULT '0',
+  smtp_auth enum('0','1') NOT NULL DEFAULT '0',
+  smtp_username varchar(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  smtp_password varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `configuration` (`language`, `site_name`, `cleanurl`, `data_limit`, `rave_public_key`, `rave_private_key`, `rave_mode`, `currency`, `activation`, `mode`, `tracking`, `fbacc`, `fb_appid`, `fb_secret`, `twilio_sid`, `twilio_token`, `twilio_phone`, `captcha`, `smtp`, `sms`, `smtp_server`, `smtp_port`, `smtp_secure`, `smtp_auth`, `smtp_username`, `smtp_password`) VALUES
-('default', 'Alisimbi', '0', 15, 'FLWPUBK-3155553bf5dfd444f8efa588d3fed3f4-X', 'FLWSECK-e1a611682c418f221f5c34e29984d26a-X', '0', 'NGN', 'email', '1', '', '1', NULL, NULL, NULL, NULL, NULL, '0', '1', '0', 'smtp.mailtrap.io', 465, 'tls', '1', '2d5d5044378a13', '36f03dd0cf1791');
+INSERT INTO configuration (`language`, site_name, cleanurl, data_limit, rave_public_key, rave_private_key, rave_mode, currency, activation, `mode`, upload_lim, tracking, fbacc, fb_appid, fb_secret, twilio_sid, twilio_token, twilio_phone, captcha, smtp, sms, smtp_server, smtp_port, smtp_secure, smtp_auth, smtp_username, smtp_password) VALUES
+('default', 'Alisimbi', '0', 15, 'FLWPUBK-3155553bf5dfd444f8efa588d3fed3f4-X', 'FLWSECK-e1a611682c418f221f5c34e29984d26a-X', '0', 'NGN', 'email', '1', 6, '', '1', NULL, NULL, NULL, NULL, NULL, '0', '1', '0', 'smtp.mailtrap.io', 465, 'tls', '1', '2d5d5044378a13', '36f03dd0cf1791');
 
 CREATE TABLE `contact` (
   `id` int(11) NOT NULL,

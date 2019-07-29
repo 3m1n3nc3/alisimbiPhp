@@ -19,6 +19,7 @@ function mainContent() {
 			$PTMPL['public_k'] = $_POST['pub-key'];
 			$PTMPL['private_k'] = $_POST['pvt-key'];
 			$PTMPL['sitename'] = $_POST['sitename'];
+			$PTMPL['upload_limit'] = $_POST['upload_limit'];
 
 			$PTMPL['smtp_server'] = $_POST['smtp_server'];
 			$PTMPL['smtp_port'] = $_POST['smtp_port'];
@@ -33,6 +34,8 @@ function mainContent() {
 			$ravemode = $framework->db_prepare_input($_POST['ravemode']);
 			$site_mode = $framework->db_prepare_input($_POST['sitemode']);
 
+			$upload_limit = $framework->db_prepare_input($_POST['upload_limit']);
+
 			$smtp_ = $framework->db_prepare_input($_POST['smtp_']);
 			$smtp_server = $framework->db_prepare_input($_POST['smtp_server']);
 			$smtp_port = $framework->db_prepare_input($_POST['smtp_port']);
@@ -41,11 +44,12 @@ function mainContent() {
 			$smtp_username = $framework->db_prepare_input($_POST['smtp_username']);
 			$smtp_password = $framework->db_prepare_input($_POST['smtp_password']);
 
-			$sql = sprintf("UPDATE " . TABLE_CONFIG . " SET `site_name` = '%s', `cleanurl` = '%s', `rave_public_key` = '%s',"
-				. " `rave_private_key` = '%s', `rave_mode` = '%s', `currency` = '%s', `mode` = '%s', `smtp` = '%s',"
-				. " `smtp_server` = '%s', `smtp_port` = '%s', `smtp_secure` = '%s', `smtp_auth` = '%s',"
+			$sql = sprintf("UPDATE " . TABLE_CONFIG . " SET `site_name` = '%s', `cleanurl` = '%s', " 
+				. "`rave_public_key` = '%s', `rave_private_key` = '%s', `rave_mode` = '%s', `currency` = '%s', "
+				. "`mode` = '%s' , `upload_lim` = '%s', `smtp` = '%s', `smtp_server` = '%s', `smtp_port` = '%s', "
+				. "`smtp_secure` = '%s', `smtp_auth` = '%s',"
 				. " `smtp_username` = '%s', `smtp_password` = '%s'", $sitename, $cleanurl, $public_key, $private_key, 
-				$ravemode, $currency, $site_mode, $smtp_, $smtp_server, $smtp_port, $smtp_secure, $smtp_auth, $smtp_username, 
+				$ravemode, $currency, $site_mode, $upload_limit, $smtp_, $smtp_server, $smtp_port, $smtp_secure, $smtp_auth, $smtp_username, 
 				$smtp_password);
 			$upd = $framework->dbProcessor($sql, 0, 1);
 			$PTMPL['update_msg'] = $upd == 1 ? messageNotice('Site configuration has been updated', 1) : messageNotice($upd);
@@ -53,6 +57,8 @@ function mainContent() {
 			$PTMPL['public_k'] = $configuration['rave_public_key'];
 			$PTMPL['private_k'] = $configuration['rave_private_key'];
 			$PTMPL['sitename'] = $configuration['site_name'];
+
+			$PTMPL['upload_limit'] = $configuration['upload_lim'];
 			
 			$PTMPL['smtp_server'] = $configuration['smtp_server'];
 			$PTMPL['smtp_port'] = $configuration['smtp_port'];
