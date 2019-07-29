@@ -139,11 +139,11 @@ function mainContent() {
 
     			/* Rave checkout variables*/
 			 	/*Rave API Public key*/
-			 	$public_key = $configuration['rave_public_key'];
+			 	$PTMPL['public_key'] = $public_key = $configuration['rave_public_key'];
 			 	 // Rave API Private key
-				$private_key = $configuration['rave_private_key'];
+				$PTMPL['private_key'] = $private_key = $configuration['rave_private_key'];
 				// Check if sandbox is enabled
-				$ravemode = ($configuration['rave_mode'] ? 'api.ravepay.co' : 'ravesandboxapi.flutterwave.com'); 
+				$PTMPL['rave_mode'] = $ravemode = ($configuration['rave_mode'] ? 'api.ravepay.co' : 'ravesandboxapi.flutterwave.com'); 
 				// Set the payment reference
 				$reference = isset($_SESSION['txref']) ? $_SESSION['txref'] : '';
 	      	
@@ -173,44 +173,24 @@ function mainContent() {
 				    $PTMPL['page_title'] = 'Checkout '.$course['title'];
 							
 					// Check If the price of this course is not free
-					if (isset($_POST['pay']) && $course['price'] > 0) {
+					if (/*isset($_POST['pay']) && */$course['price'] > 0) {
 
 						// Url to redirect to to verify rave
-						$successful_url	= $SETT['url'].'/connection/raveAPI.php'; 
+						$PTMPL['successful_url'] = $successful_url	= $SETT['url'].'/connection/raveAPI.php'; 
 
-						$buyer_email = $user['email'];
-						$cntr_code = countries(2, $user['country']);  
-						$purchase_reference = 'AL-'.mt_rand(5,99).'PRTN-'.strtoupper(uniqid(rand(19*94, true))).'-VF';
-						$course_desc = $framework->myTruncate(strip_tags($course['intro']), 100, ' ', '');
+						$PTMPL['buyer_email'] = $buyer_email = $user['email'];
+						$PTMPL['cntr_code'] = $cntr_code = countries(2, $user['country']);  
+						$PTMPL['reference'] = $purchase_reference = 'AL-'.mt_rand(5,99).'PRTN-'.strtoupper(uniqid(rand(19*94, true))).'-VF';
+						$PTMPL['course_desc'] = $course_desc = $framework->myTruncate(strip_tags($course['intro']), 100, ' ', '');
 
 						$_SESSION['txref'] = $purchase_reference;	
-						$_SESSION['amount'] = $price = $course['price'];
-						$_SESSION['currency'] = $currency_code = $configuration['currency'];
+						$PTMPL['amount'] = $_SESSION['amount'] = $price = $course['price'];
+						$PTMPL['currency'] = $_SESSION['currency'] = $currency_code = $configuration['currency'];
 						// Store the selected course
 						$_SESSION['selected_course'] = $course['title'];
 						$_SESSION['course_code'] = $course['id'];
-
-						// Parameters for Checkout, which will be sent to Rave
-						// Default payment button class: 'flwpug_getpaid', don't change
-						$form_body = "
-						  <a class=\"flwpug_getpaid\" 
-						  data-PBFPubKey=\"{$public_key}\" 
-						  data-txref=\"{$purchase_reference}\" 
-						  data-amount=\"{$price}\" 
-						  data-customer_email=\"{$buyer_email}\" 
-						  data-currency=\"{$currency_code}\" 
-						  data-pay_button_text=\"Pay Now\" 
-						  data-payment_method=\"both\"
-						  data-custom_description=\"{$course_desc}\"
-						  data-custom_logo=\"{$site_logo}\"
-						  data-country=\"{$cntr_code}\"
-						  data-redirect_url=\"{$successful_url}\"></a>
-						  
-						  <script type=\"text/javascript\" src=\"https://".$ravemode."/flwv3-pug/getpaidx/api/flwpbf-inline.js\"></script>	
-						";
-
-						$PTMPL['form_body'] = $form_body; 
-					} elseif (isset($_POST['pay']) && ($course['price'] == 0 || $course['price'] == 0.00)) {
+  
+					} elseif ($course['price'] == 0 || $course['price'] == 0.00) {
 						courseAccess(null, $course['id']);
 						$referrer = urlencode($_SESSION['referrer']);
 						$url = $SETT['url'].'/index.php?page=training&course=get&process=status&courseid='.$_GET['courseid'].'&type=free&referrer='.$referrer;
@@ -225,7 +205,7 @@ function mainContent() {
 					if(!$check && isset($_GET['type']) && $_GET['type'] == 'canceled') {
 						// If the payment has been canceled
 						$PTMPL['error'] = messageNotice('Trasaction Canceled <br>', 2);	
-						$PTMPL['error'] .= messageNotice('Error <strong>'.$_GET['status'].'</strong>: '.$_GET['message'], 3);					 
+						$PTMPL['error'] .= messageNotice('<strong>'.$_GET['status'].'</strong>: '.$_GET['message'], 3);					 
 					} elseif(!$check && isset($_GET['type']) && $_GET['type'] == 'successful') { 
  
 						// If the flutterwaveREF and OrderREF has been returned by the Return URL
@@ -304,6 +284,8 @@ function mainContent() {
 								} else {
 									$PTMPL['error'] = messageNotice('Error '.$resp['status'].': '.$resp['message'], 3);
 								}
+								$PTMPL['success_title'] = 'Your transaction has failed due to an error in payment processing';
+								$PTMPL['this_course'] = '<h1 class="text-center text-danger"> Transaction Failed</h1>'; 
 							}
 						}			 
 					} 		
@@ -320,7 +302,8 @@ function mainContent() {
 						// Show the detail of this course
 						$coursesArr = getCourses(1, $_GET['courseid'])[0];
 						$this_course = courseModuleCard($coursesArr); 
-						$PTMPL['this_course'] = $this_course; 			
+						$PTMPL['this_course'] = '<h2 class="text-center text-success">Transaction Successful</h2>';
+						$PTMPL['this_course'] .= $this_course; 			
 					}
 				} elseif (!isset($_GET['process'])) {
 					// redirect to a 404 error page
