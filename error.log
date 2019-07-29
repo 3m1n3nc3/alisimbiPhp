@@ -396,3 +396,8 @@
 [Tue Jul 23 23:25:19.836805 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
 [Tue Jul 23 23:25:19.881841 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
 [Tue Jul 23 23:25:20.193082 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Mon Jul 29 13:19:04.838155 2019] [php7:notice] [pid 6880] [client 127.0.0.1:51790] PHP Notice:  Undefined index: upload_lim in /var/www/dev/alisimbi/index.php on line 22, referer: http://dev.alisimbi/index.php?page=account&profile=home
+[Mon Jul 29 13:19:31.403687 2019] [php7:notice] [pid 6947] [client 127.0.0.1:51806] PHP Notice:  Undefined index: upload_lim in /var/www/dev/alisimbi/index.php on line 22, referer: http://dev.alisimbi/index.php?page=training&course=view&courseid=3
+[Mon Jul 29 13:19:42.982948 2019] [php7:notice] [pid 6880] [client 127.0.0.1:51820] PHP Notice:  Undefined index: upload_lim in /var/www/dev/alisimbi/index.php on line 22, referer: http://dev.alisimbi/index.php?page=account&profile=home
+[Mon Jul 29 13:19:43.048174 2019] [php7:notice] [pid 6880] [client 127.0.0.1:51820] PHP Notice:  Undefined index: upload_lim in /var/www/dev/alisimbi/index.php on line 22, referer: http://dev.alisimbi/index.php?page=account&profile=home
+[Mon Jul 29 13:21:57.144077 2019] [php7:notice] [pid 6927] [client 127.0.0.1:51852] PHP Notice:  Undefined index: upload_lim in /var/www/dev/alisimbi/index.php on line 22, referer: http://dev.alisimbi/index.php?page=account&profile=home
