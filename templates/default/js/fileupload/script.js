@@ -3,7 +3,7 @@ function fileSelected() {
   if (file) {
     var kb = false;
     var fileSize = 0;
-    var allowedSize = 6; //On production server change this value to maximum allowed upload size
+    var allowedSize = Number(upload_limit); //On production server change this value to maximum allowed upload size
     if (file.size > 1024 * 1024) {
       thisSize = (Math.round(file.size * 100 / (1024 * 1024)) / 100).toString();
       fileSize = (Math.round(file.size * 100 / (1024 * 1024)) / 100).toString() + 'MB';

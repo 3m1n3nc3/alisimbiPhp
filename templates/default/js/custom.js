@@ -92,7 +92,7 @@ function connector(type, target) {
     let messager = $('#login_section_alert');
 
     if (type == 0) {
-
+        remember = 0;
         /*For login*/
         // var username = $('input[name="username"]').val();
         // var password = $('input[name="password"]').val();
@@ -100,8 +100,9 @@ function connector(type, target) {
 
         let username = target.username.value;
         let password = target.password.value;
-        let remember = target.remember.value;
         let submit_b = target.submit.value;
+        let remem = $('input[name="remember"]');
+        if($(remem).is(':checked')) remember = 1;
 
         $(submit_b).attr('disabled', 'disabled');
         let url = siteUrl + "/connection/connector.php";

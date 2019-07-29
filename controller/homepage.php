@@ -20,10 +20,7 @@ function mainContent() {
     if ($user && $user_role < 3) {
         header("Location: " . cleanUrls($SETT['url'] . '/index.php?page=account'));
     }
-    if (isset($_GET['logout'])) {
-        $out = $framework->sign_out();
-        $out == true ? header('Location: ' . cleanUrls($SETT['url'] . '/index.php?page=homepage')) : '';
-    }
+
 	// Set social values
 	$contact = getContactInfo()[0];
 	$facebook = $twitter = $instagram = $youtube = '';

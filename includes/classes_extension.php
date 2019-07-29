@@ -587,6 +587,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
         $duration = $marxTime->minutesConverter($duration, '%02d Hrs %02d Mins');
         $count_instructors = doSum($contentArr['id'], 1)[0]['count_intructors'];
         $count_modules = getModules(4, $contentArr['id'])[0]['count_modules'];
+        $paid = courseAccess(1, $contentArr['id']) ? '<i class="fa fa-check-circle text-white small"></i>' : '';
     }
 
     // if $text = 0 don't show the $intro
@@ -600,7 +601,9 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
           <img class="img-responsive" src="' . $photo . '" title="" alt="course image">
           <div class="course-price">
             ' . $price . '
+            ' . $paid . '
           </div>
+
         </div>
         <div class="course-content">
           <div class="title">' . $contentArr['title'] . '</div>
@@ -608,6 +611,7 @@ function courseModuleCard($contentArr, $type = null, $text = 1) {
             <span class="item "><i class="fa fa-user"></i> ' . $count_instructors . '</span>
             <span class="item "><i class="fa fa-clock-o"></i> ' . $duration . '</span>
             <span class="item "><i class="fa fa-book"></i> ' . $count_modules . '</span>
+            
           </div>
           ' . $progress_val . '
         </div>
@@ -890,7 +894,7 @@ function headerFooter($type) {
     $PTMPL['username_url'] = simpleButtons('logout', 'Account', $user_url, 1);
     $PTMPL['site_title_'] = ucfirst($configuration['site_name']);
     $PTMPL['copyright'] = '&copy; ' . ucfirst($LANG['copyright']) . ' ' . date('Y') . ' ' . $contact_['c_line'];
-    $PTMPL['logout_url'] = cleanUrls($SETT['url'] . '/index.php?page=homepage&logout=true');
+    $PTMPL['logout_url'] = cleanUrls($SETT['url'] . '/index.php?logout=true');
 
     if ($user_role >=3) {
       $management = cleanUrls($SETT['url'] . '/index.php?page=management');
