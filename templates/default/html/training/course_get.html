@@ -34,15 +34,7 @@
                                                 </a>
                                             </div>
                                             <div class="card-body p-0">
-                                                <div class="price currency">{$course_price}</div>
-                                                <div class="action">
-                                                    <div class="list-inline">
-                                                        <div class="list-inline-item"><a href="">
-                                                            <i class="fa fa-heart-o"></i>
-                                                        </a></div>
-                                                        <div class="list-inline-item"><a href="">remove</a></div>
-                                                    </div>
-                                                </div>
+                                                <div class="price currency">{$course_price}</div> 
                                             </div>
                                         </div>
                                         <!--                                            Cart tile-->
@@ -50,25 +42,24 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-5">
-                            <form action="" id="cc_pay" method="post">
-                                <div class="user-info-tile card card-default">
-                                    <div class="card-tile">
-                                        <div class="card-title">
-                                            <h3>Subtotal</h3>
-                                            <div class="caption">A sum total of your intended purchase</div>
-                                        </div>
-                                        <div class="card-foot">
-                                            <div class="font_bold font_4 currency">{$course_price}</div>
-                                        </div>
+                        <div class="col-md-5"> 
+                            <div class="user-info-tile card card-default">
+                                <div class="card-tile">
+                                    <div class="card-title">
+                                        <h3>Subtotal</h3>
+                                        <div class="caption">A sum total of your intended purchase</div>
                                     </div>
-                                            {$form_body}
-                                </div>
-                                <div class="px-2">
-                                    <button class="btn bordered background_green2" name="pay" type="submit">Check Out<i
-                                            class="fa fa-credit-card-alt px-1"></i></button>
-                                </div>
-                            </form>
+                                    <div class="card-foot">
+                                        <div class="font_bold font_4 currency">{$course_price}</div>
+                                    </div>
+                                </div> 
+                                <form>
+                                    <script src="https://{$rave_mode}/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+                                    <button class="btn bordered background_green2" type="button" onClick="payWithRave()">
+                                        Pay Now <i class="fa fa-credit-card-alt px-1"></i>
+                                    </button>
+                                </form>
+                            </div> 
                         </div>
                     </div>
                 </div>
@@ -76,3 +67,34 @@
         </div>
     </div>
 </div>
+
+<script>
+    const API_publicKey = "{$public_key}";
+
+    function payWithRave() {
+        var x = getpaidSetup({
+            PBFPubKey: API_publicKey,
+            customer_email: "{$buyer_email}",
+            amount: "{$amount}",
+            country: "{$cntr_code}", 
+            currency: "{$currency}",
+            payment_options: "account,card",
+            custom_logo: "{$site_url}/{$site_logo}",
+            custom_description: "{$course_desc}",
+            txref: "{$reference}", 
+            redirect_url: "{$successful_url}",
+            onclose: function() {},
+            callback: function(response) {
+                var txref = response.tx.txRef; // collect flwRef returned and pass to a server page to complete status check.
+                console.log("Charge Response: ", response); 
+                x.close(); // use this to close the modal immediately after payment.
+            }
+        });
+    }
+</script>
+
+<!-- 
+Test card: 4751763236699647
+Exp: 09/21
+Cvv: 123 
+-->
