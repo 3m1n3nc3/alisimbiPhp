@@ -281,10 +281,14 @@ table {
     justify-content: space-between;
     align-items: stretch;
     line-height: 2rem;
-    padding: 20px 30px;
+    padding: 10px 30px;
     color: #3d3d3d;
 }
 
+.card-tile > .caption {
+    padding: 10px 30px;
+    display: block;
+}
 .card-tile .card-icon {
     font-size: 2.5em;
     margin-right: 30px;
@@ -458,7 +462,7 @@ table {
 
 .brcr-tile.brcr-cover {
     color: #fff;
-    background: hsl(149, 74%, 40%);
+    background: var(--green-dark);
 }
 
 .brcr-tile .brcr {

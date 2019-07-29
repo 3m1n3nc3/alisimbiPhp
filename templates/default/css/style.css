@@ -20,10 +20,10 @@ body, html {
     letter-spacing: 1px
 }
 
-@media (min-width: 576px) and (max-width: 768px) {
+@media (min-width: 300px) and (max-width: 3000px) {
     .container {
         width: 100% !important;
-        max-width: 100% !important;
+        max-width: 100vw !important;
     }
 }
 
@@ -724,13 +724,13 @@ svg.icon:not(.icon--full-color) path {
 }
 
 .course-header {
-    padding: 2.5% 10%;
+    padding: 2.5% 5%;
     /* border-left: 6px solid #f1f2f3; */
     /* border-right: 6px solid #f1f2f3; */
     border-bottom: 1px solid #eee;
-    background: hsl(149, 74%, 40%);
+    background: var(--green-dark);
     /*background-color: hsl(149, 74%, 40%). rgba(0, 0, 0, .94);*/
-    filter: contrast(90%);
+    /*filter: contrast(90%);*/
     display: block;
 }
 
@@ -1489,7 +1489,7 @@ select option {
 
 .module-widget {
     background-color: #fafafa;
-    /*padding: 5% 10%;*/
+    padding: 5% 10%;
     display: block;
 }
 
