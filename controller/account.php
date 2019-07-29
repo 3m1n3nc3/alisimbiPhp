@@ -200,11 +200,8 @@ function mainContent() {
             $cont_learning = cleanUrls($SETT['url'] . '/index.php?page=training&course=now_learning&courseid=' . $crnt['course_id'] . '&moduleid=' . $crnt['current_module']);
 
             $PTMPL['course_continue'] = '
-            <div class="card-foot">
-                <div class="card-action">
-                    <a class="btn" href="'.$cont_learning.'">Continue learning</a>
-                </div>
-            </div>';       
+            
+                    <a class="btn" href="' . $cont_learning . '">Continue learning</a>';
         } else {
             $PTMPL['course'] = notAvailable('courses');
             $PTMPL['course_count'] = '0 &nbsp;';
