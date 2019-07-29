@@ -7,13 +7,12 @@
     <list default="true" id="7f36086c-b457-4f78-92d6-ba767f4aacb5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/error.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/default/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/dashboard.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/default/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/account/unverified.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/account/unverified.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/management/content.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/management/content.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/js/custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/js/tables/dataTables.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/js/tables/dataTables.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/css/style0.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/style0.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/css/variable.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/variable.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/html/training/course_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/course_info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/html/training/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/home.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,6 +46,17 @@
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="MySQL - alisimbi@localhost" type="feb32156:DbDataSourceImpl" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - alisimbi@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - alisimbi@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="alisimbi: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
     </expand>
     <select />
   </component>
@@ -55,10 +65,10 @@
       <split-first>
         <leaf>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/templates/default/js/tables/dataTables.init.js">
+            <entry file="file://$PROJECT_DIR$/alisimbi.sql">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
-                  <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+                <state relative-caret-position="105">
+                  <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
                 </state>
               </provider>
             </entry>
@@ -68,10 +78,10 @@
       <split-second>
         <leaf>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/templates/default/css/style.css">
+            <entry file="file://$PROJECT_DIR$/templates/default/html/training/home.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="358">
-                  <caret line="1861" column="28" selection-start-line="1861" selection-start-column="28" selection-end-line="1861" selection-end-column="28" />
+                <state relative-caret-position="252">
+                  <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
                 </state>
               </provider>
             </entry>
@@ -122,7 +132,7 @@
     </dirStrings>
   </component>
   <component name="Git.Settings">
-    <option name="UPDATE_TYPE" value="REBASE" />
+    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -182,6 +192,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="alisimbi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alisimbi" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -210,26 +231,15 @@
               <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="default" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="js" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="html" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="default" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="js" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="tables" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="alisimbi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="alisimbi" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="training" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -242,6 +252,7 @@
     <property name="JavaScriptWeakerCompletionTypeGuess" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/alisimbi.sql" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -348,12 +359,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129556000" />
+    <option name="totallyTimeSpent" value="129798000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-37" width="1366" height="805" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24962063" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -373,7 +384,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" weight="0.32954547" />
+      <window_info active="true" anchor="right" id="Database" order="3" visible="true" weight="0.32928678" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -557,8 +568,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/default/html/training/course_info.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="72" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="72" />
+        <state relative-caret-position="123">
+          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -571,8 +582,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/default/html/training/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+        <state relative-caret-position="252">
+          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -646,13 +657,6 @@
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/alisimbi.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -762,6 +766,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/alisimbi.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
         </state>
       </provider>
     </entry>

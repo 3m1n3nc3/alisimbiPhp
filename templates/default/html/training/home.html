@@ -2,7 +2,14 @@
 <div class="wrapper">
     <div id="dashboard">
         {$global_header}
-        <!-- Dashboard content -->
+        <div class="brcr-tile brcr-cover">
+            <div class="container p-0">
+                <ul class="brcr">
+                    <li class="level"><i class="fa fa-home"></i> <a href="{$site_url}">Home</a></li>
+                    <li class="level">All Courses</li>
+                </ul>
+            </div>
+        </div>  <!-- Dashboard content -->
         <div class="dashboard_content">
             <div class="user-info-list ">
                 <div class="card-tile">
@@ -23,18 +30,19 @@
 
                 </div>
             </div>
-            <div class="pad-section">
+            <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-lg-4 ">
-                        <div class="user-info-list card card-default">
+                        <div class="user-info-list card-default">
                             <div class="card-tile">
-                                <div class="card-title">
+                                <div class="card-head">
                                     <h3>Search</h3>
-                                    <div class="caption">
-                                        Enter a search keyword here
-                                    </div>
+
                                 </div>
-                                <div class="">
+                                <div class="caption">
+                                    Enter a search keyword here
+                                </div>
+                                <div class="card-body">
                                     <div class="form-group">
                                         <input class="form-control" id="" name="" type="search">
                                         <a class="btn" href=""><i class="fa f-search"></i> Search courses</a>

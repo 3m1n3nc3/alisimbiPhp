@@ -1726,12 +1726,12 @@ a, a:hover, a:focus {
 
 .background_green {
   color: #fff;
-  background: hsl(149, 74%, 45%) !important;
+    background: var(--green) !important;
 }
 
 .background_green2 {
   color: #fff;
-  background: linear-gradient(to top, hsl(149, 74%, 40%), hsl(149, 74%, 45%)) !important;
+    background: linear-gradient(to top, hsl(97, 53%, 40%) 30%, hsla(97, 53%, 54%)) !important;
 }
 
 .background_black2 {
