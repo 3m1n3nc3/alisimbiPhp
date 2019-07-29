@@ -4,22 +4,9 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f36086c-b457-4f78-92d6-ba767f4aacb5" name="Default Changelist" comment="Corrected course card">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/training.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/training.php" afterDir="false" />
+    <list default="true" id="7f36086c-b457-4f78-92d6-ba767f4aacb5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/error.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/classes_extension.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/classes_extension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/css/variable.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/variable.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/account/profile_home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/account/profile_home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/account/profile_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/account/profile_update.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/training/course_add_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/course_add_edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/training/course_get.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/course_get.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/training/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/training/link_module.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/link_module.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/training/module_add_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/module_add_edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/training/now_learning.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/now_learning.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,37 +44,35 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/templates/default/html/training/module_add_edit.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="168">
-                  <caret line="8" column="64" selection-start-line="8" selection-start-column="64" selection-end-line="8" selection-end-column="64" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/templates/default/css/variable.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="422">
-                  <caret line="33" column="37" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/includes/classes_extension.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="101">
+              <caret line="663" lean-forward="true" selection-start-line="663" selection-end-line="663" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+      <find>module</find>
+      <find>.btn</find>
+      <find>brc</find>
+      <find>logi</find>
+      <find>placehol</find>
+      <find>form-co</find>
+      <find>notA</find>
+      <find>dashboard_t</find>
+      <find>sh</find>
+      <find>shw</find>
+      <find>brcr</find>
+      <find>background_green2</find>
+      <find>start_</find>
+      <find>explore</find>
+      <find>.explo</find>
       <find>.explore</find>
       <find>upload</find>
       <find>about</find>
@@ -98,26 +83,11 @@
       <find>top_ava</find>
       <find>emp</find>
       <find>username_url</find>
+      <find>succ</find>
       <find>['course']</find>
       <find>course</find>
       <find>duratip</find>
       <find>duration</find>
-      <find>video</find>
-      <find>price</find>
-      <find>card-tile</find>
-      <find>counter-increment</find>
-      <find>caption</find>
-      <find>Naira</find>
-      <find>course_price</find>
-      <find>currency</find>
-      <find>c</find>
-      <find>module</find>
-      <find>course_create_header</find>
-      <find>module_create_header</find>
-      <find>edit_course_modules</find>
-      <find>course-col</find>
-      <find>succ</find>
-      <find>Abou</find>
     </findStrings>
     <replaceStrings>
       <replace>.brcr-tile .brcr</replace>
@@ -146,25 +116,22 @@
         <option value="$PROJECT_DIR$/templates/default/html/container.html" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/controller/account.php" />
+        <option value="$PROJECT_DIR$/templates/default/html/training/module_add_edit.html" />
+        <option value="$PROJECT_DIR$/templates/default/css/variable.css" />
         <option value="$PROJECT_DIR$/includes/config.php" />
+        <option value="$PROJECT_DIR$/controller/training.php" />
         <option value="$PROJECT_DIR$/templates/default/css/style0.css" />
-        <option value="$PROJECT_DIR$/templates/default/html/account/register.html" />
-        <option value="$PROJECT_DIR$/templates/default/html/homepage/content.html" />
-        <option value="$PROJECT_DIR$/templates/default/html/container/header.html" />
-        <option value="$PROJECT_DIR$/templates/default/html/training/course_info.html" />
-        <option value="$PROJECT_DIR$/templates/default/html/training/now_learning.html" />
         <option value="$PROJECT_DIR$/templates/default/html/training/home.html" />
+        <option value="$PROJECT_DIR$/templates/default/html/account/profile_update.html" />
+        <option value="$PROJECT_DIR$/templates/default/html/account/register.html" />
+        <option value="$PROJECT_DIR$/templates/default/html/container/header.html" />
+        <option value="$PROJECT_DIR$/templates/default/html/homepage/content.html" />
+        <option value="$PROJECT_DIR$/templates/default/html/account/profile_home.html" />
         <option value="$PROJECT_DIR$/templates/default/html/training/course_get.html" />
         <option value="$PROJECT_DIR$/templates/default/css/dashboard.css" />
-        <option value="$PROJECT_DIR$/templates/default/html/training/course_add_edit.html" />
-        <option value="$PROJECT_DIR$/templates/default/html/training/link_module.html" />
-        <option value="$PROJECT_DIR$/controller/training.php" />
-        <option value="$PROJECT_DIR$/includes/classes_extension.php" />
-        <option value="$PROJECT_DIR$/templates/default/html/training/module_add_edit.html" />
         <option value="$PROJECT_DIR$/templates/default/css/style.css" />
-        <option value="$PROJECT_DIR$/templates/default/html/account/profile_update.html" />
-        <option value="$PROJECT_DIR$/templates/default/html/account/profile_home.html" />
-        <option value="$PROJECT_DIR$/templates/default/css/variable.css" />
+        <option value="$PROJECT_DIR$/templates/default/html/training/course_info.html" />
+        <option value="$PROJECT_DIR$/includes/classes_extension.php" />
       </list>
     </option>
   </component>
@@ -200,46 +167,7 @@
           <expand>
             <path>
               <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-            <path>
-              <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="controller" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="default" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="default" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="html" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="default" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="html" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="account" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="default" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="html" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="training" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="~/Desktop/Link to www/dev/alisimbi" type="442cc68d:ScopeViewTreeModel$RootNode" />
             </path>
           </expand>
           <select />
@@ -252,6 +180,7 @@
     <property name="JavaScriptWeakerCompletionTypeGuess" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -287,7 +216,8 @@
       <workItem from="1562881048729" duration="5754000" />
       <workItem from="1563280298655" duration="23243000" />
       <workItem from="1563447273246" duration="8347000" />
-      <workItem from="1563606493364" duration="26334000" />
+      <workItem from="1563606493364" duration="9979000" />
+      <workItem from="1563995956985" duration="668000" />
     </task>
     <task id="LOCAL-00001" summary="Edit module ui update">
       <created>1563367004954</created>
@@ -317,45 +247,26 @@
       <option name="project" value="LOCAL" />
       <updated>1563642273845</updated>
     </task>
-    <task id="LOCAL-00005" summary="Merge branch 'resolution' of https://github.com/3m1n3nc3/alisimbiPhp into resolution&#10;&#10;# Conflicts:&#10;#&#9;controller/homepage.php&#10;#&#9;controller/training.php&#10;#&#9;error.log&#10;#&#9;includes/classes_extension.php&#10;#&#9;templates/default/css/dashboard.css&#10;#&#9;templates/default/css/style0.css&#10;#&#9;templates/default/css/variable.css&#10;#&#9;templates/default/html/account/profile_home.html&#10;#&#9;templates/default/html/account/profile_update.html&#10;#&#9;templates/default/html/homepage/content.html&#10;#&#9;templates/default/html/training/course_info.html&#10;#&#9;templates/default/html/training/home.html&#10;#&#9;templates/default/html/training/module_add_edit.html&#10;#&#9;templates/default/js/custom.js">
-      <created>1563642658557</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1563642658557</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Corrected course card">
-      <created>1563643055238</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1563643055238</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Corrected course card">
-      <created>1563643410167</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1563643410167</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Corrected course card">
-      <created>1563645179903</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1563645179903</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112706000" />
+    <option name="totallyTimeSpent" value="97019000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-37" width="1366" height="805" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23712121" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -364,11 +275,11 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32884902" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49924242" weight="0.32756132" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.33910534" />
+      <window_info anchor="bottom" id="Database Changes" order="8" weight="0.32884902" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="9" sideWeight="0.49924242" visible="true" weight="0.18236174" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3393124" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5007576" side_tool="true" weight="0.32900432" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32900432" />
       <window_info anchor="bottom" id="Inspection Results" order="13" visible="true" />
@@ -423,16 +334,13 @@
     <MESSAGE value="Fixed the popular_course_tab and homepage/content.html after a successful reversion" />
     <MESSAGE value="Edit module ui update" />
     <MESSAGE value="Merge branch 'resolution' of https://github.com/3m1n3nc3/alisimbiPhp into resolution&#10;&#10;# Conflicts:&#10;#&#9;controller/homepage.php&#10;#&#9;controller/training.php&#10;#&#9;error.log&#10;#&#9;includes/classes_extension.php&#10;#&#9;templates/default/css/dashboard.css&#10;#&#9;templates/default/css/style0.css&#10;#&#9;templates/default/css/variable.css&#10;#&#9;templates/default/html/account/profile_home.html&#10;#&#9;templates/default/html/account/profile_update.html&#10;#&#9;templates/default/html/homepage/content.html&#10;#&#9;templates/default/html/training/course_info.html&#10;#&#9;templates/default/html/training/home.html&#10;#&#9;templates/default/html/training/module_add_edit.html&#10;#&#9;templates/default/js/custom.js" />
-    <MESSAGE value="Corrected course card" />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrected course card" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'resolution' of https://github.com/3m1n3nc3/alisimbiPhp into resolution&#10;&#10;# Conflicts:&#10;#&#9;controller/homepage.php&#10;#&#9;controller/training.php&#10;#&#9;error.log&#10;#&#9;includes/classes_extension.php&#10;#&#9;templates/default/css/dashboard.css&#10;#&#9;templates/default/css/style0.css&#10;#&#9;templates/default/css/variable.css&#10;#&#9;templates/default/html/account/profile_home.html&#10;#&#9;templates/default/html/account/profile_update.html&#10;#&#9;templates/default/html/homepage/content.html&#10;#&#9;templates/default/html/training/course_info.html&#10;#&#9;templates/default/html/training/home.html&#10;#&#9;templates/default/html/training/module_add_edit.html&#10;#&#9;templates/default/js/custom.js" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d0777356-e903-4bf5-bbcf-a501db8828b9/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d0777356-e903-4bf5-bbcf-a501db8828b9/console.sql" />
     <entry file="file://$PROJECT_DIR$/locale.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
@@ -440,9 +348,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/error.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/error.log" />
     <entry file="file://$PROJECT_DIR$/templates/default/images/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -490,6 +396,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/css/variable.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="17" column="30" lean-forward="true" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/html/training/module_add_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="39" lean-forward="true" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
+          <folding>
+            <element signature="n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#div#2;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/default/js/custom.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2000">
@@ -514,6 +440,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/includes/misc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="35" lean-forward="true" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/includes/constants.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -524,8 +457,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/includes/classes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="169" column="14" selection-start-line="169" selection-start-column="9" selection-end-line="169" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/account.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="85" column="20" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/html/account/profile_update.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="119" column="52" selection-start-line="119" selection-start-column="52" selection-end-line="119" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/default/html/homepage/signup.html">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/html/container/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="18" column="38" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/html/training/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="49" column="18" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/default/html/homepage/content.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -549,143 +520,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/bootstrap/dist/css/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="4586" column="1" selection-start-line="4586" selection-start-column="1" selection-end-line="4586" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/html/container/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/html/training/course_info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="72" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/html/training/now_learning.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/html/training/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/misc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/default/html/training/course_get.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="55" column="55" lean-forward="true" selection-start-line="55" selection-start-column="55" selection-end-line="55" selection-end-column="55" />
-          <folding>
-            <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/account.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="84" column="25" lean-forward="true" selection-start-line="84" selection-start-column="25" selection-end-line="84" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/classes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/html/training/link_module.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="11" lean-forward="true" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/html/training/course_add_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="157" column="61" selection-start-line="157" selection-start-column="42" selection-end-line="157" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/training.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="42" column="38" lean-forward="true" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#p#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/classes_extension.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="619" column="68" selection-start-line="619" selection-start-column="68" selection-end-line="619" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/html/training/module_add_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="64" selection-start-line="8" selection-start-column="64" selection-end-line="8" selection-end-column="64" />
+        <state relative-caret-position="352">
+          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/default/css/dashboard.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="191" column="21" lean-forward="true" selection-start-line="191" selection-start-column="21" selection-end-line="191" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/html/account/profile_update.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="63" column="42" selection-start-line="63" selection-start-column="42" selection-end-line="63" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/html/account/profile_home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="74" column="41" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
+        <state relative-caret-position="244">
+          <caret line="452" column="10" selection-start-line="452" selection-start-column="10" selection-end-line="452" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/default/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+        <state relative-caret-position="398">
+          <caret line="754" column="18" selection-start-line="754" selection-start-column="18" selection-end-line="754" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/default/css/variable.css">
+    <entry file="file://$PROJECT_DIR$/templates/default/html/account/profile_home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="33" column="37" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
+        <state relative-caret-position="279">
+          <caret line="204" column="40" selection-start-line="204" selection-start-column="33" selection-end-line="204" selection-end-column="40" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/training.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="294" column="54" selection-start-line="294" selection-start-column="46" selection-end-line="294" selection-end-column="54" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#p#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#p#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/default/html/training/course_info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="22" column="91" selection-start-line="22" selection-start-column="91" selection-end-line="22" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/classes_extension.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="663" lean-forward="true" selection-start-line="663" selection-end-line="663" />
         </state>
       </provider>
     </entry>
