@@ -246,3 +246,153 @@
 [Sat Jul 20 23:41:33.110280 2019] [php7:error] [pid 18600] [client 127.0.0.1:45262] PHP Recoverable fatal error:  Object of class Closure could not be converted to string in /var/www/dev/alisimbi/includes/classes_extension.php on line 490, referer: http://dev.alisimbi/index.php?page=account
 [Sat Jul 20 23:41:58.915235 2019] [php7:error] [pid 18593] [client 127.0.0.1:45264] PHP Recoverable fatal error:  Object of class Closure could not be converted to string in /var/www/dev/alisimbi/includes/classes_extension.php on line 490, referer: http://dev.alisimbi/index.php?page=account
 [Sat Jul 20 23:42:19.399434 2019] [php7:error] [pid 18719] [client 127.0.0.1:45266] PHP Recoverable fatal error:  Object of class Closure could not be converted to string in /var/www/dev/alisimbi/includes/classes_extension.php on line 491, referer: http://dev.alisimbi/index.php?page=account
+[Mon Jul 22 16:43:03.605738 2019] [php7:notice] [pid 1226] [client 127.0.0.1:52040] PHP Notice:  Undefined index: lang in /var/www/dev/alisimbi/index.php on line 25
+[Tue Jul 23 05:22:05.438046 2019] [php7:emerg] [pid 13953] [client 127.0.0.1:48340] PHP Parse error:  syntax error, unexpected '<<' (T_SL), expecting end of file in /var/www/dev/alisimbi/includes/classes_extension.php on line 448, referer: http://dev.alisimbi/index.php?page=account
+[Tue Jul 23 23:23:16.311964 2019] [php7:notice] [pid 23173] [client 127.0.0.1:56206] PHP Notice:  Undefined index: lang in /var/www/dev/alisimbi/index.php on line 25
+[Tue Jul 23 23:23:29.730124 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37, referer: http://dev.alisimbi/index.php?page=account&process=login&referrer=http%3A%2F%2Fdev.alisimbi%2Findex.php%3Fpage%3Daccount%26profile%3Dhome
+[Tue Jul 23 23:23:29.772286 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37, referer: http://dev.alisimbi/index.php?page=account&process=login&referrer=http%3A%2F%2Fdev.alisimbi%2Findex.php%3Fpage%3Daccount%26profile%3Dhome
+[Tue Jul 23 23:23:30.007986 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37, referer: http://dev.alisimbi/index.php?page=account&process=login&referrer=http%3A%2F%2Fdev.alisimbi%2Findex.php%3Fpage%3Daccount%26profile%3Dhome
+[Tue Jul 23 23:23:30.127324 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37, referer: http://dev.alisimbi/index.php?page=account&process=login&referrer=http%3A%2F%2Fdev.alisimbi%2Findex.php%3Fpage%3Daccount%26profile%3Dhome
+[Tue Jul 23 23:23:30.209260 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37, referer: http://dev.alisimbi/index.php?page=account&process=login&referrer=http%3A%2F%2Fdev.alisimbi%2Findex.php%3Fpage%3Daccount%26profile%3Dhome
+[Tue Jul 23 23:23:30.247965 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37, referer: http://dev.alisimbi/index.php?page=account&process=login&referrer=http%3A%2F%2Fdev.alisimbi%2Findex.php%3Fpage%3Daccount%26profile%3Dhome
+[Tue Jul 23 23:23:30.311240 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37, referer: http://dev.alisimbi/index.php?page=account&process=login&referrer=http%3A%2F%2Fdev.alisimbi%2Findex.php%3Fpage%3Daccount%26profile%3Dhome
+[Tue Jul 23 23:23:30.351941 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37, referer: http://dev.alisimbi/index.php?page=account&process=login&referrer=http%3A%2F%2Fdev.alisimbi%2Findex.php%3Fpage%3Daccount%26profile%3Dhome
+[Tue Jul 23 23:23:30.369022 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37, referer: http://dev.alisimbi/index.php?page=account&process=login&referrer=http%3A%2F%2Fdev.alisimbi%2Findex.php%3Fpage%3Daccount%26profile%3Dhome
+[Tue Jul 23 23:23:30.375868 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37, referer: http://dev.alisimbi/index.php?page=account&process=login&referrer=http%3A%2F%2Fdev.alisimbi%2Findex.php%3Fpage%3Daccount%26profile%3Dhome
+[Tue Jul 23 23:23:30.590180 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37, referer: http://dev.alisimbi/index.php?page=account&process=login&referrer=http%3A%2F%2Fdev.alisimbi%2Findex.php%3Fpage%3Daccount%26profile%3Dhome
+[Tue Jul 23 23:23:30.678572 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37, referer: http://dev.alisimbi/index.php?page=account&process=login&referrer=http%3A%2F%2Fdev.alisimbi%2Findex.php%3Fpage%3Daccount%26profile%3Dhome
+[Tue Jul 23 23:23:30.707691 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37, referer: http://dev.alisimbi/index.php?page=account&process=login&referrer=http%3A%2F%2Fdev.alisimbi%2Findex.php%3Fpage%3Daccount%26profile%3Dhome
+[Tue Jul 23 23:23:30.748257 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37, referer: http://dev.alisimbi/index.php?page=account&process=login&referrer=http%3A%2F%2Fdev.alisimbi%2Findex.php%3Fpage%3Daccount%26profile%3Dhome
+[Tue Jul 23 23:23:30.858011 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37, referer: http://dev.alisimbi/index.php?page=account&process=login&referrer=http%3A%2F%2Fdev.alisimbi%2Findex.php%3Fpage%3Daccount%26profile%3Dhome
+[Tue Jul 23 23:23:30.992643 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37, referer: http://dev.alisimbi/index.php?page=account&process=login&referrer=http%3A%2F%2Fdev.alisimbi%2Findex.php%3Fpage%3Daccount%26profile%3Dhome
+[Tue Jul 23 23:23:31.052186 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37, referer: http://dev.alisimbi/index.php?page=account&process=login&referrer=http%3A%2F%2Fdev.alisimbi%2Findex.php%3Fpage%3Daccount%26profile%3Dhome
+[Tue Jul 23 23:23:31.086123 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37, referer: http://dev.alisimbi/index.php?page=account&process=login&referrer=http%3A%2F%2Fdev.alisimbi%2Findex.php%3Fpage%3Daccount%26profile%3Dhome
+[Tue Jul 23 23:23:31.118938 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37, referer: http://dev.alisimbi/index.php?page=account&process=login&referrer=http%3A%2F%2Fdev.alisimbi%2Findex.php%3Fpage%3Daccount%26profile%3Dhome
+[Tue Jul 23 23:23:31.395375 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37, referer: http://dev.alisimbi/index.php?page=account&process=login&referrer=http%3A%2F%2Fdev.alisimbi%2Findex.php%3Fpage%3Daccount%26profile%3Dhome
+[Tue Jul 23 23:23:31.661863 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37, referer: http://dev.alisimbi/index.php?page=account&process=login&referrer=http%3A%2F%2Fdev.alisimbi%2Findex.php%3Fpage%3Daccount%26profile%3Dhome
+[Tue Jul 23 23:23:35.107813 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:35.237774 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:35.286230 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:35.351759 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:35.388128 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:35.407778 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:35.445918 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:35.549406 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:35.739701 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:35.774219 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:35.831574 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:35.860702 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:35.888086 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:35.994124 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:36.193412 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:36.212532 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:36.264626 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:36.283223 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:36.318735 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:36.506408 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:36.551568 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:40.201372 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:40.238035 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:40.286795 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:40.305488 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:40.451230 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:40.618733 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:40.666421 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:40.680853 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:40.731897 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:40.750289 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:40.863584 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:40.951492 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:41.015766 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:41.044828 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:41.097555 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:41.114042 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:41.208680 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:41.297909 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:41.379485 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:41.417719 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:41.472384 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:44.812498 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:44.922958 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:44.938202 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:45.044455 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:45.183421 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:45.213501 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:45.244460 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:45.273785 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:45.401719 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:45.601973 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:45.666077 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:45.704332 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:45.742033 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:45.779937 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:45.798701 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:45.804087 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:45.820034 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:45.880673 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:46.003655 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:46.014848 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:23:46.030274 2019] [php7:notice] [pid 23166] [client 127.0.0.1:56244] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:24:02.026514 2019] [php7:notice] [pid 13955] [client 127.0.0.1:56248] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:24:02.207671 2019] [php7:notice] [pid 13955] [client 127.0.0.1:56248] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:24:02.371568 2019] [php7:notice] [pid 13955] [client 127.0.0.1:56248] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:24:02.395479 2019] [php7:notice] [pid 13955] [client 127.0.0.1:56248] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:24:02.458166 2019] [php7:notice] [pid 13955] [client 127.0.0.1:56248] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:24:02.683332 2019] [php7:notice] [pid 13955] [client 127.0.0.1:56248] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:24:02.710700 2019] [php7:notice] [pid 13955] [client 127.0.0.1:56248] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:24:02.998206 2019] [php7:notice] [pid 13955] [client 127.0.0.1:56248] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:24:03.091614 2019] [php7:notice] [pid 13955] [client 127.0.0.1:56248] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:24:03.132539 2019] [php7:notice] [pid 13955] [client 127.0.0.1:56248] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:24:03.158096 2019] [php7:notice] [pid 13955] [client 127.0.0.1:56248] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:24:03.192162 2019] [php7:notice] [pid 13955] [client 127.0.0.1:56248] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:24:03.370301 2019] [php7:notice] [pid 13955] [client 127.0.0.1:56248] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:24:03.431549 2019] [php7:notice] [pid 13955] [client 127.0.0.1:56248] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:24:03.563354 2019] [php7:notice] [pid 13955] [client 127.0.0.1:56248] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:24:03.574987 2019] [php7:notice] [pid 13955] [client 127.0.0.1:56248] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:24:03.618715 2019] [php7:notice] [pid 13955] [client 127.0.0.1:56248] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:24:03.653325 2019] [php7:notice] [pid 13955] [client 127.0.0.1:56248] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:24:03.673520 2019] [php7:notice] [pid 13955] [client 127.0.0.1:56248] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:24:03.680089 2019] [php7:notice] [pid 13955] [client 127.0.0.1:56248] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:24:03.700830 2019] [php7:notice] [pid 13955] [client 127.0.0.1:56248] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:10.504104 2019] [php7:notice] [pid 23167] [client 127.0.0.1:56258] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:10.570094 2019] [php7:notice] [pid 23167] [client 127.0.0.1:56258] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:10.601809 2019] [php7:notice] [pid 23167] [client 127.0.0.1:56258] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:10.616508 2019] [php7:notice] [pid 23167] [client 127.0.0.1:56258] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:10.726775 2019] [php7:notice] [pid 23167] [client 127.0.0.1:56258] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:10.844581 2019] [php7:notice] [pid 23167] [client 127.0.0.1:56258] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:10.909836 2019] [php7:notice] [pid 23167] [client 127.0.0.1:56258] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:10.951750 2019] [php7:notice] [pid 23167] [client 127.0.0.1:56258] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:11.022365 2019] [php7:notice] [pid 23167] [client 127.0.0.1:56258] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:11.063548 2019] [php7:notice] [pid 23167] [client 127.0.0.1:56258] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:11.085693 2019] [php7:notice] [pid 23167] [client 127.0.0.1:56258] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:11.091560 2019] [php7:notice] [pid 23167] [client 127.0.0.1:56258] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:11.372392 2019] [php7:notice] [pid 23167] [client 127.0.0.1:56258] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:11.383891 2019] [php7:notice] [pid 23167] [client 127.0.0.1:56258] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:11.434136 2019] [php7:notice] [pid 23167] [client 127.0.0.1:56258] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:11.452040 2019] [php7:notice] [pid 23167] [client 127.0.0.1:56258] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:11.572539 2019] [php7:notice] [pid 23167] [client 127.0.0.1:56258] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:11.807719 2019] [php7:notice] [pid 23167] [client 127.0.0.1:56258] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:11.860138 2019] [php7:notice] [pid 23167] [client 127.0.0.1:56258] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:11.882987 2019] [php7:notice] [pid 23167] [client 127.0.0.1:56258] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:11.923805 2019] [php7:notice] [pid 23167] [client 127.0.0.1:56258] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:18.538244 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:18.550046 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:18.765026 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:18.809639 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:18.856437 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:18.895147 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:18.927045 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:18.958112 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:19.129380 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:19.344789 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:19.385798 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:19.398550 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:19.436480 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:19.455857 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:19.556687 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:19.778245 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:19.804587 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:19.812873 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:19.836805 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:19.881841 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37
+[Tue Jul 23 23:25:20.193082 2019] [php7:notice] [pid 28950] [client 127.0.0.1:56260] PHP Notice:  Undefined index: status in /var/www/dev/alisimbi/includes/misc.php on line 37

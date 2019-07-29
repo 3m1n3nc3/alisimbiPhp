@@ -300,3 +300,4 @@ $("#cover_photo").on("change", function () {
     console.log(file);
     $("#forcover").html(file.name + " Selected");
 });
+
