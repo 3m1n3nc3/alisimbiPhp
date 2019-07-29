@@ -83,7 +83,9 @@
             custom_description: "{$course_desc}",
             txref: "{$reference}", 
             redirect_url: "{$successful_url}",
-            onclose: function() {},
+            onclose: function() {
+                $('.loader_bg').fadeToggle();
+            },
             callback: function(response) {
                 var txref = response.tx.txRef; // collect flwRef returned and pass to a server page to complete status check.
                 console.log("Charge Response: ", response); 
