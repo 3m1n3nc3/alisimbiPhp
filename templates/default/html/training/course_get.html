@@ -35,14 +35,14 @@
                                             </div>
                                             <div class="card-body p-0">
                                                 <div class="price currency">{$course_price}</div>
-                                                <!--                                                <div class="action">-->
-                                                <!--                                                    <div class="list-inline">-->
-                                                <!--&lt;!&ndash;                                                        <div class="list-inline-item"><a href="">&ndash;&gt;-->
-                                                <!--&lt;!&ndash;                                                            <i class="fa fa-heart-o"></i>&ndash;&gt;-->
-                                                <!--&lt;!&ndash;                                                        </a></div>&ndash;&gt;-->
-                                                <!--&lt;!&ndash;                                                        <div class="list-inline-item"><a href="">remove</a></div>&ndash;&gt;-->
-                                                <!--                                                    </div>-->
-                                                <!--                                                </div>-->
+                                                <div class="action">
+                                                    <div class="list-inline">
+                                                        <div class="list-inline-item"><a href="">
+                                                            <i class="fa fa-heart-o"></i>
+                                                        </a></div>
+                                                        <div class="list-inline-item"><a href="">remove</a></div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <!--                                            Cart tile-->
@@ -54,22 +54,20 @@
                             <form action="" id="cc_pay" method="post">
                                 <div class="user-info-tile card card-default">
                                     <div class="card-tile">
-                                        <div class="card-head">
+                                        <div class="card-title">
                                             <h3>Subtotal</h3>
-                                        </div>
-                                        <div class="caption hint">A sum total of your intended purchase</div>
-                                        <div class="card-body">
-                                            <div class="font_bold font_4 currency">{$course_price}</div>
-
+                                            <div class="caption">A sum total of your intended purchase</div>
                                         </div>
                                         <div class="card-foot">
-                                            <button class="btn bordered background_green2" name="pay" type="submit">
-                                                Check Out<i
-                                                    class="fa fa-credit-card-alt px-1"></i></button>
+                                            <div class="font_bold font_4 currency">{$course_price}</div>
                                         </div>
                                     </div>
+                                            {$form_body}
                                 </div>
-                                {$form_body}
+                                <div class="px-2">
+                                    <button class="btn bordered background_green2" name="pay" type="submit">Check Out<i
+                                            class="fa fa-credit-card-alt px-1"></i></button>
+                                </div>
                             </form>
                         </div>
                     </div>
