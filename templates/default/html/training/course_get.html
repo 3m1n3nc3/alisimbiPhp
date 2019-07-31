@@ -1,102 +1,148 @@
 <div class="wrapper">
-    <div id="dashboard">
-        <div class="dashboard_content">
-            <div class="row justify-content-center flex-column align-items-center ">
-                <a class="navbar-brand" href="{$site_url}">
-                    <img alt="{$site_title_} logo" class="site_logo_big" src="{$site_logo}">
-                </a>
-                <div class="pad-section">
-                    <img class="img-fluid img-responsive" src="{$raveverified}">
-                </div>
+  <div id="dashboard">
+    {$global_header}
+
+    <div class="brcr-tile brcr-cover">
+      <div class="container p-0">
+        <ul class="brcr">
+          <li class="level"><i class="fa fa-home"></i> <a href="{$site_url}">Home</a></li>
+          <li class="level"><a href="{$site_url}?page=training&course=get">payment</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="dashboard_content">
+      <div class="user-info-list ">
+        <div class="card-tile">
+          <div class="container">
+            <div class="card-head">
+              <div class="card-title">
+                <h3 class="title">Payment </h3>
+                <span class="caption">Your transaction is secured, and your information is encrypted and temporarily stored
+                  until the end of this transaction.</span>
+              </div>
             </div>
-            <section class="">
-                <div class="container">
-                    <div class="p-1 text-center">
-                        <p class="para color_black">
-                            Your transaction is secured, and your information is encrypted and temporarily stored
-                            until the end of this transaction.
-                        </p>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div class="user-info-tile card card-default">
-                                <div class="card-tile">
-                                    <div class="card-title">
-                                        <h3>Cart</h3>
-                                        <div class="caption">You are paying for the following items</div>
-                                    </div>
-                                    <div class="cart">
-                                        <!--                                            Cart tile-->
-                                        <div class="cart-tile">
-                                            <div class="title">
-                                                <a href="">
-                                                    {$course_title}
-                                                </a>
-                                            </div>
-                                            <div class="card-body p-0">
-                                                <div class="price currency">{$course_price}</div> 
-                                            </div>
-                                        </div>
-                                        <!--                                            Cart tile-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-5"> 
-                            <div class="user-info-tile card card-default">
-                                <div class="card-tile">
-                                    <div class="card-title">
-                                        <h3>Subtotal</h3>
-                                        <div class="caption">A sum total of your intended purchase</div>
-                                    </div>
-                                    <div class="card-foot">
-                                        <div class="font_bold font_4 currency">{$course_price}</div>
-                                    </div>
-                                </div> 
-                                <form>
-                                    <script src="https://{$rave_mode}/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
-                                    <button class="btn bordered background_green2" type="button" onClick="payWithRave()">
-                                        Pay Now <i class="fa fa-credit-card-alt px-1"></i>
-                                    </button>
-                                </form>
-                            </div> 
-                        </div>
-                    </div>
-                </div>
-            </section>
+          </div>
         </div>
+      </div>
+      <div class="row justify-content-center flex-column align-items-center ">
+
+      </div>
+      <section class="">
+        <div class="container">
+          <div class="p-1 text-center">
+            <p class="para color_black">
+
+            </p>
+          </div>
+          <div class="row">
+            <div class="col-md-8">
+              <div class="user-info-tile ">
+
+                <div class="card-tile">
+                  <div class="card-head">
+                    <div class="card-title">
+                      <h3>Cart</h3>
+                      <div class="caption">You are paying for the following items</div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="card-content">
+                    <div class="pad-section text-center">
+                      <img class="img-fluid img-responsive" src="{$raveverified}" style="width:200px">
+                    </div>
+                    <div class="cart">
+                      <!--Cart tile-->
+                      <div class="cart-tile">
+                        <div class="title">
+                          <a href="">
+                            {$course_title}
+                          </a>
+                        </div>
+                        <div class="card-body p-0">
+                          <div class="price currency">{$course_price}</div>
+                        </div>
+                      </div>
+                      <!--Cart tile-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 pl-0">
+              <div class="user-info-tile card card-default">
+                <div class="card-tile">
+                  <div class="card-head">
+                    <div class="card-title">
+                      <h3>Subtotal</h3>
+                      <div class="caption">A sum total of your intended purchase</div>
+                    </div>
+                  </div>
+                  <div class="card-conten">
+                    <div class="cart">
+                      <!--Cart tile-->
+                      <div class="cart-tile">
+                        <div class="title">
+                          <a href="">
+                            {$course_title}
+                          </a>
+                        </div>
+                        <div class="card-body p-0">
+                          <div class="price currency">{$course_price}</div>
+                        </div>
+                      </div>
+                      <!--Cart tile-->
+                    </div>
+                  </div>
+                  <div class="card-foot">
+                    <div class="font_bold font_4 currency">{$course_price}</div>
+                  </div>
+                </div>
+                <div class="card-content text-center">
+                  <form>
+                    <script src="https://{$rave_mode}/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+                    <button class="btn bordered background_green2 btn-block" onClick="payWithRave()" type="button">
+                      Pay Now <i class="fa fa-credit-card-alt px-1"></i>
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
     </div>
 </div>
 
 <script>
-    const API_publicKey = "{$public_key}";
+  const API_publicKey = "{$public_key}";
 
-    function payWithRave() {
-        var x = getpaidSetup({
-            PBFPubKey: API_publicKey,
-            customer_email: "{$buyer_email}",
-            amount: "{$amount}",
-            country: "{$cntr_code}", 
-            currency: "{$currency}",
-            payment_options: "account,card",
-            custom_logo: "{$site_url}/{$site_logo}",
-            custom_description: "{$course_desc}",
-            txref: "{$reference}", 
-            redirect_url: "{$successful_url}",
-            onclose: function() {
-                $('.loader_bg').fadeToggle();
-            },
-            callback: function(response) {
-                var txref = response.tx.txRef; // collect flwRef returned and pass to a server page to complete status check.
-                console.log("Charge Response: ", response); 
-                x.close(); // use this to close the modal immediately after payment.
-            }
-        });
-    }
+  function payWithRave() {
+    var x = getpaidSetup({
+      PBFPubKey: API_publicKey,
+      customer_email: "{$buyer_email}",
+      amount: "{$amount}",
+      country: "{$cntr_code}",
+      currency: "{$currency}",
+      payment_options: "account,card",
+      custom_logo: "{$site_url}/{$site_logo}",
+      custom_description: "{$course_desc}",
+      txref: "{$reference}",
+      redirect_url: "{$successful_url}",
+      onclose: function () {
+      },
+      callback: function (response) {
+        var txref = response.tx.txRef; // collect flwRef returned and pass to a server page to complete status check.
+        console.log("Charge Response: ", response);
+        x.close(); // use this to close the modal immediately after payment.
+        $('.loader_bg').fadeToggle();
+      }
+    });
+  }
 </script>
 
-<!-- 
+<!--
 Test card: 4751763236699647
 Exp: 09/21
-Cvv: 123 
+Cvv: 123
 -->

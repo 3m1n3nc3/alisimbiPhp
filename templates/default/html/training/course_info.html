@@ -15,7 +15,7 @@
         <div class="course-header">
             <div class="container p-0">
                 <div class="course-title text-shw">
-                        {$course_title}
+                    {$course_title}
                 </div>
                 <div class="list-inline px-2 text-light">
                     <div class="list-inline-item"><i class="fa fa-user"></i> {$count_instructors}</div>
@@ -119,11 +119,14 @@
                                     <div class="container p-0">
                                         <div class="card-head">
                                             <div class="card-title">
-                                                <h3 class="title">Other Courses</h3>
+                                                <h3 class="title color_green ">Other Courses</h3>
+                                                <span class="caption">Explore other courses</span>
                                             </div>
                                         </div>
                                         <hr>
-                                        {$random_courses}
+                                        <div class="card-content">
+                                            {$random_courses}
+                                        </div>
                                     </div>
                                     <!-- Course hero -->
                                     <div class="course-hero">
