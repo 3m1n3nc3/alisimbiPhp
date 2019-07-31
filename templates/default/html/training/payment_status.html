@@ -1,34 +1,99 @@
 <div class="wrapper">
-    <div id="dashboard">
-        <div class="dashboard_content">
-            <div class="row justify-content-center">
-                <a class="navbar-brand" href="{$site_url}">
-                    <img alt="{$site_title_} logo" class="site_logo_big" src="{$site_logo}">
-                </a>
-            </div>
-            <section class="jumbotron m-4">
-                <div class="container">
-                    <h1 class="jumbotron-heading">Payment status for {$course_title}</h1>
-                    <hr>
-                    <div class="text-center">{$error}</div>
-                    <div class="{$x_class}">
-                        <div class="h5">Transaction Reference: {$transref}</div>
-                        <div class="h5">Course Price: {$course_cost}</div>
-                        <div class="h5">Charged Amount: {$transcharge}</div>
-                        <div class="h5">Transaction Fee: {$appfee}</div>
-                        <div class="h5">Items: {$transtitle}</div>
-                        <div class="h5">Transaction Time: {$transdate}</div>
-                    </div>
-                    <hr> 
-                    <div class="h4">{$success_title}</div>
-                    {$learning}
-                    <div class="album py-5 bg-light m-4">
-                        <div class="container">
-                            {$this_course}
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
+  <div id="dashboard">
+    {$global_header}
+
+    <div class="brcr-tile brcr-cover">
+      <div class="container p-0">
+        <ul class="brcr">
+          <li class="level"><i class="fa fa-home"></i> <a href="{$site_url}">Home</a></li>
+          <li class="level"><a href="{$site_url}?page=training&course=get">payment</a></li>
+          <li class="level">status</li>
+        </ul>
+      </div>
     </div>
+
+    <div class="dashboard_content">
+      <div class="user-info-list ">
+        <div class="card-tile">
+          <div class="container">
+            <div class="card-head">
+              <div class="card-title">
+                <h3 class="title">Payment status</h3>
+                <span class="caption">{$course_title}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="container">
+        <div class="row">
+          <div class="col-md-7">
+            <div class="user-info-list ">
+              <div class="card-tile">
+                <div class="card-body">
+                  <div>
+                    <!-- Main content -->
+                    <div class="p-3">
+                      {$error}
+                      {$success}
+                      {$course_card}
+                      {$empty}
+                      {$learning}
+                    </div>
+                    <!-- Main content -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="user-info-list card card-default">
+
+              <div class="card-header card-header-divider">
+                <h3>Recent Transaction details</h3>
+              </div>
+
+              <div class="card-body">
+                <table class="no-border no-strip skills">
+                  <tbody class="no-border-x no-border-y">
+                  <tr>
+                    <td class="item">Transaction Reference:</td>
+                    <td><a href="#">{$transref}</a></td>
+                  </tr>
+                  <tr>
+                    <td class="item">Course price</td>
+                    <td><a href="#">{$course_cost}</a></td>
+                  </tr>
+                  <tr>
+                    <td class="item">Amount charged</td>
+                    <td><a href="#">{$transcharge}</a></td>
+                  </tr>
+                  <tr>
+                    <td class="item">Transaction Fee</td>
+                    <td><a href="#">{$appfee}</a></td>
+                  </tr>
+                  <tr>
+                    <td class="item">Item(s)</td>
+                    <td><a href="#">{$transtitle}</a></td>
+                  </tr>
+
+                  </tbody>
+                </table>
+              </div>
+              <div class="card-tile">
+                <div class="card-foot">
+                  <div class="card-action">
+                    <small><i class="fa fa-clock-o hint">&nbsp;</i>{$transdate}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    {$global_footer}
+  </div>
+  <!-- dashboard -->
 </div>
+<!-- wrapper -->
