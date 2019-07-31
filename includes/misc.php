@@ -34,7 +34,7 @@ if (isset($_GET['referrer'])) {
 } else {
 	$referrer = null;
 }
-if ($user && $user['status'] == 0 && !isset($_GET['unverified'])) {
+if (!isset($_GET['unverified']) && ($user && $user['status'] == 0)) {
 	$framework->redirect('account&unverified=true');
 }
 $user_role = $framework->userRoles();
