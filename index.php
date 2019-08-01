@@ -47,6 +47,8 @@ if ($getBenefits) {
 		<span style="cursor: pointer;" class="ben" id="list_benefit_'
 			.$value['id'].'">'.$value['title'].'</span>';
 	}
+} else {
+	$benefits .= notAvailable('Benefits have been indicated for this course');
 }
 $PTMPL['show_benefits'] = $benefits;
 
@@ -58,6 +60,8 @@ if ($coursesArr) {
 		$courses .= courseModuleCard($rslt);
 	}
 	$PTMPL['available_courses'] = $courses;
+} else {
+	$PTMPL['available_courses'] = notAvailable('Active Courses');
 }
 
 // Get the latest course available
@@ -77,7 +81,7 @@ if ($module_newArr) {
 	}
 	$PTMPL['course_modules_new'] = $courses_modules;
 } else {
-    $PTMPL['course_modules_new'] = notAvailable('Modules');	
+    $PTMPL['course_modules_new'] = notAvailable('Modules for this course');	
 }
 
 // Logout url
