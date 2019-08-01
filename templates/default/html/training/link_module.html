@@ -1,0 +1,74 @@
+<div class="wrapper">
+    <div id="dashboard">
+        {$global_header}
+        <div class="brcr-tile brcr-cover">
+            <div class="container">
+                <ul class="brcr">
+                    <li class="level"><i class="fa fa-home"></i> <a href="{$site_url}">Home</a></li>
+                    <li class="level"><a href="{$all_course_url}">Course</a></li>
+                    <li class="level">{$course_title}</li>
+                    <li class="level">module linkage</li>
+                </ul>
+            </div>
+        </div>
+        <div class="dashboard_content">
+            <div class="user-info-list ">
+                <div class="card-tile">
+                    <div class="container p-0">
+                        <div class="card-head">
+                            <div class="card-title">
+                                <h3 class="title">Link Module</h3>
+                                <span class="caption">Link your course to a module on this page</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-sm-12">
+
+                        <div class="user-info-list ">
+                            <div class="card-tile">
+                                <div class="card-head card-header-divider">
+                                    <div class="card-title">
+                                        <h3>{$course_title}</h3>
+                                        <div class="caption">
+                                            Select Modules
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="container m-2 text-center">{$link_message}</div>
+
+                                    <!-- this is to handle youtube uploads -->
+                                    <form action="" id="link_modules_form" method="post">
+                                        <div class="p-2 m-1">
+                                            <p class="card-text">
+                                            <div class="form-group">
+                                                <label for="source">Modules</label>
+                                                <select class="form-control" name="module">
+                                                    <option disabled="disabled" selected="selected">Choose a module
+                                                    </option>
+                                                    {$select_options}
+                                                </select>
+                                            </div>
+                                            </p>
+                                            <div class="form-group">
+                                                <input class="btn btn-primary" id="save" name="link_module"
+                                                       type="submit"
+                                                       value="Link Module"/>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {$global_footer}
+        </div>
+    </div>
+</div>

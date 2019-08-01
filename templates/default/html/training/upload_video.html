@@ -1,0 +1,75 @@
+<div class="wrapper">
+    <div id="dashboard">
+        {$global_header}
+		<div class="container m-3">
+			<div class="row">
+				<div class="col-12">
+					<div class="card p-5">
+						<div class="card-block">
+							<h4 class="card-title">{$module_create_header}</h4>
+							<div class="border rounded p-2 m-1">
+								Choose Video Source
+								<hr>
+								<p class="card-text">
+									<div class="form-group">
+										<label for="source">File in my computer</label>
+										<input type="radio" name="source" class="form-control mx-2" id="computer" value="computer">
+									</div>
+									<div class="form-group">
+										<label for="source">Youtube</label>
+										<input type="radio" name="source" class="form-control mx-2" id="youtube" value="youtube">
+									</div>
+								</p>
+							</div>
+							<!-- this is to handle youtube uploads -->
+							<div class="border rounded p-2 m-1" {$display_val} id="uploadYoutube_form">
+								Youtube
+								<hr>
+								<div class="row">
+									<div class="col-md-6 border-right p-2">
+										<form method="post" action="#save_message">
+											<p class="card-text">
+												<div class="form-group">
+													<label for="source">Youtube Embed link</label>
+													<input type="text" name="youtube_url" class="form-control mx-2" id="youtube_url" value="{$youtube_url}">
+												</div>
+											</p>
+											<div class="form-group">
+												<input type="submit" id="save" value="upload" class="btn" />
+											</div>
+										</form>
+									</div>
+									{$preview}
+								</div> 
+								<div class="row"><div class="col-12 m-2 p-2"> {$module_message} </div></div>
+							</div>
+							<!-- This is to handle local uploads -->
+							<div class="border rounded p-2 m-1" style="display: none;" id="pcfile">
+								File from your computer
+								<br><small class="text-danger">Only MP4 files are allowed</small>
+								<hr>
+								<div class="row">
+									<div class="col-md-6 border-right">
+										<form id="form1" enctype="multipart/form-data" method="post" action="{$vid_processor}">
+											<label class="btn" for="videoSource">Select a File to Upload...</label><br>
+											<input style="display: none;" type="file" name="videoSource" id="videoSource" onchange="fileSelected();" accept="mp4" />
+											<input type="hidden" id="module_id" value="{$module_id}">
+											<div id="fileName"></div>
+											<div id="fileSize"></div>
+											<div id="fileType"></div>
+											<input id="upload_btn" class="btn" type="button" value="Upload" />
+											<div id="progressNumber"></div>
+											<div id="upload_status"></div>
+										</form>
+									</div>
+									<div class="col-md-4" id="iframe_major">  </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+            {$global_footer}
+		</div>
+	</div>
+</div>

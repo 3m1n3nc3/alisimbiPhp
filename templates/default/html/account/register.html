@@ -1,0 +1,151 @@
+<div class="wrapper">
+    <div id="dashboard">
+        <div class="dashboard_content">
+            <div class="row justify-content-center">
+                <a class="navbar-brand" href="{$site_url}">
+                    <img alt="{$site_title_} logo" class="site_logo_big" src="{$site_logo}">
+                </a>
+            </div>
+
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div id="login_section_alert"></div>
+                </div>
+                <div class="row justify-content-center">
+                    <!-- Login -->
+                    <div class="col-md-5 col-sm-6">
+                        <div class="sign-form out">
+                            <div class="sign-form-header">
+                                Login
+                            </div>
+                            <form class="sign-form-content">
+                                <div class="form-group">
+                                    <label class="src-only" for="login-email">Email or
+                                        username</label>
+                                    <input class="form-control" id="login-email" name="username"
+                                           placeholder="Email address"
+                                           tabindex="1"
+                                           type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label class="src-only" for="login-password">Password</label>
+                                    <input class="form-control" id="login-password" name="password"
+                                           placeholder="Password"
+                                           tabindex="2"
+                                           type="password">
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" id="login-remember"
+                                           name="remember" tabindex="3"
+                                           type="checkbox">
+                                    <label class="form-check-label" for="login-remember">Keep
+                                        me logged in</label>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn background_green2 text-light btn-block" name="submit"
+                                            onclick="connector(0, this.form)"
+                                            tabindex="4"
+                                            type="button">Login
+                                    </button>
+                                    <a href="{$forgot_link}"><label class="src-only m-2" style="cursor: grabbing;">Forgot Password?</label></a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Register -->
+                    <div class="col-md-7 col-sm-6">
+                        <div class="sign-form">
+                            <div class="sign-form-header">
+                                Register
+                            </div>
+                            <form class="sign-form-content ">
+                                <div class="form-group">
+                                    <label class="src-only" for="register-username">Username</label>
+                                    <input class="form-control" id="register-username"
+                                           name="register-username"
+                                           placeholder="Username" type="text">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="src-only" for="register-fname">First
+                                                name
+                                            </label>
+                                            <input class="form-control" id="register-fname"
+                                                   name="register-fname"
+                                                   placeholder="First name" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="src-only" for="register-lname">Last
+                                                name
+                                            </label>
+                                            <input class="form-control" id="register-lname"
+                                                   name="register-lname"
+                                                   placeholder="Last name" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="src-only" for="register-email">Email address</label>
+                                    <input class="form-control" id="register-email"
+                                           name="register-email"
+                                           placeholder="Email address" type="email">
+                                </div>
+                                <div class="form-group">
+                                    <label class="src-only" for="register-password">Password</label>
+                                    <input class="form-control" id="register-password"
+                                           name="register-password"
+                                           placeholder="Password" type="password">
+                                </div>
+                                <div class="form-group">
+                                    <label class="src-only" for="register-confirm-password">Confirm
+                                        Password</label>
+                                    <input class="form-control" id="register-confirm-password"
+                                           name="register-confirm-password"
+                                           placeholder="Confirm password"
+                                           type="password">
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-input">
+                                        <label class="src-only" for="register-country">Country</label>
+                                        <div class="custom-select-box">
+                                            <select class="select-country-list" data-target="register-state"
+                                                    id="register-country" name="register-country" type="text">
+                                                {$set_country}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="custom-input">
+                                        <label class="src-only"
+                                               for="register-state">State</label>
+                                        <div class="custom-select-box">
+                                            <select data-target="register-city"
+                                                    id="register-state" name="register-state">
+                                                <option value="">Select State/Region</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="custom-input">
+                                        <label class="src-only" for="register-city">City</label>
+                                        <div class="custom-select-box">
+                                            <select id="register-city" name="register-city">
+                                                <option value="">Select City</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-block background_green2 text-light"
+                                        onclick="connector(1, this)"
+                                        type="button">Register
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {$global_footer}
+        </div>
+    </div>
+</div>
