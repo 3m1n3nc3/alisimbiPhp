@@ -82,7 +82,7 @@ function mainContent() {
                 $theme = new themer('account/unverified');
                 // $OLD_THEME = $PTMPL; $PTMPL = array();
                 if ($user['status'] == 1) {
-                  $framework->redirect('account&profile=home');
+                    $framework->redirect('account&profile=home');
                 } else {
                     if (isset($_POST['resend'])) {
                         $PTMPL['activation_message'] = $framework->account_activation('resend', $user['username']);
