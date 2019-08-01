@@ -1,4 +1,3 @@
 # Specify filepatterns you want git to ignore.
 .idea/*
-.htaccess
 includes/config.php
