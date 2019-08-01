@@ -20,7 +20,7 @@ define('DB_PREFIX', '');
 $SETT['dbdriver'] = 'mysql';
 $SETT['dbhost'] = 'localhost';
 $SETT['dbuser'] = 'root';
-$SETT['dbpass'] = 'Littleguy007'; 
+$SETT['dbpass'] = 'Littleguy@007';
 $SETT['dbname'] = 'alisimbi';
 
 /*
@@ -33,16 +33,20 @@ $SETT['url'] = $protocol.'://'.$_SERVER['HTTP_HOST'];
 /*
 * The Notifications e-mail
 */
-$SETT['email'] = 'support@passengine.com';
+$SETT['email'] = 'support@alisimbi.com';
 
 /*
 * The templates directory
 */
 $SETT['template_path'] = 'templates';
 
-$action = array('welcome'					=> 'welcome',
+$action = array(
+				'welcome'					=> 'welcome',
 				'news'						=> 'news',
-				'training'					=> 'training'
+				'account'					=> 'account',
+				'profile'					=> 'account',
+				'training'					=> 'training',
+				'management'				=> 'management'
 				);
 
 /*

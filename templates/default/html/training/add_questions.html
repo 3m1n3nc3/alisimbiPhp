@@ -1,87 +1,92 @@
 <div class="wrapper">
-	<div id="dashboard">
-		{$global_header} 
-		<div class="container m-3">
-			<div class="row">
-				<div class="col-8">
-					<div class="card p-5">
-						<div class="card-block">
-							<h4 class="card-title">{$question_create_header}</h4>
-							{$add_video_btn} {$add_question_btn}
-							<div class="m-3">{$edit_notice}</div>
-							<div class="container m-2 text-center">{$question_message}</div>
+    <div id="dashboard">
+        {$global_header}
+        <div class="container m-3">
+            <div class="row">
+                <div class="col-8">
+                    <div class="card p-5">
+                        <div class="card-block">
+                            <h4 class="card-title">{$question_create_header}</h4>
+                            {$add_video_btn} {$add_question_btn}
+                            <div class="m-3">{$edit_notice}</div>
+                            <div class="container m-2 text-center">{$question_message}</div>
 
-							<form method="post" action="" enctype="multipart/form-data"> 
-								<div class="border rounded p-2 m-1">
-									Question
-									<hr>
-									<p class="card-text">
-										<textarea name="question" class="form-control mx-2" id="question" rows="4" cols="80">{$question}</textarea> 
-									</p>
-								</div> 
-								<div class="border rounded p-2 m-1">
-									Answer A
-									<hr>
-									<p class="card-text">
-										<input type="text" name="answer1" class="form-control mx-2" id="answer1" value="{$answer1}" placeholder="Answer A">
-									</p>
-								</div> 
-								<div class="border rounded p-2 m-1">
-									Answer B
-									<hr>
-									<p class="card-text">
-										<input type="text" name="answer2" class="form-control mx-2" id="answer2" value="{$answer2}" placeholder="Answer B">
-									</p>
-								</div> 
-								<div class="border rounded p-2 m-1">
-									Answer C
-									<hr>
-									<p class="card-text">
-										<input type="text" name="answer3" class="form-control mx-2" id="answer3" value="{$answer3}" placeholder="Answer C">
-									</p>
-								</div> 
-								<div class="border rounded p-2 m-1">
-									Answer D
-									<hr>
-									<p class="card-text">
-										<input type="text" name="answer4" class="form-control mx-2" id="answer4" value="{$answer4}" placeholder="Answer D">
-									</p>
-								</div> 
-								<hr>
-								<div class="border rounded p-2 m-1">
-									Correct Answer
-									<hr>
-									<p class="card-text">
-										<label for="correct_a" class="font-weight-bold">A</label>
-										<input type="radio" name="correct" value="1" id="correct_a" checked="checked">
-										&nbsp; &nbsp; &nbsp;
-										<label for="correct_b" class="font-weight-bold">B</label>
-										<input type="radio" name="correct" value="2" id="correct_b">
-										&nbsp; &nbsp; &nbsp;
-										<label for="correct_c" class="font-weight-bold">C</label>
-										<input type="radio" name="correct" value="3" id="correct_c">
-										&nbsp; &nbsp; &nbsp;
-										<label for="correct_d" class="font-weight-bold">D</label>
-										<input type="radio" name="correct" value="4" id="correct_d">
-										&nbsp; &nbsp; &nbsp;
-									</p>
-								</div> 
-								<hr>
-								<button class="btn btn-primary" name="save">{$question_create_btn}</button>
-							</form>
-						</div>
-					</div>
-				</div>
-				<div class="col-4">
-					<div class="card">
-						<div class="card-block m-2">
-						<h4 class="card-title">Edit the set questions</h4>
-							{$question_list}
-						</div> 
-					</div>
-				</div>
-			</div>
-		</div>
-		{$global_footer}
-	</div>
+                            <form action="" enctype="multipart/form-data" method="post">
+                                <div class="border rounded p-2 m-1">
+                                    Question
+                                    <hr>
+                                    <p class="card-text">
+                                        <textarea class="form-control mx-2" cols="80" id="question" name="question"
+                                                  rows="4">{$question}</textarea>
+                                    </p>
+                                </div>
+                                <div class="border rounded p-2 m-1">
+                                    Answer A
+                                    <hr>
+                                    <p class="card-text">
+                                        <input class="form-control mx-2" id="answer1" name="answer1"
+                                               placeholder="Answer A" type="text" value="{$answer1}">
+                                    </p>
+                                </div>
+                                <div class="border rounded p-2 m-1">
+                                    Answer B
+                                    <hr>
+                                    <p class="card-text">
+                                        <input class="form-control mx-2" id="answer2" name="answer2"
+                                               placeholder="Answer B" type="text" value="{$answer2}">
+                                    </p>
+                                </div>
+                                <div class="border rounded p-2 m-1">
+                                    Answer C
+                                    <hr>
+                                    <p class="card-text">
+                                        <input class="form-control mx-2" id="answer3" name="answer3"
+                                               placeholder="Answer C" type="text" value="{$answer3}">
+                                    </p>
+                                </div>
+                                <div class="border rounded p-2 m-1">
+                                    Answer D
+                                    <hr>
+                                    <p class="card-text">
+                                        <input class="form-control mx-2" id="answer4" name="answer4"
+                                               placeholder="Answer D" type="text" value="{$answer4}">
+                                    </p>
+                                </div>
+                                <hr>
+                                <div class="border rounded p-2 m-1">
+                                    Correct Answer
+                                    <hr>
+                                    <p class="card-text">
+                                        <label class="font-weight-bold" for="correct_a">A</label>
+                                        <input checked="checked" id="correct_a" name="correct" type="radio" value="1">
+                                        &nbsp; &nbsp; &nbsp;
+                                        <label class="font-weight-bold" for="correct_b">B</label>
+                                        <input id="correct_b" name="correct" type="radio" value="2">
+                                        &nbsp; &nbsp; &nbsp;
+                                        <label class="font-weight-bold" for="correct_c">C</label>
+                                        <input id="correct_c" name="correct" type="radio" value="3">
+                                        &nbsp; &nbsp; &nbsp;
+                                        <label class="font-weight-bold" for="correct_d">D</label>
+                                        <input id="correct_d" name="correct" type="radio" value="4">
+                                        &nbsp; &nbsp; &nbsp;
+                                    </p>
+                                </div>
+                                <hr>
+                                <button class="btn btn-primary" name="save">{$question_create_btn}</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-block m-2">
+                            <h4 class="card-title">Edit the set questions</h4>
+                            {$question_list}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {$global_footer}
+    </div>
 </div>
