@@ -1,0 +1,489 @@
+<!-- Wrapper -->
+<div class="wrapper">
+    <div class="vegas"></div>
+    <div class="overlay_gradient"></div>
+    <div class="background_dots"></div>
+    <!-- Header -->
+    <div class="left color_white hideee">
+        <div class="brand">
+            <img alt="" class="img-responsive"
+                 src="{$site_url}/{$template_path}/{$template_name}/images/logo-full.png"/>
+        </div>
+        <div class="content">
+            <h1 class="big-title font_sans_serif ssa js-spanize">{$future_agribiz}</h1>
+            <h4 class="font_sans_serif">
+                Learn <span class="color_green font_bold">relevant</span> <span
+                    class="sa js-spanize">agribusiness </span>
+                skills
+                Business
+            </h4>
+            <div class="space_5 hidden-xs"></div>
+            <div class="btns">
+                <div class="ss-btn btn  bordered shw-1" data-target="explore">
+                    <i class="fa fa-angle-right"></i> Explore our courses
+                </div>
+                <div class="ss-btn btn background_green2 text-white shw-1" data-target="right" id="new_course_btn">
+                    <span class="badge background_yellow">New</span> Course available
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Header -->
+    <!--Main layout-->
+    <div class="close-mob">
+        &times;
+    </div>
+    <!--        Right-->
+    <div class="right">
+        <!--About-->
+        <div id="about">
+            <header>
+                <div class="course-header">
+                    <div class="course-title">
+                        <h2 class="header-text font_bold text-white">
+                            {$course_title_new}
+                        </h2>
+                    </div>
+                    <div class="course-cta">
+                        <a class="btn background_green2 shw-1" data-target="payment_section"
+                           href="{$course_get_new}">
+                            <i class="fa fa-credit-card"></i> Get Course
+                        </a>
+                    </div>
+                </div>
+            </header>
+            <div class="course-banner">
+                <img alt="" class="img-fluid" src="{$course_cover_new}"/>
+            </div>
+
+            <!-- .course-tab -->
+            <div class="course_tab">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a aria-controls="description of course tab" aria-selected="true" class="nav-link active"
+                           data-toggle="tab" href="#descr_tab_content" role="tab" title="description of course tab">Description</a>
+                    </li>
+                    <li class="nav-item">
+                        <a aria-controls="benefits of course tab" aria-selected="false" class="nav-link"
+                           data-toggle="tab" href="#benefit_tab_content" role="tab">Benefits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a aria-controls="instructor" aria-selected="false" class="nav-link" data-toggle="tab"
+                           href="#instructor_tab_content" role="tab">Instructors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a aria-controls="module tab" aria-selected="false" class="nav-link" data-toggle="tab"
+                           href="#module_tab_content" role="tab">Modules</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="popular_course_tab_content">
+                    <!-- Description tab -->
+                    <div aria-labelledby="home-tab" class="tab-pane fade show active " id="descr_tab_content"
+                         role="tabpanel">
+                        <div class="pad-section">
+                            <p class="para">{$course_intro_new}</p>
+                        </div>
+                    </div>
+                    <!-- Description tab -->
+                    <!-- Benefit tab -->
+                    <div aria-labelledby="benefit_tab" class="tab-pane fade" id="benefit_tab_content"
+                         role="tabpanel">
+                        <div class="services">
+                            <div class="container">
+                                <div class="row">
+                                    {$course_benefits_new}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Benefit tab -->
+                    <!-- Instructor tab -->
+                    <div aria-labelledby="instructor-tab" class="tab-pane fade" id="instructor_tab_content"
+                         role="tabpanel">
+                        <!-- Instructors -->
+                        <div class="instructors">
+                            <!-- Instructor -->
+                            <div class="pad-section">
+                                {$instructor}
+                            </div>
+                            <!-- Instructor -->
+                        </div>
+                        <!-- Instructors -->
+                    </div>
+                    <!-- Instructor tab -->
+                    <!-- Module tab -->
+                    <div aria-labelledby="module_tab" class="tab-pane fade " id="module_tab_content"
+                         role="tabpanel">
+                        <div class="pad-section">
+                            <div class="module-counter">
+                                {$course_modules_new}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Module tab -->
+                </div>
+            </div>
+            <!-- .course-tab -->
+
+            <!-- Course hero -->
+            <div class="course-hero">
+                <div class="cover-img">
+                    <img alt="" src="{$site_url}/{$template_path}/{$template_name}/images/w3.jpg">
+                    <div class="overlay dark"></div>
+                </div>
+                <div class="container hero-content">
+                    <div class="row justify-content-center">
+                        <p class="lead text-center text-white">
+                            Get Exclusive Access to this course and plenty other features that we have
+                            to offer.
+                        </p>
+                        <a class="ss-btn btn background_green2" data-target="payment_section"
+                           href="{$course_get_new}">
+                            <i class="fa fa-credit-card"></i> Get Course
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- End course hero -->
+            <div class="space_5"></div>
+
+            <!--                    Contact-->
+            <div id="contact" style="display: none;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="contact">
+                            <h2 class="font_bold title text_bordered mb-4">Get in touch</h2>
+                            <p>Get updates about new available courses and opportunities in Agribusiness, your
+                                information is treated in confidence and will not be shared with third
+                                parties.</p>
+                            <div class="space_5"></div>
+                            <form action="#" id="contact-form" method="post">
+                                <div class="messages"></div>
+                                <!--                                    .controls-->
+                                <div class="controls">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input class="form-control" data-error="Name is required."
+                                                       id="form_name"
+                                                       name="name"
+                                                       placeholder="Your name" required="required"
+                                                       type="text">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input class="form-control" data-error="Valid email is required."
+                                                       id="form_email"
+                                                       name="email"
+                                                       placeholder="Your email" required="required"
+                                                       type="email">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input class="form-control" id="form_subject" name="subject"
+                                                       placeholder="Write the subject"
+                                                       type="text">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                    <textarea class="form-control"
+                                                              data-error="Please, leave us a message." id="form_message"
+                                                              name="message" placeholder="Write message..."
+                                                              required="required"
+                                                              rows="4"></textarea>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button class="btn ">
+                                                <i class="fa fa-paper-plane-o"></i>
+                                                <input class="btn-send" type="submit" value="Send message">
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--                                    controls-->
+                                    <div class="item">
+                                        <img alt=""
+                                             class="img-responsive"
+                                             src="{$site_url}/{$template_path}/{$template_name}/images/envelope.png"/>
+                                        <p class="color_grey font_bold">
+                                            <a href="mailto:example@domain.com">{$email}</a>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <img alt=""
+                                             class="img-responsive"
+                                             src="{$site_url}/{$template_path}/{$template_name}/images/telephone.png">
+                                        <p class="color_grey font_bold">
+                                            <a class="letter-spacing_1 font_bold"
+                                               href="tel:+00 123 456 789">{$phone}</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Contact -->
+
+        </div>
+        {$global_footer}
+    </div>
+    <!--About-->
+
+    <!--  Subscription pane-->
+    <div class="subscribe_section">
+        <div class=" background_green overlay_gradient"></div>
+        <div class="d_table">
+            <div class="d_table_v">
+                <h1 class="font_bold">Get notified!</h1>
+                <p class="text-white">Be the first to know when the course is ready!</p>
+                <div class="space_10"></div>
+                <form action="" class="subscribe" method="POST">
+                    <div class="form-group">
+                        <div class="controls">
+                            <!-- Field  -->
+                            <input class="form-control email" id="mail-sub" name="email"
+                                   onblur="this.placeholder = 'Enter your email to be notified!'"
+                                   onfocus="this.placeholder = 'Enter your email to be notified!'"
+                                   placeholder="Enter your email to be notified!"
+                                   type="text"/>
+                            <!-- Button -->
+                            <button class="btn submit bordered" type="submit" value="submit">
+                                <i class="fa fa-paper-plane-o"></i> Subscribe!
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <div class="space_15"></div>
+            </div>
+        </div>
+    </div>
+    <!-- End Subscription pane -->
+ 
+    <!--  login_section -->
+    <div class="login full-section-r background_lightgrey">
+        <div class="container  pt-5">
+            <div class="row justify-content-center">
+                <div id="login_section_alert"></div>
+            </div>
+            <div class="row justify-content-center">
+                <!-- Login -->
+                <div class="col-md-5 col-sm-6">
+                    <div class="sign-form out">
+                        <div class="sign-form-header">
+                            Login
+                        </div>
+                        <form class="sign-form-content">
+                            <div class="form-group">
+                                <label class="src-only" for="login-email">Email or
+                                    username</label>
+                                <input class="form-control" id="login-email" name="username"
+                                       placeholder="Email address"
+                                       tabindex="1"
+                                       type="text">
+                            </div>
+                            <div class="form-group">
+                                <label class="src-only" for="login-password">Password</label>
+                                <input class="form-control" id="login-password" name="password"
+                                       placeholder="Password"
+                                       tabindex="2"
+                                       type="password">
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" id="login-remember"
+                                       name="remember" tabindex="3"
+                                       type="checkbox">
+                                <label class="form-check-label" for="login-remember">Keep
+                                    me logged in</label> 
+                            </div>
+                            <div class="form-group">
+                                <button class="btn background_green2 text-light btn-block" name="submit"
+                                        onclick="connector(0, this.form)"
+                                        tabindex="4"
+                                        type="button">Login
+                                </button>
+                                <a href="{$forgot_link}"><label class="src-only m-2" style="cursor: grabbing;">Forgot Password?</label></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Register -->
+                <div class="col-md-7 col-sm-6">
+                    <div class="sign-form">
+                        <div class="sign-form-header">
+                            Register
+                        </div>
+                        <form class="sign-form-content ">
+                            <div class="form-group">
+                                <label class="src-only" for="register-username">Username</label>
+                                <input class="form-control" id="register-username"
+                                       name="register-username"
+                                       placeholder="Username" type="text">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="src-only" for="register-fname">First
+                                            name
+                                        </label>
+                                        <input class="form-control" id="register-fname"
+                                               name="register-fname"
+                                               placeholder="First name" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="src-only" for="register-lname">Last
+                                            name
+                                        </label>
+                                        <input class="form-control" id="register-lname"
+                                               name="register-lname"
+                                               placeholder="Last name" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="src-only" for="register-email">Email address</label>
+                                <input class="form-control" id="register-email"
+                                       name="register-email"
+                                       placeholder="Email address" type="email">
+                            </div>
+                            <div class="form-group">
+                                <label class="src-only" for="register-password">Password</label>
+                                <input class="form-control" id="register-password"
+                                       name="register-password"
+                                       placeholder="Password" type="password">
+                            </div>
+                            <div class="form-group">
+                                <label class="src-only" for="register-confirm-password">Confirm
+                                    Password</label>
+                                <input class="form-control" id="register-confirm-password"
+                                       name="register-confirm-password"
+                                       placeholder="Confirm password"
+                                       type="password">
+                            </div>
+                            <div class="form-group">
+                                <div class="custom-input">
+                                    <label class="src-only" for="register-country">Country</label>
+                                    <div class="custom-select-box">
+                                        <select class="select-country-list" data-target="register-state"
+                                                id="register-country" name="register-country" type="text">
+                                            {$set_country}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="custom-input">
+                                    <label class="src-only"
+                                           for="register-state">State</label>
+                                    <div class="custom-select-box">
+                                        <select data-target="register-city"
+                                                id="register-state" name="register-state">
+                                            <option value="">Select State/Region</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="custom-input">
+                                    <label class="src-only" for="register-city">City</label>
+                                    <div class="custom-select-box">
+                                        <select id="register-city" name="register-city">
+                                            <option value="">Select City</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-block background_green2 text-light"
+                                    onclick="connector(1, this)"
+                                    type="button">Register
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {$global_footer}
+        </div>
+        <!-- End login_section-->
+        <!--  login_section -->
+        <div class="explore full-section-r background_lightgrey">
+            <div class="relative">
+                <div class="suspend">
+                    <h2 class="header-text color_green">
+                        Explore all courses
+                    </h2>
+                    <div class="lead">
+                        Explore a catalog of all our available courses
+                    </div>
+                    <button class="ss-btn btn background_green2 bordered shw-1" data-target="login">Get Started
+                    </button>
+                </div>
+
+                <div class=" suspend-right">
+                    <div class="advert landscape">
+                        <div class="ad-card lg">
+                            <img alt="advert img" src=""/>
+                        </div>
+                    </div>
+                    <div class="pad-section">
+                        <div class="row">
+                            {$available_courses}
+                        </div>
+                    </div>
+                    {$global_footer}
+                </div>
+            </div>
+        </div>
+        <!-- End login_section-->
+    </div>
+    <!--Main layout-->
+    <!-- Social icons -->
+    <div class="social oop hung">
+        <div class="toggle_icon" data-target="login">
+            <a data-title="Login" data-toggle="tooltip" href="#" title="Login">
+                <span class="fa fa-user-circle"></span>
+            </a>
+            <span class="text">Login </span>
+        </div>
+        <ul class="list-inline">
+            {$social}
+        </ul>
+    </div>
+    <div class="popular-course-deck">
+        <div class="countdown">
+            <span class="countdownValue"></span>
+        </div>
+        <div class="clearfix"></div>
+        <hr>
+        <span class="fa fa-chevron-down toggle_btn" data-target="#popular_course_panel"
+              data-toggle="collapse"></span>
+        <div class="p-5 background_green collapse" id="popular_course_panel">
+            <h2 class=" header-text text-white"><span class="bold">Now Available: <br></span>
+                New Course
+            </h2>
+            <span>Starting 15th August, 2019</span>
+            <div class="" id="find_more">
+      <span class="ss-btn btn bordered background_lightgrey shw" data-target="subscribe_section">
+        <i class="fa fa-paper-plane-o"></i> Get notified
+      </span>
+                <span class="ss-btn btn background_white bordered shw" data-target="right">
+        <i class="fa fa-exclamation-circle"></i> Find out more
+      </span>
+            </div>
+        </div>
+    </div>
+    <div class="close-ss"></div>
+    <!-- End Main-->
+</div>
+<!--End Wrapper-->
