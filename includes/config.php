@@ -20,7 +20,7 @@ define('DB_PREFIX', '');
 $SETT['dbdriver'] = 'mysql';
 $SETT['dbhost'] = 'localhost';
 $SETT['dbuser'] = 'root';
-$SETT['dbpass'] = 'idontknow1A@';
+$SETT['dbpass'] = 'Littleguy@007';
 $SETT['dbname'] = 'alisimbi';
 
 /*
@@ -45,7 +45,7 @@ $action = array(
 				'news'						=> 'news',
 				'account'					=> 'account',
 				'profile'					=> 'account',
-				'training'					=> 'training', 
+				'training'					=> 'training',
 				'management'				=> 'management'
 				);
 
