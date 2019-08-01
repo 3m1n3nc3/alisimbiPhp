@@ -9,11 +9,11 @@ if(isset($_GET['page']) && isset($action[$_GET['page']])) {
 
 if (isset($_GET['logout'])) {
     $out = $framework->sign_out();
-    header('Location: ' . cleanUrls($SETT['url'] . '/index.php?page=homepage'));
+    // header('Location: ' . cleanUrls($SETT['url'] . '/index.php?page=homepage'));
 } elseif ($user && $page_name == 'homepage') {
-	$framework->redirect('account&profile=home');
+	// $framework->redirect('account&profile=home');
 } elseif ($user && $user['status'] == 0 && !isset($_GET['unverified'])) {
-	$framework->redirect('account&unverified=true');
+	// $framework->redirect('account&unverified=true');
 }
 
 require_once("controller/{$page_name}.php");
