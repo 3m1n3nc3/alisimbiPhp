@@ -8,11 +8,11 @@ if(isset($_GET['page']) && isset($action[$_GET['page']])) {
 }
 
 if (isset($_GET['logout'])) {
-    $framework->sign_out(); 
+    $framework->sign_out();
 } elseif ($user && $page_name == 'homepage') {
 	$framework->redirect('account&profile=home');
 } elseif ($user && $user['status'] == 0 && !isset($_GET['unverified'])) {
-	$framework->redirect('account&unverified=true');
+	// $framework->redirect('account&unverified=true');
 }
 
 require_once("controller/{$page_name}.php");
@@ -27,7 +27,7 @@ $captcha_url = '/includes/vendor/goCaptcha/goCaptcha.php?gocache='.strtotime('no
 $PTMPL['captcha_url'] = $SETT['url'].$captcha_url;
 
 //$PTMPL['token'] = $_SESSION['token_id'];
- 
+
 $PTMPL['language'] = isset($_COOKIE['lang']) ? $_COOKIE['lang'] : '';
 
 $PTMPL['register_link'] = cleanUrls($SETT['url'].'/index.php?page=account&register=true');
@@ -80,7 +80,7 @@ if ($module_newArr) {
 	}
 	$PTMPL['course_modules_new'] = $courses_modules;
 } else {
-    $PTMPL['course_modules_new'] = notAvailable('Modules for this course');	
+    $PTMPL['course_modules_new'] = notAvailable('Modules for this course');
 }
 
 // Logout url
@@ -104,7 +104,7 @@ if ($instructorsArr) {
 	$PTMPL['course_instructor'] = notAvailable('Instructors');
 }
 // Render the page
-$PTMPL['content'] = mainContent(); 
+$PTMPL['content'] = mainContent();
 
 $theme = new themer('container');
 echo $theme->make();
