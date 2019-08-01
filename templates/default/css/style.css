@@ -696,8 +696,15 @@ svg.icon:not(.icon--full-color) path {
 
 .pad-section {
     padding: 5% 10%;
+    display: block;
+    width: 100%;
 }
-
+.no-overflow{
+  position: relative;
+  overflow: hidden;
+  object-fit: contain;
+  object-position: center;
+}
 .course_tab {
     background: #fff;
     border-bottom: 1px solid #f1f2f3;

@@ -120,7 +120,7 @@
 }
 
 .dashboard_content {
-    background: #f3f3f3;
+    background: #f6f6f6;
     color: #333
 
 }
@@ -179,9 +179,13 @@
     border: 0 solid rgba(0, 0, 0, .125);
     overflow: hidden;
     padding: 30px 15px;
+    border: 1px solid #f3f3f3;
 }
 
 
+ .user-info-list {
+  border: 1px solid #ededed;
+}
 #dashboard .user-info-list .card-header {
     font-size: 1.385rem;
     color: #3d3d3d;
