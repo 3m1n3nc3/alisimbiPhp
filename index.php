@@ -10,7 +10,7 @@ if(isset($_GET['page']) && isset($action[$_GET['page']])) {
 if (isset($_GET['logout'])) {
     $framework->sign_out();
 } elseif ($user && $page_name == 'homepage') {
-	$framework->redirect('account&profile=home');
+	// $framework->redirect('account&profile=home');
 } elseif ($user && $user['status'] == 0 && !isset($_GET['unverified'])) {
 	// $framework->redirect('account&unverified=true');
 }
