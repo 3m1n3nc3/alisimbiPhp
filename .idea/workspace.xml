@@ -6,13 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7f36086c-b457-4f78-92d6-ba767f4aacb5" name="Default Changelist" comment="Merge branch 'safety' of https://github.com/3m1n3nc3/alisimbiPhp into safety&#10;&#10;# Conflicts:&#10;#&#9;controller/training.php&#10;#&#9;templates/default/html/training/course_get.html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/training.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/training.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/error.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/training/course_get.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/course_get.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/training/course_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/course_info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/html/training/payment_status.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/html/training/payment_status.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,15 +58,10 @@
       <split-first>
         <leaf>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/controller/training.php">
+            <entry file="file://$PROJECT_DIR$/includes/config.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="865">
-                  <caret line="171" selection-start-line="171" selection-end-line="171" />
-                  <folding>
-                    <element signature="n#style#0;n#img#0;n#p#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#img#0;n#p#0;n#!!top" expanded="true" />
-                    <element signature="e#9071#19267#0#PHP" />
-                  </folding>
+                <state relative-caret-position="328">
+                  <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
                 </state>
               </provider>
             </entry>
@@ -85,8 +73,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/templates/default/css/style.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-2301">
-                  <caret line="1208" column="12" selection-start-line="1208" selection-start-column="1" selection-end-line="1208" selection-end-column="12" />
+                <state relative-caret-position="2247">
+                  <caret line="107" column="1" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="1" />
                 </state>
               </provider>
             </entry>
@@ -142,7 +130,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="testing" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
   </component>
@@ -155,7 +143,6 @@
         <option value="$PROJECT_DIR$/templates/default/html/training/upload_video.html" />
         <option value="$PROJECT_DIR$/templates/default/html/container.html" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/includes/config.php" />
         <option value="$PROJECT_DIR$/templates/default/css/style0.css" />
         <option value="$PROJECT_DIR$/templates/default/html/account/register.html" />
         <option value="$PROJECT_DIR$/templates/default/html/homepage/content.html" />
@@ -179,6 +166,7 @@
         <option value="$PROJECT_DIR$/templates/default/html/training/course_get.html" />
         <option value="$PROJECT_DIR$/templates/default/css/style.css" />
         <option value="$PROJECT_DIR$/controller/training.php" />
+        <option value="$PROJECT_DIR$/includes/config.php" />
       </list>
     </option>
   </component>
@@ -208,7 +196,7 @@
             <path>
               <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="controller" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="includes" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -227,22 +215,6 @@
               <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="default" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="html" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="default" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="html" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="account" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="alisimbi" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="$PROJECT_DIR$" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="default" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="html" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="training" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -254,6 +226,11 @@
             <path>
               <item name="alisimbi" type="b2602c69:ProjectViewProjectNode" />
               <item name="alisimbi" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="alisimbi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alisimbi" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -381,13 +358,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133501000" />
+    <option name="totallyTimeSpent" value="134376000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-37" width="1366" height="805" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24962063" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24962063" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -399,7 +376,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49924242" weight="0.32756132" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49924242" weight="0.32681563" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.33910534" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5007576" side_tool="true" weight="0.32900432" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32900432" />
@@ -552,13 +529,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/constants.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/default/html/homepage/signup.html">
       <provider selected="true" editor-type-id="text-editor" />
@@ -788,22 +758,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="19" lean-forward="true" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/default/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2301">
-          <caret line="1208" column="12" selection-start-line="1208" selection-start-column="1" selection-end-line="1208" selection-end-column="12" />
+        <state relative-caret-position="2247">
+          <caret line="107" column="1" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/training.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="865">
-          <caret line="171" selection-start-line="171" selection-end-line="171" />
+        <state relative-caret-position="270">
+          <caret line="153" column="29" selection-start-line="153" selection-start-column="29" selection-end-line="153" selection-end-column="29" />
           <folding>
             <element signature="n#style#0;n#img#0;n#p#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="e#9071#19267#0#PHP" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
         </state>
       </provider>
     </entry>
