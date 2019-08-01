@@ -1227,7 +1227,7 @@ footer {
     position: relative;
     overflow: hidden;
     transition: all .35s ease-in-out;
-    min-height: 300px;
+    min-height: 250px;
     /* padding: 15px 10px; */
 }
 
