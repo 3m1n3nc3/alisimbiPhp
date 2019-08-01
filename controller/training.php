@@ -498,9 +498,9 @@ function mainContent()
 
                 $PTMPL['page_title'] = 'Test evaluation for ' . $course['title'];
                 $PTMPL['mast_cover_photo'] = '
-        <div class="course-banner">
-        <img alt="Cover photo" class="img-fluid" src="' . getImage($course['cover'], 1) . '"/>
-        </div>';
+                <div class="course-banner">
+                    <img alt="Cover photo" class="img-fluid" src="' . getImage($course['cover'], 1) . '"/>
+                </div>';
 
                 $questions = getQuestions($course['id'], 2);
                 $card = '';
@@ -512,19 +512,19 @@ function mainContent()
                     $answ = '';
                     foreach ($answers as $ans) {
                         $answ .= '
-            <div class="form-group">
-            <input type="radio" name="question_' . $qtn . '" value="' . $ans['id'] . '" id="question_' . $ans['id'] . '">
-            <label id="ans_' . $ans['id'] . '" for="question_' . $ans['id'] . '">' . ucfirst($ans['answer']) . '</label>
-            </div>';
+                        <div class="form-group">
+                            <input type="radio" name="question_' . $qtn . '" value="' . $ans['id'] . '" id="question_' . $ans['id'] . '">
+                            <label id="ans_' . $ans['id'] . '" for="question_' . $ans['id'] . '">' . ucfirst($ans['answer']) . '</label>
+                        </div>';
                     }
                     $card .= '
-          <div class="card card-default">
-          <div class="card-body justify-content-center">
-          <p class="card-text"> ' . $quest['question'] . '</p>
-          <hr>
-          ' . $answ . '
-          </div>
-          </div>';
+                    <div class="card card-default">
+                        <div class="card-body justify-content-center">
+                            <p class="card-text"> ' . $quest['question'] . '</p>
+                            <hr>
+                            ' . $answ . '
+                        </div>
+                    </div>';
                 }
                 $card .= '<div class="space_3"></div>';
                 $PTMPL['question_card'] = $card;
@@ -557,9 +557,9 @@ function mainContent()
                         $comp = completeCourse($course['id']);
                         if ($comp == 1) {
                             $PTMPL['mast_test_photo'] = '
-              <div class="course-banner">
-              <img alt="Congratulations cover" class="img-fluid" src="' . getImage('complete-banner.png') . '"/>
-              </div>';
+                            <div class="course-banner">
+                                <img alt="Congratulations cover" class="img-fluid" src="' . getImage('complete-banner.png') . '"/>
+                            </div>';
                             $PTMPL['return_btn'] = '<a href="' . cleanUrls($SETT['url'] . '/index.php?page=account&profile=home') . '" class="btn btn-block background_green2 bordered">Return to your dashboard</a>';
                             $msg = messageNotice('Congratulations, you provided correct answers for all the questions and have thus completed this course, your certificate is on the way and you will be notified', 1);
                         } else {
