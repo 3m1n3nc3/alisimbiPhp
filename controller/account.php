@@ -81,16 +81,18 @@ function mainContent() {
             } elseif (isset($_GET['unverified'])) {
                 $theme = new themer('account/unverified');
                 // $OLD_THEME = $PTMPL; $PTMPL = array();
-                if (isset($_POST['resend'])) {
-                    $PTMPL['activation_message'] = $framework->account_activation('resend', $user['username']);
-                } elseif (isset($_POST['verify'])) {
-                    if ($_POST['otp'] == '') {
-                        $PTMPL['activation_message'] = messageNotice('Please enter a valid OTP', 3);
-                    } else {
-                        $PTMPL['activation_message'] = $framework->account_activation($_POST['otp'], $user['username']);
-                    }
-                } elseif ($user['status'] == 1 && (!isset($_POST['verify']) || !isset($_POST['verify']))) {
+                if ($user['status'] == 1) {
                   $framework->redirect('account&profile=home');
+                } else {
+                    if (isset($_POST['resend'])) {
+                        $PTMPL['activation_message'] = $framework->account_activation('resend', $user['username']);
+                    } elseif (isset($_POST['verify'])) {
+                        if ($_POST['otp'] == '') {
+                            $PTMPL['activation_message'] = messageNotice('Please enter a valid OTP', 3);
+                        } else {
+                            $PTMPL['activation_message'] = $framework->account_activation($_POST['otp'], $user['username']);
+                        }
+                    }
                 }
             }
 
