@@ -7,36 +7,36 @@ function mainContent() {
     $PTMPL['site_url'] = $SETT['url'];
     $account = '';
     $PTMPL['me'] = 'Me';
-    if ($profile) { 
+    if ($profile) {
         $user = $profile;
         $PTMPL['me'] = ucfirst($profile['username']);
         $PTMPL['page_title'] = ucfirst($profile['username']).' Public Profile';
     }
     if ($user) {
-        if ($_GET['page'] = 'account') { 
+        if ($_GET['page'] = 'account') {
             $theme = new themer('account/profile_home');
             // $OLD_THEME = $PTMPL; $PTMPL = array();
 
             if (isset($_GET['profile'])) {
-                if ($_GET['profile'] == 'home') { 
+                if ($_GET['profile'] == 'home') {
                     $theme = new themer('account/profile_home');
                     // $OLD_THEME = $PTMPL; $PTMPL = array();
-                    // 
+                    //
                 }if ($_GET['profile'] == 'view') {
                     $theme = new themer('account/profile_view');
                     // $OLD_THEME = $PTMPL; $PTMPL = array();
                 } elseif ($_GET['profile'] == 'update') {
                     $theme = new themer('account/profile_update');
                     // $OLD_THEME = $PTMPL; $PTMPL = array();
-                    // 
-                    // 
-                    $modal_content = 
-                    '<div class="row text-center">         
-                        <div class="col mx-auto"> 
+                    //
+                    //
+                    $modal_content =
+                    '<div class="row text-center">
+                        <div class="col mx-auto">
                             <div id="crop-preview" class="cropit"></div>
-                            <div id="upload-photo" style="display: none;"></div> 
-                        </div>  
-                        <div class="container" id="action-buttons">                   
+                            <div id="upload-photo" style="display: none;"></div>
+                        </div>
+                        <div class="container" id="action-buttons">
                             <div class="row">
                                 <div class="col-md-12" style="padding:5%;">
                                     <label for="prof-photo" class="btn">
@@ -73,7 +73,7 @@ function mainContent() {
                             $framework->twitter = $_POST['instagram'];
                             $framework->instagram = $_POST['twitter'];
                             $framework->social = 1;
-                        } 
+                        }
                         $framework->updateProfile();
                         $framework->redirect('account&profile=home');
                     }
@@ -153,14 +153,16 @@ function mainContent() {
 
             // If the user is administrative show the social inputs
 
-            $modal_photo = 
-            '<div class="row text-center">         
-                <div class="col mx-auto"> 
-                    <div id="photo-preview">
-                        <img alt="Profile Photo" src="'.getImage($user['photo'], 1).'"/>
-                    </div> 
-                </div>   
-            </div>'; 
+            $modal_photo =
+            '<div class="row justify-content-center">
+                <div class="col">
+                    <div class="img-responsive no-overflow">
+                      <div id="photo-preview" class="">
+                          <img alt="Profile Photo" src="'.getImage($user['photo'], 1).'"/>
+                      </div>
+                    </div>
+                </div>
+            </div>';
             $PTMPL['photoPrevievModal'] = modal('photoPreview', $modal_photo, null, 1, null, 1);
 
             $update_social = '';
@@ -185,7 +187,7 @@ function mainContent() {
 				</div> ';
             }
             $PTMPL['update_social'] = $update_social;
-        }  
+        }
 
 		$courseArr = courseAccess(2);
 		$course = '';
@@ -200,16 +202,16 @@ function mainContent() {
             $cont_learning = cleanUrls($SETT['url'] . '/index.php?page=training&course=now_learning&courseid=' . $crnt['course_id'] . '&moduleid=' . $crnt['current_module']);
 
             $PTMPL['course_continue'] = '
-            
+
                     <a class="btn" href="' . $cont_learning . '">Continue learning</a>';
         } else {
             $PTMPL['course'] = notAvailable('courses');
             $PTMPL['course_count'] = '0 &nbsp;';
         }
-    } elseif (isset($_GET['password_reset'])) { 
+    } elseif (isset($_GET['password_reset'])) {
         $theme = new themer('account/forgot_password');
         // Reset password section
-        // 
+        //
         $form = '
         <form action="" id="link_modules_form" method="post">
             <div class="p-2 m-1">
@@ -244,7 +246,7 @@ function mainContent() {
                             <label class="src-only" for="email">Email Address</label>
                             <input class="form-control" id="email" name="email" placeholder="Email Address" type="email">
                         </div>
-                    </div> 
+                    </div>
                 </p>
                 <div class="form-group">
                     <input class="btn btn-primary" id="request" name="request"
