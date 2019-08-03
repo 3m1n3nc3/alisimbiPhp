@@ -18,9 +18,10 @@ function mainContent() {
 	$PTMPL['sponsors'] = 'Sponsors';
 
     if ($user) {
-    	if ($user_role < 3) {
-    		$framework->redirect('account&profile=home');
-    	}
+    	// if ($user_role < 3) {
+    	// 	$framework->redirect('account&profile=home');
+    	// }
+    	$framework->redirect('account&profile=home');
     }
 
 	// Set social values
