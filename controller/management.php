@@ -3,7 +3,7 @@ function mainContent() {
 	global $PTMPL, $LANG, $SETT, $configuration, $framework, $marxTime, $user, $user_role; 
 	// Dont touch anything above this line
 
-	if ($user_role == 5) {
+	if ($user_role > 3) {
 	    $theme = new themer('management/content'); $settings = '';
 	    // $OLD_THEME = $PTMPL; $PTMPL = array();
 	    // 
