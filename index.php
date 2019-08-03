@@ -105,11 +105,18 @@ $PTMPL['logout_url'] = cleanUrls($SETT['url'] . '/index.php?page=homepage&logout
 // Login toggle
 if ($user) { 
 	$page = cleanUrls($SETT['url'] . '/index.php?page=account&profile=home');
+	$logout = cleanUrls($SETT['url'] .'/index.php?logout=true');
 	$PTMPL['login_toggle'] = '
 	<a data-title="Login" data-toggle="tooltip" href="'.$page.'" title="Login">
 		<div class="toggle_icon">
 			<span class="fa fa-user-circle"></span>
 			<span class="text">Account </span>
+		</div>
+	</a>
+	<a data-title="Login" href="'.$logout.'" title="Logout">
+		<div class="toggle_icon">
+			<span class="fa fa-sign-out"></span>
+			<span class="text">Logout </span>
 		</div>
 	</a>';
 } else {
