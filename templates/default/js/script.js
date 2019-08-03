@@ -34,7 +34,7 @@ $(document).ready(function () {
     let explore_slide = $('.explore');
     let explore_suspended = $('.explore').find('.suspend');
 
-    $('.ss-btn, .toggle_icon').on('click', function () {
+    $('.ss-btn').on('click', function () {
         closePanels();
         var b = $(this).attr('data-target');
         $('.' + b).addClass('active');

@@ -114,7 +114,7 @@ if ($user) {
 	</a>';
 } else {
 	$PTMPL['login_toggle'] = '
-	<div class="toggle_icon" data-target="login">
+	<div class="toggle_icon ss-btn" data-target="login">
 	    <a data-title="Login" data-toggle="tooltip" href="#" title="Login">
 	        <span class="fa fa-user-circle"></span>
 	    </a>
@@ -128,4 +128,4 @@ $PTMPL['content'] = mainContent();
 $theme = new themer('container');
 echo $theme->make();
 
-?>
+
