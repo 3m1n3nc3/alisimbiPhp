@@ -1,4 +1,4 @@
 .idea
-includes/config.php
+#includes/config.php
 .htaccess
 node_modules
