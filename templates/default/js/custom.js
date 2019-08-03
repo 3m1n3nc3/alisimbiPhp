@@ -102,7 +102,7 @@ function connector(type, target) {
         let password = target.password.value;
         let submit_b = target.submit.value;
         let remem = $('input[name="remember"]');
-        if($(remem).is(':checked')) remember = 1;
+        if($(remem).is(':checked')) remember = 1; console.log(remember);
 
         $(submit_b).attr('disabled', 'disabled');
         let url = siteUrl + "/connection/connector.php";
@@ -141,7 +141,6 @@ function connector(type, target) {
         var lastname = $('input[name="register-lname"]').val();
         var country = $('select[name="register-country"] option:selected').val();
         var state = $('select[name="register-state"] option:selected').val();
-        console.log(state);
         var city = $('select[name="register-city"] option:selected').val();
         $.ajax({
             type: "POST",

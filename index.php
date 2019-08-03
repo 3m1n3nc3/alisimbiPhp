@@ -102,6 +102,26 @@ if ($new_course) {
 // Logout url
 $PTMPL['logout_url'] = cleanUrls($SETT['url'] . '/index.php?page=homepage&logout=true');
 
+// Login toggle
+if ($user) { 
+	$page = cleanUrls($SETT['url'] . '/index.php?page=account&profile=home');
+	$PTMPL['login_toggle'] = '
+	<a data-title="Login" data-toggle="tooltip" href="'.$page.'" title="Login">
+		<div class="toggle_icon">
+			<span class="fa fa-user-circle"></span>
+			<span class="text">Login </span>
+		</div>
+	</a>';
+} else {
+	$PTMPL['login_toggle'] = '
+	<div class="toggle_icon" data-target="login">
+	    <a data-title="Login" data-toggle="tooltip" href="#" title="Login">
+	        <span class="fa fa-user-circle"></span>
+	    </a>
+	    <span class="text">Login </span>
+	</div>';
+}
+
 // Render the page
 $PTMPL['content'] = mainContent();
 
