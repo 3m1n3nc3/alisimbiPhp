@@ -9,10 +9,6 @@ if(isset($_GET['page']) && isset($action[$_GET['page']])) {
 
 if (isset($_GET['logout'])) {
     $framework->sign_out();
-} elseif ($user && $page_name == 'homepage') {
-	// $framework->redirect('account&profile=home');
-} elseif ($user && $user['status'] == 0 && !isset($_GET['unverified'])) {
-	// $framework->redirect('account&unverified=true');
 }
 
 require_once("controller/{$page_name}.php");
@@ -65,44 +61,67 @@ if ($coursesArr) {
 
 // Get the latest course available
 $new_course = getCourses();
-$course_new = array_reverse($new_course)[0];
-$courses_modules = '';
-$PTMPL['course_get_new'] = cleanUrls($SETT['url'].'/index.php?page=training&course=get&process=payment&courseid='.$course_new['id']);
-$PTMPL['course_title_new'] = $course_new['title'];
-$PTMPL['course_cover_new'] = getImage($course_new['cover'], 1);
-$PTMPL['course_intro_new'] = $course_new['intro'];
-$PTMPL['course_benefits_new'] = fetchBenefits($course_new['id']);
+if ($new_course) {
+	$course_new = array_reverse($new_course)[0];
+	$courses_modules = '';
+	$PTMPL['course_get_new'] = cleanUrls($SETT['url'].'/index.php?page=training&course=get&process=payment&courseid='.$course_new['id']);
+	$PTMPL['course_title_new'] = $course_new['title'];
+	$PTMPL['course_cover_new'] = getImage($course_new['cover'], 1);
+	$PTMPL['course_intro_new'] = $course_new['intro'];
+	$PTMPL['course_benefits_new'] = fetchBenefits($course_new['id']);
 
-$module_newArr = getModules(1, $course_new['id']);
-if ($module_newArr) {
-	foreach ($module_newArr  as $rslt) {
-        $courses_modules .= courseModuleCard($rslt, 1, 0);
+	$module_newArr = getModules(1, $course_new['id']);
+	if ($module_newArr) {
+		foreach ($module_newArr  as $rslt) {
+	        $courses_modules .= courseModuleCard($rslt, 1, 0);
+		}
+		$PTMPL['course_modules_new'] = $courses_modules;
+	} else {
+	    $PTMPL['course_modules_new'] = notAvailable('Modules for this course');
 	}
-	$PTMPL['course_modules_new'] = $courses_modules;
-} else {
-    $PTMPL['course_modules_new'] = notAvailable('Modules for this course');
+
+	// Get a list of instructors for the new course
+	$instructorsArr = getInstructors($course_new['id']);
+
+	$instructor = '';
+	$course_instructor = '';
+
+	if ($instructorsArr) {
+		foreach ($instructorsArr as $ins) {
+			$instructor .= instructorCard($ins);
+			$course_instructor .= instructorCard($ins, 1);
+		}
+		$PTMPL['instructor'] = $instructor;
+		$PTMPL['course_instructor'] = $course_instructor;
+	} else {
+		$PTMPL['instructor'] = notAvailable('Instructors');
+		$PTMPL['course_instructor'] = notAvailable('Instructors');
+	}	
 }
 
 // Logout url
 $PTMPL['logout_url'] = cleanUrls($SETT['url'] . '/index.php?page=homepage&logout=true');
 
-// Get a list of instructors for the new course
-$instructorsArr = getInstructors($course_new['id']);
-
-$instructor = '';
-$course_instructor = '';
-
-if ($instructorsArr) {
-	foreach ($instructorsArr as $ins) {
-		$instructor .= instructorCard($ins);
-		$course_instructor .= instructorCard($ins, 1);
-	}
-	$PTMPL['instructor'] = $instructor;
-	$PTMPL['course_instructor'] = $course_instructor;
+// Login toggle
+if ($user) { 
+	$page = cleanUrls($SETT['url'] . '/index.php?page=account&profile=home');
+	$PTMPL['login_toggle'] = '
+	<a data-title="Login" data-toggle="tooltip" href="'.$page.'" title="Login">
+		<div class="toggle_icon">
+			<span class="fa fa-user-circle"></span>
+			<span class="text">Login </span>
+		</div>
+	</a>';
 } else {
-	$PTMPL['instructor'] = notAvailable('Instructors');
-	$PTMPL['course_instructor'] = notAvailable('Instructors');
+	$PTMPL['login_toggle'] = '
+	<div class="toggle_icon" data-target="login">
+	    <a data-title="Login" data-toggle="tooltip" href="#" title="Login">
+	        <span class="fa fa-user-circle"></span>
+	    </a>
+	    <span class="text">Login </span>
+	</div>';
 }
+
 // Render the page
 $PTMPL['content'] = mainContent();
 

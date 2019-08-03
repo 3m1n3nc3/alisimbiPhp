@@ -18,7 +18,7 @@ function mainContent() {
 	$PTMPL['sponsors'] = 'Sponsors';
 
     if ($user && $user_role < 3) {
-        header("Location: " . cleanUrls($SETT['url'] . '/index.php?page=account'));
+        $framework->redirect('account&profile=home');
     }
 
 	// Set social values

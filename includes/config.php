@@ -5,7 +5,7 @@ error_reporting(E_ALL);
  */
 if (version_compare(PHP_VERSION, 5.3, '<') && function_exists('set_magic_quotes_runtime')) set_magic_quotes_runtime(0);
 
-
+ 
 $SETT = $PTMPL = array();
 
 /*
@@ -20,7 +20,7 @@ define('DB_PREFIX', '');
 $SETT['dbdriver'] = 'mysql';
 $SETT['dbhost'] = 'localhost';
 $SETT['dbuser'] = 'root';
-$SETT['dbpass'] = 'Littleguy@007';
+$SETT['dbpass'] = 'idontknow1A@';
 $SETT['dbname'] = 'alisimbi';
 
 /*
