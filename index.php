@@ -109,7 +109,7 @@ if ($user) {
 	<a data-title="Login" data-toggle="tooltip" href="'.$page.'" title="Login">
 		<div class="toggle_icon">
 			<span class="fa fa-user-circle"></span>
-			<span class="text">Login </span>
+			<span class="text">Account </span>
 		</div>
 	</a>';
 } else {
