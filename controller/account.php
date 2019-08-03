@@ -13,7 +13,7 @@ function mainContent() {
         $PTMPL['page_title'] = ucfirst($profile['username']).' Public Profile';
     }
     if ($user) {
-        if ($_GET['page'] = 'account') {
+        if ($_GET['page'] = 'account') {print_r($user);
             $theme = new themer('account/profile_home');
             // $OLD_THEME = $PTMPL; $PTMPL = array();
 
@@ -75,14 +75,14 @@ function mainContent() {
                             $framework->social = 1;
                         }
                         $framework->updateProfile();
-                        $framework->redirect('account&profile=home');
+                        // $framework->redirect('account&profile=home');
                     }
                 }
             } elseif (isset($_GET['unverified'])) {
                 $theme = new themer('account/unverified');
                 // $OLD_THEME = $PTMPL; $PTMPL = array();
                 if ($user['status'] == 1) {
-                   $framework->redirect('account&profile=home');
+                   // $framework->redirect('account&profile=home');
                 } else {
                     if (isset($_POST['resend'])) {
                         $PTMPL['activation_message'] = $framework->account_activation('resend', $user['username']);
