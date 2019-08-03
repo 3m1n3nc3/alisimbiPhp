@@ -79,28 +79,29 @@ if ($new_course) {
 	} else {
 	    $PTMPL['course_modules_new'] = notAvailable('Modules for this course');
 	}
+
+	// Get a list of instructors for the new course
+	$instructorsArr = getInstructors($course_new['id']);
+
+	$instructor = '';
+	$course_instructor = '';
+
+	if ($instructorsArr) {
+		foreach ($instructorsArr as $ins) {
+			$instructor .= instructorCard($ins);
+			$course_instructor .= instructorCard($ins, 1);
+		}
+		$PTMPL['instructor'] = $instructor;
+		$PTMPL['course_instructor'] = $course_instructor;
+	} else {
+		$PTMPL['instructor'] = notAvailable('Instructors');
+		$PTMPL['course_instructor'] = notAvailable('Instructors');
+	}	
 }
 
 // Logout url
 $PTMPL['logout_url'] = cleanUrls($SETT['url'] . '/index.php?page=homepage&logout=true');
 
-// Get a list of instructors for the new course
-$instructorsArr = getInstructors($course_new['id']);
-
-$instructor = '';
-$course_instructor = '';
-
-if ($instructorsArr) {
-	foreach ($instructorsArr as $ins) {
-		$instructor .= instructorCard($ins);
-		$course_instructor .= instructorCard($ins, 1);
-	}
-	$PTMPL['instructor'] = $instructor;
-	$PTMPL['course_instructor'] = $course_instructor;
-} else {
-	$PTMPL['instructor'] = notAvailable('Instructors');
-	$PTMPL['course_instructor'] = notAvailable('Instructors');
-}
 // Render the page
 $PTMPL['content'] = mainContent();
 
