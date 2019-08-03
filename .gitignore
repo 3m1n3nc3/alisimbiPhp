@@ -1,5 +1,4 @@
-.idea
-includes/config.php
+.idea 
 .htaccess
 node_modules
 error.log
