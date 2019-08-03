@@ -17,12 +17,14 @@ function mainContent() {
 	$PTMPL['testimony'] = 'Testimonials';
 	$PTMPL['sponsors'] = 'Sponsors';
 
-    if ($user) {
+    if ($user && $user['status'] == 0 && !isset($_GET['unverified'])) {
+		$framework->redirect('account&unverified=true');
+	} elseif ($user) {
     	// if ($user_role < 3) {
     	// 	$framework->redirect('account&profile=home');
     	// }
     	$framework->redirect('account&profile=home');
-    }
+    } elseif 
 
 	// Set social values
 	$contact = getContactInfo()[0];
