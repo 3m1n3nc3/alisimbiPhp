@@ -17,8 +17,10 @@ function mainContent() {
 	$PTMPL['testimony'] = 'Testimonials';
 	$PTMPL['sponsors'] = 'Sponsors';
 
-    if ($user && $user_role < 3) {
-        header("Location: " . cleanUrls($SETT['url'] . '/index.php?page=account'));
+    if ($user) {
+    	if ($user_role < 3) {
+    		$framework->redirect('account&profile=home');
+    	}
     }
 
 	// Set social values
