@@ -2,3 +2,4 @@
 includes/config.php
 .htaccess
 node_modules
+error.log
