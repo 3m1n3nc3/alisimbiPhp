@@ -3,7 +3,7 @@
 function mainContent() {
     global $PTMPL, $LANG, $SETT, $configuration, $framework, $user, $user_role;
 	// Dont touch anything above this line
-print_r($user);
+
 	$PTMPL['page_title'] = getHome('1')[0]['title'];
 
 	$PTMPL['site_url'] = $SETT['url'];
