@@ -9,8 +9,6 @@ if(isset($_GET['page']) && isset($action[$_GET['page']])) {
 
 if (isset($_GET['logout'])) {
     $framework->sign_out();
-} elseif ($user && $user['status'] == 0 && !isset($_GET['unverified'])) {
-	$framework->redirect('account&unverified=true');
 }
 
 require_once("controller/{$page_name}.php");
@@ -63,22 +61,24 @@ if ($coursesArr) {
 
 // Get the latest course available
 $new_course = getCourses();
-$course_new = array_reverse($new_course)[0];
-$courses_modules = '';
-$PTMPL['course_get_new'] = cleanUrls($SETT['url'].'/index.php?page=training&course=get&process=payment&courseid='.$course_new['id']);
-$PTMPL['course_title_new'] = $course_new['title'];
-$PTMPL['course_cover_new'] = getImage($course_new['cover'], 1);
-$PTMPL['course_intro_new'] = $course_new['intro'];
-$PTMPL['course_benefits_new'] = fetchBenefits($course_new['id']);
+if ($new_course) {
+	$course_new = array_reverse($new_course)[0];
+	$courses_modules = '';
+	$PTMPL['course_get_new'] = cleanUrls($SETT['url'].'/index.php?page=training&course=get&process=payment&courseid='.$course_new['id']);
+	$PTMPL['course_title_new'] = $course_new['title'];
+	$PTMPL['course_cover_new'] = getImage($course_new['cover'], 1);
+	$PTMPL['course_intro_new'] = $course_new['intro'];
+	$PTMPL['course_benefits_new'] = fetchBenefits($course_new['id']);
 
-$module_newArr = getModules(1, $course_new['id']);
-if ($module_newArr) {
-	foreach ($module_newArr  as $rslt) {
-        $courses_modules .= courseModuleCard($rslt, 1, 0);
+	$module_newArr = getModules(1, $course_new['id']);
+	if ($module_newArr) {
+		foreach ($module_newArr  as $rslt) {
+	        $courses_modules .= courseModuleCard($rslt, 1, 0);
+		}
+		$PTMPL['course_modules_new'] = $courses_modules;
+	} else {
+	    $PTMPL['course_modules_new'] = notAvailable('Modules for this course');
 	}
-	$PTMPL['course_modules_new'] = $courses_modules;
-} else {
-    $PTMPL['course_modules_new'] = notAvailable('Modules for this course');
 }
 
 // Logout url
