@@ -23,7 +23,7 @@ function mainContent() {
     	// if ($user_role < 3) {
     	// 	$framework->redirect('account&profile=home');
     	// }
-    	$framework->redirect('account&profile=home');
+    	// $framework->redirect('account&profile=home');
     }
 
 	// Set social values
