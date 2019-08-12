@@ -20,7 +20,7 @@ if (!empty($ajax_image_)) {
   $imgexist = $_GET["pid"];
 
   // Save the new image to the upload directory  
-  file_put_contents('../uploads/img/'.$new_image, $image);  
+  file_put_contents($SETT['working_dir'].'/uploads/img/'.$new_image, $image);  
 
   // delete the old image if not gallery
   if ($imgexist != '') {

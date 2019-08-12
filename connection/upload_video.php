@@ -54,7 +54,7 @@ if (isset($_POST['youtube_url'])) {
         }
         $new_vid = mt_rand().'_'.mt_rand().'_v.'.$extension;
         $cd = getcwd(); 
-        $target_path = '../uploads/videos/';
+        $target_path = $SETT['working_dir'].'/uploads/videos/';
         if(move_uploaded_file($source['tmp_name'], $target_path.$new_vid)){
             $x = getModules(2, $mid)[0];
             deleteFile(1, $x['video']);

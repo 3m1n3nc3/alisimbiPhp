@@ -763,7 +763,7 @@ function instructorCard($ins, $type = null) {   global $SETT;
 }
 
 function deleteFile($type, $name, $x = null) {
-    global $framework;
+    global $SETT, $framework;
 
     if ($type == 0) {
         $ext = 'png';
@@ -771,13 +771,11 @@ function deleteFile($type, $name, $x = null) {
     } elseif ($type == 1) {
         $ext = 'mp4';
         $path = 'videos';
-    }
-
-    $cd = $x ? getcwd() : '..';
+    } 
 
     if ($name !== 'default.' . $ext) {
-        if (file_exists($cd . '/uploads/' . $path . '/' . $name)) {
-            unlink($cd . '/uploads/' . $path . '/' . $name);
+        if (file_exists($SETT['working_dir'] . '/uploads/' . $path . '/' . $name)) {
+            unlink($SETT['working_dir'] . '/uploads/' . $path . '/' . $name);
             return 1;
         }
     }
