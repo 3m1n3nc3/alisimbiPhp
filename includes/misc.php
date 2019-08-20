@@ -15,7 +15,12 @@ $configuration = configuration();
 $PTMPL['template_path'] = $SETT['template_path'];
 $PTMPL['template_name'] = $SETT['template_name'] = 'default';//$configuration['template'];
 $PTMPL['template_url'] = $SETT['template_url'] = $SETT['template_path'].'/'.$SETT['template_name'];
-$SETT['working_dir'] = $_SERVER["DOCUMENT_ROOT"];
+
+// use this working dir online
+$SETT['working_dir'] = $_SERVER["DOCUMENT_ROOT"].'/alisimbi';
+ 
+// use this working dir offline
+// $SETT['working_dir'] = $_SERVER["DOCUMENT_ROOT"]; 
 
 // Check who is logged in right now
 if (isset($_SESSION['username'])) { 
